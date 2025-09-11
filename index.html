@@ -3,24 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SupraSaiyans</title>
+    <title>SupraSaiyans - Epic Multi-Dimensional Trading</title>
+    
+    <!-- 
+    =======================================================================
+    DEVELOPER GUIDE - QUICK EDITING REFERENCE
+    =======================================================================
+    
+    HOW TO EDIT THIS WEBSITE:
+    
+    1. SECTIONS: The page is divided into 7 main sections with these IDs:
+       - #home (landing/hero section)
+       - #roadmap (project roadmap)
+       - #nft-gallery (NFT showcase)
+       - #stakonomics (staking & economics)
+       - #lore (project story & background)
+       - #blog (news & updates)
+       - #community (social links & community info)
+    
+    2. NAVIGATION: Update navigation links in the "nav-links" div
+       - Each link should have href="#section-id" format
+       - Add/remove navigation items as needed
+    
+    3. COLORS: The site uses blue/orange/gold theme from dragon image:
+       - Blue tones: #1e40af, #3b82f6, #60a5fa (primary elements)
+       - Orange tones: #ea580c, #f97316 (call-to-action buttons) 
+       - Gold tones: #f59e0b, #fbbf24 (accents and highlights)
+    
+    4. BACKGROUND: Dragon image (DREAMINGDRAGONSWOW.jpg) is set as background
+       - To change: update the url() in body background property
+       - Dark overlay ensures text readability
+    
+    5. CONTENT UPDATES:
+       - Section titles: Update <h1>, <h2> tags in each section
+       - Section content: Update <p> tags and content divs
+       - Links: Update href attributes for external links
+       - Images: Update src attributes and alt text
+    
+    6. STYLING QUICK REFERENCE:
+       - Main containers: .section class for consistent spacing
+       - Buttons: .cta-button class for orange gradient buttons
+       - Navigation: .nav-link class for internal navigation
+       - Content boxes: .content-card class for content containers
+    
+    =======================================================================
+    -->
+    
     <style>
-        body {
+        /* 
+        =======================================================================
+        GLOBAL STYLES & DRAGON BACKGROUND
+        =======================================================================
+        */
+        
+        * {
             margin: 0;
             padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: #0f0f1a;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth; /* Smooth scrolling for navigation */
+        }
+        
+        body {
             font-family: 'Arial', sans-serif;
             color: white;
-            position: relative;
-            overflow: hidden;
+            background: 
+                /* Dark overlay for text readability */
+                linear-gradient(rgba(15, 15, 26, 0.8), rgba(15, 15, 26, 0.8)),
+                /* Dragon background image from PR #4 */
+                url('DREAMINGDRAGONSWOW.jpg') center/cover no-repeat fixed;
+            min-height: 100vh;
+            line-height: 1.6;
         }
-
-        /* Epic Border Animation */
+        
+        /* Subtle dragon accent overlay for visual depth */
         body::before {
             content: '';
             position: fixed;
@@ -29,152 +87,231 @@
             right: 0;
             bottom: 0;
             background: 
-                linear-gradient(217deg, 
-                    rgba(255,0,0,.8), 
-                    rgba(255,0,0,0) 70.71%),
-                linear-gradient(127deg, 
-                    rgba(200,0,255,.8), 
-                    rgba(0,255,0,0) 70.71%),
-                linear-gradient(336deg, 
-                    rgba(0,0,255,.8), 
-                    rgba(0,0,255,0) 70.71%);
+                radial-gradient(circle at top right, 
+                    transparent 40%, 
+                    rgba(30, 64, 175, 0.1) 60%, /* Blue accent */
+                    transparent 80%),
+                radial-gradient(circle at bottom left, 
+                    transparent 40%, 
+                    rgba(234, 88, 12, 0.1) 60%, /* Orange accent */
+                    transparent 80%);
             z-index: 1;
-            animation: borderGlow 20s ease infinite;
             pointer-events: none;
-            mask: 
-                linear-gradient(#fff 0 0) content-box,
-                linear-gradient(#fff 0 0);
-            mask-composite: exclude;
-            padding: 20px;
+            opacity: 0.6;
         }
-
-        /* Fractal Dragon Effect */
-        body::after {
-            content: '';
+        
+        /* 
+        =======================================================================
+        NAVIGATION STYLES
+        =======================================================================
+        */
+        
+        .navigation {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at top right, 
-                    transparent 30%, 
-                    rgba(255,0,0,0.1) 60%,
-                    transparent 70%),
-                radial-gradient(circle at bottom left, 
-                    transparent 30%, 
-                    rgba(255,255,255,0.1) 60%,
-                    transparent 70%);
-            z-index: 0;
-            animation: fractalFlow 15s ease infinite;
-            pointer-events: none;
-            opacity: 0.7;
+            background: rgba(15, 15, 26, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+            z-index: 100;
+            padding: 1rem 0;
         }
-
-        @keyframes borderGlow {
-            0%, 100% {
-                filter: hue-rotate(0deg) brightness(1);
-            }
-            50% {
-                filter: hue-rotate(360deg) brightness(1.2);
-            }
-        }
-
-        @keyframes fractalFlow {
-            0%, 100% {
-                transform: scale(1) rotate(0deg);
-            }
-            50% {
-                transform: scale(1.1) rotate(180deg);
-            }
-        }
-
-        .container {
-            text-align: center;
-            max-width: 800px;
-            padding: 20px;
-            position: relative;
-            z-index: 2;
-            background: rgba(15, 15, 26, 0.8);
-            border-radius: 15px;
-            backdrop-filter: blur(5px);
-        }
-
-        .logo {
-            width: 300px;
-            height: auto;
-            margin-bottom: 40px;
-            filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
-        }
-
-        .social-links {
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
             display: flex;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 40px;
+            align-items: center;
+            padding: 0 2rem;
         }
-
-        .social-link {
+        
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .nav-link {
             color: #fff;
             text-decoration: none;
-            padding: 12px 24px;
+            padding: 0.5rem 1rem;
             border: 2px solid transparent;
             border-radius: 8px;
             transition: all 0.3s ease;
-            background: rgba(74, 144, 226, 0.1);
+            background: rgba(30, 64, 175, 0.15);
             backdrop-filter: blur(5px);
+            font-weight: 500;
+            font-size: 0.9rem;
             position: relative;
             overflow: hidden;
         }
-
-        .social-link::before {
+        
+        /* Navigation link hover effects */
+        .nav-link::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, rgba(74, 144, 226, 0.2), rgba(255, 51, 119, 0.2));
+            background: linear-gradient(45deg, rgba(59, 130, 246, 0.2), rgba(251, 146, 60, 0.2));
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-
-        .social-link:hover {
+        
+        .nav-link:hover {
             transform: translateY(-2px);
-            border-color: #4a90e2;
-            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+            border-color: #3b82f6;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
         }
-
-        .social-link:hover::before {
+        
+        .nav-link:hover::before {
             opacity: 1;
         }
-
-        .telegram-link { border-color: #0088cc; }
-        .twitter-link { border-color: #1DA1F2; }
-        .discord-link { border-color: #7289DA; }
-        .dragons-link { border-color: #ff6b6b; }
-
-        .telegram-link:hover { box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3); }
-        .twitter-link:hover { box-shadow: 0 4px 15px rgba(29, 161, 242, 0.3); }
-        .discord-link:hover { box-shadow: 0 4px 15px rgba(114, 137, 218, 0.3); }
-        .dragons-link:hover { box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3); }
-
+        
+        /* Active navigation link */
+        .nav-link.active {
+            border-color: #f59e0b;
+            background: rgba(245, 158, 11, 0.2);
+        }
+        
+        /* 
+        =======================================================================
+        SECTION LAYOUT STYLES
+        =======================================================================
+        */
+        
+        .section {
+            min-height: 100vh;
+            padding: 120px 2rem 80px; /* Top padding accounts for fixed navigation */
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .section-container {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        /* Section backgrounds for visual separation */
+        .section:nth-child(even) {
+            background: rgba(15, 15, 26, 0.3);
+        }
+        
+        .section:nth-child(odd) {
+            background: rgba(30, 64, 175, 0.05);
+        }
+        
+        /* 
+        =======================================================================
+        TYPOGRAPHY STYLES
+        =======================================================================
+        */
+        
+        .section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #3b82f6, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: bold;
+        }
+        
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #60a5fa;
+            font-weight: bold;
+        }
+        
+        .section h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #fbbf24;
+            font-weight: 600;
+        }
+        
+        .section p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+        }
+        
+        /* 
+        =======================================================================
+        CONTENT COMPONENTS
+        =======================================================================
+        */
+        
+        /* Hero logo styling */
+        .hero-logo {
+            width: 300px;
+            height: auto;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 0 15px rgba(59, 130, 246, 0.4));
+        }
+        
+        /* Content cards for organized information */
+        .content-card {
+            background: rgba(15, 15, 26, 0.85);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+        
+        .content-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Grid layout for cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        /* 
+        =======================================================================
+        BUTTON STYLES
+        =======================================================================
+        */
+        
         .cta-button {
             display: inline-block;
             padding: 15px 30px;
-            font-size: 24px;
+            font-size: 1.2rem;
             font-weight: bold;
             color: white;
-            background: linear-gradient(45deg, #ff6b6b, #ff3377);
+            background: linear-gradient(45deg, #ea580c, #f59e0b);
             text-decoration: none;
             border-radius: 10px;
             transition: all 0.3s ease;
             text-transform: uppercase;
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            box-shadow: 0 4px 15px rgba(234, 88, 12, 0.3);
+            margin: 1rem 0.5rem;
         }
-
+        
+        /* Shimmer effect for buttons */
         .cta-button::after {
             content: '';
             position: absolute;
@@ -191,7 +328,7 @@
             transform: rotate(45deg);
             animation: shimmer 3s infinite;
         }
-
+        
         @keyframes shimmer {
             0% {
                 transform: translateX(-100%) rotate(45deg);
@@ -200,27 +337,466 @@
                 transform: translateX(100%) rotate(45deg);
             }
         }
-
+        
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+            box-shadow: 0 6px 20px rgba(234, 88, 12, 0.5);
+            background: linear-gradient(45deg, #f97316, #fbbf24);
         }
+        
+        /* Secondary button style */
+        .secondary-button {
+            background: linear-gradient(45deg, #1e40af, #3b82f6);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+        }
+        
+        .secondary-button:hover {
+            background: linear-gradient(45deg, #3b82f6, #60a5fa);
+            box-shadow: 0 6px 20px rgba(30, 64, 175, 0.5);
+        }
+        
+        /* 
+        =======================================================================
+        RESPONSIVE DESIGN
+        =======================================================================
+        */
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 0.5rem;
+            }
+            
+            .nav-link {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+            
+            .section {
+                padding: 100px 1rem 60px;
+            }
+            
+            .section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-logo {
+                width: 250px;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .content-card {
+                margin: 0.5rem;
+                padding: 1.5rem;
+            }
+        }
+        
+        /* 
+        =======================================================================
+        SPECIAL EFFECTS & ANIMATIONS
+        =======================================================================
+        */
+        
+        /* Fade-in animation for sections */
+        .section {
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Stagger animation delays for sections */
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+        .section:nth-child(7) { animation-delay: 0.7s; }
+        .section:nth-child(8) { animation-delay: 0.8s; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="logo.png" alt="SupraSaiyans Logo" class="logo">
-        
-        <div class="social-links">
-            <a href="https://t.me/suprasaiyans" class="social-link telegram-link" target="_blank">Telegram</a>
-            <a href="https://x.com/suprasaiyans" class="social-link twitter-link" target="_blank">X (Twitter)</a>
-            <a href="https://discord.gg/HsVHCXCR" class="social-link discord-link" target="_blank">Discord</a>
-            <a href="https://crystara.trade/marketplace/dreamingdragons" class="social-link dragons-link" target="_blank">Dreaming Dragons</a>
+    <!-- 
+    =======================================================================
+    NAVIGATION BAR
+    =======================================================================
+    Fixed navigation bar with internal links to all sections
+    To add/remove navigation items, update the links below
+    -->
+    <nav class="navigation">
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#roadmap" class="nav-link">Roadmap</a>
+                <a href="#nft-gallery" class="nav-link">NFT Gallery</a>
+                <a href="#stakonomics" class="nav-link">Stakonomics</a>
+                <a href="#lore" class="nav-link">Lore</a>
+                <a href="#blog" class="nav-link">Blog</a>
+                <a href="#community" class="nav-link">Community</a>
+            </div>
         </div>
+    </nav>
 
-        <a href="https://www.pumpit.pro/token/0x3f4047f95a120d8b99c8897be17f481a6ff9705ce829c8c98579e9016854aad::PRESUPSAI::PRESUPSAI?chain=supra" class="cta-button" target="_blank">
-            Get $SUPSAI on Pumpit!
-        </a>
-    </div>
+    <!-- 
+    =======================================================================
+    HOME SECTION - HERO/LANDING
+    =======================================================================
+    Main landing section with logo and primary call-to-action
+    -->
+    <section id="home" class="section">
+        <div class="section-container">
+            <img src="logo.png" alt="SupraSaiyans Logo" class="hero-logo">
+            <h1>SupraSaiyans</h1>
+            <p>Welcome to the epic multi-dimensional trading experience. Ascend beyond limits with the power of the Supra Network and unlock legendary potential in DeFi.</p>
+            
+            <div>
+                <a href="https://www.pumpit.pro/token/0x3f4047f95a120d8b99c8897be17f481a6ff9705ce829c8c98579e9016854aad::PRESUPSAI::PRESUPSAI?chain=supra" class="cta-button" target="_blank">
+                    Get $SUPSAI on Pumpit!
+                </a>
+                <a href="#roadmap" class="cta-button secondary-button">
+                    Explore Roadmap
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+    =======================================================================
+    ROADMAP SECTION
+    =======================================================================
+    Project timeline and future development plans
+    -->
+    <section id="roadmap" class="section">
+        <div class="section-container">
+            <h2>Epic Roadmap</h2>
+            <p>Our journey to legendary status in the DeFi multiverse</p>
+            
+            <div class="cards-grid">
+                <div class="content-card">
+                    <h3>Phase 1: Foundation</h3>
+                    <p>Launch $SUPSAI token on Supra Network with initial liquidity and community building.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Phase 2: NFT Integration</h3>
+                    <p>Introduce Dreaming Dragons NFT collection with staking rewards and exclusive benefits.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Phase 3: Advanced DeFi</h3>
+                    <p>Deploy advanced staking mechanisms, yield farming, and cross-chain bridges.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Phase 4: Multiverse</h3>
+                    <p>Expand across multiple networks and establish SupraSaiyans as a DeFi powerhouse.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+    =======================================================================
+    NFT GALLERY SECTION
+    =======================================================================
+    Showcase of NFT collections and marketplace integration
+    -->
+    <section id="nft-gallery" class="section">
+        <div class="section-container">
+            <h2>NFT Gallery</h2>
+            <p>Discover the legendary Dreaming Dragons collection and exclusive SupraSaiyans NFTs</p>
+            
+            <div class="content-card">
+                <h3>Dreaming Dragons Collection</h3>
+                <p>Epic dragon-themed NFTs with unique utilities, staking rewards, and community benefits. Each dragon represents a different aspect of power in the multiverse.</p>
+                
+                <a href="https://crystara.trade/marketplace/dreamingdragons" class="cta-button" target="_blank">
+                    View Collection on Crystara
+                </a>
+            </div>
+            
+            <div class="cards-grid">
+                <div class="content-card">
+                    <h3>Legendary Tier</h3>
+                    <p>Ultra-rare dragons with maximum staking multipliers and exclusive governance rights.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Epic Tier</h3>
+                    <p>Powerful dragons with enhanced staking rewards and special community access.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Rare Tier</h3>
+                    <p>Beautiful dragons with solid staking benefits and community participation rewards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+    =======================================================================
+    STAKONOMICS SECTION
+    =======================================================================
+    Economic model, staking mechanisms, and tokenomics
+    -->
+    <section id="stakonomics" class="section">
+        <div class="section-container">
+            <h2>Stakonomics</h2>
+            <p>The economic engine powering the SupraSaiyans ecosystem</p>
+            
+            <div class="cards-grid">
+                <div class="content-card">
+                    <h3>$SUPSAI Staking</h3>
+                    <p>Stake your $SUPSAI tokens to earn rewards and participate in governance decisions. Higher stakes unlock greater power levels.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>NFT Power Multipliers</h3>
+                    <p>Dreaming Dragons NFTs provide staking multipliers, increasing your earning potential exponentially based on rarity.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Yield Farming</h3>
+                    <p>Provide liquidity to earn additional rewards. Multiple pools available with varying risk/reward profiles.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>Governance Power</h3>
+                    <p>Staked tokens grant voting rights on protocol upgrades, new features, and community initiatives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+    =======================================================================
+    LORE SECTION
+    =======================================================================
+    Project story, background, and thematic content
+    -->
+    <section id="lore" class="section">
+        <div class="section-container">
+            <h2>The Legend of SupraSaiyans</h2>
+            <p>In the depths of the DeFi multiverse, a new breed of warriors emerges...</p>
+            
+            <div class="content-card">
+                <h3>Origin Story</h3>
+                <p>Born from the convergence of ancient dragon magic and cutting-edge blockchain technology, the SupraSaiyans represent a new evolution in DeFi. Each warrior possesses the power to transcend traditional financial limitations and achieve legendary status in the digital realm.</p>
+                
+                <p>The Supra Network serves as their home dimension, a realm where speed and efficiency reign supreme. Here, transactions move at the speed of thought, and the boundaries between possibility and reality blur into nothingness.</p>
+            </div>
+            
+            <div class="cards-grid">
+                <div class="content-card">
+                    <h3>The Dreaming Dragons</h3>
+                    <p>Ancient guardians of the multiverse, these mystical beings chose to ally with the SupraSaiyans, lending their power to those worthy of ascension.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>The $SUPSAI Energy</h3>
+                    <p>A crystallized form of pure potential energy, $SUPSAI tokens represent the life force of the SupraSaiyans ecosystem.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>The Ascension Protocol</h3>
+                    <p>Through staking and community participation, warriors can achieve higher power levels and unlock new abilities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+    =======================================================================
+    BLOG SECTION
+    =======================================================================
+    News, updates, and announcements
+    -->
+    <section id="blog" class="section">
+        <div class="section-container">
+            <h2>Epic Chronicles</h2>
+            <p>Latest news, updates, and tales from the SupraSaiyans universe</p>
+            
+            <div class="cards-grid">
+                <div class="content-card">
+                    <h3>🚀 Launch Announcement</h3>
+                    <p><strong>Epic Launch on Supra Network</strong></p>
+                    <p>The SupraSaiyans have officially launched on the Supra Network! Join the revolution and claim your place among the legendary warriors.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>🐉 Dragons Awakening</h3>
+                    <p><strong>Dreaming Dragons Collection Revealed</strong></p>
+                    <p>The ancient dragons have awakened! Discover the mystical Dreaming Dragons NFT collection, now available on Crystara marketplace.</p>
+                </div>
+                
+                <div class="content-card">
+                    <h3>⚡ Staking Power-Up</h3>
+                    <p><strong>Enhanced Staking Mechanisms</strong></p>
+                    <p>New staking features are live! Increase your power level and earn legendary rewards through our enhanced staking protocol.</p>
+                </div>
+            </div>
+            
+            <div class="content-card">
+                <h3>Stay Updated</h3>
+                <p>Follow our community channels for the latest announcements, exclusive content, and epic adventures in the SupraSaiyans universe.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+    =======================================================================
+    COMMUNITY SECTION
+    =======================================================================
+    Social links, community information, and engagement
+    -->
+    <section id="community" class="section">
+        <div class="section-container">
+            <h2>Join the Legendary Community</h2>
+            <p>Connect with fellow warriors and stay updated on all epic developments</p>
+            
+            <div class="cards-grid">
+                <div class="content-card">
+                    <h3>💬 Communication Channels</h3>
+                    <div>
+                        <a href="https://t.me/suprasaiyans" class="cta-button" target="_blank">
+                            Join Telegram
+                        </a>
+                        <a href="https://discord.gg/HsVHCXCR" class="cta-button secondary-button" target="_blank">
+                            Discord Server
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <h3>🐦 Social Media</h3>
+                    <div>
+                        <a href="https://x.com/suprasaiyans" class="cta-button" target="_blank">
+                            Follow on X
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <h3>🎨 NFT Marketplace</h3>
+                    <div>
+                        <a href="https://crystara.trade/marketplace/dreamingdragons" class="cta-button" target="_blank">
+                            Dreaming Dragons
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="content-card">
+                    <h3>🚀 Trading Hub</h3>
+                    <div>
+                        <a href="https://www.pumpit.pro/token/0x3f4047f95a120d8b99c8897be17f481a6ff9705ce829c8c98579e9016854aad::PRESUPSAI::PRESUPSAI?chain=supra" class="cta-button" target="_blank">
+                            Trade $SUPSAI
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="content-card">
+                <h3>Community Guidelines</h3>
+                <p>Welcome to the SupraSaiyans community! We're building an epic ecosystem where respect, collaboration, and legendary achievements are celebrated. Join us in creating the future of DeFi on the Supra Network.</p>
+                
+                <p><strong>Core Values:</strong> Innovation, Community, Respect, and Epic Adventures in DeFi</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 
+    =======================================================================
+    JAVASCRIPT FOR NAVIGATION & INTERACTIONS
+    =======================================================================
+    -->
+    <script>
+        // Navigation active state management
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.section');
+            
+            // Update active navigation link based on scroll position
+            function updateActiveNavigation() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= sectionTop - 200) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+            
+            // Listen for scroll events
+            window.addEventListener('scroll', updateActiveNavigation);
+            
+            // Smooth scroll for navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+        
+        // Simple fade-in animation for content cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observe content cards for animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.content-card');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
 </body>
 </html>

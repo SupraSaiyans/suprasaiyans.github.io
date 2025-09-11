@@ -26,6 +26,8 @@
             --text-secondary: #e0e0e0;
             --border-color: rgba(255, 255, 255, 0.1);
             --glass-bg: rgba(6, 34, 46, 0.8);
+            --ssy-blue: #0057FF;
+            --ssy-bright-blue: #00F0FF;
         }
         
         body {
@@ -227,6 +229,54 @@
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(122, 48, 19, 0.5);
             background: linear-gradient(45deg, var(--accent-warm-light), var(--accent-warm));
+        }
+
+        /* SSY Studios NFT Button */
+        .ssy-nft-button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--text-primary);
+            background: linear-gradient(45deg, var(--ssy-blue), #0066FF);
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            margin-top: 20px;
+            /* Double border effect */
+            border: 2px solid var(--ssy-bright-blue);
+            box-shadow: 0 0 0 4px var(--accent-warm);
+        }
+
+        .ssy-nft-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite;
+        }
+
+        .ssy-nft-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 0 4px var(--accent-warm), 0 5px 15px rgba(0, 87, 255, 0.5);
+            background: linear-gradient(45deg, #0066FF, var(--ssy-blue));
+        }
+
+        .ssy-nft-button:focus {
+            outline: 2px solid var(--ssy-bright-blue);
+            outline-offset: 2px;
         }
 
         /* Navigation Styles */
@@ -445,6 +495,10 @@
 
             <a href="https://www.pumpit.pro/token/0x3f4047f95a120d8b99c8897be17f481a6ff9705ce829c8c98579e9016854aad::PRESUPSAI::PRESUPSAI?chain=supra" class="cta-button" target="_blank">
                 Get $SUPSAI on Pumpit!
+            </a>
+            
+            <a href="#nft-gallery" class="ssy-nft-button" aria-label="View SSY Studios NFT collection">
+                SSY Studios NFTs
             </a>
         </div>
     </section>

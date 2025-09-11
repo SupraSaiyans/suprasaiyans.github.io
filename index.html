@@ -229,14 +229,14 @@
             background: linear-gradient(45deg, var(--accent-warm-light), var(--accent-warm));
         }
 
-        /* SSY Studios NFTs Button - Blue styling with double border */
+        /* SSY Studios NFTs Button - Dark blue styling with glow effect synchronized with SUPSAI button */
         .nft-button {
             display: inline-block;
             padding: 15px 30px;
             font-size: 24px;
             font-weight: bold;
             color: var(--text-primary);
-            background: #0057FF;
+            background: linear-gradient(45deg, #001a4d, #003366);
             text-decoration: none;
             border-radius: 10px;
             transition: all 0.3s ease;
@@ -245,7 +245,9 @@
             overflow: hidden;
             /* Double border effect: outer border matches dragons-link, inner border is bright blue */
             border: 2px solid #7a3013;
-            box-shadow: inset 0 0 0 2px #00F0FF;
+            box-shadow: 
+                inset 0 0 0 2px #00F0FF,
+                0 4px 15px rgba(0, 26, 77, 0.4);
         }
 
         .nft-button::after {
@@ -268,9 +270,9 @@
         .nft-button:hover {
             transform: translateY(-3px);
             box-shadow: 
-                0 5px 15px rgba(0, 87, 255, 0.5),
+                0 5px 15px rgba(0, 51, 102, 0.5),
                 inset 0 0 0 2px #00F0FF;
-            background: linear-gradient(45deg, #0057FF, #00F0FF);
+            background: linear-gradient(45deg, #003366, #004080);
         }
 
         /* Navigation Styles */

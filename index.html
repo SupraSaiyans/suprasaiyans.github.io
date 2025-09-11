@@ -229,6 +229,45 @@
             background: linear-gradient(45deg, var(--accent-warm-light), var(--accent-warm));
         }
 
+        .cta-button-blue {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--text-primary);
+            background: linear-gradient(45deg, var(--accent-teal), var(--accent-teal-light));
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--accent-teal-light);
+        }
+
+        .cta-button-blue::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite;
+        }
+
+        .cta-button-blue:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(6, 86, 109, 0.5);
+            background: linear-gradient(45deg, var(--accent-teal-light), var(--accent-teal));
+        }
+
         /* Navigation Styles */
         .nav-menu {
             position: fixed;
@@ -446,6 +485,12 @@
             <a href="https://www.pumpit.pro/token/0x3f4047f95a120d8b99c8897be17f481a6ff9705ce829c8c98579e9016854aad::PRESUPSAI::PRESUPSAI?chain=supra" class="cta-button" target="_blank">
                 Get $SUPSAI on Pumpit!
             </a>
+
+            <div style="margin-top: 20px;">
+                <a href="#nft-gallery" class="cta-button-blue">
+                    SSY Studios NFTs
+                </a>
+            </div>
         </div>
     </section>
 

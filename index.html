@@ -229,6 +229,50 @@
             background: linear-gradient(45deg, var(--accent-warm-light), var(--accent-warm));
         }
 
+        /* SSY Studios NFTs Button - Blue styling with double border */
+        .nft-button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--text-primary);
+            background: #0057FF;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            /* Double border effect: outer border matches dragons-link, inner border is bright blue */
+            border: 2px solid #7a3013;
+            box-shadow: inset 0 0 0 2px #00F0FF;
+        }
+
+        .nft-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite;
+        }
+
+        .nft-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                0 5px 15px rgba(0, 87, 255, 0.5),
+                inset 0 0 0 2px #00F0FF;
+            background: linear-gradient(45deg, #0057FF, #00F0FF);
+        }
+
         /* Navigation Styles */
         .nav-menu {
             position: fixed;
@@ -446,6 +490,12 @@
             <a href="https://www.pumpit.pro/token/0x3f4047f95a120d8b99c8897be17f481a6ff9705ce829c8c98579e9016854aad::PRESUPSAI::PRESUPSAI?chain=supra" class="cta-button" target="_blank">
                 Get $SUPSAI on Pumpit!
             </a>
+
+            <div style="margin-top: 20px;">
+                <a href="#nft-gallery" class="nft-button">
+                    SSY Studios NFTs
+                </a>
+            </div>
         </div>
     </section>
 

@@ -17,76 +17,6 @@
             font-family: 'Arial', sans-serif;
             color: white;
             position: relative;
-            overflow: hidden;
-        }
-
-        /* Epic Border Animation */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                linear-gradient(217deg, 
-                    rgba(255,0,0,.8), 
-                    rgba(255,0,0,0) 70.71%),
-                linear-gradient(127deg, 
-                    rgba(200,0,255,.8), 
-                    rgba(0,255,0,0) 70.71%),
-                linear-gradient(336deg, 
-                    rgba(0,0,255,.8), 
-                    rgba(0,0,255,0) 70.71%);
-            z-index: 1;
-            animation: borderGlow 20s ease infinite;
-            pointer-events: none;
-            mask: 
-                linear-gradient(#fff 0 0) content-box,
-                linear-gradient(#fff 0 0);
-            mask-composite: exclude;
-            padding: 20px;
-        }
-
-        /* Fractal Dragon Effect */
-        body::after {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at top right, 
-                    transparent 30%, 
-                    rgba(255,0,0,0.1) 60%,
-                    transparent 70%),
-                radial-gradient(circle at bottom left, 
-                    transparent 30%, 
-                    rgba(255,255,255,0.1) 60%,
-                    transparent 70%);
-            z-index: 0;
-            animation: fractalFlow 15s ease infinite;
-            pointer-events: none;
-            opacity: 0.7;
-        }
-
-        @keyframes borderGlow {
-            0%, 100% {
-                filter: hue-rotate(0deg) brightness(1);
-            }
-            50% {
-                filter: hue-rotate(360deg) brightness(1.2);
-            }
-        }
-
-        @keyframes fractalFlow {
-            0%, 100% {
-                transform: scale(1) rotate(0deg);
-            }
-            50% {
-                transform: scale(1.1) rotate(180deg);
-            }
         }
 
         .container {
@@ -107,7 +37,7 @@
             filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
         }
 
-        .social-links {
+        .nav-menu {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
@@ -115,7 +45,7 @@
             margin-bottom: 40px;
         }
 
-        .social-link {
+        .nav-link {
             color: #fff;
             text-decoration: none;
             padding: 12px 24px;
@@ -128,7 +58,7 @@
             overflow: hidden;
         }
 
-        .social-link::before {
+        .nav-link::before {
             content: '';
             position: absolute;
             top: 0;
@@ -140,25 +70,15 @@
             transition: opacity 0.3s ease;
         }
 
-        .social-link:hover {
+        .nav-link:hover {
             transform: translateY(-2px);
             border-color: #4a90e2;
             box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
         }
 
-        .social-link:hover::before {
+        .nav-link:hover::before {
             opacity: 1;
         }
-
-        .telegram-link { border-color: #0088cc; }
-        .twitter-link { border-color: #1DA1F2; }
-        .discord-link { border-color: #7289DA; }
-        .dragons-link { border-color: #ff6b6b; }
-
-        .telegram-link:hover { box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3); }
-        .twitter-link:hover { box-shadow: 0 4px 15px rgba(29, 161, 242, 0.3); }
-        .discord-link:hover { box-shadow: 0 4px 15px rgba(114, 137, 218, 0.3); }
-        .dragons-link:hover { box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3); }
 
         .cta-button {
             display: inline-block;
@@ -211,11 +131,16 @@
     <div class="container">
         <img src="logo.png" alt="SupraSaiyans Logo" class="logo">
         
-        <div class="social-links">
-            <a href="https://t.me/suprasaiyans" class="social-link telegram-link" target="_blank">Telegram</a>
-            <a href="https://x.com/suprasaiyans" class="social-link twitter-link" target="_blank">X (Twitter)</a>
-            <a href="https://discord.gg/HsVHCXCR" class="social-link discord-link" target="_blank">Discord</a>
-            <a href="https://crystara.trade/marketplace/dreamingdragons" class="social-link dragons-link" target="_blank">Dreaming Dragons</a>
+        <div class="nav-menu">
+            <a href="#" class="nav-link">Home</a>
+            <a href="#" class="nav-link">Roadmap</a>
+            <a href="#" class="nav-link">Gallery</a>
+            <a href="#" class="nav-link">Lore</a>
+            <a href="#" class="nav-link">Powerlevel</a>
+            <a href="#" class="nav-link">Stakonomics</a>
+            <a href="#" class="nav-link">Links</a>
+            <a href="#" class="nav-link">Community</a>
+            <a href="#" class="nav-link">Blog</a>
         </div>
 
         <a href="https://www.pumpit.pro/token/0x3f4047f95a120d8b99c8897be17f481a6ff9705ce829c8c98579e9016854aad::PRESUPSAI::PRESUPSAI?chain=supra" class="cta-button" target="_blank">

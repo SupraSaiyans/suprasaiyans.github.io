@@ -1,10 +1,10 @@
 <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="ss-grad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#a259ff"/>
-      <stop offset="100%" stop-color="#f76fff"/>
+      <stop offset="0%" stop-color="#06566d"/>
+      <stop offset="100%" stop-color="#003d52"/>
     </linearGradient>
   </defs>
   <rect width="64" height="64" rx="12" fill="url(#ss-grad)"/>
-  <text x="50%" y="53%" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="32" font-weight="bold" fill="#fff" letter-spacing="2" alignment-baseline="middle">SS</text>
+  <text x="50%" y="53%" text-anchor="middle" font-family="Montserrat, Arial, sans-serif" font-size="28" font-weight="bold" fill="#7a3013" letter-spacing="1" alignment-baseline="middle">SSY</text>
 </svg>

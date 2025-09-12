@@ -507,6 +507,49 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Twitter Feed Styling */
+        .twitter-feed-container {
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(6, 86, 109, 0.2);
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .twitter-feed-container h3 {
+            color: var(--accent-teal-light);
+            margin-bottom: 20px;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        .twitter-timeline-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        /* Override Twitter widget styles to match theme */
+        .twitter-timeline-wrapper iframe {
+            border-radius: 10px !important;
+            border: 1px solid var(--border-color) !important;
+        }
+
+        @media (max-width: 768px) {
+            .twitter-feed-container {
+                margin: 20px 0;
+                padding: 15px;
+            }
+            
+            .twitter-timeline-wrapper {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -748,6 +791,21 @@
             <h1>SupraSaiyan Chronicles</h1>
             <h2>Latest Updates from the Battlefield</h2>
             
+            <!-- Twitter Feed -->
+            <div class="twitter-feed-container">
+                <h3>🐦 Latest from @SupraSaiyans</h3>
+                <div class="twitter-timeline-wrapper">
+                    <a class="twitter-timeline" 
+                       data-height="400" 
+                       data-theme="dark" 
+                       data-tweet-limit="3"
+                       data-chrome="noheader nofooter noborders transparent" 
+                       href="https://twitter.com/SupraSaiyans?ref_src=twsrc%5Etfw">
+                        Tweets by SupraSaiyans
+                    </a>
+                </div>
+            </div>
+            
             <div class="links-grid">
                 <div class="link-category">
                     <h4>📰 Recent Posts</h4>
@@ -847,5 +905,8 @@
             </div>
         </div>
     </section>
+
+    <!-- Twitter Widget Script -->
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 </html>

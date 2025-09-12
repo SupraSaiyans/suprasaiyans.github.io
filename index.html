@@ -754,10 +754,10 @@
     <!-- NFT Gallery Section -->
     <section id="nft-gallery" class="section">
         <div class="section-content">
-            <h1>Epic NFT Gallery</h1>
-            <h2>Dreaming Dragons Collection</h2>
+            <h1>SupraVerse NFT Gallery</h1>
+            <h2>Supra Saiyans Studios Portfolio</h2>
             <p style="font-size: 1.2em; line-height: 1.6; margin: 20px 0;">
-                Discover the legendary Dreaming Dragons, each NFT representing a unique piece of the SupraSaiyan universe.
+                Discover our NFT collections on Crystara, each representing a unique piece of the Supra Saiyans SupraVerse! Supramehaaa!
             </p>
             
             <div class="gallery-grid">
@@ -998,83 +998,11 @@
                     <h4>💎 Trading & DeFi</h4>
                     <ul class="link-list">
                         <li><a href="https://www.pumpit.pro/token/0x3f4047f95a120d8b99c8897be17f481a6ff9705ce829c8c98579e9016854aad::PRESUPSAI::PRESUPSAI?chain=supra" target="_blank">Get $SUPSAI on Pumpit</a></li>
-                        <li><a href="https://supra.com/" target="_blank">Supra Network</a></li>
-                        <li><a href="https://crystara.trade/" target="_blank">Crystara Exchange</a></li>
+                        <li><a href="https://crystara.trade/marketplace/dreamingdragons" target="_blank">Dreaming Dragons NFT Collection</a></li>
                     </ul>
                 </div>
-
-                <div class="link-category">
-                    <h4>🎨 NFT & Marketplace</h4>
-                    <ul class="link-list">
-                        <li><a href="https://crystara.trade/marketplace/dreamingdragons" target="_blank">Dreaming Dragons NFTs</a></li>
-                        <li><a href="#nft-gallery">View Gallery</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <h3>Ready to Power Up?</h3>
-            <div style="margin-top: 30px;">
-                <a href="https://www.pumpit.pro/token/0x3f4047f95a120d8b99c8897be17f481a6ff9705ce829c8c98579e9016854aad::PRESUPSAI::PRESUPSAI?chain=supra" class="cta-button" target="_blank">
-                    Get $SUPSAI on Pumpit!
-                </a>
             </div>
         </div>
     </section>
-
-    <!-- Twitter Widget Script -->
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    
-    <!-- Twitter Loading State Handler -->
-    <script>
-        // Handle Twitter widget loading state
-        (function() {
-            let twitterCheckCount = 0;
-            const maxChecks = 50; // Max 10 seconds of checking
-            
-            function checkTwitterWidgetLoaded() {
-                const container = document.getElementById('twitter-container');
-                const spinner = document.getElementById('twitter-spinner');
-                
-                if (!container || !spinner) return;
-                
-                // Check if Twitter iframe has been injected
-                const iframe = container.querySelector('iframe');
-                
-                if (iframe) {
-                    // Twitter widget loaded, hide spinner
-                    spinner.style.opacity = '0';
-                    spinner.style.transition = 'opacity 0.5s ease-out';
-                    setTimeout(() => {
-                        spinner.style.display = 'none';
-                    }, 500);
-                } else if (twitterCheckCount < maxChecks) {
-                    // Keep checking
-                    twitterCheckCount++;
-                    setTimeout(checkTwitterWidgetLoaded, 200);
-                } else {
-                    // Timeout reached, show fallback message
-                    spinner.innerHTML = `
-                        <div style="text-align: center; color: var(--accent-teal-light); opacity: 0.8;">
-                            <div style="font-size: 1.2em; margin-bottom: 10px;">📱</div>
-                            <div>Visit our Twitter directly</div>
-                            <a href="https://twitter.com/SupraSaiyans" target="_blank" rel="noopener" 
-                               style="color: var(--accent-teal-light); text-decoration: underline; margin-top: 8px; display: inline-block;">
-                               @SupraSaiyans
-                            </a>
-                        </div>
-                    `;
-                }
-            }
-            
-            // Start checking when DOM is ready
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', function() {
-                    setTimeout(checkTwitterWidgetLoaded, 1000);
-                });
-            } else {
-                setTimeout(checkTwitterWidgetLoaded, 1000);
-            }
-        })();
-    </script>
 </body>
 </html>

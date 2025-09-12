@@ -387,21 +387,81 @@
             color: var(--text-primary);
         }
 
-        /* Dragon emoji list style for Tokenomics */
-        .dragon-list {
+        /* Custom emoji list styles for Stakonomics sections */
+        .staking-list {
             list-style: none;
             padding: 0;
             margin: 0;
         }
 
-        .dragon-list li {
+        .staking-list li {
             margin: 10px 0;
             position: relative;
             padding-left: 30px;
         }
 
-        .dragon-list li::before {
+        .staking-list li::before {
             content: '🐉';
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.2em;
+        }
+
+        .scorpion-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .scorpion-list li {
+            margin: 10px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .scorpion-list li::before {
+            content: '🦂';
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.2em;
+        }
+
+        .snake-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .snake-list li {
+            margin: 10px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .snake-list li::before {
+            content: '🐍';
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 1.2em;
+        }
+
+        .fire-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .fire-list li {
+            margin: 10px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .fire-list li::before {
+            content: '🔥';
             position: absolute;
             left: 0;
             top: 0;
@@ -639,7 +699,7 @@
             <div class="links-grid">
                 <div class="link-category">
                     <h4>💎 Staking Rewards</h4>
-                    <ul class="link-list">
+                    <ul class="staking-list">
                         <li>APY depending on lockup period</li>
                         <li>NFT holders receive bonus multipliers</li>
                         <li>Community participation rewards</li>
@@ -649,7 +709,7 @@
 
                 <div class="link-category">
                     <h4>🎯 Utility Features</h4>
-                    <ul class="link-list">
+                    <ul class="scorpion-list">
                         <li>Governance voting rights</li>
                         <li>Exclusive NFT access</li>
                         <li>Trading fee discounts</li>
@@ -659,19 +719,19 @@
 
                 <div class="link-category">
                     <h4>📊 Tokenomics</h4>
-                    <ul class="dragon-list">
+                    <ul class="snake-list">
                         <li>Total Supply: 1 Billion $SUPSAI</li>
                         <li>Staking Pool</li>
                         <li>Community Rewards</li>
                         <li>Development</li>
                         <li>Marketing</li>
-                        <li>Team (4-year vesting)</li>
+                        <li>Team Vesting</li>
                     </ul>
                 </div>
 
                 <div class="link-category">
                     <h4>🔥 Burn Mechanisms</h4>
-                    <ul class="link-list">
+                    <ul class="fire-list">
                         <li>Transaction fee burns</li>
                         <li>NFT minting burns</li>
                         <li>Quarterly community burns</li>

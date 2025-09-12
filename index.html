@@ -485,6 +485,45 @@
             scroll-behavior: smooth;
         }
 
+        /* Twitter Feed Container */
+        .twitter-feed-container {
+            background: rgba(6, 86, 109, 0.2);
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(5px);
+            padding: 20px;
+            margin: 20px 0;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            overflow: hidden;
+        }
+
+        .twitter-feed-container .twitter-timeline {
+            border-radius: 8px !important;
+            overflow-y: auto !important;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent-teal-light) rgba(6, 86, 109, 0.2);
+        }
+
+        .twitter-feed-container .twitter-timeline::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .twitter-feed-container .twitter-timeline::-webkit-scrollbar-track {
+            background: rgba(6, 86, 109, 0.2);
+            border-radius: 4px;
+        }
+
+        .twitter-feed-container .twitter-timeline::-webkit-scrollbar-thumb {
+            background: var(--accent-teal-light);
+            border-radius: 4px;
+        }
+
+        .twitter-feed-container .twitter-timeline::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-warm);
+        }
+
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .nav-menu {
@@ -657,7 +696,7 @@
             <h1>Stakonomics</h1>
             <h2>Power Through Participation</h2>
             <p style="font-size: 1.2em; line-height: 1.6; margin: 20px 0;">
-                The Supra Saiyans DAO rewards Diamond Hand warriors who stake their commitment to the ecosystem. We are one, we are warrios, Supramehaaa!
+                Supra Saiyans DAO rewards Diamond Hand Warriors staking their commitment to the ecosystem. We are One, we are Warriors, Supramehaaa!
             </p>
             
             <div class="links-grid">
@@ -839,6 +878,23 @@
                 </div>
             </div>
 
+            <h3>Latest from X (Twitter)</h3>
+            <p style="line-height: 1.6; margin: 20px 0;">
+                Stay updated with our latest announcements and community highlights from @suprasaiyans.
+            </p>
+            
+            <div class="twitter-feed-container">
+                <a class="twitter-timeline" 
+                   data-height="400" 
+                   data-tweet-limit="3" 
+                   data-chrome="nofooter noborders" 
+                   data-theme="dark"
+                   data-link-color="#06566d"
+                   href="https://twitter.com/suprasaiyans?ref_src=twsrc%5Etfw">
+                   Tweets by suprasaiyans
+                </a>
+            </div>
+
             <h3>Ready to Power Up?</h3>
             <div style="margin-top: 30px;">
                 <a href="https://www.pumpit.pro/token/0x3f4047f95a120d8b99c8897be17f481a6ff9705ce829c8c98579e9016854aad::PRESUPSAI::PRESUPSAI?chain=supra" class="cta-button" target="_blank">
@@ -847,5 +903,8 @@
             </div>
         </div>
     </section>
+
+    <!-- Twitter Widgets Script -->
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 </html>

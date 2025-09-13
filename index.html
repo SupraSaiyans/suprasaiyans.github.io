@@ -501,7 +501,15 @@
             font-size: 1.2em;
         }
 
-        /* Gallery Styles */
+        /* ========================================
+           NFT GALLERY STYLES
+           ========================================
+           All styles for the NFT Gallery section.
+           When adding new NFT boxes, ensure they follow
+           the same structure and styling patterns.
+        */
+        
+        /* Gallery Grid Layout */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -509,6 +517,7 @@
             margin: 30px 0;
         }
 
+        /* Gallery Item Container */
         .gallery-item {
             position: relative;
             border-radius: 10px;
@@ -522,6 +531,7 @@
             border-color: var(--accent-teal-light);
         }
 
+        /* Gallery Item Images */
         .gallery-item img {
             width: 100%;
             aspect-ratio: 1/1;
@@ -540,6 +550,7 @@
             filter: brightness(1.1);
         }
 
+        /* Gallery Caption Overlay */
         .gallery-caption {
             position: absolute;
             bottom: 0;
@@ -559,7 +570,7 @@
             transform: translateY(0);
         }
 
-        /* Split overlay for Mint/Trade actions */
+        /* Gallery Action Buttons (Mint/Trade) */
         .gallery-actions {
             display: flex;
             width: 100%;
@@ -588,30 +599,34 @@
             transform: scale(1.02);
         }
 
+        /* Mint Button Styling */
         .gallery-action.mint {
             background: linear-gradient(45deg, var(--accent-warm), var(--accent-warm-light));
-        }
-
-        .gallery-action.trade {
-            background: linear-gradient(45deg, var(--accent-teal), var(--accent-teal-light));
         }
 
         .gallery-action.mint:hover {
             background: linear-gradient(45deg, var(--accent-warm-light), var(--accent-warm));
         }
 
+        /* Trade Button Styling */
+        .gallery-action.trade {
+            background: linear-gradient(45deg, var(--accent-teal), var(--accent-teal-light));
+        }
+
         .gallery-action.trade:hover {
             background: linear-gradient(45deg, var(--accent-teal-light), var(--accent-teal));
         }
 
-        /* Gallery action links */
+        /* Gallery Action Links - Ensure white color for consistency */
         .gallery-action a {
-            color: inherit;
+            color: white;
             text-decoration: none;
             display: block;
             width: 100%;
             height: 100%;
         }
+
+        /* End of NFT Gallery Styles */
 
         /* Crystara link styling - old school purple */
         .crystara-link {
@@ -956,12 +971,12 @@
                 Discover our NFT collections on <a href="https://crystara.trade/" class="crystara-link" target="_blank">Crystara</a>, each representing a unique piece of the Supra Saiyans SupraVerse! Supramehaaa!
             </p>
             
-            <!-- TOP ROW: Boxes 4, 5, 6 (left to right) -->
+            <!-- TOP ROW: Boxes 6, 5, 4 (left to right) -->
             <div class="gallery-grid">
                 <div class="gallery-item">
-                    <img src="PLACEHOLDER_NFT1.jpg" alt="NFT Box #4">
+                    <img src="DREAMINGDRAGONSWOW3.jpg" alt="NFT Box #6">
                     <div class="gallery-caption">
-                        <h4>NFT Box #4</h4>
+                        <h4>NFT Box #6</h4>
                         <p>Coming soon to the SupraVerse collection</p>
                         <div class="gallery-actions">
                             <div class="gallery-action mint">Mint</div>
@@ -981,9 +996,9 @@
                     </div>
                 </div>
                 <div class="gallery-item">
-                    <img src="DREAMINGDRAGONSWOW3.jpg" alt="NFT Box #6">
+                    <img src="PLACEHOLDER_NFT1.jpg" alt="NFT Box #4">
                     <div class="gallery-caption">
-                        <h4>NFT Box #6</h4>
+                        <h4>NFT Box #4</h4>
                         <p>Coming soon to the SupraVerse collection</p>
                         <div class="gallery-actions">
                             <div class="gallery-action mint">Mint</div>
@@ -1023,8 +1038,12 @@
                         <h4>NFT Box #1 - Supra Sage</h4>
                         <p>Fulfill your Prophecy! SupraSage, the ultimate Oracle!</p>
                         <div class="gallery-actions">
-                            <a href="https://crystara.trade/marketplace/suprasage" target="_blank" class="gallery-action mint">Mint</a>
-                            <a href="https://crystara.trade/trade/suprasage" target="_blank" class="gallery-action trade">Trade</a>
+                            <div class="gallery-action mint">
+                                <a href="https://crystara.trade/marketplace/suprasage" target="_blank">Mint</a>
+                            </div>
+                            <div class="gallery-action trade">
+                                <a href="https://crystara.trade/trade/suprasage" target="_blank">Trade</a>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -492,7 +492,29 @@
             border: 2px solid var(--border-color);
         }
 
+        /* Shop Case - Larger version of gallery item (70% bigger) */
+        .shop-case-grid {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .shop-case {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 2px solid var(--border-color);
+            width: 340px;
+            max-width: 90vw;
+        }
+
         .gallery-item:hover {
+            transform: scale(1.05);
+            border-color: var(--accent-teal-light);
+        }
+
+        .shop-case:hover {
             transform: scale(1.05);
             border-color: var(--accent-teal-light);
         }
@@ -504,15 +526,29 @@
             object-fit: cover;
             transition: filter 0.3s ease;
         }
+
+        .shop-case img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            transition: filter 0.3s ease;
+        }
         
         /* Fallback for browsers that don't support aspect-ratio */
         @supports not (aspect-ratio: 1/1) {
             .gallery-item img {
                 height: 250px;
             }
+            .shop-case img {
+                height: 340px;
+            }
         }
 
         .gallery-item:hover img {
+            filter: brightness(1.1);
+        }
+
+        .shop-case:hover img {
             filter: brightness(1.1);
         }
 
@@ -533,6 +569,10 @@
         }
 
         .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        .shop-case:hover .gallery-caption {
             transform: translateY(0);
         }
 
@@ -804,46 +844,9 @@
                 Discover our NFT collections on <a href="https://crystara.trade/" class="crystara-link" target="_blank">Crystara!</a>
             </p>
             
-            <!-- NEW TOP ROW: Boxes 18, 17, 16 (left to right) -->
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="DREAMINGDRAGONSWOW.jpg" alt="NFT SSYS #18 - Dreaming Dragon">
-                    <div class="gallery-caption">
-                        <h4>NFT SSYS #18 - Dreaming Dragon</h4>
-                        <p>Mystical dragon dreams await</p>
-                        <div class="gallery-actions">
-                            <div class="gallery-action mint">Mint</div>
-                            <div class="gallery-action trade">Trade</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="DREAMINGDRAGONSWOW2.jpg" alt="NFT SSYS #17 - Dreaming Dragon">
-                    <div class="gallery-caption">
-                        <h4>NFT SSYS #17 - Dreaming Dragon</h4>
-                        <p>Cosmic dragon journeys ahead</p>
-                        <div class="gallery-actions">
-                            <div class="gallery-action mint">Mint</div>
-                            <div class="gallery-action trade">Trade</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="DREAMINGDRAGONSWOW3.jpg" alt="NFT SSYS #16 - Dreaming Dragon">
-                    <div class="gallery-caption">
-                        <h4>NFT SSYS #16 - Dreaming Dragon</h4>
-                        <p>Legendary dragon awakening</p>
-                        <div class="gallery-actions">
-                            <div class="gallery-action mint">Mint</div>
-                            <div class="gallery-action trade">Trade</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- SECOND NEW ROW: Boxes 15, 14, 13 (left to right) -->
-            <div class="gallery-grid">
-                <div class="gallery-item">
+            <!-- SHOP CASE: Featured Beenies Collection -->
+            <div class="shop-case-grid">
+                <div class="shop-case">
                     <img src="images/BEENIESCOLLECTIONIMAGE.PNG" alt="NFT SSYS #15 - Beenies">
                     <div class="gallery-caption">
                         <h4>NFT SSYS #15 - Beenies</h4>
@@ -858,6 +861,10 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            
+            <!-- FIRST ROW: Boxes 14, 13 (left to right) -->
+            <div class="gallery-grid">
                 <div class="gallery-item">
                     <img src="images/SUPRASOONTMLIQUIDEDITIONCOLLECTIONIMAGE.PNG" alt="NFT SSYS #14 - Suprasoon TM">
                     <div class="gallery-caption">

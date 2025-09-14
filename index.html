@@ -456,89 +456,129 @@
             color: var(--text-primary);
         }
 
-        /* NFT Gallery Styles */
+        /* ========================================
+           NFT GALLERY STYLES
+           ========================================
+           All styles for the NFT Gallery section.
+           When adding new NFT boxes, ensure they follow
+           the same structure and styling patterns.
+        */
+        
+        /* Gallery Grid Layout */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
             margin: 30px 0;
         }
 
+        /* Gallery Item Container */
         .gallery-item {
-            background: rgba(6, 86, 109, 0.2);
-            border-radius: 15px;
-            padding: 20px;
-            border: 1px solid var(--border-color);
-            backdrop-filter: blur(5px);
-            transition: all 0.3s ease;
             position: relative;
+            border-radius: 10px;
             overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 2px solid var(--border-color);
         }
 
         .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(6, 86, 109, 0.3);
+            transform: scale(1.05);
             border-color: var(--accent-teal-light);
         }
 
+        /* Gallery Item Images */
         .gallery-item img {
             width: 100%;
-            height: 250px;
+            aspect-ratio: 1/1;
             object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            transition: transform 0.3s ease;
+            transition: filter 0.3s ease;
+        }
+        
+        /* Fallback for browsers that don't support aspect-ratio */
+        @supports not (aspect-ratio: 1/1) {
+            .gallery-item img {
+                height: 250px;
+            }
         }
 
         .gallery-item:hover img {
-            transform: scale(1.05);
+            filter: brightness(1.1);
         }
 
-        .gallery-caption h4 {
-            color: var(--accent-teal-light);
-            margin-bottom: 10px;
-            font-size: 1.2em;
+        /* Gallery Caption Overlay */
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--glass-bg);
+            color: var(--text-primary);
+            padding: 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
-        .gallery-caption p {
-            color: var(--text-secondary);
-            line-height: 1.5;
-            margin-bottom: 15px;
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
         }
 
+        /* Gallery Action Buttons (Mint/Trade) */
         .gallery-actions {
             display: flex;
-            gap: 10px;
-            justify-content: center;
+            width: 100%;
+            gap: 1px;
+            margin-top: 5px;
         }
 
         .gallery-action {
             flex: 1;
-        }
-
-        .gallery-action a, .gallery-action {
-            display: block;
-            padding: 10px;
+            padding: 8px 12px;
             text-align: center;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.3s ease;
             font-weight: bold;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(6, 86, 109, 0.8);
+            border: 1px solid var(--border-color);
         }
 
-        .gallery-action.mint a, .gallery-action.mint {
+        .gallery-action:first-child {
+            border-right: none;
+        }
+
+        .gallery-action:hover {
+            background: var(--accent-teal-light);
+            transform: scale(1.02);
+        }
+
+        /* Mint Button Styling */
+        .gallery-action.mint {
             background: linear-gradient(45deg, var(--accent-warm), var(--accent-warm-light));
-            color: var(--text-primary);
         }
 
-        .gallery-action.trade a, .gallery-action.trade {
+        .gallery-action.mint:hover {
+            background: linear-gradient(45deg, var(--accent-warm-light), var(--accent-warm));
+        }
+
+        /* Trade Button Styling */
+        .gallery-action.trade {
             background: linear-gradient(45deg, var(--accent-teal), var(--accent-teal-light));
-            color: var(--text-primary);
         }
 
-        .gallery-action a:hover, .gallery-action:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        .gallery-action.trade:hover {
+            background: linear-gradient(45deg, var(--accent-teal-light), var(--accent-teal));
+        }
+
+        /* Gallery Action Links - Ensure white color for consistency */
+        .gallery-action a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            height: 100%;
         }
 
         /* End of NFT Gallery Styles */
@@ -702,7 +742,7 @@
                         <li>$SUPSAI tokenomics beta</li>
                         <li>Onboard inhouse visual artists</li>
                         <li>Create Crystara verified collection</li>
-                        <li>GameFi & lore alpha</li>
+                        <li>GameFi lore alpha</li>
                         <li>Staking mechanisms alpha</li>
                         <li>DAO community governance development & alpha</li>
                     </ul>
@@ -712,10 +752,10 @@
                     <h4>🌟 Phase 3: The Ascension</h4>
                     <ul class="link-list">
                         <li>Advanced DeFi deflationary ecosystem & staking</li>
-                        <li>GameFi & lore beta</li>
-                        <li>Advanced ethical, transparent, secure & just DAO</li>
+                        <li>GameFi lore beta</li>
+                        <li>Advanced ethics, transparency, security & just DAO</li>
                         <li>DAO community governance beta</li>
-                        <li>Support for ethical causes alpha & beta</li>
+                        <li>Support for ethical causes beta</li>
                     </ul>
                 </div>
 
@@ -723,8 +763,8 @@
                     <h4>🐉 Phase 4: The Rebirth</h4>
                     <ul class="link-list">
                         <li>SSY as DAO support to health of Supra Ecosystem</li>
-                        <li>SSY as watchdog & guardians of Supra Ecosystem</li>
-                        <li>GameFi & lore mainnet</li>
+                        <li>SSY as watchdog & guardians to Supra Ecosystem</li>
+                        <li>GameFi elements mainnet</li>
                         <li>DAO community governance mainnet</li>
                         <li>Revolutionary advanced ethics & DeFi ecosystem</li>
                     </ul>

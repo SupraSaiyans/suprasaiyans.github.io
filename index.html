@@ -27,6 +27,9 @@
             --text-secondary: #e0e0e0;
             --border-color: rgba(255, 255, 255, 0.1);
             --glass-bg: rgba(6, 34, 46, 0.8);
+            /* Section spacing variables for consistent layout */
+            --section-spacing-desktop: 60px;
+            --section-spacing-mobile: 80px;
         }
         
         body {
@@ -379,7 +382,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 60px 20px;
+            padding: var(--section-spacing-desktop) 20px;
             position: relative;
             z-index: 2;
         }
@@ -627,12 +630,12 @@
             }
             
             .section {
-                padding-top: 80px;
+                padding-top: var(--section-spacing-mobile);
             }
             
             /* Home section should also follow mobile spacing */
             #home.section {
-                padding-top: 80px !important;
+                padding-top: var(--section-spacing-mobile) !important;
             }
             
             .section h1 {
@@ -678,9 +681,9 @@
             }
         }
 
-        /* Home section - ensure uniform 60px spacing to match other sections */
+        /* Home section - ensure uniform spacing to match other sections */
         #home.section {
-            padding-top: 60px;
+            padding-top: var(--section-spacing-desktop);
         }
 
     </style>

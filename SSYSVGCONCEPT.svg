@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <defs>
+    <!-- Radial gradient for glowing background -->
+    <radialGradient id="glowGradient" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#06566d" stop-opacity="1"/>
+      <stop offset="30%" stop-color="#003d52" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#061e2a" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#06222e" stop-opacity="0.3"/>
+    </radialGradient>
+    
+    <!-- Gradient for golden letters -->
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD700"/>
+      <stop offset="25%" stop-color="#FFA500"/>
+      <stop offset="50%" stop-color="#FFB347"/>
+      <stop offset="75%" stop-color="#FF8C00"/>
+      <stop offset="100%" stop-color="#DAA520"/>
+    </linearGradient>
+    
+    <!-- Gradient for blue feathers -->
+    <linearGradient id="featherGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06566d"/>
+      <stop offset="50%" stop-color="#003d52"/>
+      <stop offset="100%" stop-color="#00364a"/>
+    </linearGradient>
+    
+    <!-- Drop shadow filter -->
+    <filter id="dropShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="2" dy="4" stdDeviation="3" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+    
+    <!-- Glow filter -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Circular glowing background -->
+  <circle cx="200" cy="200" r="180" fill="url(#glowGradient)" filter="url(#glow)"/>
+  
+  <!-- Blue feather accents - stylized feathers around the letters -->
+  <g fill="url(#featherGradient)" opacity="0.8">
+    <!-- Left feather -->
+    <path d="M50 150 Q70 120 90 140 Q85 160 75 170 Q60 175 50 150" filter="url(#dropShadow)"/>
+    <path d="M55 155 Q65 145 75 150 Q70 160 65 165 Q60 167 55 155"/>
+    
+    <!-- Right feather -->
+    <path d="M350 150 Q330 120 310 140 Q315 160 325 170 Q340 175 350 150" filter="url(#dropShadow)"/>
+    <path d="M345 155 Q335 145 325 150 Q330 160 335 165 Q340 167 345 155"/>
+    
+    <!-- Top feathers -->
+    <path d="M180 60 Q150 70 160 90 Q180 85 190 75 Q195 65 180 60" filter="url(#dropShadow)"/>
+    <path d="M220 60 Q250 70 240 90 Q220 85 210 75 Q205 65 220 60" filter="url(#dropShadow)"/>
+    
+    <!-- Bottom feathers -->
+    <path d="M170 340 Q140 330 150 310 Q170 315 180 325 Q185 335 170 340" filter="url(#dropShadow)"/>
+    <path d="M230 340 Q260 330 250 310 Q230 315 220 325 Q215 335 230 340" filter="url(#dropShadow)"/>
+  </g>
+  
+  <!-- SSY Letters with dark outlines -->
+  <g font-family="Arial Black, sans-serif" font-weight="900" font-size="120" text-anchor="middle" dominant-baseline="central">
+    <!-- Dark outline for letters -->
+    <text x="200" y="200" fill="#000000" stroke="#000000" stroke-width="8" filter="url(#dropShadow)">SSY</text>
+    <!-- Golden letters -->
+    <text x="200" y="200" fill="url(#goldGradient)" filter="url(#glow)">SSY</text>
+  </g>
+  
+  <!-- Additional accent lines for energy effect -->
+  <g stroke="url(#featherGradient)" stroke-width="2" fill="none" opacity="0.6">
+    <path d="M100 100 Q200 120 300 100" filter="url(#glow)"/>
+    <path d="M100 300 Q200 280 300 300" filter="url(#glow)"/>
+    <path d="M100 200 Q120 200 140 200" filter="url(#glow)"/>
+    <path d="M260 200 Q280 200 300 200" filter="url(#glow)"/>
+  </g>
+</svg>

@@ -185,6 +185,27 @@
         .discord-link:hover { box-shadow: 0 4px 15px rgba(0, 61, 82, 0.4); }
         .dragons-link:hover { box-shadow: 0 4px 15px rgba(122, 48, 19, 0.4); }
 
+        /* Second row button styling - following PR 91 design patterns */
+        .supra-link { border-color: #FF6B00; }
+        .pumpit-link { border-color: #00D4FF; }
+        .crystara-link { border-color: #9932CC; }
+        .dreaming-dragons-link { border-color: var(--accent-warm); }
+
+        .supra-link:hover { box-shadow: 0 4px 15px rgba(255, 107, 0, 0.4); }
+        .pumpit-link:hover { box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4); }
+        .crystara-link:hover { box-shadow: 0 4px 15px rgba(153, 50, 204, 0.4); }
+        .dreaming-dragons-link:hover { box-shadow: 0 4px 15px rgba(122, 48, 19, 0.4); }
+
+        /* Second row social links container */
+        .social-links-row2 {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 40px;
+            margin-top: 20px;
+        }
+
         .cta-button {
             display: inline-block;
             padding: 15px 30px;
@@ -646,6 +667,13 @@
             .gallery-grid {
                 grid-template-columns: 1fr;
             }
+            
+            /* Second row social links mobile optimization */
+            .social-links-row2 {
+                gap: 15px;
+                margin-top: 15px;
+                margin-bottom: 30px;
+            }
         }
 
         /* Medium screens - adjust for centered navigation */
@@ -704,6 +732,13 @@
                 <a href="https://x.com/suprasaiyans" class="social-link twitter-link" target="_blank">X / Twitter</a>
                 <a href="https://discord.com/invite/MzgPmxJJRr" class="social-link discord-link" target="_blank">Discord</a>
                 <a href="https://medium.com/@suprasaiyans" class="social-link dragons-link" target="_blank">Medium</a>
+            </div>
+
+            <div class="social-links-row2">
+                <a href="https://supra.com/" class="social-link supra-link" target="_blank">Supra Blockchain</a>
+                <a href="https://www.pumpit.pro/" class="social-link pumpit-link" target="_blank">Pumpit.pro</a>
+                <a href="https://crystara.trade/" class="social-link crystara-link" target="_blank">Crystara Markets</a>
+                <a href="https://crystara.trade/marketplace/dreamingdragons" class="social-link dreaming-dragons-link" target="_blank">Dreaming Dragons</a>
             </div>
 
             <a href="https://www.pumpit.pro/token/0x3f4047f95a120d8b99c8897be17f481a6ff9705ce829c8c98579e9016854aad::PRESUPSAI::PRESUPSAI?chain=supra" class="cta-button" target="_blank">

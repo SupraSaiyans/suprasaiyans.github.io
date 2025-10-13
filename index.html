@@ -1348,37 +1348,330 @@
     <!-- Lore Section -->
     <section id="lore" class="section">
         <div class="section-content">
-            <h1>Supra Saiyans Lore</h1>
-            <h2>Legends of the Digital Warriors</h2>
+            <h1>Latest Lore from SupraSaiyans on Medium</h1>
+            <h2>Stories from the SupraVerse</h2>
             
-            <h3>The Ancient Prophecy</h3>
-            <p style="line-height: 1.6; margin: 20px 0;">
-                In the vast expanse of the digital cosmos, a prophecy spoke of warriors who would transcend 
-                the boundaries between reality and blockchain. These legendary beings, known as Supra Saiyans, 
-                possess the power to harness the infinite energy of decentralized networks.
-            </p>
+            <!-- Medium Feed Container -->
+            <div id="medium-feed-container">
+                <div id="medium-feed-loading" class="medium-loading">
+                    <div class="loading-spinner"></div>
+                    <p>Loading latest stories from Medium...</p>
+                </div>
+                <div id="medium-feed-error" class="medium-error" style="display: none;">
+                    <svg class="error-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                    </svg>
+                    <p>Unable to load Medium articles at this time.</p>
+                    <a href="https://medium.com/@suprasaiyans" target="_blank" class="medium-fallback-link">
+                        Visit SupraSaiyans on Medium →
+                    </a>
+                </div>
+                <div id="medium-feed-articles" class="medium-articles"></div>
+            </div>
 
-            <h3>The Dreaming Dragons</h3>
-            <p style="line-height: 1.6; margin: 20px 0;">
-                Guardian spirits of the SupraVerse, the Dreaming Dragons existed in the space between 
-                sleep and consciousness, weaving the fabric of digital dreams into reality. Perfection is a dream, perfection is a direction, perfection is a Paradox
-            </p>
-
-            <h3>The Great Awakening</h3>
-            <p style="line-height: 1.6; margin: 20px 0;">
-                When the Supra Network emerged, it created the perfect conditions for the Supra Saiyans to 
-                manifest in the SupraVerse. Through adventures and adversities, ordinary traders and holders 
-                become heroes and experts at channeling the legendary energy to join the ranks of the digital warriors.
-            </p>
-
-            <h3>The Expansion</h3>
-            <p style="line-height: 1.6; margin: 20px 0;">
-                United by the code of honor, ethical purity, transparency and the pursuit of financial freedom, the Supra Saiyans work 
-                together to build a decentralized ecosystem where everyone can achieve their highest potential. 
-                The journey continues as more warriors awaken to their true power. Join Us!
-            </p>
+            <div style="margin-top: 30px;">
+                <a href="https://medium.com/@suprasaiyans" class="cta-button" target="_blank">
+                    Read More on Medium
+                </a>
+            </div>
         </div>
     </section>
+
+    <style>
+        /* Medium Feed Styles */
+        #medium-feed-container {
+            width: 100%;
+            margin: 30px 0;
+        }
+
+        .medium-loading {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 20px;
+            border: 4px solid rgba(6, 86, 109, 0.3);
+            border-top-color: var(--accent-teal-light);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .medium-error {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+        }
+
+        .error-icon {
+            width: 60px;
+            height: 60px;
+            color: var(--accent-warm);
+            margin-bottom: 20px;
+        }
+
+        .medium-fallback-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            color: var(--text-primary);
+            background: rgba(6, 86, 109, 0.3);
+            text-decoration: none;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .medium-fallback-link:hover {
+            background: rgba(6, 86, 109, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(6, 86, 109, 0.3);
+        }
+
+        .medium-articles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        .medium-article {
+            background: rgba(6, 86, 109, 0.15);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        .medium-article::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-warm), var(--accent-teal-light), var(--accent-warm-light));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .medium-article:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-teal-light);
+            box-shadow: 0 10px 30px rgba(6, 86, 109, 0.3);
+            background: rgba(6, 86, 109, 0.25);
+        }
+
+        .medium-article:hover::before {
+            opacity: 1;
+        }
+
+        .medium-article-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        .medium-article-title a {
+            color: var(--text-primary);
+            text-decoration: none;
+            background: linear-gradient(45deg, var(--accent-warm), var(--accent-teal-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            transition: all 0.3s ease;
+        }
+
+        .medium-article-title a:hover {
+            background: linear-gradient(45deg, var(--accent-teal-light), var(--accent-warm));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .medium-article-meta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+
+        .medium-article-date {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .medium-article-date svg {
+            width: 16px;
+            height: 16px;
+            color: var(--accent-teal-light);
+        }
+
+        .medium-article-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+
+        .medium-article-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--accent-teal-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+        }
+
+        .medium-article-link svg {
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .medium-article-link:hover {
+            color: var(--accent-warm-light);
+            gap: 8px;
+        }
+
+        .medium-article-link:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .medium-articles {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .medium-article-title {
+                font-size: 1.2em;
+            }
+
+            .medium-article {
+                padding: 16px;
+            }
+        }
+    </style>
+
+    <script>
+        // Medium RSS Feed Integration
+        (function() {
+            const MEDIUM_USERNAME = 'suprasaiyans';
+            const MEDIUM_RSS_URL = `https://medium.com/feed/@${MEDIUM_USERNAME}`;
+            const RSS_TO_JSON_API = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(MEDIUM_RSS_URL)}`;
+            const MAX_ARTICLES = 6;
+
+            const loadingElement = document.getElementById('medium-feed-loading');
+            const errorElement = document.getElementById('medium-feed-error');
+            const articlesContainer = document.getElementById('medium-feed-articles');
+
+            function formatDate(dateString) {
+                const date = new Date(dateString);
+                const options = { year: 'numeric', month: 'short', day: 'numeric' };
+                return date.toLocaleDateString('en-US', options);
+            }
+
+            function stripHtml(html) {
+                const tmp = document.createElement('DIV');
+                tmp.innerHTML = html;
+                return tmp.textContent || tmp.innerText || '';
+            }
+
+            function truncateText(text, maxLength) {
+                if (text.length <= maxLength) return text;
+                return text.substr(0, maxLength).trim() + '...';
+            }
+
+            function createArticleCard(article) {
+                const description = stripHtml(article.description);
+                const truncatedDescription = truncateText(description, 150);
+
+                return `
+                    <article class="medium-article">
+                        <h3 class="medium-article-title">
+                            <a href="${article.link}" target="_blank" rel="noopener noreferrer">
+                                ${article.title}
+                            </a>
+                        </h3>
+                        <div class="medium-article-meta">
+                            <div class="medium-article-date">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/>
+                                </svg>
+                                <span>${formatDate(article.pubDate)}</span>
+                            </div>
+                        </div>
+                        <p class="medium-article-description">${truncatedDescription}</p>
+                        <a href="${article.link}" class="medium-article-link" target="_blank" rel="noopener noreferrer">
+                            Read More
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                            </svg>
+                        </a>
+                    </article>
+                `;
+            }
+
+            function displayArticles(articles) {
+                loadingElement.style.display = 'none';
+                errorElement.style.display = 'none';
+                
+                if (!articles || articles.length === 0) {
+                    errorElement.style.display = 'block';
+                    return;
+                }
+
+                const limitedArticles = articles.slice(0, MAX_ARTICLES);
+                articlesContainer.innerHTML = limitedArticles
+                    .map(article => createArticleCard(article))
+                    .join('');
+            }
+
+            function displayError() {
+                loadingElement.style.display = 'none';
+                errorElement.style.display = 'block';
+            }
+
+            // Fetch Medium articles
+            fetch(RSS_TO_JSON_API)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.status === 'ok' && data.items) {
+                        displayArticles(data.items);
+                    } else {
+                        displayError();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching Medium articles:', error);
+                    displayError();
+                });
+        })();
+    </script>
 
     <!-- Support Saiyans Section -->
     <section id="support-saiyans" class="section">

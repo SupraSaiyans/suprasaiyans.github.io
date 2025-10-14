@@ -396,11 +396,83 @@
             transform: translateX(-50%);
             z-index: 1000;
             display: flex;
-            gap: 20px;
-            flex-wrap: nowrap;
+            gap: 30px;
             align-items: center;
-            justify-content: center;
-            padding: 10px 20px;
+            justify-content: space-between;
+            padding: 15px 30px;
+            background: rgba(6, 34, 46, 0.85);
+            backdrop-filter: blur(15px);
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 8px 32px rgba(6, 86, 109, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            max-width: 95%;
+            width: auto;
+        }
+
+        .nav-left,
+        .nav-right {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .nav-logo-link {
+            display: flex;
+            align-items: center;
+            padding: 0;
+            margin: 0 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-logo-link:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .nav-logo {
+            height: 45px;
+            width: auto;
+            filter: drop-shadow(0 0 10px rgba(6, 86, 109, 0.5));
+            transition: filter 0.3s ease;
+        }
+
+        .nav-logo:hover {
+            filter: drop-shadow(0 0 20px rgba(6, 86, 109, 0.8));
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background: var(--text-primary);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(6, 34, 46, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
         }
 
         .nav-link {
@@ -716,7 +788,61 @@
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .nav-menu {
+                padding: 12px 20px;
+                gap: 15px;
+            }
+
+            .nav-left,
+            .nav-right {
                 display: none;
+                flex-direction: column;
+                gap: 15px;
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-menu.mobile-open .nav-left,
+            .nav-menu.mobile-open .nav-right {
+                display: flex;
+            }
+
+            .nav-menu.mobile-open {
+                flex-direction: column;
+                top: 20px;
+                left: 20px;
+                right: 20px;
+                transform: none;
+                max-width: none;
+                border-radius: 20px;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+                position: absolute;
+                right: 20px;
+                z-index: 1001;
+            }
+
+            .nav-menu.mobile-open .mobile-menu-toggle span:nth-child(1) {
+                transform: rotate(45deg) translate(8px, 8px);
+            }
+
+            .nav-menu.mobile-open .mobile-menu-toggle span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav-menu.mobile-open .mobile-menu-toggle span:nth-child(3) {
+                transform: rotate(-45deg) translate(7px, -7px);
+            }
+
+            .mobile-nav-overlay.active {
+                display: block;
+                opacity: 1;
+                pointer-events: all;
+            }
+
+            .nav-logo {
+                height: 35px;
             }
             
             .section {
@@ -791,26 +917,44 @@
         /* Medium screens - adjust for centered navigation */
         @media (max-width: 1024px) and (min-width: 769px) {
             .nav-menu {
-                gap: 16px;
-                padding: 8px 16px;
+                gap: 20px;
+                padding: 12px 20px;
+            }
+            
+            .nav-left,
+            .nav-right {
+                gap: 12px;
             }
             
             .nav-link {
                 padding: 8px 14px;
                 font-size: 13px;
             }
+
+            .nav-logo {
+                height: 40px;
+            }
         }
 
         /* Large screens - ensure navigation doesn't get too spread out */
         @media (min-width: 1400px) {
             .nav-menu {
-                gap: 24px;
-                padding: 12px 24px;
+                gap: 40px;
+                padding: 18px 40px;
+            }
+            
+            .nav-left,
+            .nav-right {
+                gap: 20px;
             }
             
             .nav-link {
                 padding: 12px 20px;
                 font-size: 15px;
+            }
+
+            .nav-logo {
+                height: 50px;
             }
         }
 
@@ -824,14 +968,27 @@
 <body>
     <!-- Navigation -->
     <nav class="nav-menu">
-        <a href="#home" class="nav-link">Home</a>
-        <a href="#spotlight" class="nav-link">Spotlight</a>
-        <a href="#nft-gallery" class="nav-link">NFT Gallery</a>
-        <a href="#lore" class="nav-link">Lore</a>
-        <a href="#Roadmap" class="nav-link">Roadmap</a>
-        <a href="#powerlevel" class="nav-link">Powerlevel</a>
-        <a href="#support-saiyans" class="nav-link">Support Saiyans</a>
+        <div class="nav-left">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#spotlight" class="nav-link">Spotlight</a>
+            <a href="#nft-gallery" class="nav-link">NFT Gallery</a>
+        </div>
+        <a href="#home" class="nav-logo-link">
+            <img src="logo.png" alt="SupraSaiyans" class="nav-logo">
+        </a>
+        <div class="nav-right">
+            <a href="#lore" class="nav-link">Lore</a>
+            <a href="#Roadmap" class="nav-link">Roadmap</a>
+            <a href="#powerlevel" class="nav-link">Powerlevel</a>
+            <a href="#support-saiyans" class="nav-link">Support Saiyans</a>
+        </div>
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
+    <div class="mobile-nav-overlay"></div>
 
     <!-- Home Section -->
     <section id="home" class="section">
@@ -1689,5 +1846,33 @@
             </p>
         </div>
     </section>
+
+    <script>
+        // Mobile menu toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.mobile-menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            const overlay = document.querySelector('.mobile-nav-overlay');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            menuToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('mobile-open');
+                overlay.classList.toggle('active');
+            });
+
+            overlay.addEventListener('click', function() {
+                navMenu.classList.remove('mobile-open');
+                overlay.classList.remove('active');
+            });
+
+            // Close menu when clicking on a nav link
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    navMenu.classList.remove('mobile-open');
+                    overlay.classList.remove('active');
+                });
+            });
+        });
+    </script>
 </body>
 </html>

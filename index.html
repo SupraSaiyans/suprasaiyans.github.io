@@ -391,48 +391,76 @@
             background: linear-gradient(45deg, #003366, #004080);
         }
 
-        /* Navigation Styles - Artifact perfectly centered on page */
+        /* Navigation Styles - SVG fractal artifact mathematically centered on viewport */
         .nav-menu {
             position: fixed;
             top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 0;
+            right: 0;
             z-index: 1000;
             display: flex;
+            flex-direction: row;
             align-items: center;
             justify-content: center;
             padding: 10px 20px;
             transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            pointer-events: none;
         }
         
-        /* Fractal artifact styling - perfectly centered with equal spacing on both sides */
+        /* Fractal artifact - absolutely centered, other items flow around it */
         .nav-fractal-artifact {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
             align-items: center;
             justify-content: center;
-            /* Equal margin on both sides ensures equal gap between NFT Gallery->artifact and artifact->SupraVerse */
-            margin: 0 24px;
-            position: relative;
-            z-index: 1001;
+            z-index: 1002;
+            pointer-events: auto;
         }
         
-        /* Gap between navigation links */
-        .nav-link {
-            margin: 0 8px;
-        }
-        
-        /* First three links (before artifact) */
-        .nav-menu > .nav-link:nth-child(1),
-        .nav-menu > .nav-link:nth-child(2),
-        .nav-menu > .nav-link:nth-child(3) {
+        /* Left-side nav links - use negative order to appear before center in flex flow */
+        .nav-menu > .nav-link:nth-child(1) {
+            order: -3;
             margin-right: 8px;
+            pointer-events: auto;
         }
         
-        /* Last three links (after artifact) */
-        .nav-menu > .nav-link:nth-child(5),
-        .nav-menu > .nav-link:nth-child(6),
-        .nav-menu > .nav-link:nth-child(7) {
+        .nav-menu > .nav-link:nth-child(2) {
+            order: -2;
+            margin-right: 8px;
+            pointer-events: auto;
+        }
+        
+        .nav-menu > .nav-link:nth-child(3) {
+            order: -1;
+            margin-right: calc(24px + 37.5px); /* Gap + half fractal width to clear center */
+            pointer-events: auto;
+        }
+        
+        /* Right-side nav links */
+        .nav-menu > .nav-link:nth-child(5) {
+            order: 1;
+            margin-left: calc(24px + 37.5px); /* Gap + half fractal width to clear center */
+            pointer-events: auto;
+        }
+        
+        .nav-menu > .nav-link:nth-child(6) {
+            order: 2;
             margin-left: 8px;
+            pointer-events: auto;
+        }
+        
+        .nav-menu > .nav-link:nth-child(7) {
+            order: 3;
+            margin-left: 8px;
+            pointer-events: auto;
+        }
+        
+        /* Nav link base styles */
+        .nav-link {
+            white-space: nowrap;
+            flex-shrink: 0;
         }
         
         .fractal-icon {
@@ -453,7 +481,7 @@
 
         /* Hidden state - collapses upwards */
         .nav-menu.nav-hidden {
-            transform: translateX(-50%) translateY(-100px);
+            transform: translateY(-100px);
             opacity: 0;
             pointer-events: none;
         }
@@ -929,11 +957,6 @@
 
         /* Medium screens - adjust for centered navigation */
         @media (max-width: 1024px) and (min-width: 769px) {
-            .nav-menu {
-                gap: 12px;
-                padding: 8px 16px;
-            }
-            
             .nav-link {
                 padding: 8px 14px;
                 font-size: 15px;
@@ -942,19 +965,10 @@
             .fractal-icon {
                 height: 42px;
             }
-            
-            .nav-fractal-artifact {
-                margin: 0 18px;
-            }
         }
 
         /* Large screens - ensure navigation doesn't get too spread out */
         @media (min-width: 1400px) {
-            .nav-menu {
-                gap: 20px;
-                padding: 12px 24px;
-            }
-            
             .nav-link {
                 padding: 12px 20px;
                 font-size: 17px;
@@ -962,10 +976,6 @@
             
             .fractal-icon {
                 height: 55px;
-            }
-            
-            .nav-fractal-artifact {
-                margin: 0 30px;
             }
         }
 

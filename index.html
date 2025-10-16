@@ -819,6 +819,198 @@
             padding-top: var(--section-spacing-desktop);
         }
 
+        /* ========================================
+           9000+ SAIYANS COMPACT SOCIAL GRID
+           ========================================
+           Compact social media buttons for footer section
+        */
+        
+        .compact-social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 120px));
+            gap: 16px;
+            justify-content: center;
+            margin: 30px auto;
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        .compact-social-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px 12px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 11px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            background: rgba(6, 34, 46, 0.6);
+            min-height: 90px;
+        }
+
+        .compact-social-btn:focus {
+            outline: 3px solid rgba(255, 255, 255, 0.5);
+            outline-offset: 2px;
+        }
+
+        .compact-icon {
+            width: 32px;
+            height: 32px;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            flex-shrink: 0;
+        }
+
+        .compact-label {
+            text-align: center;
+            line-height: 1.2;
+            position: relative;
+            z-index: 1;
+        }
+
+        .compact-social-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .compact-social-btn:hover {
+            transform: translateY(-6px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .compact-social-btn:hover::before {
+            opacity: 1;
+        }
+
+        .compact-social-btn:hover .compact-icon {
+            transform: scale(1.15) rotate(3deg);
+        }
+
+        .compact-social-btn:active {
+            transform: translateY(-3px) scale(1.02);
+        }
+
+        /* Platform-specific compact button colors */
+        .telegram-compact {
+            background: linear-gradient(135deg, rgba(34, 158, 217, 0.25), rgba(30, 139, 195, 0.2));
+        }
+        .telegram-compact:hover {
+            background: linear-gradient(135deg, rgba(34, 158, 217, 0.4), rgba(30, 139, 195, 0.3));
+            box-shadow: 0 8px 20px rgba(34, 158, 217, 0.3), 0 0 25px rgba(34, 158, 217, 0.2);
+        }
+
+        .twitter-compact {
+            background: linear-gradient(135deg, rgba(29, 161, 242, 0.25), rgba(25, 145, 219, 0.2));
+        }
+        .twitter-compact:hover {
+            background: linear-gradient(135deg, rgba(29, 161, 242, 0.4), rgba(25, 145, 219, 0.3));
+            box-shadow: 0 8px 20px rgba(29, 161, 242, 0.3), 0 0 25px rgba(29, 161, 242, 0.2);
+        }
+
+        .discord-compact {
+            background: linear-gradient(135deg, rgba(88, 101, 242, 0.25), rgba(71, 82, 196, 0.2));
+        }
+        .discord-compact:hover {
+            background: linear-gradient(135deg, rgba(88, 101, 242, 0.4), rgba(71, 82, 196, 0.3));
+            box-shadow: 0 8px 20px rgba(88, 101, 242, 0.3), 0 0 25px rgba(88, 101, 242, 0.2);
+        }
+
+        .medium-compact {
+            background: linear-gradient(135deg, rgba(18, 16, 14, 0.4), rgba(45, 45, 45, 0.3));
+        }
+        .medium-compact:hover {
+            background: linear-gradient(135deg, rgba(18, 16, 14, 0.6), rgba(45, 45, 45, 0.4));
+            box-shadow: 0 8px 20px rgba(18, 16, 14, 0.4), 0 0 25px rgba(255, 255, 255, 0.1);
+        }
+
+        .github-compact {
+            background: linear-gradient(135deg, rgba(51, 51, 51, 0.3), rgba(36, 41, 46, 0.2));
+        }
+        .github-compact:hover {
+            background: linear-gradient(135deg, rgba(51, 51, 51, 0.5), rgba(36, 41, 46, 0.4));
+            box-shadow: 0 8px 20px rgba(51, 51, 51, 0.4), 0 0 25px rgba(255, 255, 255, 0.1);
+        }
+
+        .supra-compact {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.25), rgba(247, 147, 30, 0.2));
+        }
+        .supra-compact:hover {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.4), rgba(247, 147, 30, 0.3));
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3), 0 0 25px rgba(255, 107, 53, 0.2);
+        }
+
+        .crystara-compact {
+            background: linear-gradient(135deg, rgba(153, 50, 204, 0.25), rgba(186, 85, 211, 0.2));
+        }
+        .crystara-compact:hover {
+            background: linear-gradient(135deg, rgba(153, 50, 204, 0.4), rgba(186, 85, 211, 0.3));
+            box-shadow: 0 8px 20px rgba(153, 50, 204, 0.3), 0 0 25px rgba(153, 50, 204, 0.2);
+        }
+
+        .pumpit-compact {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 204, 106, 0.15));
+            color: #ffffff;
+        }
+        .pumpit-compact:hover {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.35), rgba(0, 204, 106, 0.25));
+            box-shadow: 0 8px 20px rgba(0, 255, 136, 0.3), 0 0 25px rgba(0, 255, 136, 0.2);
+        }
+
+        /* Mobile responsive for compact grid */
+        @media (max-width: 768px) {
+            .compact-social-grid {
+                grid-template-columns: repeat(auto-fit, minmax(90px, 110px));
+                gap: 12px;
+                padding: 15px;
+            }
+
+            .compact-social-btn {
+                padding: 14px 10px;
+                font-size: 10px;
+                min-height: 85px;
+            }
+
+            .compact-icon {
+                width: 28px;
+                height: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .compact-social-grid {
+                grid-template-columns: repeat(auto-fit, minmax(80px, 100px));
+                gap: 10px;
+            }
+
+            .compact-social-btn {
+                padding: 12px 8px;
+                font-size: 9px;
+                min-height: 80px;
+            }
+
+            .compact-icon {
+                width: 26px;
+                height: 26px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -831,6 +1023,7 @@
         <a href="#Roadmap" class="nav-link">Roadmap</a>
         <a href="#powerlevel" class="nav-link">Powerlevel</a>
         <a href="#support-saiyans" class="nav-link">Support Saiyans</a>
+        <a href="#saiyans-9000" class="nav-link">9000+ Saiyans</a>
     </nav>
 
     <!-- Home Section -->
@@ -1687,6 +1880,67 @@
             <p style="font-size: 1.1em; line-height: 1.6; margin: 20px 0;">
                 We believe in love, justice and honor for all living beings. Stay tuned for our next initiative!
             </p>
+        </div>
+    </section>
+
+    <!-- 9000+ Saiyans Section -->
+    <section id="saiyans-9000" class="section">
+        <div class="section-content">
+            <h1>9000+ Saiyans</h1>
+            <h2>Join the Community</h2>
+            
+            <!-- Compact Social Media Grid -->
+            <div class="compact-social-grid">
+                <a href="https://t.me/suprasaiyans" class="compact-social-btn telegram-compact" target="_blank" rel="noopener noreferrer" aria-label="Join SupraSaiyans Telegram community">
+                    <svg class="compact-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                    </svg>
+                    <span class="compact-label">Telegram</span>
+                </a>
+                
+                <a href="https://x.com/suprasaiyans" class="compact-social-btn twitter-compact" target="_blank" rel="noopener noreferrer" aria-label="Follow SupraSaiyans on X (Twitter)">
+                    <svg class="compact-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    <span class="compact-label">X / Twitter</span>
+                </a>
+                
+                <a href="https://discord.com/invite/MzgPmxJJRr" class="compact-social-btn discord-compact" target="_blank" rel="noopener noreferrer" aria-label="Join SupraSaiyans Discord server">
+                    <svg class="compact-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+                    </svg>
+                    <span class="compact-label">Discord</span>
+                </a>
+                
+                <a href="https://medium.com/@suprasaiyans" class="compact-social-btn medium-compact" target="_blank" rel="noopener noreferrer" aria-label="Read SupraSaiyans articles on Medium">
+                    <svg class="compact-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.42-3.38 6.42-1.87 0-3.39-2.88-3.39-6.42s1.52-6.42 3.39-6.42 3.38 2.88 3.38 6.42M24 12c0 3.17-.53 5.75-1.19 5.75-.66 0-1.19-2.58-1.19-5.75s.53-5.75 1.19-5.75C23.47 6.25 24 8.83 24 12z"/>
+                    </svg>
+                    <span class="compact-label">Medium</span>
+                </a>
+                
+                <a href="https://github.com/SupraSaiyans" class="compact-social-btn github-compact" target="_blank" rel="noopener noreferrer" aria-label="Check out SupraSaiyans GitHub projects">
+                    <svg class="compact-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    <span class="compact-label">GitHub</span>
+                </a>
+                
+                <a href="https://supra.com/" class="compact-social-btn supra-compact" target="_blank" rel="noopener noreferrer" aria-label="Visit official Supra website">
+                    <img src="images/SupraOracles.svg" alt="Supra Oracles" class="compact-icon">
+                    <span class="compact-label">Supra.com</span>
+                </a>
+                
+                <a href="https://crystara.trade" class="compact-social-btn crystara-compact" target="_blank" rel="noopener noreferrer" aria-label="Trade NFTs on Crystara marketplace">
+                    <img src="images/crystaralogo.png" alt="Crystara" class="compact-icon">
+                    <span class="compact-label">Crystara</span>
+                </a>
+                
+                <a href="https://www.pumpit.pro/" class="compact-social-btn pumpit-compact" target="_blank" rel="noopener noreferrer" aria-label="Trade tokens on Pumpit.pro">
+                    <img src="images/pumpitlogo.png" alt="Pumpit" class="compact-icon">
+                    <span class="compact-label">Pumpit.pro</span>
+                </a>
+            </div>
         </div>
     </section>
 </body>

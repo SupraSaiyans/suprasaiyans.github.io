@@ -391,7 +391,7 @@
             background: linear-gradient(45deg, #003366, #004080);
         }
 
-        /* Navigation Styles */
+        /* Navigation Styles - Artifact perfectly centered on page */
         .nav-menu {
             position: fixed;
             top: 20px;
@@ -399,23 +399,40 @@
             transform: translateX(-50%);
             z-index: 1000;
             display: flex;
-            gap: 16px;
-            flex-wrap: nowrap;
             align-items: center;
             justify-content: center;
             padding: 10px 20px;
             transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
         }
         
-        /* Fractal artifact styling - perfectly centered with extra spacing */
+        /* Fractal artifact styling - perfectly centered with equal spacing on both sides */
         .nav-fractal-artifact {
             display: flex;
             align-items: center;
             justify-content: center;
-            /* Extra margin on both sides for visual emphasis and balance */
+            /* Equal margin on both sides ensures equal gap between NFT Gallery->artifact and artifact->SupraVerse */
             margin: 0 24px;
             position: relative;
             z-index: 1001;
+        }
+        
+        /* Gap between navigation links */
+        .nav-link {
+            margin: 0 8px;
+        }
+        
+        /* First three links (before artifact) */
+        .nav-menu > .nav-link:nth-child(1),
+        .nav-menu > .nav-link:nth-child(2),
+        .nav-menu > .nav-link:nth-child(3) {
+            margin-right: 8px;
+        }
+        
+        /* Last three links (after artifact) */
+        .nav-menu > .nav-link:nth-child(5),
+        .nav-menu > .nav-link:nth-child(6),
+        .nav-menu > .nav-link:nth-child(7) {
+            margin-left: 8px;
         }
         
         .fractal-icon {

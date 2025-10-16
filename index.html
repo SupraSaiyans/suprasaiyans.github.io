@@ -391,64 +391,70 @@
             background: linear-gradient(45deg, #003366, #004080);
         }
 
-        /* Navigation Styles - CSS Grid for perfect symmetry with SVG fractal artifact centered */
+        /* Navigation Styles - Flexbox with pixel-perfect absolute centered SVG fractal */
         .nav-menu {
             position: fixed;
             top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 0;
+            right: 0;
             z-index: 1000;
-            display: grid;
-            grid-template-columns: auto auto auto auto auto auto auto;
-            column-gap: 16px;
+            display: flex;
             align-items: center;
             justify-content: center;
+            gap: 16px;
             padding: 10px 20px;
             transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
             pointer-events: none;
         }
         
-        /* Fractal artifact - 4th child, perfectly centered in grid */
+        /* Fractal artifact - absolutely positioned for pixel-perfect centering */
         .nav-fractal-artifact {
-            grid-column: 4;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
             align-items: center;
             justify-content: center;
             pointer-events: auto;
-            /* Add extra horizontal spacing around fractal for visual balance */
-            margin-left: 20px;
-            margin-right: 20px;
         }
         
-        /* Left-side nav links (children 1, 2, 3) - grid positions 1, 2, 3 */
+        /* Left-side nav links with negative order values flowing left from center */
         .nav-menu > .nav-link:nth-child(1) {
-            grid-column: 1;
+            /* LaoShi */
+            order: -3;
             pointer-events: auto;
         }
         
         .nav-menu > .nav-link:nth-child(2) {
-            grid-column: 2;
+            /* Spotlight */
+            order: -2;
             pointer-events: auto;
         }
         
         .nav-menu > .nav-link:nth-child(3) {
-            grid-column: 3;
+            /* NFT Gallery - last button before SVG, add extra margin */
+            order: -1;
+            margin-right: 20px;
             pointer-events: auto;
         }
         
-        /* Right-side nav links (children 5, 6, 7) - grid positions 5, 6, 7 */
+        /* Right-side nav links with positive order values flowing right from center */
         .nav-menu > .nav-link:nth-child(5) {
-            grid-column: 5;
+            /* SupraVerse - first button after SVG, add extra margin */
+            order: 1;
+            margin-left: 20px;
             pointer-events: auto;
         }
         
         .nav-menu > .nav-link:nth-child(6) {
-            grid-column: 6;
+            /* Powerlevel */
+            order: 2;
             pointer-events: auto;
         }
         
         .nav-menu > .nav-link:nth-child(7) {
-            grid-column: 7;
+            /* Over 9000 Saiyans */
+            order: 3;
             pointer-events: auto;
         }
         
@@ -962,12 +968,15 @@
             }
             
             .nav-menu {
-                column-gap: 12px;
+                gap: 12px;
             }
             
-            .nav-fractal-artifact {
-                margin-left: 16px;
+            .nav-menu > .nav-link:nth-child(3) {
                 margin-right: 16px;
+            }
+            
+            .nav-menu > .nav-link:nth-child(5) {
+                margin-left: 16px;
             }
         }
 
@@ -983,12 +992,15 @@
             }
             
             .nav-menu {
-                column-gap: 20px;
+                gap: 20px;
             }
             
-            .nav-fractal-artifact {
-                margin-left: 24px;
+            .nav-menu > .nav-link:nth-child(3) {
                 margin-right: 24px;
+            }
+            
+            .nav-menu > .nav-link:nth-child(5) {
+                margin-left: 24px;
             }
         }
 

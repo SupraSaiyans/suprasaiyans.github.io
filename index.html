@@ -1100,6 +1100,347 @@
             }
         }
 
+        /* ========================================
+           COOKIE CONSENT BANNER STYLES
+           ========================================
+           Glassy bottom banner matching site aesthetic
+        */
+        
+        #cookie-consent-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border-top: 2px solid var(--border-color);
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        #cookie-consent-banner.show {
+            transform: translateY(0);
+        }
+        
+        .cookie-banner-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .cookie-banner-text {
+            flex: 1;
+            min-width: 300px;
+            color: var(--text-secondary);
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+        
+        .cookie-banner-text strong {
+            color: var(--text-primary);
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+            background: linear-gradient(45deg, var(--accent-warm), var(--accent-teal-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .cookie-banner-text a {
+            color: var(--accent-teal-light);
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+        
+        .cookie-banner-text a:hover {
+            color: var(--accent-warm-light);
+        }
+        
+        .cookie-banner-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        
+        .cookie-btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            font-weight: 600;
+            font-size: 0.95em;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cookie-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .cookie-btn:hover::before {
+            left: 100%;
+        }
+        
+        .cookie-btn-accept {
+            background: linear-gradient(45deg, var(--accent-warm), var(--accent-warm-light));
+            color: var(--text-primary);
+            border-color: var(--accent-warm-light);
+        }
+        
+        .cookie-btn-accept:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(122, 48, 19, 0.5);
+            background: linear-gradient(45deg, var(--accent-warm-light), var(--accent-warm));
+        }
+        
+        .cookie-btn-manage {
+            background: rgba(6, 86, 109, 0.3);
+            color: var(--text-primary);
+            border-color: var(--accent-teal-light);
+        }
+        
+        .cookie-btn-manage:hover {
+            transform: translateY(-2px);
+            background: rgba(6, 86, 109, 0.5);
+            box-shadow: 0 5px 15px rgba(6, 86, 109, 0.5);
+        }
+        
+        .cookie-btn-decline {
+            background: transparent;
+            color: var(--text-secondary);
+            border-color: var(--border-color);
+        }
+        
+        .cookie-btn-decline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            border-color: var(--text-secondary);
+        }
+        
+        /* Privacy Settings Button (fixed in corner) */
+        #privacy-settings-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 12px 16px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-size: 0.9em;
+            cursor: pointer;
+            z-index: 999;
+            transition: all 0.3s ease;
+            display: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        #privacy-settings-btn.show {
+            display: block;
+        }
+        
+        #privacy-settings-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(6, 86, 109, 0.4);
+            border-color: var(--accent-teal-light);
+        }
+        
+        /* ========================================
+           PRIVACY POLICY MODAL STYLES
+           ========================================
+           Full-screen modal matching site aesthetic
+        */
+        
+        #privacy-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(6, 34, 46, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        #privacy-modal.show {
+            display: flex;
+        }
+        
+        .privacy-modal-content {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+        
+        .privacy-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        .privacy-modal-header h2 {
+            font-size: 2.5em;
+            background: linear-gradient(45deg, var(--accent-warm), var(--accent-teal-light), var(--accent-warm-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0;
+        }
+        
+        .privacy-modal-close {
+            background: transparent;
+            border: 2px solid var(--border-color);
+            color: var(--text-primary);
+            font-size: 1.5em;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            line-height: 1;
+        }
+        
+        .privacy-modal-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-warm);
+            transform: rotate(90deg);
+        }
+        
+        .privacy-modal-body {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        .privacy-modal-body h3 {
+            color: var(--text-primary);
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, var(--accent-teal-light), var(--accent-warm-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .privacy-modal-body h4 {
+            color: var(--text-primary);
+            font-size: 1.2em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .privacy-modal-body p {
+            margin-bottom: 15px;
+        }
+        
+        .privacy-modal-body ul {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+        
+        .privacy-modal-body li {
+            margin-bottom: 10px;
+        }
+        
+        .privacy-modal-body strong {
+            color: var(--text-primary);
+        }
+        
+        .privacy-modal-body a {
+            color: var(--accent-teal-light);
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+        
+        .privacy-modal-body a:hover {
+            color: var(--accent-warm-light);
+        }
+        
+        .privacy-highlight {
+            background: rgba(6, 86, 109, 0.2);
+            border-left: 3px solid var(--accent-teal-light);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .cookie-banner-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .cookie-banner-text {
+                min-width: 100%;
+            }
+            
+            .cookie-banner-actions {
+                width: 100%;
+                flex-direction: column;
+            }
+            
+            .cookie-btn {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .privacy-modal-content {
+                padding: 25px;
+                max-height: 95vh;
+            }
+            
+            .privacy-modal-header h2 {
+                font-size: 1.8em;
+            }
+            
+            #privacy-settings-btn {
+                bottom: 15px;
+                right: 15px;
+                font-size: 0.8em;
+                padding: 10px 14px;
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -2041,5 +2382,365 @@
             </p>
         </div>
     </footer>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent-banner">
+        <div class="cookie-banner-content">
+            <div class="cookie-banner-text">
+                <strong>🍪 Your Privacy Matters</strong>
+                We use cookies to enhance your experience and respect your privacy. By clicking "Accept All", you consent to our use of cookies for essential site functionality, analytics, and future enhancements. We comply with GDPR (EU), CCPA (California), UK GDPR, and other major regional privacy regulations. 
+                <a href="#" id="view-privacy-policy">View our Privacy Policy</a> for detailed information about how we handle your data.
+            </div>
+            <div class="cookie-banner-actions">
+                <button class="cookie-btn cookie-btn-accept" id="accept-cookies">Accept All</button>
+                <button class="cookie-btn cookie-btn-decline" id="decline-cookies">Decline Optional</button>
+                <button class="cookie-btn cookie-btn-manage" id="manage-cookies">Manage Preferences</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Settings Button (shows after consent given) -->
+    <button id="privacy-settings-btn" title="Manage Cookie Preferences">
+        🍪 Privacy Settings
+    </button>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacy-modal">
+        <div class="privacy-modal-content">
+            <div class="privacy-modal-header">
+                <h2>Privacy Policy</h2>
+                <button class="privacy-modal-close" id="close-privacy-modal" aria-label="Close Privacy Policy">×</button>
+            </div>
+            <div class="privacy-modal-body">
+                <p><strong>Last Updated:</strong> October 16, 2025</p>
+                <p><strong>Effective Date:</strong> October 16, 2025</p>
+
+                <div class="privacy-highlight">
+                    <p><strong>In Short:</strong> We respect your privacy and are committed to protecting your personal data. This privacy policy explains how SupraSaiyans collects, uses, and protects your information in compliance with GDPR (EU), CCPA (California), UK GDPR, and other major regional privacy laws.</p>
+                </div>
+
+                <h3>1. Introduction</h3>
+                <p>Welcome to SupraSaiyans ("we," "us," "our"). We are committed to protecting your privacy and providing transparency about our data practices. This privacy policy applies to our website at suprasaiyans.github.io and describes:</p>
+                <ul>
+                    <li>What personal data we collect and why</li>
+                    <li>How we use and protect your information</li>
+                    <li>Your rights and choices regarding your data</li>
+                    <li>Our compliance with international privacy regulations</li>
+                </ul>
+
+                <h3>2. Information We Collect</h3>
+                
+                <h4>2.1 Essential Cookies & Local Storage</h4>
+                <p>We use essential cookies and browser local storage to:</p>
+                <ul>
+                    <li><strong>Cookie Consent Preferences:</strong> Remember your cookie consent choices</li>
+                    <li><strong>Site Functionality:</strong> Enable basic website features and user experience</li>
+                    <li><strong>Security:</strong> Protect against malicious activity</li>
+                </ul>
+
+                <h4>2.2 Analytics & Performance (If Enabled)</h4>
+                <p>With your consent, we may collect:</p>
+                <ul>
+                    <li>Page views and navigation patterns</li>
+                    <li>Device type, browser, and operating system information</li>
+                    <li>Approximate geographic location (country/region level)</li>
+                    <li>Referral sources and click patterns</li>
+                </ul>
+                <p><strong>Purpose:</strong> To understand how visitors use our site and improve user experience.</p>
+
+                <h4>2.3 Embedded Content & Third-Party Services</h4>
+                <p>Our website may contain embedded content from third-party services, including but not limited to:</p>
+                <ul>
+                    <li><strong>Social Media Platforms:</strong> Twitter/X, Discord, Telegram, Medium, GitHub</li>
+                    <li><strong>Video Platforms:</strong> YouTube (if embedded in future updates)</li>
+                    <li><strong>NFT Marketplaces:</strong> Crystara Trade, Pumpit.pro</li>
+                    <li><strong>Blockchain Services:</strong> Supra Oracles and related services</li>
+                    <li><strong>Content Delivery:</strong> Image hosting, RSS feeds (e.g., rss2json.com for Medium feed)</li>
+                </ul>
+                <p><strong>Important:</strong> When you interact with embedded content or click external links, those third parties may collect data about you according to their own privacy policies. We do not control their data practices.</p>
+
+                <h3>3. How We Use Your Information</h3>
+                <p>We use collected information for:</p>
+                <ul>
+                    <li><strong>Website Operation:</strong> Providing core functionality and user experience</li>
+                    <li><strong>Improvement:</strong> Analyzing usage patterns to enhance our services</li>
+                    <li><strong>Communication:</strong> Responding to inquiries if you contact us</li>
+                    <li><strong>Compliance:</strong> Meeting legal obligations and protecting our rights</li>
+                    <li><strong>Security:</strong> Detecting and preventing fraudulent or malicious activity</li>
+                </ul>
+
+                <h3>4. Legal Basis for Processing (GDPR)</h3>
+                <p>Under GDPR, we process your personal data based on:</p>
+                <ul>
+                    <li><strong>Consent:</strong> You have given clear consent for specific purposes (analytics, marketing cookies)</li>
+                    <li><strong>Legitimate Interests:</strong> Processing necessary for our legitimate interests (website operation, security) that don't override your rights</li>
+                    <li><strong>Legal Obligation:</strong> Compliance with applicable laws and regulations</li>
+                </ul>
+
+                <h3>5. Your Privacy Rights</h3>
+                
+                <h4>5.1 Rights Under GDPR (EU) and UK GDPR</h4>
+                <p>If you are in the EU or UK, you have the right to:</p>
+                <ul>
+                    <li><strong>Access:</strong> Request copies of your personal data</li>
+                    <li><strong>Rectification:</strong> Correct inaccurate or incomplete data</li>
+                    <li><strong>Erasure:</strong> Request deletion of your personal data ("right to be forgotten")</li>
+                    <li><strong>Restriction:</strong> Limit how we use your data</li>
+                    <li><strong>Data Portability:</strong> Receive your data in a structured, machine-readable format</li>
+                    <li><strong>Object:</strong> Object to processing based on legitimate interests or for direct marketing</li>
+                    <li><strong>Withdraw Consent:</strong> Withdraw consent at any time where processing is based on consent</li>
+                    <li><strong>Lodge a Complaint:</strong> File a complaint with your local data protection authority</li>
+                </ul>
+
+                <h4>5.2 Rights Under CCPA (California)</h4>
+                <p>If you are a California resident, you have the right to:</p>
+                <ul>
+                    <li><strong>Know:</strong> Request disclosure of personal information we collect, use, and share</li>
+                    <li><strong>Delete:</strong> Request deletion of your personal information</li>
+                    <li><strong>Opt-Out:</strong> Opt-out of the "sale" of personal information (we do not sell personal information)</li>
+                    <li><strong>Non-Discrimination:</strong> Not receive discriminatory treatment for exercising your privacy rights</li>
+                </ul>
+
+                <h4>5.3 How to Exercise Your Rights</h4>
+                <p>To exercise any of these rights, please contact us at: <strong>donations.suprasaiyans.supra</strong></p>
+                <p>You can also use the "Privacy Settings" button on our website to manage cookie preferences at any time.</p>
+
+                <h3>6. International Data Transfers</h3>
+                <p>Your information may be transferred to and processed in countries other than your own. When we transfer data internationally:</p>
+                <ul>
+                    <li>We ensure adequate safeguards are in place (e.g., Standard Contractual Clauses)</li>
+                    <li>We comply with applicable data protection laws for international transfers</li>
+                    <li>Third-party services (GitHub Pages, cloud providers) may process data in various jurisdictions</li>
+                </ul>
+
+                <h3>7. Data Retention</h3>
+                <p>We retain personal data only as long as necessary for the purposes outlined in this policy:</p>
+                <ul>
+                    <li><strong>Cookie Preferences:</strong> Stored locally until you clear browser data or change preferences</li>
+                    <li><strong>Analytics Data:</strong> Typically retained for 12-24 months, then anonymized or deleted</li>
+                    <li><strong>Correspondence:</strong> Retained as long as necessary to respond and for legal purposes</li>
+                </ul>
+
+                <h3>8. Security Measures</h3>
+                <p>We implement appropriate technical and organizational measures to protect your data:</p>
+                <ul>
+                    <li>HTTPS encryption for all website connections</li>
+                    <li>Regular security assessments and updates</li>
+                    <li>Limited access to personal data on a need-to-know basis</li>
+                    <li>Data minimization principles - we only collect what we need</li>
+                </ul>
+                <p><strong>Note:</strong> No method of transmission over the internet is 100% secure. While we strive to protect your data, we cannot guarantee absolute security.</p>
+
+                <h3>9. Children's Privacy</h3>
+                <p>Our website is not directed to children under 16 (or under 13 for COPPA compliance in the US). We do not knowingly collect personal information from children. If you believe we have collected data from a child, please contact us immediately.</p>
+
+                <h3>10. Cookies & Similar Technologies</h3>
+                <p>We use the following types of cookies:</p>
+                <ul>
+                    <li><strong>Essential Cookies:</strong> Required for basic site functionality (cookie consent, security)</li>
+                    <li><strong>Analytics Cookies:</strong> Help us understand site usage (requires consent)</li>
+                    <li><strong>Preference Cookies:</strong> Remember your settings and choices (requires consent)</li>
+                    <li><strong>Marketing Cookies:</strong> May be used for future marketing purposes (requires consent)</li>
+                </ul>
+                <p>You can manage cookie preferences through our consent banner or browser settings. Note that disabling essential cookies may affect site functionality.</p>
+
+                <h3>11. Third-Party Links & Services</h3>
+                <p>Our website contains links to external websites and services we do not control:</p>
+                <ul>
+                    <li>Social media platforms (Twitter, Discord, Telegram, Medium, GitHub)</li>
+                    <li>NFT marketplaces (Crystara Trade, Pumpit.pro)</li>
+                    <li>Blockchain services (Supra Oracles)</li>
+                    <li>Content platforms and embedded media</li>
+                </ul>
+                <p><strong>Important:</strong> We are not responsible for the privacy practices of third-party websites. Please review their privacy policies before providing personal information.</p>
+
+                <h3>12. Changes to This Privacy Policy</h3>
+                <p>We may update this privacy policy from time to time. When we make material changes:</p>
+                <ul>
+                    <li>We will update the "Last Updated" date at the top</li>
+                    <li>We may display a prominent notice on our website</li>
+                    <li>We may re-prompt for consent where required by law</li>
+                </ul>
+                <p>Your continued use of the website after changes constitutes acceptance of the updated policy.</p>
+
+                <h3>13. Compliance & Regulatory Information</h3>
+                <p>This privacy policy complies with:</p>
+                <ul>
+                    <li><strong>GDPR (EU):</strong> General Data Protection Regulation (EU) 2016/679</li>
+                    <li><strong>UK GDPR:</strong> UK implementation post-Brexit</li>
+                    <li><strong>CCPA:</strong> California Consumer Privacy Act</li>
+                    <li><strong>COPPA:</strong> Children's Online Privacy Protection Act (US)</li>
+                    <li><strong>ePrivacy Directive:</strong> EU Cookie Law</li>
+                </ul>
+
+                <h3>14. Contact Us</h3>
+                <p>For questions, concerns, or to exercise your privacy rights, contact us at:</p>
+                <div class="privacy-highlight">
+                    <p><strong>SupraSaiyans</strong><br>
+                    Email/Contact: <strong>donations.suprasaiyans.supra</strong><br>
+                    Website: <a href="https://suprasaiyans.github.io" target="_blank">suprasaiyans.github.io</a></p>
+                </div>
+
+                <h3>15. Data Protection Officer</h3>
+                <p>For data protection inquiries specific to GDPR compliance, you may contact our designated representative through the contact information above.</p>
+
+                <div class="privacy-highlight">
+                    <p><strong>Your Consent:</strong> By using this website and clicking "Accept All" on the cookie banner, you acknowledge that you have read and understood this Privacy Policy and consent to our data practices as described.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Consent & Privacy Modal JavaScript -->
+    <script>
+        (function() {
+            'use strict';
+            
+            // Configuration
+            const COOKIE_CONSENT_KEY = 'ssy_cookie_consent';
+            const POLICY_VERSION = 'v1.0-2025-10-16';
+            
+            // DOM Elements
+            const consentBanner = document.getElementById('cookie-consent-banner');
+            const privacySettingsBtn = document.getElementById('privacy-settings-btn');
+            const privacyModal = document.getElementById('privacy-modal');
+            const acceptBtn = document.getElementById('accept-cookies');
+            const declineBtn = document.getElementById('decline-cookies');
+            const manageBtn = document.getElementById('manage-cookies');
+            const viewPolicyLink = document.getElementById('view-privacy-policy');
+            const closeModalBtn = document.getElementById('close-privacy-modal');
+            
+            // Check if consent is already given
+            function getConsent() {
+                const stored = localStorage.getItem(COOKIE_CONSENT_KEY);
+                if (!stored) return null;
+                
+                try {
+                    return JSON.parse(stored);
+                } catch (e) {
+                    return null;
+                }
+            }
+            
+            // Save consent to localStorage
+            function saveConsent(consent) {
+                const consentData = {
+                    ...consent,
+                    timestamp: new Date().toISOString(),
+                    policyVersion: POLICY_VERSION
+                };
+                localStorage.setItem(COOKIE_CONSENT_KEY, JSON.stringify(consentData));
+            }
+            
+            // Show/hide cookie banner
+            function showBanner() {
+                setTimeout(() => {
+                    consentBanner.classList.add('show');
+                }, 500);
+            }
+            
+            function hideBanner() {
+                consentBanner.classList.remove('show');
+                privacySettingsBtn.classList.add('show');
+            }
+            
+            // Show/hide privacy modal
+            function showPrivacyModal() {
+                privacyModal.classList.add('show');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            function hidePrivacyModal() {
+                privacyModal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+            
+            // Handle Accept All
+            function acceptAllCookies() {
+                saveConsent({
+                    essential: true,
+                    analytics: true,
+                    marketing: true,
+                    preferences: true
+                });
+                hideBanner();
+                
+                // Here you can enable analytics/tracking scripts
+                // Example: enableAnalytics();
+            }
+            
+            // Handle Decline Optional
+            function declineOptionalCookies() {
+                saveConsent({
+                    essential: true,
+                    analytics: false,
+                    marketing: false,
+                    preferences: false
+                });
+                hideBanner();
+            }
+            
+            // Handle Manage Preferences (show modal with options)
+            function managePreferences() {
+                // For now, just show the privacy policy
+                // In a full implementation, you'd show a preferences interface
+                showPrivacyModal();
+            }
+            
+            // Initialize
+            function init() {
+                const consent = getConsent();
+                
+                // Check if we need to show the banner
+                // Show if: no consent OR policy version changed
+                if (!consent || consent.policyVersion !== POLICY_VERSION) {
+                    showBanner();
+                } else {
+                    // Consent already given, show settings button
+                    privacySettingsBtn.classList.add('show');
+                    
+                    // Apply consent settings
+                    if (consent.analytics) {
+                        // Enable analytics
+                    }
+                    if (consent.marketing) {
+                        // Enable marketing cookies
+                    }
+                }
+                
+                // Event listeners
+                acceptBtn.addEventListener('click', acceptAllCookies);
+                declineBtn.addEventListener('click', declineOptionalCookies);
+                manageBtn.addEventListener('click', managePreferences);
+                privacySettingsBtn.addEventListener('click', showBanner);
+                viewPolicyLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showPrivacyModal();
+                });
+                closeModalBtn.addEventListener('click', hidePrivacyModal);
+                
+                // Close modal when clicking outside
+                privacyModal.addEventListener('click', (e) => {
+                    if (e.target === privacyModal) {
+                        hidePrivacyModal();
+                    }
+                });
+                
+                // Close modal with Escape key
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && privacyModal.classList.contains('show')) {
+                        hidePrivacyModal();
+                    }
+                });
+            }
+            
+            // Run when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', init);
+            } else {
+                init();
+            }
+        })();
+    </script>
 </body>
 </html>

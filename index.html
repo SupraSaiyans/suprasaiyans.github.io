@@ -727,8 +727,15 @@
                 display: none;
             }
             
+            .container, .section-content {
+                padding: 20px;
+                margin: 10px;
+            }
+            
             .section {
                 padding-top: var(--section-spacing-mobile);
+                padding-left: 10px;
+                padding-right: 10px;
             }
             
             /* Home section should also follow mobile spacing */
@@ -737,11 +744,15 @@
             }
             
             .section h1 {
-                font-size: 2.5em;
+                font-size: 2.2em;
             }
             
             .section h2 {
-                font-size: 2em;
+                font-size: 1.8em;
+            }
+            
+            .section h3 {
+                font-size: 1.5em;
             }
             
             .links-grid {
@@ -751,6 +762,12 @@
             
             .gallery-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            /* Optimize CTA buttons for mobile */
+            .cta-button, .nft-button {
+                padding: 12px 24px;
+                font-size: 18px;
             }
 
             /* Mobile responsive social grid */
@@ -793,6 +810,69 @@
                     width: 100%;
                     max-width: 200px;
                 }
+            }
+        }
+        
+        /* Extra small screens optimization */
+        @media (max-width: 480px) {
+            .container, .section-content {
+                padding: 15px;
+                margin: 8px;
+            }
+            
+            .section h1 {
+                font-size: 2em;
+            }
+            
+            .section h2 {
+                font-size: 1.6em;
+            }
+            
+            .section h3 {
+                font-size: 1.3em;
+            }
+            
+            .cta-button, .nft-button {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+            
+            .logo {
+                width: 250px;
+            }
+        }
+        
+        /* Ultra small screens (iPhone SE, etc.) */
+        @media (max-width: 375px) {
+            .container, .section-content {
+                padding: 12px;
+                margin: 5px;
+            }
+            
+            .section {
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+            
+            .section h1 {
+                font-size: 1.8em;
+            }
+            
+            .section h2 {
+                font-size: 1.5em;
+            }
+            
+            .section h3 {
+                font-size: 1.2em;
+            }
+            
+            .cta-button, .nft-button {
+                padding: 10px 18px;
+                font-size: 15px;
+            }
+            
+            .logo {
+                width: 220px;
             }
         }
 
@@ -984,38 +1064,53 @@
         /* Mobile responsive for compact grid */
         @media (max-width: 768px) {
             .compact-social-grid {
-                grid-template-columns: repeat(auto-fit, minmax(90px, 110px));
-                gap: 12px;
-                padding: 15px;
-            }
-
-            .compact-social-btn {
-                padding: 14px 10px;
-                font-size: 10px;
-                min-height: 85px;
-            }
-
-            .compact-icon {
-                width: 28px;
-                height: 28px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .compact-social-grid {
-                grid-template-columns: repeat(auto-fit, minmax(80px, 100px));
+                grid-template-columns: repeat(auto-fit, minmax(85px, 105px));
                 gap: 10px;
+                padding: 10px;
+                max-width: 100%;
             }
 
             .compact-social-btn {
                 padding: 12px 8px;
-                font-size: 9px;
+                font-size: 10px;
                 min-height: 80px;
             }
 
             .compact-icon {
                 width: 26px;
                 height: 26px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .compact-social-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+                padding: 8px;
+            }
+
+            .compact-social-btn {
+                padding: 10px 6px;
+                font-size: 9px;
+                min-height: 75px;
+            }
+
+            .compact-icon {
+                width: 24px;
+                height: 24px;
+            }
+        }
+        
+        @media (max-width: 375px) {
+            .compact-social-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 6px;
+            }
+            
+            .compact-social-btn {
+                padding: 8px 5px;
+                font-size: 8.5px;
+                min-height: 70px;
             }
         }
 
@@ -1089,22 +1184,38 @@
         /* Mobile responsive for footer */
         @media (max-width: 768px) {
             .footer-foldout {
-                padding: 16px;
+                padding: 12px 8px;
             }
             
             .footer-content {
-                padding: 10px 16px;
+                padding: 10px 12px;
+                margin: 0 5px;
             }
             
             .footer-text {
-                font-size: 0.85em;
-                line-height: 1.5;
+                font-size: 0.8em;
+                line-height: 1.4;
             }
         }
         
         @media (max-width: 480px) {
+            .footer-foldout {
+                padding: 10px 5px;
+            }
+            
+            .footer-content {
+                padding: 8px 10px;
+            }
+            
             .footer-text {
-                font-size: 0.8em;
+                font-size: 0.75em;
+                line-height: 1.3;
+            }
+        }
+        
+        @media (max-width: 375px) {
+            .footer-text {
+                font-size: 0.7em;
             }
         }
 
@@ -1242,37 +1353,54 @@
         /* Mobile responsive for LaoShi section */
         @media (max-width: 768px) {
             .laoshi-frame {
-                width: 350px;
-                height: 350px;
+                width: 300px;
+                height: 300px;
             }
             
             .laoshi-logo {
-                width: 250px;
+                width: 220px;
             }
             
             .laoshi-title {
-                font-size: 2.5em;
-                margin-top: 30px;
+                font-size: 2.2em;
+                margin-top: 25px;
             }
             
             .laoshi-centerpiece {
-                padding: 20px;
+                padding: 20px 10px;
+                max-width: 100%;
             }
         }
         
         @media (max-width: 480px) {
             .laoshi-frame {
-                width: 280px;
-                height: 280px;
+                width: 250px;
+                height: 250px;
             }
             
             .laoshi-logo {
-                width: 200px;
+                width: 180px;
             }
             
             .laoshi-title {
-                font-size: 2em;
+                font-size: 1.8em;
                 letter-spacing: 0.05em;
+                margin-top: 20px;
+            }
+        }
+        
+        @media (max-width: 375px) {
+            .laoshi-frame {
+                width: 220px;
+                height: 220px;
+            }
+            
+            .laoshi-logo {
+                width: 160px;
+            }
+            
+            .laoshi-title {
+                font-size: 1.6em;
             }
         }
         
@@ -1574,30 +1702,44 @@
             border-radius: 5px;
         }
         
-        /* Mobile Responsive */
+        /* Mobile Responsive for Cookie Banner and Privacy Modal */
         @media (max-width: 768px) {
+            #cookie-consent-banner {
+                padding: 15px;
+            }
+            
             .cookie-banner-content {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 15px;
+                gap: 12px;
             }
             
             .cookie-banner-text {
                 min-width: 100%;
+                font-size: 0.9em;
+                line-height: 1.5;
+            }
+            
+            .cookie-banner-text strong {
+                font-size: 1em;
+                margin-bottom: 6px;
             }
             
             .cookie-banner-actions {
                 width: 100%;
                 flex-direction: column;
+                gap: 8px;
             }
             
             .cookie-btn {
                 width: 100%;
                 text-align: center;
+                padding: 10px 20px;
+                font-size: 0.9em;
             }
             
             .privacy-modal-content {
-                padding: 25px;
+                padding: 20px;
                 max-height: 95vh;
             }
             
@@ -1605,11 +1747,73 @@
                 font-size: 1.8em;
             }
             
+            .privacy-modal-body {
+                font-size: 0.95em;
+                line-height: 1.7;
+            }
+            
+            .privacy-modal-body h3 {
+                font-size: 1.3em;
+            }
+            
+            .privacy-modal-body h4 {
+                font-size: 1.1em;
+            }
+            
             #privacy-settings-btn {
-                bottom: 15px;
-                right: 15px;
+                bottom: 12px;
+                right: 12px;
+                font-size: 0.75em;
+                padding: 8px 12px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            #cookie-consent-banner {
+                padding: 12px;
+            }
+            
+            .cookie-banner-text {
+                font-size: 0.85em;
+            }
+            
+            .cookie-btn {
+                padding: 8px 16px;
+                font-size: 0.85em;
+            }
+            
+            .privacy-modal-content {
+                padding: 15px;
+            }
+            
+            .privacy-modal-header {
+                margin-bottom: 20px;
+                padding-bottom: 15px;
+            }
+            
+            .privacy-modal-header h2 {
+                font-size: 1.5em;
+            }
+            
+            .privacy-modal-body {
+                font-size: 0.9em;
+            }
+            
+            #privacy-settings-btn {
+                bottom: 10px;
+                right: 10px;
+                font-size: 0.7em;
+                padding: 6px 10px;
+            }
+        }
+        
+        @media (max-width: 375px) {
+            .cookie-banner-text {
                 font-size: 0.8em;
-                padding: 10px 14px;
+            }
+            
+            .privacy-modal-header h2 {
+                font-size: 1.3em;
             }
         }
 

@@ -399,7 +399,7 @@
             transform: translateX(-50%);
             z-index: 1000;
             display: flex;
-            gap: 20px;
+            gap: 16px;
             flex-wrap: nowrap;
             align-items: center;
             justify-content: center;
@@ -407,12 +407,13 @@
             transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
         }
         
-        /* Fractal artifact styling - centered between nav items */
+        /* Fractal artifact styling - perfectly centered with extra spacing */
         .nav-fractal-artifact {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 20px;
+            /* Extra margin on both sides for visual emphasis and balance */
+            margin: 0 24px;
             position: relative;
             z-index: 1001;
         }
@@ -431,16 +432,6 @@
                     drop-shadow(0 0 20px rgba(122, 48, 19, 0.6));
             transform: translateY(-2px) scale(1.05);
             opacity: 1;
-        }
-        
-        /* Center gap: equal margins on both sides to ensure visual balance */
-        /* This creates a symmetric gap between NFT Gallery and SupraVerse */
-        .nav-menu a:nth-child(3) {
-            margin-right: 15px;
-        }
-        
-        .nav-menu a:nth-child(5) {
-            margin-left: 15px;
         }
 
         /* Hidden state - collapses upwards */
@@ -922,7 +913,7 @@
         /* Medium screens - adjust for centered navigation */
         @media (max-width: 1024px) and (min-width: 769px) {
             .nav-menu {
-                gap: 16px;
+                gap: 12px;
                 padding: 8px 16px;
             }
             
@@ -936,23 +927,14 @@
             }
             
             .nav-fractal-artifact {
-                margin: 0 15px;
-            }
-            
-            /* Maintain center gap on medium screens */
-            .nav-menu a:nth-child(3) {
-                margin-right: 12px;
-            }
-            
-            .nav-menu a:nth-child(5) {
-                margin-left: 12px;
+                margin: 0 18px;
             }
         }
 
         /* Large screens - ensure navigation doesn't get too spread out */
         @media (min-width: 1400px) {
             .nav-menu {
-                gap: 24px;
+                gap: 20px;
                 padding: 12px 24px;
             }
             
@@ -966,16 +948,7 @@
             }
             
             .nav-fractal-artifact {
-                margin: 0 25px;
-            }
-            
-            /* Larger center gap on large screens */
-            .nav-menu a:nth-child(3) {
-                margin-right: 18px;
-            }
-            
-            .nav-menu a:nth-child(5) {
-                margin-left: 18px;
+                margin: 0 30px;
             }
         }
 

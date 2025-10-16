@@ -391,48 +391,40 @@
             background: linear-gradient(45deg, #003366, #004080);
         }
 
-        /* Navigation Styles - Artifact perfectly centered on page */
+        /* Navigation Styles - CSS Grid for perfect centering and symmetry */
         .nav-menu {
             position: fixed;
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 1000;
-            display: flex;
+            display: grid;
+            /* 7 columns: 3 buttons, 1 artifact, 3 buttons */
+            grid-template-columns: repeat(7, auto);
+            gap: 12px;
             align-items: center;
             justify-content: center;
             padding: 10px 20px;
             transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
         }
         
-        /* Fractal artifact styling - perfectly centered with equal spacing on both sides */
+        /* Fractal artifact styling - 4th child, perfectly centered over background */
         .nav-fractal-artifact {
             display: flex;
             align-items: center;
             justify-content: center;
-            /* Equal margin on both sides ensures equal gap between NFT Gallery->artifact and artifact->SupraVerse */
-            margin: 0 24px;
+            /* Extra spacing around artifact for visual emphasis and alignment */
+            padding: 0 12px;
             position: relative;
             z-index: 1001;
         }
         
-        /* Gap between navigation links */
+        /* Navigation links - consistent sizing for symmetry */
         .nav-link {
-            margin: 0 8px;
-        }
-        
-        /* First three links (before artifact) */
-        .nav-menu > .nav-link:nth-child(1),
-        .nav-menu > .nav-link:nth-child(2),
-        .nav-menu > .nav-link:nth-child(3) {
-            margin-right: 8px;
-        }
-        
-        /* Last three links (after artifact) */
-        .nav-menu > .nav-link:nth-child(5),
-        .nav-menu > .nav-link:nth-child(6),
-        .nav-menu > .nav-link:nth-child(7) {
-            margin-left: 8px;
+            white-space: nowrap;
+            /* Explicit min-width ensures buttons have consistent width for perfect symmetry */
+            min-width: 100px;
+            text-align: center;
         }
         
         .fractal-icon {
@@ -469,8 +461,8 @@
             font-family: 'Bebas Neue', 'tan-headline', sans-serif;
             backdrop-filter: blur(10px);
             white-space: nowrap;
-            min-width: fit-content;
-            flex-shrink: 0;
+            min-width: 100px;
+            text-align: center;
             position: relative;
             overflow: hidden;
             box-shadow: 
@@ -930,13 +922,14 @@
         /* Medium screens - adjust for centered navigation */
         @media (max-width: 1024px) and (min-width: 769px) {
             .nav-menu {
-                gap: 12px;
+                gap: 10px;
                 padding: 8px 16px;
             }
             
             .nav-link {
                 padding: 8px 14px;
                 font-size: 15px;
+                min-width: 90px;
             }
             
             .fractal-icon {
@@ -944,20 +937,21 @@
             }
             
             .nav-fractal-artifact {
-                margin: 0 18px;
+                padding: 0 10px;
             }
         }
 
         /* Large screens - ensure navigation doesn't get too spread out */
         @media (min-width: 1400px) {
             .nav-menu {
-                gap: 20px;
+                gap: 16px;
                 padding: 12px 24px;
             }
             
             .nav-link {
                 padding: 12px 20px;
                 font-size: 17px;
+                min-width: 110px;
             }
             
             .fractal-icon {
@@ -965,7 +959,7 @@
             }
             
             .nav-fractal-artifact {
-                margin: 0 30px;
+                padding: 0 16px;
             }
         }
 

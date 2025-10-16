@@ -1907,6 +1907,314 @@
             }
         }
 
+        /* ========================================
+           POWERLEVEL FRACTAL SECTION STYLES
+           ========================================
+           Fractal-themed section with organic corners
+           and magical spacerider fairytale aesthetic
+        */
+        
+        .powerlevel-fractal {
+            position: relative;
+            overflow: visible;
+            isolation: isolate;
+        }
+        
+        /* Enhanced section content with fractal clip-path */
+        .powerlevel-content {
+            position: relative;
+            clip-path: polygon(
+                0 0,
+                0 0,
+                15% 0,
+                calc(15% + 1px) 0,
+                85% 0,
+                100% 0,
+                100% 15%,
+                100% 85%,
+                100% 100%,
+                85% 100%,
+                15% 100%,
+                0 100%,
+                0 85%,
+                0 15%
+            );
+            background: linear-gradient(
+                135deg,
+                rgba(6, 34, 46, 0.95) 0%,
+                rgba(0, 61, 82, 0.9) 50%,
+                rgba(6, 86, 109, 0.85) 100%
+            );
+            backdrop-filter: blur(15px);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            box-shadow: 
+                0 0 40px rgba(6, 86, 109, 0.3),
+                inset 0 0 60px rgba(122, 48, 19, 0.1),
+                0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: fractalPulse 8s ease-in-out infinite;
+        }
+        
+        @keyframes fractalPulse {
+            0%, 100% {
+                box-shadow: 
+                    0 0 40px rgba(6, 86, 109, 0.3),
+                    inset 0 0 60px rgba(122, 48, 19, 0.1),
+                    0 20px 60px rgba(0, 0, 0, 0.3);
+            }
+            50% {
+                box-shadow: 
+                    0 0 60px rgba(6, 86, 109, 0.5),
+                    inset 0 0 80px rgba(122, 48, 19, 0.2),
+                    0 25px 70px rgba(0, 0, 0, 0.4);
+            }
+        }
+        
+        /* Add glowing border effect */
+        .powerlevel-content::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(
+                45deg,
+                rgba(6, 86, 109, 0.8),
+                rgba(122, 48, 19, 0.6),
+                rgba(0, 61, 82, 0.8),
+                rgba(117, 47, 21, 0.6)
+            );
+            background-size: 400% 400%;
+            border-radius: 15px;
+            z-index: -1;
+            animation: fractalBorderFlow 15s ease infinite;
+            filter: blur(8px);
+            opacity: 0.6;
+        }
+        
+        @keyframes fractalBorderFlow {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+        
+        /* Fractal corner decorations */
+        .fractal-corner {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            pointer-events: none;
+            z-index: 10;
+            overflow: visible;
+            mix-blend-mode: screen;
+            opacity: 0.7;
+        }
+        
+        .fractal-corner-tl {
+            top: -20px;
+            left: -20px;
+        }
+        
+        .fractal-corner-tr {
+            top: -20px;
+            right: -20px;
+        }
+        
+        .fractal-corner-bl {
+            bottom: -20px;
+            left: -20px;
+        }
+        
+        .fractal-corner-br {
+            bottom: -20px;
+            right: -20px;
+        }
+        
+        .fractal-svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 15px rgba(6, 86, 109, 0.6));
+        }
+        
+        /* Enhanced link categories with fractal theme */
+        .powerlevel-fractal .link-category {
+            background: linear-gradient(
+                135deg,
+                rgba(6, 86, 109, 0.25) 0%,
+                rgba(0, 61, 82, 0.2) 50%,
+                rgba(122, 48, 19, 0.15) 100%
+            );
+            border: 1px solid rgba(6, 86, 109, 0.4);
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .powerlevel-fractal .link-category::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(
+                circle,
+                rgba(6, 86, 109, 0.3) 0%,
+                transparent 70%
+            );
+            opacity: 0;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: scale(0);
+        }
+        
+        .powerlevel-fractal .link-category:hover {
+            transform: translateY(-5px);
+            border-color: rgba(122, 48, 19, 0.6);
+            box-shadow: 
+                0 10px 40px rgba(6, 86, 109, 0.4),
+                inset 0 0 30px rgba(122, 48, 19, 0.1);
+        }
+        
+        .powerlevel-fractal .link-category:hover::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .powerlevel-fractal .link-category h4 {
+            background: linear-gradient(
+                90deg,
+                rgba(6, 86, 109, 1),
+                rgba(122, 48, 19, 0.8),
+                rgba(6, 86, 109, 1)
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 20px rgba(6, 86, 109, 0.3);
+            font-size: 1.4em;
+            font-weight: bold;
+            position: relative;
+        }
+        
+        .powerlevel-fractal .link-list li {
+            position: relative;
+            padding-left: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .powerlevel-fractal .link-list li::before {
+            content: '◈';
+            position: absolute;
+            left: 0;
+            color: rgba(6, 86, 109, 0.7);
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+        }
+        
+        .powerlevel-fractal .link-list li:hover {
+            padding-left: 30px;
+            color: rgba(255, 255, 255, 1);
+        }
+        
+        .powerlevel-fractal .link-list li:hover::before {
+            color: rgba(122, 48, 19, 0.9);
+            transform: scale(1.3) rotate(45deg);
+        }
+        
+        /* Title enhancements for Powerlevel section */
+        .powerlevel-fractal h1 {
+            text-shadow: 
+                0 0 20px rgba(6, 86, 109, 0.6),
+                0 0 40px rgba(122, 48, 19, 0.4),
+                0 4px 8px rgba(0, 0, 0, 0.3);
+            animation: titleGlow 4s ease-in-out infinite;
+        }
+        
+        @keyframes titleGlow {
+            0%, 100% {
+                text-shadow: 
+                    0 0 20px rgba(6, 86, 109, 0.6),
+                    0 0 40px rgba(122, 48, 19, 0.4),
+                    0 4px 8px rgba(0, 0, 0, 0.3);
+            }
+            50% {
+                text-shadow: 
+                    0 0 30px rgba(6, 86, 109, 0.8),
+                    0 0 60px rgba(122, 48, 19, 0.6),
+                    0 6px 12px rgba(0, 0, 0, 0.4);
+            }
+        }
+        
+        .powerlevel-fractal h2 {
+            text-shadow: 
+                0 0 15px rgba(122, 48, 19, 0.5),
+                0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Responsive adjustments for fractal corners */
+        @media (max-width: 768px) {
+            .fractal-corner {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .fractal-corner-tl,
+            .fractal-corner-tr,
+            .fractal-corner-bl,
+            .fractal-corner-br {
+                top: -10px;
+                bottom: -10px;
+                left: -10px;
+                right: -10px;
+            }
+            
+            .powerlevel-content {
+                clip-path: polygon(
+                    0 0,
+                    10% 0,
+                    90% 0,
+                    100% 0,
+                    100% 10%,
+                    100% 90%,
+                    100% 100%,
+                    90% 100%,
+                    10% 100%,
+                    0 100%,
+                    0 90%,
+                    0 10%
+                );
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .fractal-corner {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .powerlevel-content {
+                clip-path: polygon(
+                    0 0,
+                    8% 0,
+                    92% 0,
+                    100% 0,
+                    100% 8%,
+                    100% 92%,
+                    100% 100%,
+                    92% 100%,
+                    8% 100%,
+                    0 100%,
+                    0 92%,
+                    0 8%
+                );
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -2803,9 +3111,144 @@
         })();
     </script>
 
-    <!-- Powerlevel Section -->
-    <section id="powerlevel" class="section">
-        <div class="section-content">
+    <!-- Powerlevel Section - Fractal Enhanced -->
+    <section id="powerlevel" class="section powerlevel-fractal">
+        <!-- SVG Definitions for Fractal Corners -->
+        <svg width="0" height="0" style="position: absolute;">
+            <defs>
+                <!-- Fractal Corner Mask - Top Left -->
+                <clipPath id="fractal-corner-tl" clipPathUnits="objectBoundingBox">
+                    <path d="M 0,0.15 
+                             C 0,0.067 0.067,0 0.15,0
+                             L 1,0 L 1,1 L 0,1 Z" />
+                </clipPath>
+                
+                <!-- Fractal Corner Mask - Top Right -->
+                <clipPath id="fractal-corner-tr" clipPathUnits="objectBoundingBox">
+                    <path d="M 0,0 L 0.85,0 
+                             C 0.933,0 1,0.067 1,0.15
+                             L 1,1 L 0,1 Z" />
+                </clipPath>
+                
+                <!-- Fractal Corner Mask - Bottom Left -->
+                <clipPath id="fractal-corner-bl" clipPathUnits="objectBoundingBox">
+                    <path d="M 0,0 L 1,0 L 1,1 
+                             L 0.15,1
+                             C 0.067,1 0,0.933 0,0.85 Z" />
+                </clipPath>
+                
+                <!-- Fractal Corner Mask - Bottom Right -->
+                <clipPath id="fractal-corner-br" clipPathUnits="objectBoundingBox">
+                    <path d="M 0,0 L 1,0 
+                             L 1,0.85
+                             C 1,0.933 0.933,1 0.85,1
+                             L 0,1 Z" />
+                </clipPath>
+                
+                <!-- Animated Fractal Pattern -->
+                <radialGradient id="fractal-glow">
+                    <stop offset="0%" style="stop-color:rgba(6,86,109,0.8);stop-opacity:1">
+                        <animate attributeName="stop-opacity" values="0.6;1;0.6" dur="4s" repeatCount="indefinite"/>
+                    </stop>
+                    <stop offset="50%" style="stop-color:rgba(122,48,19,0.4);stop-opacity:1">
+                        <animate attributeName="stop-opacity" values="0.3;0.6;0.3" dur="4s" repeatCount="indefinite"/>
+                    </stop>
+                    <stop offset="100%" style="stop-color:rgba(6,86,109,0);stop-opacity:0"/>
+                </radialGradient>
+            </defs>
+        </svg>
+        
+        <!-- Fractal Corner Decorations -->
+        <div class="fractal-corner fractal-corner-tl">
+            <svg viewBox="0 0 200 200" class="fractal-svg">
+                <circle cx="0" cy="0" r="180" fill="url(#fractal-glow)" opacity="0.6">
+                    <animate attributeName="r" values="180;200;180" dur="6s" repeatCount="indefinite"/>
+                </circle>
+                <!-- Fractal spiral lines -->
+                <path d="M 0,0 Q 50,50 100,50 T 150,100" 
+                      stroke="rgba(6,86,109,0.5)" 
+                      stroke-width="2" 
+                      fill="none"
+                      opacity="0.8">
+                    <animate attributeName="stroke-dasharray" values="0,300;300,0;0,300" dur="8s" repeatCount="indefinite"/>
+                </path>
+                <path d="M 0,0 Q 30,70 70,90 T 120,140" 
+                      stroke="rgba(122,48,19,0.4)" 
+                      stroke-width="1.5" 
+                      fill="none"
+                      opacity="0.6">
+                    <animate attributeName="stroke-dasharray" values="0,300;300,0;0,300" dur="10s" repeatCount="indefinite"/>
+                </path>
+            </svg>
+        </div>
+        
+        <div class="fractal-corner fractal-corner-tr">
+            <svg viewBox="0 0 200 200" class="fractal-svg">
+                <circle cx="200" cy="0" r="180" fill="url(#fractal-glow)" opacity="0.6">
+                    <animate attributeName="r" values="180;200;180" dur="6s" begin="1.5s" repeatCount="indefinite"/>
+                </circle>
+                <path d="M 200,0 Q 150,50 100,50 T 50,100" 
+                      stroke="rgba(6,86,109,0.5)" 
+                      stroke-width="2" 
+                      fill="none"
+                      opacity="0.8">
+                    <animate attributeName="stroke-dasharray" values="0,300;300,0;0,300" dur="8s" begin="2s" repeatCount="indefinite"/>
+                </path>
+                <path d="M 200,0 Q 170,70 130,90 T 80,140" 
+                      stroke="rgba(122,48,19,0.4)" 
+                      stroke-width="1.5" 
+                      fill="none"
+                      opacity="0.6">
+                    <animate attributeName="stroke-dasharray" values="0,300;300,0;0,300" dur="10s" begin="2.5s" repeatCount="indefinite"/>
+                </path>
+            </svg>
+        </div>
+        
+        <div class="fractal-corner fractal-corner-bl">
+            <svg viewBox="0 0 200 200" class="fractal-svg">
+                <circle cx="0" cy="200" r="180" fill="url(#fractal-glow)" opacity="0.6">
+                    <animate attributeName="r" values="180;200;180" dur="6s" begin="3s" repeatCount="indefinite"/>
+                </circle>
+                <path d="M 0,200 Q 50,150 100,150 T 150,100" 
+                      stroke="rgba(6,86,109,0.5)" 
+                      stroke-width="2" 
+                      fill="none"
+                      opacity="0.8">
+                    <animate attributeName="stroke-dasharray" values="0,300;300,0;0,300" dur="8s" begin="4s" repeatCount="indefinite"/>
+                </path>
+                <path d="M 0,200 Q 30,130 70,110 T 120,60" 
+                      stroke="rgba(122,48,19,0.4)" 
+                      stroke-width="1.5" 
+                      fill="none"
+                      opacity="0.6">
+                    <animate attributeName="stroke-dasharray" values="0,300;300,0;0,300" dur="10s" begin="4.5s" repeatCount="indefinite"/>
+                </path>
+            </svg>
+        </div>
+        
+        <div class="fractal-corner fractal-corner-br">
+            <svg viewBox="0 0 200 200" class="fractal-svg">
+                <circle cx="200" cy="200" r="180" fill="url(#fractal-glow)" opacity="0.6">
+                    <animate attributeName="r" values="180;200;180" dur="6s" begin="4.5s" repeatCount="indefinite"/>
+                </circle>
+                <path d="M 200,200 Q 150,150 100,150 T 50,100" 
+                      stroke="rgba(6,86,109,0.5)" 
+                      stroke-width="2" 
+                      fill="none"
+                      opacity="0.8">
+                    <animate attributeName="stroke-dasharray" values="0,300;300,0;0,300" dur="8s" begin="6s" repeatCount="indefinite"/>
+                </path>
+                <path d="M 200,200 Q 170,130 130,110 T 80,60" 
+                      stroke="rgba(122,48,19,0.4)" 
+                      stroke-width="1.5" 
+                      fill="none"
+                      opacity="0.6">
+                    <animate attributeName="stroke-dasharray" values="0,300;300,0;0,300" dur="10s" begin="6.5s" repeatCount="indefinite"/>
+                </path>
+            </svg>
+        </div>
+        
+        <div class="section-content powerlevel-content">
             <h1>Supra Saiyans Powerlevel</h1>
             <h2>Journey into the Infinite Paradox</h2>
             <p style="font-size: 1.2em; line-height: 1.6; margin: 20px 0;">

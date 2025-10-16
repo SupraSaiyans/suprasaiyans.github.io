@@ -396,7 +396,7 @@
             position: fixed;
             top: 20px;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(calc(-50% + 50px));
             z-index: 1000;
             display: grid;
             grid-template-columns: auto auto auto auto auto auto auto;
@@ -476,7 +476,7 @@
 
         /* Hidden state - collapses upwards */
         .nav-menu.nav-hidden {
-            transform: translateX(-50%) translateY(-100px);
+            transform: translateX(calc(-50% + 50px)) translateY(-100px);
             opacity: 0;
             pointer-events: none;
         }

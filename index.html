@@ -391,15 +391,16 @@
             background: linear-gradient(45deg, #003366, #004080);
         }
 
-        /* Navigation Styles - SVG fractal artifact mathematically centered on viewport */
+        /* Navigation Styles - CSS Grid for perfect symmetry with SVG fractal artifact centered */
         .nav-menu {
             position: fixed;
             top: 20px;
-            left: 0;
-            right: 0;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 1000;
-            display: flex;
-            flex-direction: row;
+            display: grid;
+            grid-template-columns: auto auto auto auto auto auto auto;
+            column-gap: 16px;
             align-items: center;
             justify-content: center;
             padding: 10px 20px;
@@ -407,53 +408,47 @@
             pointer-events: none;
         }
         
-        /* Fractal artifact - absolutely centered, other items flow around it */
+        /* Fractal artifact - 4th child, perfectly centered in grid */
         .nav-fractal-artifact {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+            grid-column: 4;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 1002;
             pointer-events: auto;
+            /* Add extra horizontal spacing around fractal for visual balance */
+            margin-left: 20px;
+            margin-right: 20px;
         }
         
-        /* Left-side nav links - use negative order to appear before center in flex flow */
+        /* Left-side nav links (children 1, 2, 3) - grid positions 1, 2, 3 */
         .nav-menu > .nav-link:nth-child(1) {
-            order: -3;
-            margin-right: 8px;
+            grid-column: 1;
             pointer-events: auto;
         }
         
         .nav-menu > .nav-link:nth-child(2) {
-            order: -2;
-            margin-right: 8px;
+            grid-column: 2;
             pointer-events: auto;
         }
         
         .nav-menu > .nav-link:nth-child(3) {
-            order: -1;
-            margin-right: calc(24px + 37.5px); /* Gap + half fractal width to clear center */
+            grid-column: 3;
             pointer-events: auto;
         }
         
-        /* Right-side nav links */
+        /* Right-side nav links (children 5, 6, 7) - grid positions 5, 6, 7 */
         .nav-menu > .nav-link:nth-child(5) {
-            order: 1;
-            margin-left: calc(24px + 37.5px); /* Gap + half fractal width to clear center */
+            grid-column: 5;
             pointer-events: auto;
         }
         
         .nav-menu > .nav-link:nth-child(6) {
-            order: 2;
-            margin-left: 8px;
+            grid-column: 6;
             pointer-events: auto;
         }
         
         .nav-menu > .nav-link:nth-child(7) {
-            order: 3;
-            margin-left: 8px;
+            grid-column: 7;
             pointer-events: auto;
         }
         
@@ -464,7 +459,7 @@
         }
         
         .fractal-icon {
-            height: 50px;
+            height: 75px;
             width: auto;
             filter: drop-shadow(0 0 8px rgba(6, 86, 109, 0.6)) 
                     drop-shadow(0 0 15px rgba(122, 48, 19, 0.4));
@@ -481,7 +476,7 @@
 
         /* Hidden state - collapses upwards */
         .nav-menu.nav-hidden {
-            transform: translateY(-100px);
+            transform: translateX(-50%) translateY(-100px);
             opacity: 0;
             pointer-events: none;
         }
@@ -963,7 +958,16 @@
             }
             
             .fractal-icon {
-                height: 42px;
+                height: 60px;
+            }
+            
+            .nav-menu {
+                column-gap: 12px;
+            }
+            
+            .nav-fractal-artifact {
+                margin-left: 16px;
+                margin-right: 16px;
             }
         }
 
@@ -975,7 +979,16 @@
             }
             
             .fractal-icon {
-                height: 55px;
+                height: 85px;
+            }
+            
+            .nav-menu {
+                column-gap: 20px;
+            }
+            
+            .nav-fractal-artifact {
+                margin-left: 24px;
+                margin-right: 24px;
             }
         }
 

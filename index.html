@@ -401,6 +401,14 @@
             align-items: center;
             justify-content: center;
             padding: 10px 20px;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+
+        /* Hidden state - collapses upwards */
+        .nav-menu.nav-hidden {
+            transform: translateX(-50%) translateY(-100px);
+            opacity: 0;
+            pointer-events: none;
         }
 
         .nav-link {
@@ -2860,6 +2868,54 @@
             </div>
         </div>
     </div>
+
+    <!-- Navigation Hide/Show on Scroll -->
+    <script>
+        (function() {
+            'use strict';
+            
+            const navMenu = document.querySelector('.nav-menu');
+            if (!navMenu) return; // Exit if nav menu doesn't exist
+            
+            let lastScrollY = window.scrollY;
+            let ticking = false;
+            const scrollThreshold = 100; // Minimum scroll distance before hiding
+            
+            function updateNavVisibility() {
+                const currentScrollY = window.scrollY;
+                
+                // Don't hide if we're near the top of the page
+                if (currentScrollY < scrollThreshold) {
+                    navMenu.classList.remove('nav-hidden');
+                } else {
+                    // Scrolling down - hide nav
+                    if (currentScrollY > lastScrollY) {
+                        navMenu.classList.add('nav-hidden');
+                    } 
+                    // Scrolling up - show nav
+                    else if (currentScrollY < lastScrollY) {
+                        navMenu.classList.remove('nav-hidden');
+                    }
+                }
+                
+                lastScrollY = currentScrollY;
+                ticking = false;
+            }
+            
+            function onScroll() {
+                if (!ticking) {
+                    window.requestAnimationFrame(updateNavVisibility);
+                    ticking = true;
+                }
+            }
+            
+            // Listen for scroll events
+            window.addEventListener('scroll', onScroll, { passive: true });
+            
+            // Ensure nav is visible on page load
+            navMenu.classList.remove('nav-hidden');
+        })();
+    </script>
 
     <!-- Cookie Consent & Privacy Modal JavaScript -->
     <script>

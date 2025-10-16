@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SupraSaiyans</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <style>
         /* 
         SupraSaiyans Color Palette - Extracted from background2.png
@@ -417,15 +420,14 @@
         }
 
         .nav-link {
-            color: var(--text-primary);
             text-decoration: none;
             padding: 10px 18px;
-            background: rgba(6, 86, 109, 0.21);
             border-radius: 18px;
             border: 1px solid transparent;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             font-size: 14px;
             font-weight: 500;
+            font-family: 'Bebas Neue', 'tan-headline', sans-serif;
             backdrop-filter: blur(10px);
             white-space: nowrap;
             min-width: fit-content;
@@ -435,22 +437,25 @@
             box-shadow: 
                 0 4px 15px rgba(6, 86, 109, 0.14),
                 inset 0 1px 0 rgba(255, 255, 255, 0.07);
+            /* Gradient text color */
+            background: linear-gradient(135deg, #e2aa42, #2a3e40);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-
+        
+        /* Button background using ::before pseudo-element */
         .nav-link::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(
-                90deg,
-                transparent,
-                rgba(6, 86, 109, 0.3),
-                transparent
-            );
-            transition: left 0.5s ease;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(6, 86, 109, 0.21);
+            border-radius: 18px;
+            z-index: -2;
+            transition: background 0.4s ease;
         }
 
         .nav-link::after {
@@ -473,19 +478,17 @@
         }
 
         .nav-link:hover {
-            background: rgba(6, 86, 109, 0.35);
             transform: translateY(-3px) scale(1.05);
             border-color: transparent;
             box-shadow: 
                 0 8px 25px rgba(6, 86, 109, 0.28),
                 0 0 20px rgba(6, 86, 109, 0.21),
                 inset 0 1px 0 rgba(255, 255, 255, 0.14);
-            color: var(--text-primary);
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.21);
         }
 
         .nav-link:hover::before {
-            left: 100%;
+            background: rgba(6, 86, 109, 0.35);
         }
 
         .nav-link:hover::after {
@@ -1840,7 +1843,7 @@
         <a href="#home" class="nav-link">LaoShi</a>
         <a href="#spotlight" class="nav-link">Spotlight</a>
         <a href="#nft-gallery" class="nav-link">NFT Gallery</a>
-        <a href="#lore" class="nav-link">Lore</a>
+        <a href="#lore" class="nav-link">SupraVerse</a>
         <a href="#powerlevel" class="nav-link">Powerlevel</a>
         <a href="#saiyans-9000" class="nav-link">Over 9000 Saiyans</a>
     </nav>
@@ -2397,10 +2400,10 @@
     </section>
 
 
-    <!-- Lore Section -->
+    <!-- SupraVerse Section -->
     <section id="lore" class="section">
         <div class="section-content">
-            <h1>Latest Lore from SupraSaiyans on Medium</h1>
+            <h1>Latest SupraVerse from SupraSaiyans on Medium</h1>
             <h2>Stories from the SupraVerse</h2>
             
             <!-- Medium Feed Container -->

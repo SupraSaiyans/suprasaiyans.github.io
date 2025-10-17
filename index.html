@@ -40,6 +40,7 @@
             padding: 0;
             min-height: 100vh;
             background: var(--primary-dark) url('images/BACKGROUNDSESSION21.PNG') center center / cover no-repeat fixed;
+            background-position: 50% 50%; /* Mathematically centered - explicit positioning */
             font-family: 'Arial', sans-serif;
             color: var(--text-primary);
             position: relative;
@@ -125,13 +126,14 @@
             border-radius: 15px;
             backdrop-filter: blur(10px);
             border: 1px solid var(--border-color);
-            margin: 20px;
+            margin: 20px auto; /* Auto horizontal margin for perfect centering */
         }
 
         .logo {
             width: 300px;
             height: auto;
-            margin-bottom: 40px;
+            margin: 0 auto 40px auto; /* Centered horizontally with auto margins */
+            display: block; /* Block display for margin auto to work */
             filter: drop-shadow(0 0 10px rgba(6, 86, 109, 0.5));
         }
 
@@ -311,6 +313,7 @@
             position: relative;
             overflow: hidden;
             border: 2px solid var(--accent-warm-light);
+            margin: 0 auto; /* Center horizontally */
         }
 
         .cta-button::after {
@@ -364,6 +367,7 @@
             box-shadow: 
                 inset 0 0 0 2px #00F0FF,
                 0 4px 15px rgba(0, 26, 77, 0.4);
+            margin: 0 auto; /* Center horizontally */
         }
 
         .nft-button::after {
@@ -572,6 +576,8 @@
             padding: var(--section-spacing-desktop) 20px;
             position: relative;
             z-index: 2;
+            width: 100%; /* Full width for proper centering */
+            box-sizing: border-box; /* Include padding in width calculation */
         }
 
         .section h1, .section h2, .section h3 {
@@ -602,7 +608,9 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin: 30px 0;
+            margin: 30px auto; /* Centered horizontally */
+            width: 100%; /* Full width of container */
+            max-width: 100%; /* Respect container boundaries */
         }
 
 
@@ -660,7 +668,9 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
-            margin: 30px 0;
+            margin: 30px auto; /* Centered horizontally */
+            width: 100%; /* Full width of container */
+            max-width: 100%; /* Respect container boundaries */
         }
 
         /* Gallery Item Container */
@@ -803,7 +813,7 @@
             
             .container, .section-content {
                 padding: 20px;
-                margin: 10px;
+                margin: 10px auto; /* Maintain auto centering on mobile */
             }
             
             .section {
@@ -831,11 +841,13 @@
             
             .links-grid {
                 grid-template-columns: 1fr;
+                margin: 30px auto; /* Maintain centering on mobile */
             }
 
             
             .gallery-grid {
                 grid-template-columns: 1fr;
+                margin: 30px auto; /* Maintain centering on mobile */
             }
             
             /* Optimize CTA buttons for mobile */
@@ -891,7 +903,7 @@
         @media (max-width: 480px) {
             .container, .section-content {
                 padding: 15px;
-                margin: 8px;
+                margin: 8px auto; /* Maintain auto centering */
             }
             
             .section h1 {
@@ -920,7 +932,7 @@
         @media (max-width: 375px) {
             .container, .section-content {
                 padding: 12px;
-                margin: 5px;
+                margin: 5px auto; /* Maintain auto centering */
             }
             
             .section {
@@ -1007,10 +1019,12 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(100px, 120px));
             gap: 16px;
-            justify-content: center;
-            margin: 30px auto;
+            justify-content: center; /* Already centered, keeping it */
+            margin: 30px auto; /* Centered horizontally with auto margins */
             max-width: 600px;
             padding: 20px;
+            width: 100%; /* Ensure full width for centering calculation */
+            box-sizing: border-box; /* Include padding in width calculation */
         }
 
         .compact-social-btn {
@@ -3387,7 +3401,8 @@
         /* Medium Feed Styles */
         #medium-feed-container {
             width: 100%;
-            margin: 30px 0;
+            margin: 30px auto; /* Centered horizontally */
+            max-width: 100%; /* Respect parent container */
         }
 
         .medium-loading {
@@ -3445,7 +3460,9 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 25px;
-            margin-top: 20px;
+            margin: 20px auto; /* Centered horizontally */
+            width: 100%; /* Full width of container */
+            max-width: 100%; /* Respect container boundaries */
         }
 
         .medium-article {
@@ -3566,6 +3583,7 @@
             .medium-articles {
                 grid-template-columns: 1fr;
                 gap: 20px;
+                margin: 20px auto; /* Maintain centering on mobile */
             }
 
             .medium-article-title {

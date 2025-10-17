@@ -1908,6 +1908,179 @@
         }
 
         /* ========================================
+           SPOTLIGHT FRACTAL FRAME STYLES
+           ========================================
+           Deeply cut, symmetric, hyper-artistic 3D fractal inlay corners
+           using fractal curve formulas for prominent visual impact
+        */
+        
+        .spotlight-fractal {
+            position: relative;
+            overflow: visible;
+            isolation: isolate;
+        }
+        
+        /* Enhanced section content with deeply cut fractal corners */
+        .spotlight-content {
+            position: relative;
+            /* Deep fractal cuts in all four corners using complex bezier curves */
+            clip-path: polygon(
+                0 12%,
+                3% 8%,
+                8% 3%,
+                12% 0,
+                88% 0,
+                92% 3%,
+                97% 8%,
+                100% 12%,
+                100% 88%,
+                97% 92%,
+                92% 97%,
+                88% 100%,
+                12% 100%,
+                8% 97%,
+                3% 92%,
+                0 88%
+            );
+            background: linear-gradient(
+                135deg,
+                rgba(6, 34, 46, 0.95) 0%,
+                rgba(0, 61, 82, 0.9) 50%,
+                rgba(6, 86, 109, 0.85) 100%
+            );
+            backdrop-filter: blur(20px);
+            border: 3px solid transparent;
+            background-clip: padding-box;
+            box-shadow: 
+                0 0 50px rgba(6, 86, 109, 0.4),
+                inset 0 0 80px rgba(122, 48, 19, 0.15),
+                0 25px 80px rgba(0, 0, 0, 0.4);
+            animation: spotlightFractalPulse 8s ease-in-out infinite;
+        }
+        
+        @keyframes spotlightFractalPulse {
+            0%, 100% {
+                box-shadow: 
+                    0 0 50px rgba(6, 86, 109, 0.4),
+                    inset 0 0 80px rgba(122, 48, 19, 0.15),
+                    0 25px 80px rgba(0, 0, 0, 0.4);
+            }
+            50% {
+                box-shadow: 
+                    0 0 70px rgba(6, 86, 109, 0.6),
+                    inset 0 0 100px rgba(122, 48, 19, 0.25),
+                    0 30px 90px rgba(0, 0, 0, 0.5);
+            }
+        }
+        
+        /* 3D layered glowing border effect for fractal frame */
+        .spotlight-content::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(
+                45deg,
+                rgba(6, 86, 109, 0.9),
+                rgba(122, 48, 19, 0.7),
+                rgba(0, 61, 82, 0.9),
+                rgba(117, 47, 21, 0.7),
+                rgba(6, 86, 109, 0.9)
+            );
+            background-size: 400% 400%;
+            border-radius: 15px;
+            z-index: -1;
+            animation: spotlightBorderFlow 15s ease infinite;
+            filter: blur(10px);
+            opacity: 0.8;
+        }
+        
+        @keyframes spotlightBorderFlow {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+        
+        /* Spotlight-specific fractal corner decorations */
+        .spotlight-corner {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            pointer-events: none;
+            z-index: 10;
+            overflow: visible;
+            mix-blend-mode: screen;
+            opacity: 0.75;
+        }
+        
+        .spotlight-corner-tl {
+            top: -30px;
+            left: -30px;
+        }
+        
+        .spotlight-corner-tr {
+            top: -30px;
+            right: -30px;
+        }
+        
+        .spotlight-corner-bl {
+            bottom: -30px;
+            left: -30px;
+        }
+        
+        .spotlight-corner-br {
+            bottom: -30px;
+            right: -30px;
+        }
+        
+        .spotlight-fractal-svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 20px rgba(6, 86, 109, 0.7))
+                    drop-shadow(0 0 10px rgba(122, 48, 19, 0.5));
+        }
+        
+        /* Mobile responsive adjustments for Spotlight fractal corners */
+        @media (max-width: 768px) {
+            .spotlight-corner {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .spotlight-corner-tl,
+            .spotlight-corner-tr,
+            .spotlight-corner-bl,
+            .spotlight-corner-br {
+                top: -15px;
+                bottom: -15px;
+                left: -15px;
+                right: -15px;
+            }
+            
+            .spotlight-content {
+                clip-path: polygon(
+                    0 10%,
+                    5% 5%,
+                    10% 0,
+                    90% 0,
+                    95% 5%,
+                    100% 10%,
+                    100% 90%,
+                    95% 95%,
+                    90% 100%,
+                    10% 100%,
+                    5% 95%,
+                    0 90%
+                );
+            }
+        }
+
+        /* ========================================
            POWERLEVEL FRACTAL SECTION STYLES
            ========================================
            Fractal-themed section with organic corners
@@ -2409,8 +2582,195 @@
     </section>
 
     <!-- Spotlight Section -->
-    <section id="spotlight" class="section">
-        <div class="section-content">
+    <section id="spotlight" class="section spotlight-fractal">
+        <!-- SVG Definitions for Spotlight Fractal Corners -->
+        <svg width="0" height="0" style="position: absolute;">
+            <defs>
+                <!-- Hyper-artistic 3D Fractal Patterns using Koch curve and Sierpinski triangle formulas -->
+                <radialGradient id="spotlight-fractal-glow">
+                    <stop offset="0%" style="stop-color:rgba(6,86,109,0.9);stop-opacity:1">
+                        <animate attributeName="stop-opacity" values="0.7;1;0.7" dur="4s" repeatCount="indefinite"/>
+                    </stop>
+                    <stop offset="40%" style="stop-color:rgba(122,48,19,0.6);stop-opacity:1">
+                        <animate attributeName="stop-opacity" values="0.4;0.8;0.4" dur="4s" repeatCount="indefinite"/>
+                    </stop>
+                    <stop offset="100%" style="stop-color:rgba(6,86,109,0);stop-opacity:0"/>
+                </radialGradient>
+                
+                <!-- Deep 3D fractal pattern -->
+                <radialGradient id="spotlight-depth-glow">
+                    <stop offset="0%" style="stop-color:rgba(122,48,19,0.8);stop-opacity:1">
+                        <animate attributeName="stop-opacity" values="0.6;0.9;0.6" dur="5s" repeatCount="indefinite"/>
+                    </stop>
+                    <stop offset="60%" style="stop-color:rgba(0,61,82,0.5);stop-opacity:1">
+                        <animate attributeName="stop-opacity" values="0.3;0.6;0.3" dur="5s" repeatCount="indefinite"/>
+                    </stop>
+                    <stop offset="100%" style="stop-color:rgba(0,0,0,0);stop-opacity:0"/>
+                </radialGradient>
+            </defs>
+        </svg>
+        
+        <!-- Deeply Cut Fractal Corner Decorations - Top Left -->
+        <div class="spotlight-corner spotlight-corner-tl">
+            <svg viewBox="0 0 250 250" class="spotlight-fractal-svg">
+                <!-- Large fractal circle with 3D depth -->
+                <circle cx="0" cy="0" r="220" fill="url(#spotlight-fractal-glow)" opacity="0.7">
+                    <animate attributeName="r" values="220;240;220" dur="6s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="0" cy="0" r="180" fill="url(#spotlight-depth-glow)" opacity="0.6">
+                    <animate attributeName="r" values="180;200;180" dur="7s" begin="0.5s" repeatCount="indefinite"/>
+                </circle>
+                
+                <!-- Complex fractal spiral - Koch curve inspired -->
+                <path d="M 0,0 L 60,20 L 45,60 L 90,50 L 80,95 L 125,90 L 120,135" 
+                      stroke="rgba(6,86,109,0.7)" 
+                      stroke-width="3" 
+                      fill="none"
+                      stroke-linecap="round"
+                      opacity="0.9">
+                    <animate attributeName="stroke-dasharray" values="0,400;400,0;0,400" dur="8s" repeatCount="indefinite"/>
+                </path>
+                
+                <!-- Secondary fractal layer -->
+                <path d="M 0,0 Q 40,50 70,70 T 110,120 T 150,150" 
+                      stroke="rgba(122,48,19,0.6)" 
+                      stroke-width="2.5" 
+                      fill="none"
+                      stroke-linecap="round"
+                      opacity="0.8">
+                    <animate attributeName="stroke-dasharray" values="0,400;400,0;0,400" dur="10s" repeatCount="indefinite"/>
+                </path>
+                
+                <!-- Tertiary fine fractal detail -->
+                <path d="M 0,0 L 30,35 L 20,70 L 55,80 L 50,120 L 85,125 L 85,165" 
+                      stroke="rgba(0,61,82,0.5)" 
+                      stroke-width="2" 
+                      fill="none"
+                      stroke-linecap="round"
+                      opacity="0.7">
+                    <animate attributeName="stroke-dasharray" values="0,400;400,0;0,400" dur="12s" repeatCount="indefinite"/>
+                </path>
+            </svg>
+        </div>
+        
+        <!-- Deeply Cut Fractal Corner Decorations - Top Right -->
+        <div class="spotlight-corner spotlight-corner-tr">
+            <svg viewBox="0 0 250 250" class="spotlight-fractal-svg">
+                <circle cx="250" cy="0" r="220" fill="url(#spotlight-fractal-glow)" opacity="0.7">
+                    <animate attributeName="r" values="220;240;220" dur="6s" begin="1.5s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="250" cy="0" r="180" fill="url(#spotlight-depth-glow)" opacity="0.6">
+                    <animate attributeName="r" values="180;200;180" dur="7s" begin="2s" repeatCount="indefinite"/>
+                </circle>
+                
+                <path d="M 250,0 L 190,20 L 205,60 L 160,50 L 170,95 L 125,90 L 130,135" 
+                      stroke="rgba(6,86,109,0.7)" 
+                      stroke-width="3" 
+                      fill="none"
+                      stroke-linecap="round"
+                      opacity="0.9">
+                    <animate attributeName="stroke-dasharray" values="0,400;400,0;0,400" dur="8s" begin="2s" repeatCount="indefinite"/>
+                </path>
+                
+                <path d="M 250,0 Q 210,50 180,70 T 140,120 T 100,150" 
+                      stroke="rgba(122,48,19,0.6)" 
+                      stroke-width="2.5" 
+                      fill="none"
+                      stroke-linecap="round"
+                      opacity="0.8">
+                    <animate attributeName="stroke-dasharray" values="0,400;400,0;0,400" dur="10s" begin="2.5s" repeatCount="indefinite"/>
+                </path>
+                
+                <path d="M 250,0 L 220,35 L 230,70 L 195,80 L 200,120 L 165,125 L 165,165" 
+                      stroke="rgba(0,61,82,0.5)" 
+                      stroke-width="2" 
+                      fill="none"
+                      stroke-linecap="round"
+                      opacity="0.7">
+                    <animate attributeName="stroke-dasharray" values="0,400;400,0;0,400" dur="12s" begin="3s" repeatCount="indefinite"/>
+                </path>
+            </svg>
+        </div>
+        
+        <!-- Deeply Cut Fractal Corner Decorations - Bottom Left -->
+        <div class="spotlight-corner spotlight-corner-bl">
+            <svg viewBox="0 0 250 250" class="spotlight-fractal-svg">
+                <circle cx="0" cy="250" r="220" fill="url(#spotlight-fractal-glow)" opacity="0.7">
+                    <animate attributeName="r" values="220;240;220" dur="6s" begin="3s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="0" cy="250" r="180" fill="url(#spotlight-depth-glow)" opacity="0.6">
+                    <animate attributeName="r" values="180;200;180" dur="7s" begin="3.5s" repeatCount="indefinite"/>
+                </circle>
+                
+                <path d="M 0,250 L 60,230 L 45,190 L 90,200 L 80,155 L 125,160 L 120,115" 
+                      stroke="rgba(6,86,109,0.7)" 
+                      stroke-width="3" 
+                      fill="none"
+                      stroke-linecap="round"
+                      opacity="0.9">
+                    <animate attributeName="stroke-dasharray" values="0,400;400,0;0,400" dur="8s" begin="4s" repeatCount="indefinite"/>
+                </path>
+                
+                <path d="M 0,250 Q 40,200 70,180 T 110,130 T 150,100" 
+                      stroke="rgba(122,48,19,0.6)" 
+                      stroke-width="2.5" 
+                      fill="none"
+                      stroke-linecap="round"
+                      opacity="0.8">
+                    <animate attributeName="stroke-dasharray" values="0,400;400,0;0,400" dur="10s" begin="4.5s" repeatCount="indefinite"/>
+                </path>
+                
+                <path d="M 0,250 L 30,215 L 20,180 L 55,170 L 50,130 L 85,125 L 85,85" 
+                      stroke="rgba(0,61,82,0.5)" 
+                      stroke-width="2" 
+                      fill="none"
+                      stroke-linecap="round"
+                      opacity="0.7">
+                    <animate attributeName="stroke-dasharray" values="0,400;400,0;0,400" dur="12s" begin="5s" repeatCount="indefinite"/>
+                </path>
+            </svg>
+        </div>
+        
+        <!-- Deeply Cut Fractal Corner Decorations - Bottom Right -->
+        <div class="spotlight-corner spotlight-corner-br">
+            <svg viewBox="0 0 250 250" class="spotlight-fractal-svg">
+                <circle cx="250" cy="250" r="220" fill="url(#spotlight-fractal-glow)" opacity="0.7">
+                    <animate attributeName="r" values="220;240;220" dur="6s" begin="4.5s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="250" cy="250" r="180" fill="url(#spotlight-depth-glow)" opacity="0.6">
+                    <animate attributeName="r" values="180;200;180" dur="7s" begin="5s" repeatCount="indefinite"/>
+                </circle>
+                
+                <path d="M 250,250 L 190,230 L 205,190 L 160,200 L 170,155 L 125,160 L 130,115" 
+                      stroke="rgba(6,86,109,0.7)" 
+                      stroke-width="3" 
+                      fill="none"
+                      stroke-linecap="round"
+                      opacity="0.9">
+                    <animate attributeName="stroke-dasharray" values="0,400;400,0;0,400" dur="8s" begin="6s" repeatCount="indefinite"/>
+                </path>
+                
+                <path d="M 250,250 Q 210,200 180,180 T 140,130 T 100,100" 
+                      stroke="rgba(122,48,19,0.6)" 
+                      stroke-width="2.5" 
+                      fill="none"
+                      stroke-linecap="round"
+                      opacity="0.8">
+                    <animate attributeName="stroke-dasharray" values="0,400;400,0;0,400" dur="10s" begin="6.5s" repeatCount="indefinite"/>
+                </path>
+                
+                <path d="M 250,250 L 220,215 L 230,180 L 195,170 L 200,130 L 165,125 L 165,85" 
+                      stroke="rgba(0,61,82,0.5)" 
+                      stroke-width="2" 
+                      fill="none"
+                      stroke-linecap="round"
+                      opacity="0.7">
+                    <animate attributeName="stroke-dasharray" values="0,400;400,0;0,400" dur="12s" begin="7s" repeatCount="indefinite"/>
+                </path>
+            </svg>
+        </div>
+        
+        <div class="section-content spotlight-content">
             <h1>Spotlight</h1>
             <h2>SSY Permissionless Curations</h2>
             <p style="font-size: 1.2em; line-height: 1.6; margin: 20px 0;">

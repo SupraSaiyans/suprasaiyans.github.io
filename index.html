@@ -125,7 +125,7 @@
             border-radius: 15px;
             backdrop-filter: blur(10px);
             border: 1px solid var(--border-color);
-            margin: 20px;
+            margin: 20px auto;
         }
 
         .logo {
@@ -396,7 +396,7 @@
             position: fixed;
             top: 20px;
             left: 50%;
-            transform: translateX(calc(-50% + 50px));
+            transform: translateX(-50%);
             z-index: 1000;
             display: grid;
             grid-template-columns: auto auto auto auto auto auto auto;
@@ -476,7 +476,7 @@
 
         /* Hidden state - collapses upwards */
         .nav-menu.nav-hidden {
-            transform: translateX(calc(-50% + 50px)) translateY(-100px);
+            transform: translateX(-50%) translateY(-100px);
             opacity: 0;
             pointer-events: none;
         }
@@ -803,7 +803,7 @@
             
             .container, .section-content {
                 padding: 20px;
-                margin: 10px;
+                margin: 10px auto;
             }
             
             .section {
@@ -891,7 +891,7 @@
         @media (max-width: 480px) {
             .container, .section-content {
                 padding: 15px;
-                margin: 8px;
+                margin: 8px auto;
             }
             
             .section h1 {
@@ -920,7 +920,7 @@
         @media (max-width: 375px) {
             .container, .section-content {
                 padding: 12px;
-                margin: 5px;
+                margin: 5px auto;
             }
             
             .section {

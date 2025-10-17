@@ -127,6 +127,134 @@
             border: 1px solid var(--border-color);
             margin: 20px;
         }
+        
+        /* ========================================
+           FRACTAL CORNER DECORATIONS
+           ========================================
+           Beautiful artistic corner pieces from FRACTALINLAYINSPIRATION.PNG
+           Applied to all main section frames with 3D effects
+        */
+        
+        /* Fractal corner container - positioned absolutely in section-content */
+        .fractal-corner-decoration {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            pointer-events: none;
+            z-index: 10;
+            opacity: 0.85;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* 3D Effect with shadows and transforms */
+        .fractal-corner-decoration img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: drop-shadow(2px 2px 8px rgba(6, 86, 109, 0.6))
+                    drop-shadow(0 0 12px rgba(122, 48, 19, 0.4))
+                    drop-shadow(0 0 20px rgba(0, 61, 82, 0.3));
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Individual corner positions */
+        .fractal-corner-tl {
+            top: -1px;
+            left: -1px;
+            transform-origin: top left;
+        }
+        
+        .fractal-corner-tr {
+            top: -1px;
+            right: -1px;
+            transform-origin: top right;
+        }
+        
+        .fractal-corner-bl {
+            bottom: -1px;
+            left: -1px;
+            transform-origin: bottom left;
+        }
+        
+        .fractal-corner-br {
+            bottom: -1px;
+            right: -1px;
+            transform-origin: bottom right;
+        }
+        
+        /* Hover effects on section-content */
+        .section-content:hover .fractal-corner-decoration {
+            opacity: 1;
+        }
+        
+        .section-content:hover .fractal-corner-tl img {
+            transform: scale(1.05) rotate(-2deg);
+            filter: drop-shadow(3px 3px 12px rgba(6, 86, 109, 0.8))
+                    drop-shadow(0 0 20px rgba(122, 48, 19, 0.6))
+                    drop-shadow(0 0 30px rgba(0, 61, 82, 0.5));
+        }
+        
+        .section-content:hover .fractal-corner-tr img {
+            transform: scale(1.05) rotate(2deg);
+            filter: drop-shadow(-3px 3px 12px rgba(6, 86, 109, 0.8))
+                    drop-shadow(0 0 20px rgba(122, 48, 19, 0.6))
+                    drop-shadow(0 0 30px rgba(0, 61, 82, 0.5));
+        }
+        
+        .section-content:hover .fractal-corner-bl img {
+            transform: scale(1.05) rotate(2deg);
+            filter: drop-shadow(3px -3px 12px rgba(6, 86, 109, 0.8))
+                    drop-shadow(0 0 20px rgba(122, 48, 19, 0.6))
+                    drop-shadow(0 0 30px rgba(0, 61, 82, 0.5));
+        }
+        
+        .section-content:hover .fractal-corner-br img {
+            transform: scale(1.05) rotate(-2deg);
+            filter: drop-shadow(-3px -3px 12px rgba(6, 86, 109, 0.8))
+                    drop-shadow(0 0 20px rgba(122, 48, 19, 0.6))
+                    drop-shadow(0 0 30px rgba(0, 61, 82, 0.5));
+        }
+        
+        /* Gentle floating animation for corners */
+        @keyframes fractalFloat {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-5px) scale(1.02);
+            }
+        }
+        
+        .fractal-corner-decoration {
+            animation: fractalFloat 6s ease-in-out infinite;
+        }
+        
+        .fractal-corner-tr {
+            animation-delay: 1.5s;
+        }
+        
+        .fractal-corner-bl {
+            animation-delay: 3s;
+        }
+        
+        .fractal-corner-br {
+            animation-delay: 4.5s;
+        }
+        
+        /* Mobile responsive - smaller corners */
+        @media (max-width: 768px) {
+            .fractal-corner-decoration {
+                width: 120px;
+                height: 120px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .fractal-corner-decoration {
+                width: 80px;
+                height: 80px;
+            }
+        }
 
         .logo {
             width: 300px;
@@ -1536,6 +1664,16 @@
             box-sizing: border-box;
         }
         
+        /* Apply fractal corner decorations to LaoShi centerpiece */
+        .laoshi-centerpiece .fractal-corner-decoration {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            pointer-events: none;
+            z-index: 10;
+            opacity: 0.85;
+        }
+        
         .laoshi-frame {
             position: absolute;
             width: 500px;
@@ -2577,6 +2715,20 @@
                     </path>
                 </svg>
                 
+                <!-- Fractal Corner Decorations from FRACTALINLAYINSPIRATION.PNG -->
+                <div class="fractal-corner-decoration fractal-corner-tl">
+                    <img src="images/fractal-corners/fractal-corner-tl.png" alt="">
+                </div>
+                <div class="fractal-corner-decoration fractal-corner-tr">
+                    <img src="images/fractal-corners/fractal-corner-tr.png" alt="">
+                </div>
+                <div class="fractal-corner-decoration fractal-corner-bl">
+                    <img src="images/fractal-corners/fractal-corner-bl.png" alt="">
+                </div>
+                <div class="fractal-corner-decoration fractal-corner-br">
+                    <img src="images/fractal-corners/fractal-corner-br.png" alt="">
+                </div>
+                
                 <!-- SupraSaiyans Logo as centerpiece -->
                 <a href="https://www.pumpit.pro/token/0x3f4047f95a120d8b99c8897be17f481a6ff9705ce829c8c98579e9016854aad::PRESUPSAI::PRESUPSAI" target="_blank" rel="noopener noreferrer">
                     <img src="logo.png" alt="LaoShi - SupraSaiyans" class="laoshi-logo">
@@ -2983,6 +3135,20 @@
         </div>
         
         <div class="section-content">
+            <!-- Fractal Corner Decorations -->
+            <div class="fractal-corner-decoration fractal-corner-tl">
+                <img src="images/fractal-corners/fractal-corner-tl.png" alt="">
+            </div>
+            <div class="fractal-corner-decoration fractal-corner-tr">
+                <img src="images/fractal-corners/fractal-corner-tr.png" alt="">
+            </div>
+            <div class="fractal-corner-decoration fractal-corner-bl">
+                <img src="images/fractal-corners/fractal-corner-bl.png" alt="">
+            </div>
+            <div class="fractal-corner-decoration fractal-corner-br">
+                <img src="images/fractal-corners/fractal-corner-br.png" alt="">
+            </div>
+            
             <h1>Spotlight</h1>
             <h2>SSY Permissionless Curations</h2>
             <p style="font-size: 1.2em; line-height: 1.6; margin: 20px 0;">
@@ -3047,6 +3213,20 @@
     <!-- NFT Gallery Section -->
     <section id="nft-gallery" class="section">
         <div class="section-content">
+            <!-- Fractal Corner Decorations -->
+            <div class="fractal-corner-decoration fractal-corner-tl">
+                <img src="images/fractal-corners/fractal-corner-tl.png" alt="">
+            </div>
+            <div class="fractal-corner-decoration fractal-corner-tr">
+                <img src="images/fractal-corners/fractal-corner-tr.png" alt="">
+            </div>
+            <div class="fractal-corner-decoration fractal-corner-bl">
+                <img src="images/fractal-corners/fractal-corner-bl.png" alt="">
+            </div>
+            <div class="fractal-corner-decoration fractal-corner-br">
+                <img src="images/fractal-corners/fractal-corner-br.png" alt="">
+            </div>
+            
             <h1>NFT Gallery</h1>
             <h2>Supra Saiyans Studios Portfolio</h2>
             <p style="font-size: 1.2em; line-height: 1.6; margin: 20px 0;">
@@ -3358,6 +3538,20 @@
     <!-- SupraVerse Section -->
     <section id="lore" class="section">
         <div class="section-content">
+            <!-- Fractal Corner Decorations -->
+            <div class="fractal-corner-decoration fractal-corner-tl">
+                <img src="images/fractal-corners/fractal-corner-tl.png" alt="">
+            </div>
+            <div class="fractal-corner-decoration fractal-corner-tr">
+                <img src="images/fractal-corners/fractal-corner-tr.png" alt="">
+            </div>
+            <div class="fractal-corner-decoration fractal-corner-bl">
+                <img src="images/fractal-corners/fractal-corner-bl.png" alt="">
+            </div>
+            <div class="fractal-corner-decoration fractal-corner-br">
+                <img src="images/fractal-corners/fractal-corner-br.png" alt="">
+            </div>
+            
             <h1>Latest SupraVerse from SupraSaiyans on Medium</h1>
             <h2>Stories from the SupraVerse</h2>
             
@@ -3821,6 +4015,20 @@
         </div>
         
         <div class="section-content powerlevel-content">
+            <!-- Fractal Corner Decorations from FRACTALINLAYINSPIRATION.PNG -->
+            <div class="fractal-corner-decoration fractal-corner-tl">
+                <img src="images/fractal-corners/fractal-corner-tl.png" alt="">
+            </div>
+            <div class="fractal-corner-decoration fractal-corner-tr">
+                <img src="images/fractal-corners/fractal-corner-tr.png" alt="">
+            </div>
+            <div class="fractal-corner-decoration fractal-corner-bl">
+                <img src="images/fractal-corners/fractal-corner-bl.png" alt="">
+            </div>
+            <div class="fractal-corner-decoration fractal-corner-br">
+                <img src="images/fractal-corners/fractal-corner-br.png" alt="">
+            </div>
+            
             <h1>Supra Saiyans Powerlevel</h1>
             <h2>Roadmap to the Infinite Paradox</h2>
             <p style="font-size: 1.2em; line-height: 1.6; margin: 20px 0;">
@@ -3880,6 +4088,20 @@
     <!-- Over 9000 Saiyans Section -->
     <section id="saiyans-9000" class="section">
         <div class="section-content">
+            <!-- Fractal Corner Decorations -->
+            <div class="fractal-corner-decoration fractal-corner-tl">
+                <img src="images/fractal-corners/fractal-corner-tl.png" alt="">
+            </div>
+            <div class="fractal-corner-decoration fractal-corner-tr">
+                <img src="images/fractal-corners/fractal-corner-tr.png" alt="">
+            </div>
+            <div class="fractal-corner-decoration fractal-corner-bl">
+                <img src="images/fractal-corners/fractal-corner-bl.png" alt="">
+            </div>
+            <div class="fractal-corner-decoration fractal-corner-br">
+                <img src="images/fractal-corners/fractal-corner-br.png" alt="">
+            </div>
+            
             <h1>Over 9000 Saiyans</h1>
             <h2>Join us Saiyan!</h2>
             

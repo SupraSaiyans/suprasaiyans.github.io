@@ -569,7 +569,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: var(--section-spacing-desktop) 20px;
+            padding: 0 20px;
             position: relative;
             z-index: 2;
         }
@@ -807,14 +807,8 @@
             }
             
             .section {
-                padding-top: var(--section-spacing-mobile);
                 padding-left: 10px;
                 padding-right: 10px;
-            }
-            
-            /* Home section should also follow mobile spacing */
-            #home.section {
-                padding-top: var(--section-spacing-mobile) !important;
             }
             
             .section h1 {
@@ -990,11 +984,6 @@
                 margin-left: 24px;
                 margin-right: 24px;
             }
-        }
-
-        /* Home section - ensure uniform spacing to match other sections */
-        #home.section {
-            padding-top: var(--section-spacing-desktop);
         }
 
         /* ========================================

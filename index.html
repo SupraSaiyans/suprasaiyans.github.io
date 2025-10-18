@@ -62,8 +62,44 @@
             will-change: transform;
         }
 
-        /* Elegant Static Fractal Border Ornaments - Inspired by FRACTALINLAYINSPIRATION.PNG */
-        /* Moved to separate layer for performance */
+        /* Optimized Overlay System - Unified approach for cohesion with globe/fractal background */
+        
+        /* Center radial glow - complements globe artwork */
+        .overlay-glow-center {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            pointer-events: none;
+            background: radial-gradient(circle at center, 
+                rgba(6, 86, 109, 0.2) 0%, 
+                rgba(6, 86, 109, 0.1) 30%,
+                transparent 60%);
+            /* Performance: CSS containment isolates painting */
+            contain: layout style paint;
+        }
+        
+        /* Edge vignette - draws focus to globe center */
+        .overlay-vignette-edge {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            pointer-events: none;
+            background: radial-gradient(circle at center,
+                transparent 30%,
+                rgba(6, 34, 46, 0.3) 85%,
+                rgba(6, 34, 46, 0.5) 100%);
+            contain: layout style paint;
+        }
+        
+        /* Simplified border accents - reduced complexity */
         .border-ornaments {
             content: '';
             position: fixed;
@@ -74,33 +110,18 @@
             z-index: 1;
             pointer-events: none;
             background: 
-                /* Top border ornamental pattern */
+                /* Top accent */
                 linear-gradient(180deg, 
-                    rgba(6, 86, 109, 0.3) 0%, 
-                    rgba(6, 86, 109, 0.2) 30px,
-                    rgba(6, 86, 109, 0.1) 60px,
-                    transparent 90px),
-                /* Bottom border ornamental pattern */
+                    rgba(6, 86, 109, 0.2) 0%, 
+                    transparent 60px),
+                /* Bottom accent */
                 linear-gradient(0deg, 
-                    rgba(122, 48, 19, 0.3) 0%, 
-                    rgba(122, 48, 19, 0.2) 30px,
-                    rgba(122, 48, 19, 0.1) 60px,
-                    transparent 90px),
-                /* Left border ornamental pattern */
-                linear-gradient(90deg, 
-                    rgba(0, 61, 82, 0.3) 0%, 
-                    rgba(0, 61, 82, 0.2) 30px,
-                    rgba(0, 61, 82, 0.1) 60px,
-                    transparent 90px),
-                /* Right border ornamental pattern */
-                linear-gradient(270deg, 
-                    rgba(6, 86, 109, 0.3) 0%, 
-                    rgba(6, 86, 109, 0.2) 30px,
-                    rgba(6, 86, 109, 0.1) 60px,
-                    transparent 90px);
+                    rgba(122, 48, 19, 0.2) 0%, 
+                    transparent 60px);
+            contain: layout style paint;
         }
         
-        /* Fractal Corner Ornaments - SVG-based detailed inlay design */
+        /* Optimized Corner Ornaments - External SVG files for caching */
         .corner-ornaments {
             content: '';
             position: fixed;
@@ -111,14 +132,10 @@
             z-index: 1;
             pointer-events: none;
             background-image:
-                /* Top-left corner ornament */
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><defs><radialGradient id="rg1"><stop offset="0%25" style="stop-color:%2306566d;stop-opacity:0.9"/><stop offset="60%25" style="stop-color:%237a3013;stop-opacity:0.5"/><stop offset="100%25" style="stop-color:%23003d52;stop-opacity:0.2"/></radialGradient><linearGradient id="lg1" x1="0%25" y1="0%25" x2="100%25" y2="100%25"><stop offset="0%25" style="stop-color:%2306566d;stop-opacity:0.85"/><stop offset="50%25" style="stop-color:%237a3013;stop-opacity:0.65"/><stop offset="100%25" style="stop-color:%23003d52;stop-opacity:0.45"/></linearGradient></defs><path d="M 0,0 Q 50,5 80,30 Q 110,55 130,90 Q 145,115 160,140 Q 175,165 200,180 Q 225,195 250,210 L 300,240 L 300,0 Z" fill="url(%23lg1)" opacity="0.5"/><path d="M 0,0 Q 35,15 55,40 Q 75,65 85,95 Q 95,125 95,155 Q 95,185 75,210 Q 55,235 30,255 L 0,270 Z" fill="url(%23lg1)" opacity="0.4"/><path d="M 20,30 Q 45,40 60,60 Q 75,80 80,105 Q 85,130 75,155 Q 65,180 50,200 Q 35,220 20,235" stroke="%2306566d" stroke-width="3" fill="none" opacity="0.6" stroke-linecap="round"/><path d="M 40,50 Q 55,58 65,75 Q 75,92 77,112 Q 79,132 70,150 Q 61,168 48,180" stroke="%237a3013" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/><circle cx="65" cy="75" r="12" fill="url(%23rg1)" opacity="0.7"/><circle cx="85" cy="105" r="9" fill="url(%23rg1)" opacity="0.65"/><circle cx="50" cy="150" r="10" fill="url(%23rg1)" opacity="0.6"/><path d="M 90,40 Q 110,50 125,70 Q 140,90 145,115" stroke="%2306566d" stroke-width="2" fill="none" opacity="0.5" stroke-linecap="round" stroke-dasharray="3,3"/><path d="M 100,120 Q 115,135 135,145 Q 155,155 180,165" stroke="%237a3013" stroke-width="1.8" fill="none" opacity="0.45" stroke-linecap="round" stroke-dasharray="4,2"/></svg>'),
-                /* Top-right corner ornament (mirrored) */
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><defs><radialGradient id="rg2"><stop offset="0%25" style="stop-color:%2306566d;stop-opacity:0.9"/><stop offset="60%25" style="stop-color:%237a3013;stop-opacity:0.5"/><stop offset="100%25" style="stop-color:%23003d52;stop-opacity:0.2"/></radialGradient><linearGradient id="lg2" x1="100%25" y1="0%25" x2="0%25" y2="100%25"><stop offset="0%25" style="stop-color:%2306566d;stop-opacity:0.85"/><stop offset="50%25" style="stop-color:%237a3013;stop-opacity:0.65"/><stop offset="100%25" style="stop-color:%23003d52;stop-opacity:0.45"/></linearGradient></defs><path d="M 300,0 Q 250,5 220,30 Q 190,55 170,90 Q 155,115 140,140 Q 125,165 100,180 Q 75,195 50,210 L 0,240 L 0,0 Z" fill="url(%23lg2)" opacity="0.5"/><path d="M 300,0 Q 265,15 245,40 Q 225,65 215,95 Q 205,125 205,155 Q 205,185 225,210 Q 245,235 270,255 L 300,270 Z" fill="url(%23lg2)" opacity="0.4"/><path d="M 280,30 Q 255,40 240,60 Q 225,80 220,105 Q 215,130 225,155 Q 235,180 250,200 Q 265,220 280,235" stroke="%2306566d" stroke-width="3" fill="none" opacity="0.6" stroke-linecap="round"/><path d="M 260,50 Q 245,58 235,75 Q 225,92 223,112 Q 221,132 230,150 Q 239,168 252,180" stroke="%237a3013" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/><circle cx="235" cy="75" r="12" fill="url(%23rg2)" opacity="0.7"/><circle cx="215" cy="105" r="9" fill="url(%23rg2)" opacity="0.65"/><circle cx="250" cy="150" r="10" fill="url(%23rg2)" opacity="0.6"/><path d="M 210,40 Q 190,50 175,70 Q 160,90 155,115" stroke="%2306566d" stroke-width="2" fill="none" opacity="0.5" stroke-linecap="round" stroke-dasharray="3,3"/><path d="M 200,120 Q 185,135 165,145 Q 145,155 120,165" stroke="%237a3013" stroke-width="1.8" fill="none" opacity="0.45" stroke-linecap="round" stroke-dasharray="4,2"/></svg>'),
-                /* Bottom-left corner ornament */
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><defs><radialGradient id="rg3"><stop offset="0%25" style="stop-color:%237a3013;stop-opacity:0.9"/><stop offset="60%25" style="stop-color:%2306566d;stop-opacity:0.5"/><stop offset="100%25" style="stop-color:%23003d52;stop-opacity:0.2"/></radialGradient><linearGradient id="lg3" x1="0%25" y1="100%25" x2="100%25" y2="0%25"><stop offset="0%25" style="stop-color:%237a3013;stop-opacity:0.85"/><stop offset="50%25" style="stop-color:%2306566d;stop-opacity:0.65"/><stop offset="100%25" style="stop-color:%23003d52;stop-opacity:0.45"/></linearGradient></defs><path d="M 0,300 Q 50,295 80,270 Q 110,245 130,210 Q 145,185 160,160 Q 175,135 200,120 Q 225,105 250,90 L 300,60 L 300,300 Z" fill="url(%23lg3)" opacity="0.5"/><path d="M 0,300 Q 35,285 55,260 Q 75,235 85,205 Q 95,175 95,145 Q 95,115 75,90 Q 55,65 30,45 L 0,30 Z" fill="url(%23lg3)" opacity="0.4"/><path d="M 20,270 Q 45,260 60,240 Q 75,220 80,195 Q 85,170 75,145 Q 65,120 50,100 Q 35,80 20,65" stroke="%237a3013" stroke-width="3" fill="none" opacity="0.6" stroke-linecap="round"/><path d="M 40,250 Q 55,242 65,225 Q 75,208 77,188 Q 79,168 70,150 Q 61,132 48,120" stroke="%2306566d" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/><circle cx="65" cy="225" r="12" fill="url(%23rg3)" opacity="0.7"/><circle cx="85" cy="195" r="9" fill="url(%23rg3)" opacity="0.65"/><circle cx="50" cy="150" r="10" fill="url(%23rg3)" opacity="0.6"/><path d="M 90,260 Q 110,250 125,230 Q 140,210 145,185" stroke="%237a3013" stroke-width="2" fill="none" opacity="0.5" stroke-linecap="round" stroke-dasharray="3,3"/><path d="M 100,180 Q 115,165 135,155 Q 155,145 180,135" stroke="%2306566d" stroke-width="1.8" fill="none" opacity="0.45" stroke-linecap="round" stroke-dasharray="4,2"/></svg>'),
-                /* Bottom-right corner ornament (mirrored) */
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><defs><radialGradient id="rg4"><stop offset="0%25" style="stop-color:%237a3013;stop-opacity:0.9"/><stop offset="60%25" style="stop-color:%2306566d;stop-opacity:0.5"/><stop offset="100%25" style="stop-color:%23003d52;stop-opacity:0.2"/></radialGradient><linearGradient id="lg4" x1="100%25" y1="100%25" x2="0%25" y2="0%25"><stop offset="0%25" style="stop-color:%237a3013;stop-opacity:0.85"/><stop offset="50%25" style="stop-color:%2306566d;stop-opacity:0.65"/><stop offset="100%25" style="stop-color:%23003d52;stop-opacity:0.45"/></linearGradient></defs><path d="M 300,300 Q 250,295 220,270 Q 190,245 170,210 Q 155,185 140,160 Q 125,135 100,120 Q 75,105 50,90 L 0,60 L 0,300 Z" fill="url(%23lg4)" opacity="0.5"/><path d="M 300,300 Q 265,285 245,260 Q 225,235 215,205 Q 205,175 205,145 Q 205,115 225,90 Q 245,65 270,45 L 300,30 Z" fill="url(%23lg4)" opacity="0.4"/><path d="M 280,270 Q 255,260 240,240 Q 225,220 220,195 Q 215,170 225,145 Q 235,120 250,100 Q 265,80 280,65" stroke="%237a3013" stroke-width="3" fill="none" opacity="0.6" stroke-linecap="round"/><path d="M 260,250 Q 245,242 235,225 Q 225,208 223,188 Q 221,168 230,150 Q 239,132 252,120" stroke="%2306566d" stroke-width="2.5" fill="none" opacity="0.55" stroke-linecap="round"/><circle cx="235" cy="225" r="12" fill="url(%23rg4)" opacity="0.7"/><circle cx="215" cy="195" r="9" fill="url(%23rg4)" opacity="0.65"/><circle cx="250" cy="150" r="10" fill="url(%23rg4)" opacity="0.6"/><path d="M 210,260 Q 190,250 175,230 Q 160,210 155,185" stroke="%237a3013" stroke-width="2" fill="none" opacity="0.5" stroke-linecap="round" stroke-dasharray="3,3"/><path d="M 200,180 Q 185,165 165,155 Q 145,145 120,135" stroke="%2306566d" stroke-width="1.8" fill="none" opacity="0.45" stroke-linecap="round" stroke-dasharray="4,2"/></svg>');
+                url('corner-ornament-tl.svg'),
+                url('corner-ornament-tr.svg'),
+                url('corner-ornament-bl.svg'),
+                url('corner-ornament-br.svg');
             background-position:
                 top left,
                 top right,
@@ -126,6 +143,8 @@
                 bottom right;
             background-size: 300px 300px;
             background-repeat: no-repeat;
+            /* Performance: contain property isolates painting */
+            contain: layout style paint;
         }
 
         /* Subtle Background Ambiance - Static */
@@ -150,7 +169,8 @@
             width: 300px;
             height: auto;
             margin-bottom: 40px;
-            filter: drop-shadow(0 0 10px rgba(6, 86, 109, 0.5));
+            /* Performance: Reduced drop-shadow for lighter GPU load */
+            filter: drop-shadow(0 0 8px rgba(6, 86, 109, 0.4));
         }
 
         /* Modern Social Grid Styles */
@@ -598,8 +618,9 @@
             transition: all 0.1s ease;
         }
         
-        /* Prefers-reduced-motion: Disable animations for accessibility */
+        /* Prefers-reduced-motion: Comprehensive accessibility support */
         @media (prefers-reduced-motion: reduce) {
+            /* Navigation */
             .nav-menu {
                 transition: none;
             }
@@ -613,7 +634,6 @@
                 transition: none;
             }
             
-            /* Still allow hover state changes, but instantly */
             .nav-link:hover {
                 transform: none;
             }
@@ -621,6 +641,46 @@
             .nav-link:hover .nav-artifact-icon,
             .fractal-icon:hover {
                 transform: none;
+            }
+            
+            /* Social buttons and CTAs */
+            .social-button,
+            .social-icon,
+            .cta-button,
+            .nft-button,
+            .compact-social-btn {
+                transition: none;
+                animation: none;
+            }
+            
+            .social-button:hover,
+            .cta-button:hover,
+            .nft-button:hover {
+                transform: none;
+            }
+            
+            /* Disable shimmer animation */
+            .cta-button::after,
+            .nft-button::after {
+                animation: none;
+            }
+            
+            /* Gallery items */
+            .gallery-item,
+            .gallery-item img {
+                transition: none;
+            }
+            
+            .gallery-item:hover {
+                transform: none;
+            }
+            
+            /* Fractal corner animations (static mode) */
+            /* SVG animations are paused via CSS */
+            @supports (animation-play-state: paused) {
+                * {
+                    animation-play-state: paused !important;
+                }
             }
         }
 
@@ -1299,8 +1359,8 @@
             z-index: 2;
             padding: 20px;
             text-align: center;
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
+            /* Performance: Replaced backdrop-filter with increased opacity */
+            background: rgba(6, 34, 46, 0.95);
             border-top: 1px solid var(--border-color);
             margin-top: 0;
         }
@@ -1782,8 +1842,8 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px);
+            /* Performance: Replaced backdrop-filter with increased opacity */
+            background: rgba(6, 34, 46, 0.97);
             border-top: 2px solid var(--border-color);
             box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
             z-index: 9999;
@@ -1911,8 +1971,8 @@
             bottom: 20px;
             right: 20px;
             padding: 12px 16px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
+            /* Performance: Replaced backdrop-filter with increased opacity */
+            background: rgba(6, 34, 46, 0.95);
             border: 2px solid var(--border-color);
             border-radius: 8px;
             color: var(--text-primary);
@@ -1946,8 +2006,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(6, 34, 46, 0.95);
-            backdrop-filter: blur(10px);
+            /* Performance: Replaced backdrop-filter with solid background */
+            background: rgba(6, 34, 46, 0.98);
             z-index: 10000;
             display: none;
             align-items: center;
@@ -1961,8 +2021,8 @@
         }
         
         .privacy-modal-content {
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px);
+            /* Performance: Replaced backdrop-filter with increased opacity */
+            background: rgba(6, 34, 46, 0.97);
             border: 2px solid var(--border-color);
             border-radius: 15px;
             max-width: 900px;
@@ -2563,10 +2623,14 @@
     <!-- Fixed background layer -->
     <div class="background-layer" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: url('images/BACKGROUNDSESSION21.PNG') center center / cover no-repeat; z-index: 0;"></div>
     
-    <!-- Border ornaments layer -->
+    <!-- Unified overlay system for cohesion with globe/fractal background -->
+    <div class="overlay-glow-center"></div>
+    <div class="overlay-vignette-edge"></div>
+    
+    <!-- Simplified border accents -->
     <div class="border-ornaments"></div>
     
-    <!-- Corner ornaments layer -->
+    <!-- Optimized corner ornaments (external SVGs for caching) -->
     <div class="corner-ornaments"></div>
     
     <!-- Navigation -->
@@ -3665,7 +3729,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(5px);
+            /* Performance: Removed backdrop-filter, using semi-transparent bg instead */
         }
 
         .medium-article::before {

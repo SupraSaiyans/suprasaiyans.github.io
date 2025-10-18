@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <defs>
+    <radialGradient id="rg-br">
+      <stop offset="0%" style="stop-color:#7a3013;stop-opacity:0.8"/>
+      <stop offset="60%" style="stop-color:#06566d;stop-opacity:0.4"/>
+      <stop offset="100%" style="stop-color:#003d52;stop-opacity:0.1"/>
+    </radialGradient>
+    <linearGradient id="lg-br" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#7a3013;stop-opacity:0.75"/>
+      <stop offset="50%" style="stop-color:#06566d;stop-opacity:0.55"/>
+      <stop offset="100%" style="stop-color:#003d52;stop-opacity:0.35"/>
+    </linearGradient>
+  </defs>
+  <!-- Bottom right design (mirrored) -->
+  <path d="M 300,300 Q 250,280 220,250 Q 190,220 180,180 Q 170,140 190,110 Q 210,80 240,60 Q 270,40 300,20" 
+        fill="url(#lg-br)" stroke="url(#lg-br)" stroke-width="2" opacity="0.8"/>
+  <path d="M 280,260 Q 255,245 240,220 Q 225,195 230,170 Q 235,145 250,130 Q 265,115 280,100" 
+        fill="none" stroke="#7a3013" stroke-width="2" opacity="0.5" stroke-linecap="round"/>
+  <circle cx="240" cy="220" r="12" fill="url(#rg-br)" opacity="0.6"/>
+  <circle cx="250" cy="150" r="10" fill="url(#rg-br)" opacity="0.5"/>
+</svg>

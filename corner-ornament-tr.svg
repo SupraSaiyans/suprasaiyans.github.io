@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+  <defs>
+    <radialGradient id="rg-tr">
+      <stop offset="0%" style="stop-color:#06566d;stop-opacity:0.8"/>
+      <stop offset="60%" style="stop-color:#7a3013;stop-opacity:0.4"/>
+      <stop offset="100%" style="stop-color:#003d52;stop-opacity:0.1"/>
+    </radialGradient>
+    <linearGradient id="lg-tr" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#06566d;stop-opacity:0.75"/>
+      <stop offset="50%" style="stop-color:#7a3013;stop-opacity:0.55"/>
+      <stop offset="100%" style="stop-color:#003d52;stop-opacity:0.35"/>
+    </linearGradient>
+  </defs>
+  <!-- Mirrored design -->
+  <path d="M 300,0 Q 250,20 220,50 Q 190,80 180,120 Q 170,160 190,190 Q 210,220 240,240 Q 270,260 300,280" 
+        fill="url(#lg-tr)" stroke="url(#lg-tr)" stroke-width="2" opacity="0.8"/>
+  <path d="M 280,40 Q 255,55 240,80 Q 225,105 230,130 Q 235,155 250,170 Q 265,185 280,200" 
+        fill="none" stroke="#06566d" stroke-width="2" opacity="0.5" stroke-linecap="round"/>
+  <circle cx="240" cy="80" r="12" fill="url(#rg-tr)" opacity="0.6"/>
+  <circle cx="250" cy="150" r="10" fill="url(#rg-tr)" opacity="0.5"/>
+</svg>

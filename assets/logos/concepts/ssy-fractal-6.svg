@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SSY Fractal Logo 6: Hexagonal Frame with Energy Hair Aura -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 130" width="130" height="130">
+  <defs>
+    <!-- Hexagon gradient -->
+    <linearGradient id="ssy6-hex" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#157389"/>
+      <stop offset="50%" stop-color="#115362"/>
+      <stop offset="100%" stop-color="#0C3747"/>
+    </linearGradient>
+    
+    <!-- Hair aura gradient -->
+    <linearGradient id="ssy6-aura" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E5B457"/>
+      <stop offset="50%" stop-color="#D66D0F"/>
+      <stop offset="100%" stop-color="#9A4A23"/>
+    </linearGradient>
+    
+    <!-- Text gradient -->
+    <linearGradient id="ssy6-text" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#82B29D"/>
+      <stop offset="50%" stop-color="#157389"/>
+      <stop offset="100%" stop-color="#115362"/>
+    </linearGradient>
+    
+    <!-- Energy gradient -->
+    <radialGradient id="ssy6-energy" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#E5B457" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#157389" stop-opacity="0.2"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Energy aura - fractal hair-like glow around hexagon -->
+  <g opacity="0.7">
+    <!-- Top emanations -->
+    <path fill="url(#ssy6-aura)" 
+          d="M 65,8 Q 64,15 65,22 Q 66,15 65,8 M 60,10 Q 60,17 62,24 M 70,10 Q 70,17 68,24"/>
+    <path fill="url(#ssy6-aura)" 
+          d="M 50,12 Q 51,19 53,26 M 80,12 Q 79,19 77,26"/>
+    
+    <!-- Upper side emanations -->
+    <path fill="url(#ssy6-aura)" 
+          d="M 95,25 Q 92,30 90,36 M 100,30 Q 97,35 95,40"/>
+    <path fill="url(#ssy6-aura)" 
+          d="M 35,25 Q 38,30 40,36 M 30,30 Q 33,35 35,40"/>
+    
+    <!-- Side emanations -->
+    <path fill="url(#ssy6-aura)" 
+          d="M 105,55 Q 100,58 96,62 M 108,62 Q 104,65 100,68"/>
+    <path fill="url(#ssy6-aura)" 
+          d="M 25,55 Q 30,58 34,62 M 22,62 Q 26,65 30,68"/>
+    
+    <!-- Lower side emanations -->
+    <path fill="url(#ssy6-aura)" 
+          d="M 100,85 Q 96,88 92,92 M 103,92 Q 99,95 95,98"/>
+    <path fill="url(#ssy6-aura)" 
+          d="M 30,85 Q 34,88 38,92 M 27,92 Q 31,95 35,98"/>
+    
+    <!-- Bottom emanations -->
+    <path fill="url(#ssy6-aura)" 
+          d="M 80,112 Q 78,105 76,98 M 50,112 Q 52,105 54,98"/>
+    <path fill="url(#ssy6-aura)" 
+          d="M 65,115 Q 64,108 65,101 Q 66,108 65,115"/>
+  </g>
+  
+  <!-- Background energy glow -->
+  <circle cx="65" cy="65" r="55" fill="url(#ssy6-energy)"/>
+  
+  <!-- Outer hexagon -->
+  <path fill="none" stroke="url(#ssy6-aura)" stroke-width="2.5" opacity="0.9"
+        d="M 65,15 L 95,33 L 95,87 L 65,105 L 35,87 L 35,33 Z"/>
+  
+  <!-- Inner hexagon -->
+  <path fill="none" stroke="url(#ssy6-hex)" stroke-width="2" opacity="0.8"
+        d="M 65,23 L 88,39 L 88,81 L 65,97 L 42,81 L 42,39 Z"/>
+  
+  <!-- Decorative inner frame -->
+  <path fill="none" stroke="url(#ssy6-hex)" stroke-width="1" opacity="0.5"
+        d="M 65,30 L 82,44 L 82,76 L 65,90 L 48,76 L 48,44 Z"/>
+  
+  <!-- SSY Letters - modern geometric style -->
+  <g fill="url(#ssy6-text)">
+    <!-- S -->
+    <path d="M 38,52 Q 44,49 50,52 L 50,56 Q 44,53 38,56 L 38,60 Q 44,57 50,60 L 50,67 Q 44,70 38,67 L 38,63 L 42,63 L 42,65 Q 45,64 48,65 L 48,61 Q 44,63 40,61 Q 38,60 38,57 L 38,52 Z"/>
+    
+    <!-- S (second) -->
+    <path d="M 56,52 Q 62,49 68,52 L 68,56 Q 62,53 56,56 L 56,60 Q 62,57 68,60 L 68,67 Q 62,70 56,67 L 56,63 L 60,63 L 60,65 Q 63,64 66,65 L 66,61 Q 62,63 58,61 Q 56,60 56,57 L 56,52 Z"/>
+    
+    <!-- Y -->
+    <path d="M 73,52 L 79,60 L 85,52 L 90,52 L 82,63 L 82,70 L 76,70 L 76,63 L 68,52 Z"/>
+  </g>
+  
+  <!-- Corner accent triangles (pointing energy) -->
+  <g opacity="0.7">
+    <path fill="#E5B457" d="M 65,15 L 68,22 L 62,22 Z"/>
+    <path fill="#82B29D" d="M 95,60 L 88,63 L 88,57 Z"/>
+    <path fill="#82B29D" d="M 35,60 L 42,63 L 42,57 Z"/>
+    <path fill="#D66D0F" d="M 65,105 L 68,98 L 62,98 Z"/>
+  </g>
+  
+  <!-- Energy connecting lines -->
+  <g fill="none" stroke="#82B29D" stroke-width="0.6" opacity="0.4">
+    <line x1="65" y1="30" x2="65" y2="90"/>
+    <line x1="48" y1="60" x2="82" y2="60"/>
+    <line x1="52" y1="47" x2="78" y2="73"/>
+    <line x1="78" y1="47" x2="52" y2="73"/>
+  </g>
+  
+  <!-- Central energy focus point -->
+  <circle cx="65" cy="60" r="3" fill="#E5B457" opacity="0.85"/>
+  
+  <!-- Energy particles scattered -->
+  <g opacity="0.8">
+    <circle cx="65" cy="12" r="2.5" fill="#E5B457"/>
+    <circle cx="98" cy="32" r="2" fill="#82B29D"/>
+    <circle cx="32" cy="32" r="2" fill="#82B29D"/>
+    <circle cx="105" cy="60" r="2" fill="#D66D0F"/>
+    <circle cx="25" cy="60" r="2" fill="#D66D0F"/>
+    <circle cx="98" cy="88" r="2" fill="#157389"/>
+    <circle cx="32" cy="88" r="2" fill="#157389"/>
+    <circle cx="65" cy="108" r="2.5" fill="#9A4A23"/>
+  </g>
+  
+  <!-- Monochrome variant (hidden by default) -->
+  <g class="logo-mono" fill="currentColor" style="display: none;">
+    <!-- Hexagon outline -->
+    <path d="M 65,15 L 95,33 L 95,87 L 65,105 L 35,87 L 35,33 Z" stroke="currentColor" stroke-width="2.5" fill="none"/>
+    <!-- Simplified aura -->
+    <path d="M 65,8 Q 64,15 65,22 M 95,25 Q 92,30 90,36 M 105,55 Q 100,58 96,62 M 100,85 Q 96,88 92,92 M 65,115 Q 64,108 65,101 M 30,85 Q 34,88 38,92 M 25,55 Q 30,58 34,62 M 35,25 Q 38,30 40,36" stroke="currentColor" stroke-width="1" fill="none" opacity="0.6"/>
+    <!-- SSY letters -->
+    <path d="M 38,52 Q 44,49 50,52 L 50,56 Q 44,53 38,56 L 38,60 Q 44,57 50,60 L 50,67 Q 44,70 38,67 L 38,63 L 42,63 L 42,65 Q 45,64 48,65 L 48,61 Q 44,63 40,61 Q 38,60 38,57 L 38,52 Z M 56,52 Q 62,49 68,52 L 68,56 Q 62,53 56,56 L 56,60 Q 62,57 68,60 L 68,67 Q 62,70 56,67 L 56,63 L 60,63 L 60,65 Q 63,64 66,65 L 66,61 Q 62,63 58,61 Q 56,60 56,57 L 56,52 Z M 73,52 L 79,60 L 85,52 L 90,52 L 82,63 L 82,70 L 76,70 L 76,63 L 68,52 Z"/>
+  </g>
+</svg>

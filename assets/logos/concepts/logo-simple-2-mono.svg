@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Logo Simple 2 - Monochrome Variant (uses currentColor) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <g fill="currentColor" class="logo-mono">
+    <!-- Outer decorative ring -->
+    <circle cx="60" cy="60" r="52" fill="none" stroke="currentColor" stroke-width="2"/>
+    
+    <!-- Inner ring -->
+    <circle cx="60" cy="60" r="45" fill="none" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+    
+    <!-- SSY Text -->
+    <text x="60" y="72" font-family="Arial, sans-serif" font-weight="bold" font-size="32" text-anchor="middle">SSY</text>
+    
+    <!-- Top accent arc -->
+    <path d="M 30,25 Q 60,15 90,25" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
+    
+    <!-- Bottom accent arc -->
+    <path d="M 30,95 Q 60,105 90,95" fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.7"/>
+  </g>
+</svg>

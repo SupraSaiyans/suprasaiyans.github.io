@@ -1,0 +1,269 @@
+<svg width="600" height="600" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- Multi-color gradient matching site palette -->
+        <linearGradient id="fractalFrameGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#06566d;stop-opacity:1">
+                <animate attributeName="stop-color" 
+                         values="#06566d;#7a3013;#06566d" 
+                         dur="8s" 
+                         repeatCount="indefinite"/>
+            </stop>
+            <stop offset="50%" style="stop-color:#003d52;stop-opacity:1">
+                <animate attributeName="stop-color" 
+                         values="#003d52;#e2aa42;#003d52" 
+                         dur="8s" 
+                         repeatCount="indefinite"/>
+            </stop>
+            <stop offset="100%" style="stop-color:#7a3013;stop-opacity:1">
+                <animate attributeName="stop-color" 
+                         values="#7a3013;#06566d;#7a3013" 
+                         dur="8s" 
+                         repeatCount="indefinite"/>
+            </stop>
+        </linearGradient>
+        
+        <linearGradient id="fractalFrameGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#e2aa42;stop-opacity:0.9"/>
+            <stop offset="50%" style="stop-color:#06566d;stop-opacity:0.9"/>
+            <stop offset="100%" style="stop-color:#7a3013;stop-opacity:0.9"/>
+        </linearGradient>
+        
+        <radialGradient id="fractalFrameGlow">
+            <stop offset="0%" style="stop-color:#e2aa42;stop-opacity:0.6"/>
+            <stop offset="50%" style="stop-color:#06566d;stop-opacity:0.3"/>
+            <stop offset="100%" style="stop-color:#003d52;stop-opacity:0"/>
+        </radialGradient>
+        
+        <!-- Lightweight glow filter -->
+        <filter id="frameGlow">
+            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+            <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+    
+    <!-- Organic curved frame composition -->
+    <g id="fractal-frame-main">
+        <!-- Outer flowing curve - top left arc -->
+        <path d="M 150,80 Q 80,80 50,150 Q 30,200 40,250" 
+              stroke="url(#fractalFrameGrad1)" 
+              stroke-width="4" 
+              fill="none" 
+              opacity="0.8"
+              filter="url(#frameGlow)">
+            <animate attributeName="opacity" 
+                     values="0.8;1;0.8" 
+                     dur="6s" 
+                     repeatCount="indefinite"/>
+        </path>
+        
+        <!-- Outer flowing curve - left side -->
+        <path d="M 40,250 Q 25,320 60,380 Q 90,430 150,450" 
+              stroke="url(#fractalFrameGrad1)" 
+              stroke-width="4" 
+              fill="none" 
+              opacity="0.8"
+              filter="url(#frameGlow)">
+            <animate attributeName="opacity" 
+                     values="0.8;1;0.8" 
+                     dur="6s" 
+                     begin="2s"
+                     repeatCount="indefinite"/>
+        </path>
+        
+        <!-- Outer flowing curve - bottom arc -->
+        <path d="M 150,450 Q 200,470 250,470 Q 350,470 400,450" 
+              stroke="url(#fractalFrameGrad1)" 
+              stroke-width="4" 
+              fill="none" 
+              opacity="0.8"
+              filter="url(#frameGlow)">
+            <animate attributeName="opacity" 
+                     values="0.8;1;0.8" 
+                     dur="6s" 
+                     begin="4s"
+                     repeatCount="indefinite"/>
+        </path>
+        
+        <!-- Outer flowing curve - right side -->
+        <path d="M 400,450 Q 460,430 490,380 Q 525,320 510,250" 
+              stroke="url(#fractalFrameGrad1)" 
+              stroke-width="4" 
+              fill="none" 
+              opacity="0.8"
+              filter="url(#frameGlow)">
+            <animate attributeName="opacity" 
+                     values="0.8;1;0.8" 
+                     dur="6s" 
+                     begin="1s"
+                     repeatCount="indefinite"/>
+        </path>
+        
+        <!-- Outer flowing curve - top right arc -->
+        <path d="M 510,250 Q 520,200 500,150 Q 470,80 400,80" 
+              stroke="url(#fractalFrameGrad1)" 
+              stroke-width="4" 
+              fill="none" 
+              opacity="0.8"
+              filter="url(#frameGlow)">
+            <animate attributeName="opacity" 
+                     values="0.8;1;0.8" 
+                     dur="6s" 
+                     begin="3s"
+                     repeatCount="indefinite"/>
+        </path>
+        
+        <!-- Outer flowing curve - top arc -->
+        <path d="M 400,80 Q 350,60 300,60 Q 250,60 200,70 Q 175,75 150,80" 
+              stroke="url(#fractalFrameGrad1)" 
+              stroke-width="4" 
+              fill="none" 
+              opacity="0.8"
+              filter="url(#frameGlow)">
+            <animate attributeName="opacity" 
+                     values="0.8;1;0.8" 
+                     dur="6s" 
+                     begin="5s"
+                     repeatCount="indefinite"/>
+        </path>
+        
+        <!-- Inner fractal decorative elements -->
+        <!-- Top ornament -->
+        <path d="M 300,90 L 290,110 Q 300,120 310,110 Z" 
+              fill="url(#fractalFrameGrad2)" 
+              opacity="0.85">
+            <animate attributeName="opacity" 
+                     values="0.85;1;0.85" 
+                     dur="3s" 
+                     repeatCount="indefinite"/>
+        </path>
+        
+        <!-- Left ornament -->
+        <path d="M 80,300 L 100,290 Q 110,300 100,310 Z" 
+              fill="url(#fractalFrameGrad2)" 
+              opacity="0.85">
+            <animate attributeName="opacity" 
+                     values="0.85;1;0.85" 
+                     dur="3s" 
+                     begin="1s"
+                     repeatCount="indefinite"/>
+        </path>
+        
+        <!-- Right ornament -->
+        <path d="M 470,300 L 450,290 Q 440,300 450,310 Z" 
+              fill="url(#fractalFrameGrad2)" 
+              opacity="0.85">
+            <animate attributeName="opacity" 
+                     values="0.85;1;0.85" 
+                     dur="3s" 
+                     begin="2s"
+                     repeatCount="indefinite"/>
+        </path>
+        
+        <!-- Bottom ornament -->
+        <path d="M 275,460 Q 275,475 285,480 L 300,485 L 315,480 Q 325,475 325,460" 
+              stroke="url(#fractalFrameGrad2)" 
+              stroke-width="2"
+              fill="none"
+              opacity="0.9">
+            <animate attributeName="opacity" 
+                     values="0.9;1;0.9" 
+                     dur="3s" 
+                     repeatCount="indefinite"/>
+        </path>
+        
+        <!-- Fractal accent curves connecting ornaments -->
+        <path d="M 300,90 Q 180,150 80,300" 
+              stroke="url(#fractalFrameGrad2)" 
+              stroke-width="1.5" 
+              fill="none" 
+              opacity="0.4"
+              stroke-dasharray="10,5">
+            <animate attributeName="stroke-dashoffset" 
+                     from="0" 
+                     to="15" 
+                     dur="2s" 
+                     repeatCount="indefinite"/>
+        </path>
+        
+        <path d="M 300,90 Q 420,150 470,300" 
+              stroke="url(#fractalFrameGrad2)" 
+              stroke-width="1.5" 
+              fill="none" 
+              opacity="0.4"
+              stroke-dasharray="10,5">
+            <animate attributeName="stroke-dashoffset" 
+                     from="0" 
+                     to="15" 
+                     dur="2s" 
+                     repeatCount="indefinite"/>
+        </path>
+        
+        <path d="M 80,300 Q 150,380 300,470" 
+              stroke="url(#fractalFrameGrad2)" 
+              stroke-width="1.5" 
+              fill="none" 
+              opacity="0.4"
+              stroke-dasharray="10,5">
+            <animate attributeName="stroke-dashoffset" 
+                     from="0" 
+                     to="15" 
+                     dur="2s" 
+                     repeatCount="indefinite"/>
+        </path>
+        
+        <path d="M 470,300 Q 400,380 300,470" 
+              stroke="url(#fractalFrameGrad2)" 
+              stroke-width="1.5" 
+              fill="none" 
+              opacity="0.4"
+              stroke-dasharray="10,5">
+            <animate attributeName="stroke-dashoffset" 
+                     from="0" 
+                     to="15" 
+                     dur="2s" 
+                     repeatCount="indefinite"/>
+        </path>
+        
+        <!-- Decorative fractal dots for detail -->
+        <circle cx="300" cy="90" r="3" fill="#e2aa42" opacity="0.9">
+            <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="80" cy="300" r="3" fill="#06566d" opacity="0.9">
+            <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="470" cy="300" r="3" fill="#06566d" opacity="0.9">
+            <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" begin="1s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="300" cy="470" r="3" fill="#7a3013" opacity="0.9">
+            <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" begin="1.5s" repeatCount="indefinite"/>
+        </circle>
+        
+        <!-- Additional small fractal crystal shapes for richness -->
+        <path d="M 150,140 L 155,150 L 150,160 L 145,150 Z" 
+              fill="url(#fractalFrameGrad2)" 
+              opacity="0.7">
+            <animate attributeName="opacity" values="0.7;0.9;0.7" dur="4s" repeatCount="indefinite"/>
+        </path>
+        
+        <path d="M 400,140 L 405,150 L 400,160 L 395,150 Z" 
+              fill="url(#fractalFrameGrad2)" 
+              opacity="0.7">
+            <animate attributeName="opacity" values="0.7;0.9;0.7" dur="4s" begin="1s" repeatCount="indefinite"/>
+        </path>
+        
+        <path d="M 130,380 L 135,390 L 130,400 L 125,390 Z" 
+              fill="url(#fractalFrameGrad2)" 
+              opacity="0.7">
+            <animate attributeName="opacity" values="0.7;0.9;0.7" dur="4s" begin="2s" repeatCount="indefinite"/>
+        </path>
+        
+        <path d="M 420,380 L 425,390 L 420,400 L 415,390 Z" 
+              fill="url(#fractalFrameGrad2)" 
+              opacity="0.7">
+            <animate attributeName="opacity" values="0.7;0.9;0.7" dur="4s" begin="3s" repeatCount="indefinite"/>
+        </path>
+    </g>
+</svg>

@@ -1446,28 +1446,39 @@
             }
         }
         
-        /* Spotlight title enhancements */
+        /* Spotlight title enhancements - Simplified and harmonious */
         .spotlight-fractal h1 {
-            text-shadow: 
-                0 0 25px rgba(6, 86, 109, 0.7),
-                0 0 50px rgba(122, 48, 19, 0.5),
-                0 5px 10px rgba(0, 0, 0, 0.4);
-            animation: spotlightTitleGlow 5s ease-in-out infinite;
+            /* Enhanced gradient to better complement the fractal corners */
+            background: linear-gradient(135deg, 
+                #e8b86d 0%,      /* Warm golden - complements warm accents */
+                #06566d 35%,     /* Teal light - matches fractal gradients */
+                #f4a460 65%,     /* Sandy brown/copper - harmonizes with warm tones */
+                #4a9fb8 100%);   /* Lighter teal - adds depth */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            /* Remove conflicting text-shadow from parent .section h1 */
+            text-shadow: none;
+            /* Simplified elegant fade effect - single subtle glow */
+            filter: drop-shadow(0 2px 8px rgba(232, 184, 109, 0.4))
+                    drop-shadow(0 0 12px rgba(6, 86, 109, 0.3));
         }
         
-        @keyframes spotlightTitleGlow {
-            0%, 100% {
-                text-shadow: 
-                    0 0 25px rgba(6, 86, 109, 0.7),
-                    0 0 50px rgba(122, 48, 19, 0.5),
-                    0 5px 10px rgba(0, 0, 0, 0.4);
-            }
-            50% {
-                text-shadow: 
-                    0 0 35px rgba(6, 86, 109, 0.9),
-                    0 0 70px rgba(122, 48, 19, 0.7),
-                    0 7px 14px rgba(0, 0, 0, 0.5);
-            }
+        .spotlight-fractal h2 {
+            /* Complementary gradient for subheader */
+            background: linear-gradient(135deg,
+                #c9a961 0%,      /* Muted gold - softer than h1 */
+                #4a9fb8 40%,     /* Lighter teal */
+                #d4a574 70%,     /* Warm tan */
+                #06566d 100%);   /* Deep teal - grounds the gradient */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            /* Remove conflicting text-shadow from parent .section h2 */
+            text-shadow: none;
+            /* Softer fade effect for hierarchy */
+            filter: drop-shadow(0 1px 6px rgba(201, 169, 97, 0.35))
+                    drop-shadow(0 0 10px rgba(74, 159, 184, 0.25));
         }
         
         /* Responsive adjustments for spotlight fractal corners */

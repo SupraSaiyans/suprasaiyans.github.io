@@ -1140,6 +1140,175 @@
 
         /* End of NFT Gallery Styles */
 
+        /* ==========================================
+           ALPHA GALLERY STYLES
+           ==========================================
+           Frameless, data-driven gallery with fractal accents.
+           Performance-optimized with CSS containment and 
+           GPU-accelerated animations (transform/opacity only).
+        */
+
+        /* Alpha Gallery Loading Indicator */
+        .alpha-loading {
+            text-align: center;
+            font-size: 1.2em;
+            color: var(--text-secondary);
+            padding: 40px;
+            grid-column: 1 / -1;
+        }
+
+        /* Alpha Gallery Item - Enhanced for frameless aesthetic */
+        #alpha-gallery-grid .gallery-item {
+            position: relative;
+            contain: layout style paint;
+            background: linear-gradient(135deg, 
+                rgba(17, 83, 98, 0.15) 0%, 
+                rgba(15, 32, 39, 0.85) 50%, 
+                rgba(12, 55, 71, 0.15) 100%);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            cursor: pointer;
+        }
+
+        #alpha-gallery-grid .gallery-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--border-color-glow);
+        }
+
+        /* Alpha Gallery - Mandelbrot-inspired fractal accent */
+        #alpha-gallery-grid .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                var(--accent-teal) 0%, 
+                transparent 30%, 
+                var(--accent-warm) 70%, 
+                var(--accent-gold) 100%);
+            opacity: 0;
+            z-index: -1;
+            border-radius: 8px;
+            transition: opacity 0.3s ease;
+        }
+
+        #alpha-gallery-grid .gallery-item:hover::before {
+            opacity: 0.3;
+        }
+
+        /* Alpha Gallery Image Styling */
+        #alpha-gallery-grid .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        #alpha-gallery-grid .gallery-item:hover img {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        /* Alpha Gallery Caption - Subtle overlay */
+        #alpha-gallery-grid .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, 
+                rgba(15, 32, 39, 0.95) 0%, 
+                rgba(15, 32, 39, 0.85) 60%, 
+                transparent 100%);
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        #alpha-gallery-grid .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        #alpha-gallery-grid .gallery-caption h4 {
+            margin: 0 0 8px 0;
+            font-size: 1.1em;
+            color: var(--text-gold);
+            font-family: 'Bebas Neue', sans-serif;
+        }
+
+        #alpha-gallery-grid .gallery-caption p {
+            margin: 0 0 12px 0;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        /* Alpha Gallery Actions - Inline buttons */
+        #alpha-gallery-grid .gallery-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        #alpha-gallery-grid .gallery-action {
+            flex: 1;
+            text-align: center;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            cursor: pointer;
+        }
+
+        #alpha-gallery-grid .gallery-action:hover {
+            transform: scale(1.05);
+        }
+
+        #alpha-gallery-grid .gallery-action.mint {
+            background: var(--gradient-cta-kastanje);
+        }
+
+        #alpha-gallery-grid .gallery-action.mint:hover {
+            background: var(--gradient-cta-kastanje-hover);
+        }
+
+        #alpha-gallery-grid .gallery-action.trade {
+            background: linear-gradient(135deg, 
+                var(--accent-teal) 0%, 
+                var(--accent-teal-light) 100%);
+        }
+
+        #alpha-gallery-grid .gallery-action.trade:hover {
+            background: linear-gradient(135deg, 
+                var(--accent-teal-light) 0%, 
+                var(--accent-teal-bright) 100%);
+        }
+
+        #alpha-gallery-grid .gallery-action a {
+            color: var(--text-primary);
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Responsive adjustments for Alpha Gallery */
+        @media (max-width: 768px) {
+            #alpha-gallery-grid .gallery-item {
+                margin-bottom: 20px;
+            }
+
+            #alpha-gallery-grid .gallery-caption {
+                transform: translateY(0);
+                position: relative;
+            }
+        }
+
+        /* End of Alpha Gallery Styles */
+
         /* Crystara link styling - old school purple */
         .crystara-link {
             color: #9932cc;
@@ -4710,6 +4879,88 @@
         </div>
     </section>
 
+    <!-- Alpha Gallery Section -->
+    <section id="alpha-gallery" class="section powerlevel-fractal">
+        <!-- Fractal corner accents -->
+        <div class="fractal-corner fractal-corner-tl">
+            <svg viewBox="0 0 300 300" class="fractal-svg">
+                <path d="M 0,0 C 0,0 30,30 60,40 C 90,50 100,80 110,110 C 120,140 100,160 80,180 C 60,200 40,220 20,240 C 0,260 0,280 0,300" 
+                      fill="none" stroke="url(#fractal-edge-3d)" stroke-width="3" opacity="0.7" filter="url(#fractal-depth-shadow)">
+                    <animate attributeName="stroke-dasharray" values="0,500;500,0;0,500" dur="12s" repeatCount="indefinite"/>
+                </path>
+                <path d="M 0,0 Q 50,20 80,50 Q 110,80 120,120 Q 130,160 110,190 Q 90,220 60,240 Q 30,260 0,280" 
+                      fill="url(#fractal-glow-3d)" stroke="url(#fractal-edge-3d)" stroke-width="2" opacity="0.85" filter="url(#fractal-inner-glow)">
+                    <animate attributeName="opacity" values="0.85;1;0.85" dur="6s" repeatCount="indefinite"/>
+                </path>
+                <circle cx="60" cy="80" r="15" fill="url(#fractal-glow-3d)" opacity="0.5" filter="url(#fractal-inner-glow)">
+                    <animate attributeName="r" values="15;18;15" dur="4s" repeatCount="indefinite"/>
+                </circle>
+            </svg>
+        </div>
+        
+        <div class="fractal-corner fractal-corner-tr">
+            <svg viewBox="0 0 300 300" class="fractal-svg">
+                <path d="M 300,0 C 300,0 270,30 240,40 C 210,50 200,80 190,110 C 180,140 200,160 220,180 C 240,200 260,220 280,240 C 300,260 300,280 300,300" 
+                      fill="none" stroke="url(#fractal-edge-3d)" stroke-width="3" opacity="0.7" filter="url(#fractal-depth-shadow)">
+                    <animate attributeName="stroke-dasharray" values="0,500;500,0;0,500" dur="12s" begin="1s" repeatCount="indefinite"/>
+                </path>
+                <path d="M 300,0 Q 250,20 220,50 Q 190,80 180,120 Q 170,160 190,190 Q 210,220 240,240 Q 270,260 300,280" 
+                      fill="url(#fractal-glow-3d)" stroke="url(#fractal-edge-3d)" stroke-width="2" opacity="0.85" filter="url(#fractal-inner-glow)">
+                    <animate attributeName="opacity" values="0.85;1;0.85" dur="6s" begin="1.5s" repeatCount="indefinite"/>
+                </path>
+                <circle cx="240" cy="80" r="15" fill="url(#fractal-glow-3d)" opacity="0.5" filter="url(#fractal-inner-glow)">
+                    <animate attributeName="r" values="15;18;15" dur="4s" begin="0.5s" repeatCount="indefinite"/>
+                </circle>
+            </svg>
+        </div>
+        
+        <div class="fractal-corner fractal-corner-bl">
+            <svg viewBox="0 0 300 300" class="fractal-svg">
+                <path d="M 0,300 C 0,300 30,270 60,260 C 90,250 100,220 110,190 C 120,160 100,140 80,120 C 60,100 40,80 20,60 C 0,40 0,20 0,0" 
+                      fill="none" stroke="url(#fractal-edge-3d)" stroke-width="3" opacity="0.7" filter="url(#fractal-depth-shadow)">
+                    <animate attributeName="stroke-dasharray" values="0,500;500,0;0,500" dur="12s" begin="2s" repeatCount="indefinite"/>
+                </path>
+                <path d="M 0,300 Q 50,280 80,250 Q 110,220 120,180 Q 130,140 110,110 Q 90,80 60,60 Q 30,40 0,20" 
+                      fill="url(#fractal-glow-3d)" stroke="url(#fractal-edge-3d)" stroke-width="2" opacity="0.85" filter="url(#fractal-inner-glow)">
+                    <animate attributeName="opacity" values="0.85;1;0.85" dur="6s" begin="2.5s" repeatCount="indefinite"/>
+                </path>
+                <circle cx="60" cy="220" r="15" fill="url(#fractal-glow-3d)" opacity="0.5" filter="url(#fractal-inner-glow)">
+                    <animate attributeName="r" values="15;18;15" dur="4s" begin="1s" repeatCount="indefinite"/>
+                </circle>
+            </svg>
+        </div>
+        
+        <div class="fractal-corner fractal-corner-br">
+            <svg viewBox="0 0 300 300" class="fractal-svg">
+                <path d="M 300,300 C 300,300 270,270 240,260 C 210,250 200,220 190,190 C 180,160 200,140 220,120 C 240,100 260,80 280,60 C 300,40 300,20 300,0" 
+                      fill="none" stroke="url(#fractal-edge-3d)" stroke-width="3" opacity="0.7" filter="url(#fractal-depth-shadow)">
+                    <animate attributeName="stroke-dasharray" values="0,500;500,0;0,500" dur="12s" begin="3s" repeatCount="indefinite"/>
+                </path>
+                <path d="M 300,300 Q 250,280 220,250 Q 190,220 180,180 Q 170,140 190,110 Q 210,80 240,60 Q 270,40 300,20" 
+                      fill="url(#fractal-glow-3d)" stroke="url(#fractal-edge-3d)" stroke-width="2" opacity="0.85" filter="url(#fractal-inner-glow)">
+                    <animate attributeName="opacity" values="0.85;1;0.85" dur="6s" begin="3.5s" repeatCount="indefinite"/>
+                </path>
+                <circle cx="240" cy="220" r="15" fill="url(#fractal-glow-3d)" opacity="0.5" filter="url(#fractal-inner-glow)">
+                    <animate attributeName="r" values="15;18;15" dur="4s" begin="1.5s" repeatCount="indefinite"/>
+                </circle>
+            </svg>
+        </div>
+        
+        <div class="section-content">
+            <h1>Alpha Gallery</h1>
+            <h2>Curated Fractal NFT Collections</h2>
+            <p style="font-size: 1.2em; line-height: 1.6; margin: 20px 0;">
+                Explore our exclusive Alpha collections featuring cutting-edge fractal art with Mandelbrot-inspired aesthetics.
+            </p>
+            
+            <!-- Gallery grid container - dynamically populated via JavaScript -->
+            <div id="alpha-gallery-grid" class="gallery-grid">
+                <!-- Loading indicator -->
+                <div class="alpha-loading">Loading Alpha Gallery...</div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer Foldout Section -->
     <footer class="footer-foldout">
         <div class="footer-content">
@@ -5192,6 +5443,144 @@
                 document.addEventListener('DOMContentLoaded', init);
             } else {
                 init();
+            }
+        })();
+    </script>
+
+    <script>
+        /**
+         * Alpha Gallery - Data-Driven NFT Collection Renderer
+         * Fetches gallery data from JSON file and renders items (newest first)
+         * Performance-optimized with will-change hints
+         */
+        (function() {
+            'use strict';
+
+            const GALLERY_DATA_URL = 'assets/data/alpha-gallery.json';
+            const GALLERY_CONTAINER_ID = 'alpha-gallery-grid';
+
+            /**
+             * Fetch and render the Alpha Gallery
+             */
+            async function loadAlphaGallery() {
+                const container = document.getElementById(GALLERY_CONTAINER_ID);
+                if (!container) {
+                    console.warn('Alpha Gallery container not found');
+                    return;
+                }
+
+                try {
+                    // Fetch gallery data
+                    const response = await fetch(GALLERY_DATA_URL);
+                    if (!response.ok) {
+                        throw new Error(`Failed to load gallery data: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+                    
+                    // Sort items by date (newest first)
+                    const sortedItems = data.items.sort((a, b) => {
+                        return new Date(b.dateAdded) - new Date(a.dateAdded);
+                    });
+
+                    // Clear loading indicator
+                    container.innerHTML = '';
+
+                    // Render each gallery item
+                    sortedItems.forEach(item => {
+                        const galleryItem = createGalleryItem(item);
+                        container.appendChild(galleryItem);
+                    });
+
+                    // Apply will-change optimization on hover
+                    setupHoverOptimizations();
+
+                } catch (error) {
+                    console.error('Error loading Alpha Gallery:', error);
+                    container.innerHTML = `
+                        <div class="alpha-loading" style="color: var(--accent-warm);">
+                            Unable to load Alpha Gallery. Please try again later.
+                        </div>
+                    `;
+                }
+            }
+
+            /**
+             * Create a gallery item DOM element from data
+             */
+            function createGalleryItem(item) {
+                const div = document.createElement('div');
+                div.className = 'gallery-item';
+                div.setAttribute('data-item-id', item.id);
+
+                div.innerHTML = `
+                    <img src="${escapeHtml(item.image)}" 
+                         loading="lazy" 
+                         alt="${escapeHtml(item.title)}">
+                    <div class="gallery-caption">
+                        <h4>${escapeHtml(item.title)}</h4>
+                        <p>${escapeHtml(item.description)}</p>
+                        <div class="gallery-actions">
+                            <div class="gallery-action mint">
+                                <a href="${escapeHtml(item.mintUrl)}" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer">Mint</a>
+                            </div>
+                            <div class="gallery-action trade">
+                                <a href="${escapeHtml(item.tradeUrl)}" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer">Trade</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                return div;
+            }
+
+            /**
+             * Setup hover optimizations with will-change hints
+             * Apply will-change before animation, remove after
+             */
+            function setupHoverOptimizations() {
+                const galleryItems = document.querySelectorAll('#alpha-gallery-grid .gallery-item');
+                
+                galleryItems.forEach(item => {
+                    item.addEventListener('mouseenter', function() {
+                        this.style.willChange = 'transform, opacity';
+                        const img = this.querySelector('img');
+                        if (img) {
+                            img.style.willChange = 'transform, opacity';
+                        }
+                    }, { passive: true });
+
+                    item.addEventListener('mouseleave', function() {
+                        // Remove will-change after animation completes
+                        setTimeout(() => {
+                            this.style.willChange = 'auto';
+                            const img = this.querySelector('img');
+                            if (img) {
+                                img.style.willChange = 'auto';
+                            }
+                        }, 300);
+                    }, { passive: true });
+                });
+            }
+
+            /**
+             * Basic XSS prevention - escape HTML characters
+             */
+            function escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+
+            // Initialize when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', loadAlphaGallery);
+            } else {
+                loadAlphaGallery();
             }
         })();
     </script>

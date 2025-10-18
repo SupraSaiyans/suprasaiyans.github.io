@@ -1,0 +1,31 @@
+{
+  "items": [
+    {
+      "id": "alpha-001",
+      "title": "Alpha Genesis",
+      "description": "The first stroke of creation in the Alpha Gallery",
+      "image": "images/RelicofEssenceCollectionImage.png",
+      "dateAdded": "2025-01-15",
+      "mintUrl": "https://crystara.trade/marketplace/alpha-genesis",
+      "tradeUrl": "https://crystara.trade/trade/alpha-genesis"
+    },
+    {
+      "id": "alpha-002",
+      "title": "Fractal Awakening",
+      "description": "Where chaos meets order in perfect harmony",
+      "image": "images/RISEOFTHESUPIUMCOLLECTIONIMAGE.PNG",
+      "dateAdded": "2025-01-20",
+      "mintUrl": "https://crystara.trade/marketplace/fractal-awakening",
+      "tradeUrl": "https://crystara.trade/trade/fractal-awakening"
+    },
+    {
+      "id": "alpha-003",
+      "title": "Mandelbrot Dreams",
+      "description": "Infinite complexity in a single frame",
+      "image": "images/SUPRAGONSUPRACORNCOLLECTIONIMAGE.PNG",
+      "dateAdded": "2025-01-25",
+      "mintUrl": "https://crystara.trade/marketplace/mandelbrot-dreams",
+      "tradeUrl": "https://crystara.trade/trade/mandelbrot-dreams"
+    }
+  ]
+}

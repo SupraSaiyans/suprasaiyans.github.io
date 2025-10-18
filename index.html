@@ -73,6 +73,15 @@
             --gradient-cta-kastanje: linear-gradient(135deg, var(--btn-kastanje-dark) 0%, var(--btn-kastanje-medium) 50%, var(--btn-kastanje-light) 100%);
             --gradient-cta-kastanje-hover: linear-gradient(135deg, var(--btn-kastanje-light) 0%, var(--btn-kastanje-medium) 50%, var(--btn-kastanje-dark) 100%);
             
+            /* Lao Shifu Logo Frame - Fractal curved frame theming */
+            --logo-frame-color: #06566d;
+            --logo-frame-accent: #e2aa42;
+            --logo-frame-stroke: 4px;
+            --logo-frame-opacity: 0.9;
+            --logo-halo-opacity: 0.15;
+            --logo-halo-size: 400px;
+            --logo-halo-blur: 80px;
+            
             /* Shadow system with fractal glow */
             --shadow-sm: 0 2px 8px rgba(21, 115, 137, 0.15);
             --shadow-md: 0 4px 16px rgba(21, 115, 137, 0.25);
@@ -2097,23 +2106,29 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            max-width: 600px;
-            padding: 40px 40px;
+            max-width: 650px;
+            padding: 60px 40px;
             box-sizing: border-box;
+            contain: layout style paint;
         }
         
+        /* Fractal curved frame */
         .laoshi-frame {
             position: absolute;
-            width: 500px;
-            height: 500px;
+            width: 600px;
+            height: 600px;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 1;
-            animation: frameRotate 60s linear infinite;
+            opacity: var(--logo-frame-opacity);
+            color: var(--logo-frame-color);
+            pointer-events: none;
+            will-change: transform;
+            animation: frameRotateSlow 80s linear infinite;
         }
         
-        @keyframes frameRotate {
+        @keyframes frameRotateSlow {
             from {
                 transform: translate(-50%, -50%) rotate(0deg);
             }
@@ -2122,25 +2137,90 @@
             }
         }
         
+        /* Performance-safe halo behind logo */
+        .laoshi-halo {
+            position: absolute;
+            width: var(--logo-halo-size);
+            height: var(--logo-halo-size);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            background: radial-gradient(
+                circle,
+                rgba(226, 170, 66, var(--logo-halo-opacity)) 0%,
+                rgba(6, 86, 109, calc(var(--logo-halo-opacity) * 0.7)) 40%,
+                transparent 70%
+            );
+            filter: blur(var(--logo-halo-blur));
+            opacity: 0.6;
+            pointer-events: none;
+            animation: haloGlow 8s ease-in-out infinite;
+        }
+        
+        @keyframes haloGlow {
+            0%, 100% {
+                opacity: 0.6;
+                transform: translate(-50%, -50%) scale(1);
+            }
+            50% {
+                opacity: 0.85;
+                transform: translate(-50%, -50%) scale(1.1);
+            }
+        }
+        
+        /* Logo link wrapper for better accessibility */
+        .laoshi-logo-link {
+            position: relative;
+            z-index: 2;
+            display: inline-block;
+            transition: transform 0.3s ease;
+            will-change: transform;
+            border-radius: 8px;
+            outline-offset: 8px;
+        }
+        
+        .laoshi-logo-link:hover {
+            transform: scale(1.02);
+        }
+        
+        .laoshi-logo-link:focus {
+            outline: 3px solid var(--logo-frame-accent);
+        }
+        
+        /* Logo image with optimized effects */
         .laoshi-logo {
             position: relative;
             z-index: 2;
-            width: 350px;
+            width: 380px;
             height: auto;
             display: block;
-            margin-left: auto;
-            margin-right: auto;
-            filter: drop-shadow(0 0 30px rgba(6, 86, 109, 0.8))
-                    drop-shadow(0 0 60px rgba(122, 48, 19, 0.6));
+            filter: drop-shadow(0 0 30px rgba(6, 86, 109, 0.7))
+                    drop-shadow(0 0 50px rgba(226, 170, 66, 0.4));
             animation: logoFloat 6s ease-in-out infinite;
+            will-change: transform;
         }
         
         @keyframes logoFloat {
             0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+        
+        /* Hover state with performance-safe parallax */
+        .laoshi-logo-link:hover .laoshi-logo {
+            animation: logoHover 4s ease-in-out infinite;
+        }
+        
+        @keyframes logoHover {
+            0%, 100% {
                 transform: translateY(0px) scale(1);
             }
             50% {
-                transform: translateY(-20px) scale(1.05);
+                transform: translateY(-20px) scale(1.03);
             }
         }
         
@@ -2195,12 +2275,17 @@
         /* Mobile responsive for LaoShi section */
         @media (max-width: 768px) {
             .laoshi-frame {
+                width: 400px;
+                height: 400px;
+            }
+            
+            .laoshi-halo {
                 width: 300px;
                 height: 300px;
             }
             
             .laoshi-logo {
-                width: 220px;
+                width: 260px;
             }
             
             .laoshi-title {
@@ -2209,19 +2294,24 @@
             }
             
             .laoshi-centerpiece {
-                padding: 20px 10px;
+                padding: 40px 20px;
                 max-width: 100%;
             }
         }
         
         @media (max-width: 480px) {
             .laoshi-frame {
+                width: 320px;
+                height: 320px;
+            }
+            
+            .laoshi-halo {
                 width: 250px;
                 height: 250px;
             }
             
             .laoshi-logo {
-                width: 180px;
+                width: 200px;
             }
             
             .laoshi-title {
@@ -2233,16 +2323,41 @@
         
         @media (max-width: 375px) {
             .laoshi-frame {
+                width: 280px;
+                height: 280px;
+            }
+            
+            .laoshi-halo {
                 width: 220px;
                 height: 220px;
             }
             
             .laoshi-logo {
-                width: 160px;
+                width: 180px;
             }
             
             .laoshi-title {
                 font-size: 1.6em;
+            }
+        }
+        
+        /* Respect user preference for reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .laoshi-frame {
+                animation: none;
+            }
+            
+            .laoshi-halo {
+                animation: none;
+            }
+            
+            .laoshi-logo {
+                animation: none;
+            }
+            
+            .laoshi-logo-link:hover .laoshi-logo {
+                animation: none;
+                transform: none;
             }
         }
         
@@ -3250,58 +3365,18 @@
             
             <!-- Central artistic composition -->
             <div class="laoshi-centerpiece">
-                <!-- Decorative SVG frame around logo -->
-                <svg class="laoshi-frame" viewBox="0 0 400 400">
-                    <defs>
-                        <linearGradient id="frame-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#06566d;stop-opacity:1" />
-                            <stop offset="50%" style="stop-color:#7a3013;stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:#003d52;stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    
-                    <!-- Outer decorative ring -->
-                    <circle cx="200" cy="200" r="190" 
-                            stroke="url(#frame-grad)" 
-                            stroke-width="2" 
-                            fill="none" 
-                            opacity="0.6">
-                        <animate attributeName="stroke-dasharray" 
-                                 dur="30s" 
-                                 repeatCount="indefinite"
-                                 values="20,10;10,20;20,10"/>
-                    </circle>
-                    
-                    <!-- Curved frame elements -->
-                    <path d="M 200,20 A 180,180 0 0,1 380,200" 
-                          stroke="url(#frame-grad)" 
-                          stroke-width="3" 
-                          fill="none" 
-                          opacity="0.7"
-                          filter="url(#glow-filter)">
-                        <animate attributeName="opacity" 
-                                 dur="5s" 
-                                 repeatCount="indefinite"
-                                 values="0.7;1;0.7"/>
-                    </path>
-                    
-                    <path d="M 200,380 A 180,180 0 0,1 20,200" 
-                          stroke="url(#frame-grad)" 
-                          stroke-width="3" 
-                          fill="none" 
-                          opacity="0.7"
-                          filter="url(#glow-filter)">
-                        <animate attributeName="opacity" 
-                                 dur="5s" 
-                                 repeatCount="indefinite"
-                                 begin="2.5s"
-                                 values="0.7;1;0.7"/>
-                    </path>
-                </svg>
+                <!-- Fractal curved frame around logo -->
+                <img src="laoshifu-frame-fractal.svg" alt="" class="laoshi-frame" aria-hidden="true" loading="lazy">
+                
+                <!-- Subtle halo layer behind logo -->
+                <div class="laoshi-halo"></div>
                 
                 <!-- SupraSaiyans Logo as centerpiece -->
-                <a href="https://www.pumpit.pro/token/0x3f4047f95a120d8b99c8897be17f481a6ff9705ce829c8c98579e9016854aad::PRESUPSAI::PRESUPSAI" target="_blank" rel="noopener noreferrer">
-                    <img src="logo.png" alt="Lǎo Shīfu - SupraSaiyans" class="laoshi-logo" width="640" height="640" decoding="async">
+                <a href="https://www.pumpit.pro/token/0x3f4047f95a120d8b99c8897be17f481a6ff9705ce829c8c98579e9016854aad::PRESUPSAI::PRESUPSAI" target="_blank" rel="noopener noreferrer" class="laoshi-logo-link">
+                    <picture>
+                        <source srcset="logo.webp" type="image/webp">
+                        <img src="logo.png" alt="Lǎo Shīfu - SupraSaiyans" class="laoshi-logo" width="640" height="640" decoding="async" loading="eager">
+                    </picture>
                 </a>
                 
                 <!-- Title text -->

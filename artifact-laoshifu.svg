@@ -1,0 +1,64 @@
+<svg width="60" height="80" viewBox="0 0 60 80" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- Gradient for wisdom/master theme - golden/warm tones -->
+        <linearGradient id="laoshifuGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#e2aa42;stop-opacity:1">
+                <animate attributeName="stop-color" 
+                         values="#e2aa42;#f4c842;#e2aa42" 
+                         dur="5s" 
+                         repeatCount="indefinite"/>
+            </stop>
+            <stop offset="50%" style="stop-color:#d4971e;stop-opacity:1">
+                <animate attributeName="stop-color" 
+                         values="#d4971e;#e2aa42;#d4971e" 
+                         dur="5s" 
+                         repeatCount="indefinite"/>
+            </stop>
+            <stop offset="100%" style="stop-color:#b8860b;stop-opacity:1">
+                <animate attributeName="stop-color" 
+                         values="#b8860b;#d4971e;#b8860b" 
+                         dur="5s" 
+                         repeatCount="indefinite"/>
+            </stop>
+        </linearGradient>
+        
+        <radialGradient id="laoshifuGlow">
+            <stop offset="0%" style="stop-color:#ffd700;stop-opacity:0.8"/>
+            <stop offset="100%" style="stop-color:#e2aa42;stop-opacity:0.3"/>
+        </radialGradient>
+        
+        <filter id="laoshifuGlow">
+            <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+            <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+    
+    <!-- Ancient scroll/wisdom design - vertical with ornate top -->
+    <g filter="url(#laoshifuGlow)">
+        <!-- Top ornamental crown -->
+        <circle cx="30" cy="10" r="6" fill="url(#laoshifuGlow)" stroke="#e2aa42" stroke-width="1" opacity="0.95">
+            <animate attributeName="r" values="6;7;6" dur="3s" repeatCount="indefinite"/>
+        </circle>
+        
+        <!-- Scroll body -->
+        <rect x="22" y="15" width="16" height="45" rx="2" fill="url(#laoshifuGrad1)" stroke="#d4971e" stroke-width="1" opacity="0.9"/>
+        
+        <!-- Decorative bands -->
+        <line x1="22" y1="25" x2="38" y2="25" stroke="#b8860b" stroke-width="1.5" opacity="0.8"/>
+        <line x1="22" y1="35" x2="38" y2="35" stroke="#b8860b" stroke-width="1.5" opacity="0.8"/>
+        <line x1="22" y1="50" x2="38" y2="50" stroke="#b8860b" stroke-width="1.5" opacity="0.8"/>
+        
+        <!-- Central wisdom symbol -->
+        <path d="M 30,28 L 33,32 L 30,36 L 27,32 Z" fill="#ffd700" opacity="0.9">
+            <animate attributeName="opacity" values="0.9;1;0.9" dur="2s" repeatCount="indefinite"/>
+        </path>
+        
+        <!-- Lower ornamental point -->
+        <path d="M 30,60 L 35,65 L 30,75 L 25,65 Z" fill="url(#laoshifuGrad1)" stroke="#d4971e" stroke-width="0.8" opacity="0.95">
+            <animate attributeName="opacity" values="0.95;1;0.95" dur="2.5s" repeatCount="indefinite"/>
+        </path>
+    </g>
+</svg>

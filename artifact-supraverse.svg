@@ -1,0 +1,86 @@
+<svg width="60" height="80" viewBox="0 0 60 80" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- Gradient for SupraVerse theme - cosmic/mystical -->
+        <radialGradient id="verseGrad1">
+            <stop offset="0%" style="stop-color:#00f0ff;stop-opacity:1">
+                <animate attributeName="stop-color" 
+                         values="#00f0ff;#0080ff;#00f0ff" 
+                         dur="5s" 
+                         repeatCount="indefinite"/>
+            </stop>
+            <stop offset="50%" style="stop-color:#0047ab;stop-opacity:1"/>
+            <stop offset="100%" style="stop-color:#000080;stop-opacity:0.9"/>
+        </radialGradient>
+        
+        <linearGradient id="verseGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#4169e1;stop-opacity:1"/>
+            <stop offset="50%" style="stop-color:#1e90ff;stop-opacity:1">
+                <animate attributeName="stop-color" 
+                         values="#1e90ff;#00bfff;#1e90ff" 
+                         dur="4s" 
+                         repeatCount="indefinite"/>
+            </stop>
+            <stop offset="100%" style="stop-color:#00008b;stop-opacity:1"/>
+        </linearGradient>
+        
+        <filter id="verseGlow">
+            <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+            <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+    
+    <!-- Cosmic portal/universe design -->
+    <g filter="url(#verseGlow)">
+        <!-- Central portal sphere -->
+        <circle cx="30" cy="35" r="12" fill="url(#verseGrad1)" stroke="#00f0ff" stroke-width="1" opacity="0.95">
+            <animate attributeName="r" values="12;14;12" dur="4s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.95;1;0.95" dur="4s" repeatCount="indefinite"/>
+        </circle>
+        
+        <!-- Inner vortex rings -->
+        <circle cx="30" cy="35" r="8" fill="none" stroke="#00bfff" stroke-width="1" opacity="0.7">
+            <animate attributeName="r" values="8;10;8" dur="3s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="0.7;0.9;0.7" dur="3s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="30" cy="35" r="5" fill="none" stroke="#4169e1" stroke-width="0.8" opacity="0.8">
+            <animate attributeName="r" values="5;6;5" dur="2s" repeatCount="indefinite"/>
+        </circle>
+        
+        <!-- Orbiting elements -->
+        <circle cx="30" cy="20" r="2.5" fill="#00f0ff" opacity="0.9">
+            <animateTransform attributeName="transform" type="rotate" 
+                             from="0 30 35" to="360 30 35" dur="6s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="45" cy="35" r="2" fill="#1e90ff" opacity="0.8">
+            <animateTransform attributeName="transform" type="rotate" 
+                             from="0 30 35" to="360 30 35" dur="8s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="30" cy="50" r="2.5" fill="#4169e1" opacity="0.85">
+            <animateTransform attributeName="transform" type="rotate" 
+                             from="0 30 35" to="360 30 35" dur="7s" repeatCount="indefinite"/>
+        </circle>
+        
+        <!-- Top cosmic crown -->
+        <path d="M 30,5 L 35,12 L 30,18 L 25,12 Z" 
+              fill="url(#verseGrad2)" stroke="#00f0ff" stroke-width="0.8" opacity="0.9">
+            <animate attributeName="opacity" values="0.9;1;0.9" dur="3s" repeatCount="indefinite"/>
+        </path>
+        
+        <!-- Bottom cosmic anchor -->
+        <path d="M 30,52 L 36,60 L 30,70 L 24,60 Z" 
+              fill="url(#verseGrad2)" stroke="#00f0ff" stroke-width="0.8" opacity="0.9">
+            <animate attributeName="opacity" values="0.9;1;0.9" dur="3s" repeatCount="indefinite"/>
+        </path>
+        
+        <!-- Energy wisps -->
+        <path d="M 18,35 Q 20,30 22,35 T 26,35" fill="none" stroke="#00bfff" stroke-width="0.5" opacity="0.6">
+            <animate attributeName="opacity" values="0.6;0.9;0.6" dur="2s" repeatCount="indefinite"/>
+        </path>
+        <path d="M 42,35 Q 40,30 38,35 T 34,35" fill="none" stroke="#00bfff" stroke-width="0.5" opacity="0.6">
+            <animate attributeName="opacity" values="0.6;0.9;0.6" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+        </path>
+    </g>
+</svg>

@@ -455,21 +455,57 @@
         .nav-link {
             white-space: nowrap;
             flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px;
+            border-radius: 50%;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(6, 86, 109, 0.15);
+            border: 1px solid rgba(6, 86, 109, 0.3);
         }
         
-        .fractal-icon {
-            height: 75px;
+        .nav-link:hover {
+            background: rgba(6, 86, 109, 0.25);
+            border-color: rgba(6, 86, 109, 0.5);
+            transform: translateY(-3px) scale(1.08);
+            box-shadow: 
+                0 8px 25px rgba(6, 86, 109, 0.35),
+                0 0 25px rgba(6, 86, 109, 0.25);
+        }
+        
+        /* Artifact icons for nav links */
+        .nav-artifact-icon {
+            height: 60px;
             width: auto;
-            filter: drop-shadow(0 0 8px rgba(6, 86, 109, 0.6)) 
-                    drop-shadow(0 0 15px rgba(122, 48, 19, 0.4));
+            filter: drop-shadow(0 0 6px rgba(6, 86, 109, 0.5)) 
+                    drop-shadow(0 0 12px rgba(122, 48, 19, 0.35));
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             opacity: 0.95;
         }
         
+        .nav-link:hover .nav-artifact-icon {
+            filter: drop-shadow(0 0 10px rgba(6, 86, 109, 0.8)) 
+                    drop-shadow(0 0 18px rgba(122, 48, 19, 0.6));
+            opacity: 1;
+        }
+        
+        /* Center fractal artifact - larger and more prominent */
+        .fractal-icon {
+            height: 80px;
+            width: auto;
+            filter: drop-shadow(0 0 10px rgba(6, 86, 109, 0.7)) 
+                    drop-shadow(0 0 18px rgba(122, 48, 19, 0.5))
+                    drop-shadow(0 0 25px rgba(6, 86, 109, 0.4));
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0.98;
+        }
+        
         .fractal-icon:hover {
-            filter: drop-shadow(0 0 12px rgba(6, 86, 109, 0.8)) 
-                    drop-shadow(0 0 20px rgba(122, 48, 19, 0.6));
-            transform: translateY(-2px) scale(1.05);
+            filter: drop-shadow(0 0 15px rgba(6, 86, 109, 0.9)) 
+                    drop-shadow(0 0 25px rgba(122, 48, 19, 0.7))
+                    drop-shadow(0 0 35px rgba(6, 86, 109, 0.6));
+            transform: translateY(-3px) scale(1.08);
             opacity: 1;
         }
 
@@ -478,82 +514,6 @@
             transform: translateX(calc(-50% + 50px)) translateY(-100px);
             opacity: 0;
             pointer-events: none;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            padding: 10px 18px;
-            border-radius: 18px;
-            border: 1px solid transparent;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            font-size: 16px;
-            font-weight: 500;
-            font-family: 'Bebas Neue', 'tan-headline', sans-serif;
-            backdrop-filter: blur(10px);
-            white-space: nowrap;
-            min-width: fit-content;
-            flex-shrink: 0;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 
-                0 4px 15px rgba(6, 86, 109, 0.14),
-                inset 0 1px 0 rgba(255, 255, 255, 0.07);
-            /* Gradient text color */
-            background: linear-gradient(135deg, #e2aa42, #2a3e40);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        /* Button background using ::before pseudo-element */
-        .nav-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(6, 86, 109, 0.21);
-            border-radius: 18px;
-            z-index: -2;
-            transition: background 0.4s ease;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(
-                45deg,
-                var(--accent-teal-light),
-                var(--accent-cyan),
-                var(--accent-teal)
-            );
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            border-radius: 18px;
-            z-index: -1;
-        }
-
-        .nav-link:hover {
-            transform: translateY(-3px) scale(1.05);
-            border-color: transparent;
-            box-shadow: 
-                0 8px 25px rgba(6, 86, 109, 0.28),
-                0 0 20px rgba(6, 86, 109, 0.21),
-                inset 0 1px 0 rgba(255, 255, 255, 0.14);
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.21);
-        }
-
-        .nav-link:hover::before {
-            background: rgba(6, 86, 109, 0.35);
-        }
-
-        .nav-link:hover::after {
-            opacity: 0.105;
         }
 
         .nav-link:active {
@@ -972,34 +932,32 @@
 
         /* Medium screens - adjust for centered navigation */
         @media (max-width: 1024px) and (min-width: 769px) {
-            .nav-link {
-                padding: 8px 14px;
-                font-size: 15px;
+            .nav-artifact-icon {
+                height: 50px;
             }
             
             .fractal-icon {
-                height: 60px;
+                height: 65px;
             }
             
             .nav-menu {
-                column-gap: 12px;
+                column-gap: 10px;
             }
             
             .nav-fractal-artifact {
-                margin-left: 16px;
-                margin-right: 16px;
+                margin-left: 14px;
+                margin-right: 14px;
             }
         }
 
         /* Large screens - ensure navigation doesn't get too spread out */
         @media (min-width: 1400px) {
-            .nav-link {
-                padding: 12px 20px;
-                font-size: 17px;
+            .nav-artifact-icon {
+                height: 70px;
             }
             
             .fractal-icon {
-                height: 85px;
+                height: 90px;
             }
             
             .nav-menu {
@@ -1007,8 +965,8 @@
             }
             
             .nav-fractal-artifact {
-                margin-left: 24px;
-                margin-right: 24px;
+                margin-left: 26px;
+                margin-right: 26px;
             }
         }
 
@@ -2498,15 +2456,27 @@
 <body>
     <!-- Navigation -->
     <nav class="nav-menu">
-        <a href="#home" class="nav-link">Lǎo Shīfu</a>
-        <a href="#spotlight" class="nav-link">Spotlight</a>
-        <a href="#nft-gallery" class="nav-link">NFT Gallery</a>
+        <a href="#home" class="nav-link" title="Lǎo Shīfu" aria-label="Navigate to Lǎo Shīfu section">
+            <img src="artifact-laoshifu.svg" alt="Lǎo Shīfu Artifact" class="nav-artifact-icon">
+        </a>
+        <a href="#spotlight" class="nav-link" title="Spotlight" aria-label="Navigate to Spotlight section">
+            <img src="artifact-spotlight.svg" alt="Spotlight Artifact" class="nav-artifact-icon">
+        </a>
+        <a href="#nft-gallery" class="nav-link" title="NFT Gallery" aria-label="Navigate to NFT Gallery section">
+            <img src="artifact-nftgallery.svg" alt="NFT Gallery Artifact" class="nav-artifact-icon">
+        </a>
         <div class="nav-fractal-artifact">
             <img src="fractal-artifact.svg" alt="Fractal Artifact" class="fractal-icon">
         </div>
-        <a href="#lore" class="nav-link">SupraVerse</a>
-        <a href="#powerlevel" class="nav-link">Powerlevel</a>
-        <a href="#saiyans-9000" class="nav-link">Over 9000 Saiyans</a>
+        <a href="#lore" class="nav-link" title="SupraVerse" aria-label="Navigate to SupraVerse section">
+            <img src="artifact-supraverse.svg" alt="SupraVerse Artifact" class="nav-artifact-icon">
+        </a>
+        <a href="#powerlevel" class="nav-link" title="Powerlevel" aria-label="Navigate to Powerlevel section">
+            <img src="artifact-powerlevel.svg" alt="Powerlevel Artifact" class="nav-artifact-icon">
+        </a>
+        <a href="#saiyans-9000" class="nav-link" title="Over 9000 Saiyans" aria-label="Navigate to Over 9000 Saiyans section">
+            <img src="artifact-saiyans9000.svg" alt="Over 9000 Saiyans Artifact" class="nav-artifact-icon">
+        </a>
     </nav>
 
     <!-- LaoShi Art Section -->

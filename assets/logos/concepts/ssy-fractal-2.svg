@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SSY Fractal Logo 2: Circular Emblem with Hair Corona -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" width="140" height="140">
+  <defs>
+    <!-- Background gradient -->
+    <radialGradient id="ssy2-bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#115362" stop-opacity="0.4"/>
+      <stop offset="70%" stop-color="#0C3747" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#0F2027" stop-opacity="0.9"/>
+    </radialGradient>
+    
+    <!-- Text gradient -->
+    <linearGradient id="ssy2-text" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#82B29D"/>
+      <stop offset="50%" stop-color="#157389"/>
+      <stop offset="100%" stop-color="#115362"/>
+    </linearGradient>
+    
+    <!-- Hair corona gradient -->
+    <linearGradient id="ssy2-hair" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E5B457"/>
+      <stop offset="50%" stop-color="#D66D0F"/>
+      <stop offset="100%" stop-color="#9A4A23"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="70" cy="70" r="68" fill="url(#ssy2-bg)"/>
+  
+  <!-- Fractal hair corona - radiating spikes around the circle -->
+  <g opacity="0.8">
+    <!-- Top spike -->
+    <path fill="url(#ssy2-hair)" 
+          d="M 70,5 Q 68,15 70,25 Q 72,15 70,5 M 65,8 Q 64,18 66,28 Q 67,18 65,8 M 75,8 Q 76,18 74,28 Q 73,18 75,8"/>
+    <!-- Top-right spike -->
+    <path fill="url(#ssy2-hair)" 
+          d="M 105,15 Q 100,22 98,32 Q 103,24 105,15 M 108,20 Q 104,27 103,37 Q 107,29 108,20"/>
+    <!-- Right spike -->
+    <path fill="url(#ssy2-hair)" 
+          d="M 130,50 Q 122,52 115,58 Q 123,54 130,50 M 132,55 Q 125,58 118,63 Q 126,60 132,55"/>
+    <!-- Bottom-right spike -->
+    <path fill="url(#ssy2-hair)" 
+          d="M 125,90 Q 118,88 110,90 Q 119,91 125,90 M 122,95 Q 116,94 109,96 Q 117,97 122,95"/>
+    <!-- Bottom spike -->
+    <path fill="url(#ssy2-hair)" 
+          d="M 85,130 Q 82,122 78,115 Q 80,123 85,130 M 70,135 Q 68,125 70,115 Q 72,125 70,135 M 55,130 Q 58,122 62,115 Q 60,123 55,130"/>
+    <!-- Bottom-left spike -->
+    <path fill="url(#ssy2-hair)" 
+          d="M 25,105 Q 30,100 35,95 Q 29,99 25,105 M 18,100 Q 23,96 28,91 Q 22,94 18,100"/>
+    <!-- Left spike -->
+    <path fill="url(#ssy2-hair)" 
+          d="M 10,65 Q 17,65 25,68 Q 16,66 10,65 M 8,58 Q 15,59 23,62 Q 14,60 8,58"/>
+    <!-- Top-left spike -->
+    <path fill="url(#ssy2-hair)" 
+          d="M 28,25 Q 33,32 38,40 Q 32,31 28,25 M 32,20 Q 36,27 40,35 Q 35,26 32,20"/>
+  </g>
+  
+  <!-- Outer decorative ring -->
+  <circle cx="70" cy="70" r="60" fill="none" stroke="url(#ssy2-hair)" stroke-width="1.5" opacity="0.7"/>
+  
+  <!-- Inner frame ring -->
+  <circle cx="70" cy="70" r="52" fill="none" stroke="url(#ssy2-text)" stroke-width="1" opacity="0.5"/>
+  
+  <!-- SSY Text - bold and centered -->
+  <g fill="url(#ssy2-text)" font-family="Arial, sans-serif" font-weight="bold" font-size="36" text-anchor="middle">
+    <text x="70" y="82">SSY</text>
+  </g>
+  
+  <!-- Accent arcs (energy flow) -->
+  <g fill="none" stroke="#82B29D" stroke-width="1.2" opacity="0.6">
+    <path d="M 40,42 Q 70,35 100,42"/>
+    <path d="M 40,98 Q 70,105 100,98"/>
+  </g>
+  
+  <!-- Energy particles -->
+  <g opacity="0.85">
+    <circle cx="70" cy="40" r="2" fill="#E5B457"/>
+    <circle cx="45" cy="55" r="1.5" fill="#82B29D"/>
+    <circle cx="95" cy="55" r="1.5" fill="#82B29D"/>
+    <circle cx="45" cy="85" r="1.5" fill="#D66D0F"/>
+    <circle cx="95" cy="85" r="1.5" fill="#D66D0F"/>
+  </g>
+  
+  <!-- Monochrome variant (hidden by default) -->
+  <g class="logo-mono" fill="currentColor" style="display: none;">
+    <circle cx="70" cy="70" r="60" fill="none" stroke="currentColor" stroke-width="2" opacity="0.8"/>
+    <text x="70" y="82" font-family="Arial, sans-serif" font-weight="bold" font-size="36" text-anchor="middle">SSY</text>
+    <path d="M 70,5 Q 68,15 70,25 M 105,15 Q 100,22 98,32 M 130,50 Q 122,52 115,58 M 125,90 Q 118,88 110,90 M 70,135 Q 68,125 70,115 M 25,105 Q 30,100 35,95 M 10,65 Q 17,65 25,68 M 28,25 Q 33,32 38,40" opacity="0.7"/>
+  </g>
+</svg>

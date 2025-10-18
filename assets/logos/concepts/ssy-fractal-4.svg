@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SSY Fractal Logo 4: Wide Format with Symmetrical Hair Flow -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" width="200" height="100">
+  <defs>
+    <!-- Hair gradient left -->
+    <linearGradient id="ssy4-hair-left" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E5B457"/>
+      <stop offset="100%" stop-color="#D66D0F"/>
+    </linearGradient>
+    
+    <!-- Hair gradient right -->
+    <linearGradient id="ssy4-hair-right" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D66D0F"/>
+      <stop offset="100%" stop-color="#9A4A23"/>
+    </linearGradient>
+    
+    <!-- Text gradient -->
+    <linearGradient id="ssy4-text" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#82B29D"/>
+      <stop offset="50%" stop-color="#157389"/>
+      <stop offset="100%" stop-color="#115362"/>
+    </linearGradient>
+    
+    <!-- Accent gradient -->
+    <linearGradient id="ssy4-accent" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#115362"/>
+      <stop offset="50%" stop-color="#157389"/>
+      <stop offset="100%" stop-color="#115362"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Left side hair flow - flowing inward -->
+  <g opacity="0.85">
+    <path fill="url(#ssy4-hair-left)" 
+          d="M 10,30 Q 15,25 20,30 Q 18,35 15,40 Q 12,35 10,30 M 8,40 Q 13,36 18,40 Q 16,44 13,48 Q 10,44 8,40 M 12,50 Q 16,47 20,50 Q 18,53 15,56 Q 13,53 12,50"/>
+    <path fill="url(#ssy4-hair-left)" 
+          d="M 25,20 Q 30,18 35,22 Q 33,27 30,32 Q 27,27 25,20 M 22,35 Q 27,32 32,36 Q 30,41 27,45 Q 24,40 22,35"/>
+    <path fill="url(#ssy4-hair-left)" 
+          d="M 40,15 Q 44,13 48,16 Q 47,21 44,26 Q 41,21 40,15 M 38,30 Q 42,28 46,31 Q 45,35 42,39 Q 39,35 38,30"/>
+  </g>
+  
+  <!-- Right side hair flow - flowing inward (mirrored) -->
+  <g opacity="0.85">
+    <path fill="url(#ssy4-hair-right)" 
+          d="M 190,30 Q 185,25 180,30 Q 182,35 185,40 Q 188,35 190,30 M 192,40 Q 187,36 182,40 Q 184,44 187,48 Q 190,44 192,40 M 188,50 Q 184,47 180,50 Q 182,53 185,56 Q 187,53 188,50"/>
+    <path fill="url(#ssy4-hair-right)" 
+          d="M 175,20 Q 170,18 165,22 Q 167,27 170,32 Q 173,27 175,20 M 178,35 Q 173,32 168,36 Q 170,41 173,45 Q 176,40 178,35"/>
+    <path fill="url(#ssy4-hair-right)" 
+          d="M 160,15 Q 156,13 152,16 Q 153,21 156,26 Q 159,21 160,15 M 162,30 Q 158,28 154,31 Q 155,35 158,39 Q 161,35 162,30"/>
+  </g>
+  
+  <!-- Upper flowing hair arcs -->
+  <g fill="none" stroke="url(#ssy4-hair-left)" stroke-width="2" opacity="0.7">
+    <path d="M 20,25 Q 40,15 60,20"/>
+    <path d="M 30,20 Q 50,12 70,18"/>
+  </g>
+  <g fill="none" stroke="url(#ssy4-hair-right)" stroke-width="2" opacity="0.7">
+    <path d="M 180,25 Q 160,15 140,20"/>
+    <path d="M 170,20 Q 150,12 130,18"/>
+  </g>
+  
+  <!-- Central SSY letters - bold and prominent -->
+  <g fill="url(#ssy4-text)">
+    <!-- S -->
+    <path d="M 65,45 Q 73,41 81,45 L 81,50 Q 73,46 65,50 L 65,55 Q 73,51 81,55 L 81,63 Q 73,67 65,63 L 65,58 L 71,58 L 71,60 Q 74,59 77,60 L 77,56 Q 73,58 69,56 Q 65,55 65,51 L 65,45 Z"/>
+    
+    <!-- S (second) -->
+    <path d="M 90,45 Q 98,41 106,45 L 106,50 Q 98,46 90,50 L 90,55 Q 98,51 106,55 L 106,63 Q 98,67 90,63 L 90,58 L 96,58 L 96,60 Q 99,59 102,60 L 102,56 Q 98,58 94,56 Q 90,55 90,51 L 90,45 Z"/>
+    
+    <!-- Y -->
+    <path d="M 115,45 L 123,55 L 131,45 L 137,45 L 127,59 L 127,67 L 119,67 L 119,59 L 109,45 Z"/>
+  </g>
+  
+  <!-- Energy flow connecting lines -->
+  <g fill="none" stroke="url(#ssy4-accent)" stroke-width="1" opacity="0.5">
+    <path d="M 50,25 Q 75,30 100,25 Q 125,30 150,25"/>
+    <path d="M 55,40 Q 80,42 100,40 Q 120,42 145,40"/>
+  </g>
+  
+  <!-- Fractal energy particles -->
+  <g opacity="0.8">
+    <circle cx="25" cy="25" r="2.5" fill="#E5B457"/>
+    <circle cx="40" cy="18" r="2" fill="#82B29D"/>
+    <circle cx="60" cy="22" r="2" fill="#D66D0F"/>
+    <circle cx="100" cy="28" r="2.5" fill="#157389"/>
+    <circle cx="140" cy="22" r="2" fill="#D66D0F"/>
+    <circle cx="160" cy="18" r="2" fill="#82B29D"/>
+    <circle cx="175" cy="25" r="2.5" fill="#9A4A23"/>
+  </g>
+  
+  <!-- Base accent -->
+  <rect x="55" y="75" width="90" height="2" fill="url(#ssy4-accent)" opacity="0.7" rx="1"/>
+  
+  <!-- Monochrome variant (hidden by default) -->
+  <g class="logo-mono" fill="currentColor" style="display: none;">
+    <!-- Simplified hair outline -->
+    <path d="M 20,30 Q 40,20 60,25 M 30,20 Q 50,15 70,20 M 180,30 Q 160,20 140,25 M 170,20 Q 150,15 130,20" stroke="currentColor" stroke-width="2" fill="none" opacity="0.7"/>
+    <!-- SSY letters -->
+    <path d="M 65,45 Q 73,41 81,45 L 81,50 Q 73,46 65,50 L 65,55 Q 73,51 81,55 L 81,63 Q 73,67 65,63 L 65,58 L 71,58 L 71,60 Q 74,59 77,60 L 77,56 Q 73,58 69,56 Q 65,55 65,51 L 65,45 Z M 90,45 Q 98,41 106,45 L 106,50 Q 98,46 90,50 L 90,55 Q 98,51 106,55 L 106,63 Q 98,67 90,63 L 90,58 L 96,58 L 96,60 Q 99,59 102,60 L 102,56 Q 98,58 94,56 Q 90,55 90,51 L 90,45 Z M 115,45 L 123,55 L 131,45 L 137,45 L 127,59 L 127,67 L 119,67 L 119,59 L 109,45 Z"/>
+  </g>
+</svg>

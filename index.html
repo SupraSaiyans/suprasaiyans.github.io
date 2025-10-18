@@ -126,6 +126,18 @@
             border: 1px solid var(--border-color);
             margin: 20px;
         }
+        
+        /* Remove large background boxes from major sections (except Lao Shifu) */
+        .spotlight-fractal .section-content,
+        #nft-gallery .section-content,
+        #lore .section-content,
+        .powerlevel-fractal .section-content:not(.laoshi-container) {
+            background: transparent;
+            border: none;
+            backdrop-filter: none;
+            margin: 20px auto;
+            padding: 40px 20px;
+        }
 
         .logo {
             width: 300px;

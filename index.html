@@ -2137,58 +2137,44 @@
             isolation: isolate;
         }
         
-        /* Enhanced section content with fractal clip-path */
-        .powerlevel-content {
+        /* Enhanced section content - matching Spotlight but with reduced brightness */
+        .powerlevel-fractal .section-content {
             position: relative;
-            clip-path: polygon(
-                0 0,
-                0 0,
-                15% 0,
-                calc(15% + 1px) 0,
-                85% 0,
-                100% 0,
-                100% 15%,
-                100% 85%,
-                100% 100%,
-                85% 100%,
-                15% 100%,
-                0 100%,
-                0 85%,
-                0 15%
-            );
-            background: linear-gradient(
-                135deg,
-                rgba(6, 34, 46, 0.95) 0%,
-                rgba(0, 61, 82, 0.9) 50%,
-                rgba(6, 86, 109, 0.85) 100%
-            );
-            backdrop-filter: blur(15px);
             border: 2px solid transparent;
-            background-clip: padding-box;
+            background: 
+                linear-gradient(var(--glass-bg), var(--glass-bg)) padding-box,
+                linear-gradient(
+                    135deg,
+                    rgba(6, 86, 109, 0.5),
+                    rgba(122, 48, 19, 0.35),
+                    rgba(0, 61, 82, 0.5),
+                    rgba(117, 47, 21, 0.35)
+                ) border-box;
+            background-clip: padding-box, border-box;
             box-shadow: 
-                0 0 40px rgba(6, 86, 109, 0.3),
-                inset 0 0 60px rgba(122, 48, 19, 0.1),
-                0 20px 60px rgba(0, 0, 0, 0.3);
-            animation: fractalPulse 8s ease-in-out infinite;
+                0 0 30px rgba(6, 86, 109, 0.2),
+                inset 0 0 40px rgba(122, 48, 19, 0.08),
+                0 15px 40px rgba(0, 0, 0, 0.25);
+            animation: powerlevelPulse 10s ease-in-out infinite;
         }
         
-        @keyframes fractalPulse {
+        @keyframes powerlevelPulse {
             0%, 100% {
                 box-shadow: 
-                    0 0 40px rgba(6, 86, 109, 0.3),
-                    inset 0 0 60px rgba(122, 48, 19, 0.1),
-                    0 20px 60px rgba(0, 0, 0, 0.3);
+                    0 0 30px rgba(6, 86, 109, 0.2),
+                    inset 0 0 40px rgba(122, 48, 19, 0.08),
+                    0 15px 40px rgba(0, 0, 0, 0.25);
             }
             50% {
                 box-shadow: 
-                    0 0 60px rgba(6, 86, 109, 0.5),
-                    inset 0 0 80px rgba(122, 48, 19, 0.2),
-                    0 25px 70px rgba(0, 0, 0, 0.4);
+                    0 0 42px rgba(6, 86, 109, 0.3),
+                    inset 0 0 55px rgba(122, 48, 19, 0.13),
+                    0 18px 50px rgba(0, 0, 0, 0.32);
             }
         }
         
-        /* Add glowing border effect */
-        .powerlevel-content::before {
+        /* Dimmed glowing border effect - matching Spotlight style but less intense */
+        .powerlevel-fractal .section-content::before {
             content: '';
             position: absolute;
             top: -2px;
@@ -2197,20 +2183,20 @@
             bottom: -2px;
             background: linear-gradient(
                 45deg,
-                rgba(6, 86, 109, 0.8),
-                rgba(122, 48, 19, 0.6),
-                rgba(0, 61, 82, 0.8),
-                rgba(117, 47, 21, 0.6)
+                rgba(6, 86, 109, 0.5),
+                rgba(122, 48, 19, 0.4),
+                rgba(0, 61, 82, 0.5),
+                rgba(117, 47, 21, 0.4)
             );
             background-size: 400% 400%;
             border-radius: 15px;
             z-index: -1;
-            animation: fractalBorderFlow 15s ease infinite;
-            filter: blur(8px);
-            opacity: 0.6;
+            animation: powerlevelBorderFlow 18s ease infinite;
+            filter: blur(6px);
+            opacity: 0.4;
         }
         
-        @keyframes fractalBorderFlow {
+        @keyframes powerlevelBorderFlow {
             0%, 100% {
                 background-position: 0% 50%;
             }
@@ -2323,16 +2309,20 @@
         }
         
         .powerlevel-fractal .link-category h4 {
-            background: linear-gradient(
-                90deg,
-                rgba(6, 86, 109, 1),
-                rgba(122, 48, 19, 0.8),
-                rgba(6, 86, 109, 1)
-            );
+            /* Dimmed gradient matching the section header style */
+            background: linear-gradient(135deg,
+                #8a7444 0%,      /* Muted gold */
+                #3a7088 50%,     /* Muted teal */
+                #9a7a52 100%);   /* Muted tan */
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 0 20px rgba(6, 86, 109, 0.3);
+            /* Subtle faded text shadow matching nav-link colors but dimmed */
+            text-shadow: 
+                1px 1px 2px rgba(201, 169, 97, 0.2),
+                -1px -1px 2px rgba(42, 62, 64, 0.2),
+                2px 2px 3px rgba(201, 169, 97, 0.12),
+                -2px -2px 3px rgba(42, 62, 64, 0.12);
             font-size: 1.4em;
             font-weight: bold;
             position: relative;
@@ -2363,34 +2353,55 @@
             transform: scale(1.3) rotate(45deg);
         }
         
-        /* Title enhancements for Powerlevel section */
+        /* Title enhancements for Powerlevel section - matching Spotlight but dimmed */
         .powerlevel-fractal h1 {
-            text-shadow: 
-                0 0 20px rgba(6, 86, 109, 0.6),
-                0 0 40px rgba(122, 48, 19, 0.4),
-                0 4px 8px rgba(0, 0, 0, 0.3);
-            animation: titleGlow 4s ease-in-out infinite;
-        }
-        
-        @keyframes titleGlow {
-            0%, 100% {
-                text-shadow: 
-                    0 0 20px rgba(6, 86, 109, 0.6),
-                    0 0 40px rgba(122, 48, 19, 0.4),
-                    0 4px 8px rgba(0, 0, 0, 0.3);
-            }
-            50% {
-                text-shadow: 
-                    0 0 30px rgba(6, 86, 109, 0.8),
-                    0 0 60px rgba(122, 48, 19, 0.6),
-                    0 6px 12px rgba(0, 0, 0, 0.4);
-            }
+            /* Dimmed gradient matching Spotlight style */
+            background: linear-gradient(135deg, 
+                #c9a961 0%,      /* Muted gold - dimmed from Spotlight */
+                #4a7a8a 35%,     /* Muted teal - dimmed from Spotlight */
+                #d4a574 65%,     /* Warm tan - dimmed from Spotlight */
+                #3a7088 100%);   /* Deep muted teal - dimmed from Spotlight */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            /* Remove conflicting text-shadow from parent .section h1 */
+            text-shadow: none;
+            /* Dimmed drop-shadow effect */
+            filter: drop-shadow(0 1px 5px rgba(201, 169, 97, 0.2))
+                    drop-shadow(0 0 8px rgba(74, 122, 138, 0.18));
         }
         
         .powerlevel-fractal h2 {
-            text-shadow: 
-                0 0 15px rgba(122, 48, 19, 0.5),
-                0 2px 6px rgba(0, 0, 0, 0.3);
+            /* Dimmed complementary gradient for subheader */
+            background: linear-gradient(135deg,
+                #a89054 0%,      /* Darker muted gold */
+                #3a7088 40%,     /* Muted teal */
+                #b88f63 70%,     /* Muted warm tan */
+                #4a7a8a 100%);   /* Lighter muted teal */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            /* Remove conflicting text-shadow from parent .section h2 */
+            text-shadow: none;
+            /* Dimmed drop-shadow effect for hierarchy */
+            filter: drop-shadow(0 1px 4px rgba(168, 144, 84, 0.2))
+                    drop-shadow(0 0 6px rgba(58, 112, 136, 0.15));
+        }
+        
+        .powerlevel-fractal h3 {
+            /* Dimmed gradient for h3 elements */
+            background: linear-gradient(135deg,
+                #8a7444 0%,      /* Even darker muted gold */
+                #2f5a6d 50%,     /* Deep muted teal */
+                #9a7a52 100%);   /* Muted tan */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            /* Remove conflicting text-shadow from parent .section h3 */
+            text-shadow: none;
+            /* Subtle drop-shadow */
+            filter: drop-shadow(0 1px 3px rgba(138, 116, 68, 0.18))
+                    drop-shadow(0 0 5px rgba(47, 90, 109, 0.12));
         }
         
         /* Responsive adjustments for fractal corners */

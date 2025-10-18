@@ -82,6 +82,15 @@
             --logo-halo-size: 400px;
             --logo-halo-blur: 80px;
             
+            /* Lao Shifu Fractal Frame - New clipPath/mask variables */
+            --lao-frame-primary: #06566d;
+            --lao-frame-accent: #e2aa42;
+            --lao-frame-warm: #7a3013;
+            --lao-frame-stroke-width: 3;
+            --lao-frame-outline-opacity: 0.85;
+            --lao-frame-detail-opacity: 0.6;
+            --lao-halo-opacity: 0.15;
+            
             /* Shadow system with fractal glow */
             --shadow-sm: 0 2px 8px rgba(21, 115, 137, 0.15);
             --shadow-md: 0 4px 16px rgba(21, 115, 137, 0.25);
@@ -2112,11 +2121,11 @@
             contain: layout style paint;
         }
         
-        /* Fractal curved frame */
+        /* Fractal curved frame - decorative outline */
         .laoshi-frame {
             position: absolute;
-            width: 600px;
-            height: 600px;
+            width: 680px;
+            height: 680px;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
@@ -2124,8 +2133,13 @@
             opacity: var(--logo-frame-opacity);
             color: var(--logo-frame-color);
             pointer-events: none;
-            will-change: transform;
             animation: frameRotateSlow 80s linear infinite;
+            contain: layout style paint;
+        }
+        
+        /* Only apply will-change during animation/hover for performance */
+        .laoshi-centerpiece:hover .laoshi-frame {
+            will-change: transform;
         }
         
         @keyframes frameRotateSlow {
@@ -2195,10 +2209,23 @@
             width: 380px;
             height: auto;
             display: block;
+            /* Apply fractal clipPath to the logo image itself */
+            clip-path: url(#lao-fractal-clip);
+            -webkit-clip-path: url(#lao-fractal-clip);
+            /* Drop shadow for depth (performance-safe) */
             filter: drop-shadow(0 0 30px rgba(6, 86, 109, 0.7))
                     drop-shadow(0 0 50px rgba(226, 170, 66, 0.4));
             animation: logoFloat 6s ease-in-out infinite;
             will-change: transform;
+        }
+        
+        /* Graceful fallback for browsers without clip-path support */
+        @supports not (clip-path: url(#lao-fractal-clip)) {
+            .laoshi-logo {
+                border-radius: 50%;
+                box-shadow: 0 0 30px rgba(6, 86, 109, 0.7),
+                            0 0 50px rgba(226, 170, 66, 0.4);
+            }
         }
         
         @keyframes logoFloat {
@@ -2275,8 +2302,8 @@
         /* Mobile responsive for LaoShi section */
         @media (max-width: 768px) {
             .laoshi-frame {
-                width: 400px;
-                height: 400px;
+                width: 450px;
+                height: 450px;
             }
             
             .laoshi-halo {
@@ -2301,8 +2328,8 @@
         
         @media (max-width: 480px) {
             .laoshi-frame {
-                width: 320px;
-                height: 320px;
+                width: 360px;
+                height: 360px;
             }
             
             .laoshi-halo {
@@ -3186,6 +3213,49 @@
 
     <!-- LaoShi Art Section -->
     <section id="home" class="section laoshi-section powerlevel-fractal">
+        <!-- SVG Definitions for Fractal ClipPath on Logo -->
+        <svg width="0" height="0" style="position: absolute;" aria-hidden="true">
+            <defs>
+                <!-- Fractal clipPath definition - curvy organic shape that hugs the logo -->
+                <clipPath id="lao-fractal-clip" clipPathUnits="objectBoundingBox">
+                    <!-- Organic boundary with smooth fractal curves -->
+                    <path d="
+                        M 0.5,0.06
+                        C 0.59,0.06 0.69,0.08 0.77,0.11
+                        Q 0.84,0.14 0.89,0.20
+                        C 0.92,0.25 0.94,0.31 0.94,0.38
+                        Q 0.94,0.44 0.92,0.50
+                        C 0.91,0.56 0.88,0.62 0.83,0.66
+                        Q 0.78,0.71 0.73,0.74
+                        C 0.67,0.77 0.61,0.80 0.55,0.81
+                        Q 0.48,0.83 0.42,0.81
+                        C 0.36,0.80 0.30,0.77 0.24,0.74
+                        Q 0.19,0.71 0.14,0.66
+                        C 0.09,0.62 0.08,0.56 0.06,0.50
+                        Q 0.05,0.44 0.06,0.38
+                        C 0.08,0.31 0.09,0.25 0.13,0.20
+                        Q 0.17,0.14 0.23,0.11
+                        C 0.31,0.08 0.41,0.06 0.5,0.06
+                        Z
+                    " />
+                </clipPath>
+                
+                <!-- Alternative mask-based approach for better browser support -->
+                <mask id="lao-fractal-mask">
+                    <rect width="100%" height="100%" fill="white"/>
+                    <!-- Main organic shape -->
+                    <ellipse cx="50%" cy="50%" rx="45%" ry="45%" fill="white"/>
+                    <!-- Fractal cutouts for organic feel -->
+                    <circle cx="31%" cy="19%" r="2.3%" fill="black" opacity="0.3"/>
+                    <circle cx="69%" cy="19%" r="2.3%" fill="black" opacity="0.3"/>
+                    <circle cx="22%" cy="50%" r="2.8%" fill="black" opacity="0.3"/>
+                    <circle cx="78%" cy="50%" r="2.8%" fill="black" opacity="0.3"/>
+                    <circle cx="31%" cy="81%" r="2.3%" fill="black" opacity="0.3"/>
+                    <circle cx="69%" cy="81%" r="2.3%" fill="black" opacity="0.3"/>
+                </mask>
+            </defs>
+        </svg>
+        
         <!-- Fractal Corners for LaoShi -->
         <div class="fractal-corner fractal-corner-tl">
             <svg viewBox="0 0 300 300" class="fractal-svg">
@@ -3365,17 +3435,17 @@
             
             <!-- Central artistic composition -->
             <div class="laoshi-centerpiece">
-                <!-- Fractal curved frame around logo -->
-                <img src="laoshifu-frame-fractal.svg" alt="" class="laoshi-frame" aria-hidden="true" loading="lazy">
+                <!-- Decorative fractal curved frame around logo -->
+                <img src="assets/hero/lao-shifu/lao-fractal-frame.svg" alt="" class="laoshi-frame" aria-hidden="true" loading="lazy">
                 
                 <!-- Subtle halo layer behind logo -->
                 <div class="laoshi-halo"></div>
                 
-                <!-- SupraSaiyans Logo as centerpiece -->
+                <!-- SupraSaiyans Logo as centerpiece with fractal clipPath applied -->
                 <a href="https://www.pumpit.pro/token/0x3f4047f95a120d8b99c8897be17f481a6ff9705ce829c8c98579e9016854aad::PRESUPSAI::PRESUPSAI" target="_blank" rel="noopener noreferrer" class="laoshi-logo-link">
                     <picture>
                         <source srcset="logo.webp" type="image/webp">
-                        <img src="logo.png" alt="Lǎo Shīfu - SupraSaiyans" class="laoshi-logo" width="640" height="640" decoding="async" loading="eager">
+                        <img src="logo.png" alt="Lǎo Shīfu - SupraSaiyans" class="laoshi-logo" width="640" height="640" decoding="async" fetchpriority="high" loading="eager">
                     </picture>
                 </a>
                 

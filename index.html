@@ -126,6 +126,19 @@
             border: 1px solid var(--border-color);
             margin: 20px;
         }
+        
+        /* Remove large background boxes from major sections - allow content to float individually */
+        #spotlight .section-content,
+        #nft-gallery .section-content,
+        #lore .section-content,
+        #powerlevel .section-content,
+        #saiyans-9000 .section-content {
+            background: transparent;
+            border: none;
+            backdrop-filter: none;
+            padding: 40px 20px;
+            margin: 0 auto;
+        }
 
         .logo {
             width: 300px;

@@ -90,6 +90,9 @@
             /* Section spacing variables for consistent layout */
             --section-spacing-desktop: 60px;
             --section-spacing-mobile: 80px;
+            
+            /* Alpha Gallery title readability enhancement */
+            --alpha-title-stroke: 2px;
         }
         
         body {
@@ -1237,6 +1240,25 @@
             font-size: 1.1em;
             color: var(--text-gold);
             font-family: 'Bebas Neue', sans-serif;
+            
+            /* Performance-safe text outline for readability over complex backgrounds */
+            /* Modern approach: paint-order + text-stroke for crisp outline */
+            paint-order: stroke fill;
+            -webkit-text-stroke: var(--alpha-title-stroke) #000000;
+            text-stroke: var(--alpha-title-stroke) #000000;
+            
+            /* Fallback: layered text-shadow for browsers without text-stroke support */
+            /* Creates a thick black border effect */
+            text-shadow: 
+                -1px -1px 0 #000,
+                1px -1px 0 #000,
+                -1px 1px 0 #000,
+                1px 1px 0 #000,
+                -2px -2px 0 #000,
+                2px -2px 0 #000,
+                -2px 2px 0 #000,
+                2px 2px 0 #000,
+                0 0 8px rgba(0, 0, 0, 0.8);
         }
 
         #alpha-gallery-grid .gallery-caption p {

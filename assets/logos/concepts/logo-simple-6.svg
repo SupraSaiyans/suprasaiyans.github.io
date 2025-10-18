@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Logo Simple 6: Modern Geometric Monogram -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <!-- Modern gradient - vibrant -->
+    <linearGradient id="logo6-modern1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#82B29D"/>
+      <stop offset="50%" stop-color="#157389"/>
+      <stop offset="100%" stop-color="#115362"/>
+    </linearGradient>
+    
+    <!-- Warm modern gradient -->
+    <linearGradient id="logo6-modern2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E5B457"/>
+      <stop offset="50%" stop-color="#D66D0F"/>
+      <stop offset="100%" stop-color="#9A4A23"/>
+    </linearGradient>
+    
+    <!-- Accent gradient -->
+    <linearGradient id="logo6-accent" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#157389" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#572A14" stop-opacity="0.8"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background hexagon -->
+  <path fill="url(#logo6-accent)" opacity="0.3"
+        d="M 50,5 L 85,27.5 L 85,72.5 L 50,95 L 15,72.5 L 15,27.5 Z"/>
+  
+  <!-- Outer geometric frame -->
+  <path fill="none" stroke="url(#logo6-modern2)" stroke-width="2" opacity="0.9"
+        d="M 50,10 L 80,28 L 80,72 L 50,90 L 20,72 L 20,28 Z"/>
+  
+  <!-- Inner frame -->
+  <path fill="none" stroke="url(#logo6-modern1)" stroke-width="1.5" opacity="0.7"
+        d="M 50,18 L 72,32 L 72,68 L 50,82 L 28,68 L 28,32 Z"/>
+  
+  <!-- S - top left stylized -->
+  <g fill="url(#logo6-modern1)" opacity="0.95">
+    <path d="M 30,35 L 35,32 L 40,35 L 40,38 L 35,36 L 30,38 L 30,42 L 35,40 L 40,42 L 40,48 L 35,50 L 30,48 L 30,45 L 33,46 L 37,44 L 37,43 L 33,45 L 30,43 Z"/>
+  </g>
+  
+  <!-- S - top right stylized -->
+  <g fill="url(#logo6-modern1)" opacity="0.95">
+    <path d="M 60,35 L 65,32 L 70,35 L 70,38 L 65,36 L 60,38 L 60,42 L 65,40 L 70,42 L 70,48 L 65,50 L 60,48 L 60,45 L 63,46 L 67,44 L 67,43 L 63,45 L 60,43 Z"/>
+  </g>
+  
+  <!-- Y - bottom center -->
+  <g fill="url(#logo6-modern2)" opacity="0.95">
+    <path d="M 40,55 L 45,62 L 48,70 L 50,75 L 52,70 L 55,62 L 60,55 L 56,55 L 52,62 L 50,67 L 48,62 L 44,55 Z"/>
+  </g>
+  
+  <!-- Central accent dot -->
+  <circle cx="50" cy="50" r="3" fill="#E5B457" opacity="0.85"/>
+  
+  <!-- Corner accent triangles -->
+  <g opacity="0.6">
+    <path fill="url(#logo6-modern2)" d="M 50,10 L 55,18 L 45,18 Z"/>
+    <path fill="url(#logo6-modern1)" d="M 50,90 L 55,82 L 45,82 Z"/>
+    <path fill="url(#logo6-modern1)" d="M 20,50 L 28,55 L 28,45 Z"/>
+    <path fill="url(#logo6-modern2)" d="M 80,50 L 72,55 L 72,45 Z"/>
+  </g>
+  
+  <!-- Energy connecting lines -->
+  <g fill="none" stroke="#82B29D" stroke-width="0.5" opacity="0.3">
+    <line x1="50" y1="18" x2="50" y2="82"/>
+    <line x1="28" y1="50" x2="72" y2="50"/>
+    <line x1="35" y1="35" x2="65" y2="65"/>
+    <line x1="65" y1="35" x2="35" y2="65"/>
+  </g>
+</svg>

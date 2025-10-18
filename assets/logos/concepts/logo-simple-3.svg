@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Logo Simple 3: Geometric Crystal/Shard Symbol -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" width="100" height="120">
+  <defs>
+    <!-- Primary crystal gradient -->
+    <linearGradient id="logo3-crystal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#157389"/>
+      <stop offset="50%" stop-color="#115362"/>
+      <stop offset="100%" stop-color="#0C3747"/>
+    </linearGradient>
+    
+    <!-- Accent crystal gradient -->
+    <linearGradient id="logo3-accent" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E5B457"/>
+      <stop offset="50%" stop-color="#D66D0F"/>
+      <stop offset="100%" stop-color="#9A4A23"/>
+    </linearGradient>
+    
+    <!-- Highlight gradient -->
+    <linearGradient id="logo3-highlight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#82B29D" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#157389" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Main central crystal pointing up -->
+  <path fill="url(#logo3-crystal)" 
+        d="M 50,10 L 70,40 L 60,60 L 50,70 L 40,60 L 30,40 Z" 
+        opacity="0.95"/>
+  
+  <!-- Left crystal shard -->
+  <path fill="url(#logo3-accent)" 
+        d="M 30,40 L 20,55 L 25,70 L 35,60 Z" 
+        opacity="0.85"/>
+  
+  <!-- Right crystal shard -->
+  <path fill="url(#logo3-accent)" 
+        d="M 70,40 L 80,55 L 75,70 L 65,60 Z" 
+        opacity="0.85"/>
+  
+  <!-- Bottom main crystal -->
+  <path fill="url(#logo3-crystal)" 
+        d="M 50,70 L 60,85 L 55,100 L 50,110 L 45,100 L 40,85 Z" 
+        opacity="0.9"/>
+  
+  <!-- Bottom left accent -->
+  <path fill="url(#logo3-accent)" 
+        d="M 40,85 L 30,95 L 35,105 L 43,100 Z" 
+        opacity="0.75"/>
+  
+  <!-- Bottom right accent -->
+  <path fill="url(#logo3-accent)" 
+        d="M 60,85 L 70,95 L 65,105 L 57,100 Z" 
+        opacity="0.75"/>
+  
+  <!-- Top highlight -->
+  <path fill="url(#logo3-highlight)" 
+        d="M 50,10 L 55,25 L 50,35 L 45,25 Z" 
+        opacity="0.6"/>
+  
+  <!-- Central glow point -->
+  <circle cx="50" cy="50" r="3" fill="#82B29D" opacity="0.9"/>
+  
+  <!-- Energy lines -->
+  <line x1="50" y1="10" x2="50" y2="110" stroke="#157389" stroke-width="0.5" opacity="0.3"/>
+  <line x1="30" y1="40" x2="70" y2="85" stroke="#9A4A23" stroke-width="0.5" opacity="0.3"/>
+  <line x1="70" y1="40" x2="30" y2="85" stroke="#9A4A23" stroke-width="0.5" opacity="0.3"/>
+</svg>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Logo Simple 5: Shield/Badge Emblem -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" width="100" height="120">
+  <defs>
+    <!-- Shield gradient -->
+    <linearGradient id="logo5-shield" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#115362"/>
+      <stop offset="50%" stop-color="#0C3747"/>
+      <stop offset="100%" stop-color="#0F2027"/>
+    </linearGradient>
+    
+    <!-- Border gradient -->
+    <linearGradient id="logo5-border" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E5B457"/>
+      <stop offset="50%" stop-color="#D66D0F"/>
+      <stop offset="100%" stop-color="#9A4A23"/>
+    </linearGradient>
+    
+    <!-- Center emblem gradient -->
+    <radialGradient id="logo5-center" cx="50%" cy="40%">
+      <stop offset="0%" stop-color="#82B29D"/>
+      <stop offset="100%" stop-color="#157389"/>
+    </radialGradient>
+    
+    <!-- Top crest gradient -->
+    <linearGradient id="logo5-crest" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9A4A23"/>
+      <stop offset="50%" stop-color="#E5B457"/>
+      <stop offset="100%" stop-color="#9A4A23"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Shield body -->
+  <path fill="url(#logo5-shield)" 
+        d="M 50,10 L 85,25 L 85,70 Q 85,95 50,110 Q 15,95 15,70 L 15,25 Z" 
+        opacity="0.95"/>
+  
+  <!-- Shield border -->
+  <path fill="none" stroke="url(#logo5-border)" stroke-width="2"
+        d="M 50,10 L 85,25 L 85,70 Q 85,95 50,110 Q 15,95 15,70 L 15,25 Z" 
+        opacity="0.9"/>
+  
+  <!-- Inner shield detail -->
+  <path fill="none" stroke="url(#logo5-border)" stroke-width="1" opacity="0.5"
+        d="M 50,18 L 78,30 L 78,68 Q 78,88 50,100 Q 22,88 22,68 L 22,30 Z"/>
+  
+  <!-- Top crest -->
+  <path fill="url(#logo5-crest)" 
+        d="M 45,8 L 50,3 L 55,8 L 52,12 L 48,12 Z" 
+        opacity="0.9"/>
+  
+  <!-- Central emblem - SSY stylized -->
+  <g>
+    <!-- S curve left -->
+    <path fill="url(#logo5-center)" 
+          d="M 30,40 Q 35,35 40,40 L 40,45 Q 35,42 30,45 L 30,50 Q 35,47 40,50 L 40,60 Q 35,63 30,60 Z" 
+          opacity="0.9"/>
+    
+    <!-- S curve right -->
+    <path fill="url(#logo5-center)" 
+          d="M 60,40 Q 65,35 70,40 L 70,45 Q 65,42 60,45 L 60,50 Q 65,47 70,50 L 70,60 Q 65,63 60,60 Z" 
+          opacity="0.9"/>
+    
+    <!-- Y bottom -->
+    <path fill="url(#logo5-center)" 
+          d="M 43,65 L 47,75 L 50,85 L 53,75 L 57,65 L 53,65 L 50,72 L 47,65 Z" 
+          opacity="0.9"/>
+  </g>
+  
+  <!-- Decorative corner elements -->
+  <circle cx="50" cy="35" r="2" fill="#E5B457" opacity="0.8"/>
+  <circle cx="25" cy="50" r="1.5" fill="#82B29D" opacity="0.7"/>
+  <circle cx="75" cy="50" r="1.5" fill="#82B29D" opacity="0.7"/>
+  
+  <!-- Bottom accent lines -->
+  <g fill="none" stroke="#157389" stroke-width="0.8" opacity="0.4">
+    <path d="M 30,75 Q 50,80 70,75"/>
+    <path d="M 35,85 Q 50,88 65,85"/>
+  </g>
+</svg>

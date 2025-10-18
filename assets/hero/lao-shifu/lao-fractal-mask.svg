@@ -1,0 +1,121 @@
+<svg width="640" height="640" viewBox="0 0 640 640" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- Fractal clipPath definition - curvy organic shape that hugs the logo -->
+        <clipPath id="lao-fractal-clip">
+            <!-- Main organic boundary with smooth curves -->
+            <path d="
+                M 320,40
+                C 380,40 440,50 490,70
+                Q 540,90 570,130
+                C 590,160 600,200 600,240
+                Q 600,280 590,320
+                C 580,360 560,395 530,425
+                Q 500,455 465,475
+                C 430,495 390,510 350,520
+                Q 310,530 270,520
+                C 230,510 190,495 155,475
+                Q 120,455 90,425
+                C 60,395 50,360 40,320
+                Q 30,280 40,240
+                C 50,200 60,160 80,130
+                Q 110,90 150,70
+                C 200,50 260,40 320,40
+                Z
+            " />
+            
+            <!-- Add organic indents for fractal feel -->
+            <path d="
+                M 320,60
+                Q 280,80 250,110
+                L 240,120
+                Q 220,140 200,170
+                L 190,190
+                Q 170,220 160,250
+                L 155,280
+                Q 150,310 155,340
+                L 160,370
+                Q 170,400 190,425
+                L 210,450
+                Q 240,480 280,500
+                L 320,515
+                Q 360,500 400,480
+                L 430,450
+                Q 460,420 475,385
+                L 485,355
+                Q 490,325 485,295
+                L 480,265
+                Q 470,235 450,210
+                L 420,180
+                Q 390,155 360,140
+                L 320,130
+                Z
+            " />
+        </clipPath>
+        
+        <!-- Alternative mask with more pronounced fractal edges -->
+        <mask id="lao-fractal-mask">
+            <rect width="640" height="640" fill="white"/>
+            <!-- Main shape -->
+            <path d="
+                M 320,35
+                C 385,35 448,46 500,72
+                Q 552,98 585,142
+                C 608,173 620,212 620,252
+                Q 620,292 608,332
+                C 596,372 572,407 538,436
+                Q 504,465 464,486
+                C 424,507 379,520 334,528
+                Q 289,536 244,528
+                C 199,520 154,507 114,486
+                Q 74,465 40,436
+                C 6,407 -6,372 -18,332
+                Q -30,292 20,252
+                C 32,212 44,173 67,142
+                Q 100,98 140,72
+                C 192,46 255,35 320,35
+                Z
+            " fill="white"/>
+            
+            <!-- Fractal cutouts on edges for organic feel -->
+            <circle cx="200" cy="120" r="15" fill="black" opacity="0.3"/>
+            <circle cx="440" cy="120" r="15" fill="black" opacity="0.3"/>
+            <circle cx="140" cy="320" r="18" fill="black" opacity="0.3"/>
+            <circle cx="500" cy="320" r="18" fill="black" opacity="0.3"/>
+            <circle cx="200" cy="520" r="15" fill="black" opacity="0.3"/>
+            <circle cx="440" cy="520" r="15" fill="black" opacity="0.3"/>
+            
+            <!-- Subtle wavy edges -->
+            <path d="
+                M 180,100 Q 185,90 190,100 T 200,100
+                M 440,100 Q 445,90 450,100 T 460,100
+                M 120,310 Q 110,315 120,320 T 120,330
+                M 510,310 Q 520,315 510,320 T 510,330
+                M 180,530 Q 185,540 190,530 T 200,530
+                M 440,530 Q 445,540 450,530 T 460,530
+            " stroke="black" stroke-width="3" fill="none" opacity="0.2"/>
+        </mask>
+    </defs>
+    
+    <!-- Reference shape for the clipPath (not used directly, just for visualization) -->
+    <g id="fractal-mask-reference">
+        <path d="
+            M 320,40
+            C 380,40 440,50 490,70
+            Q 540,90 570,130
+            C 590,160 600,200 600,240
+            Q 600,280 590,320
+            C 580,360 560,395 530,425
+            Q 500,455 465,475
+            C 430,495 390,510 350,520
+            Q 310,530 270,520
+            C 230,510 190,495 155,475
+            Q 120,455 90,425
+            C 60,395 50,360 40,320
+            Q 30,280 40,240
+            C 50,200 60,160 80,130
+            Q 110,90 150,70
+            C 200,50 260,40 320,40
+            Z
+        " fill="none" stroke="currentColor" stroke-width="2"/>
+    </g>
+</svg>

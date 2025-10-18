@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SSY Fractal Logo 3: Dynamic Hair Burst with Integrated Letters -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140" width="120" height="140">
+  <defs>
+    <!-- Primary hair gradient -->
+    <linearGradient id="ssy3-hair" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E5B457"/>
+      <stop offset="50%" stop-color="#D66D0F"/>
+      <stop offset="100%" stop-color="#9A4A23"/>
+    </linearGradient>
+    
+    <!-- Text gradient -->
+    <linearGradient id="ssy3-text" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#157389"/>
+      <stop offset="50%" stop-color="#115362"/>
+      <stop offset="100%" stop-color="#0C3747"/>
+    </linearGradient>
+    
+    <!-- Accent gradient -->
+    <linearGradient id="ssy3-accent" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#82B29D"/>
+      <stop offset="100%" stop-color="#157389"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Dynamic hair burst - explosive Super Saiyan transformation -->
+  <g opacity="0.9">
+    <!-- Central large spike -->
+    <path fill="url(#ssy3-hair)" 
+          d="M 60,10 Q 58,25 60,40 Q 62,25 60,10 M 55,12 Q 54,27 56,42 Q 57,27 55,12 M 65,12 Q 66,27 64,42 Q 63,27 65,12"/>
+    
+    <!-- Left side spikes -->
+    <path fill="url(#ssy3-hair)" 
+          d="M 30,20 Q 32,35 35,50 Q 34,35 30,20 M 25,25 Q 28,38 30,53 Q 28,38 25,25"/>
+    <path fill="url(#ssy3-hair)" 
+          d="M 15,35 Q 20,48 25,62 Q 21,48 15,35"/>
+    
+    <!-- Right side spikes -->
+    <path fill="url(#ssy3-hair)" 
+          d="M 90,20 Q 88,35 85,50 Q 86,35 90,20 M 95,25 Q 92,38 90,53 Q 92,38 95,25"/>
+    <path fill="url(#ssy3-hair)" 
+          d="M 105,35 Q 100,48 95,62 Q 99,48 105,35"/>
+    
+    <!-- Middle left spike -->
+    <path fill="url(#ssy3-hair)" 
+          d="M 42,15 Q 42,30 44,45 Q 45,30 42,15"/>
+    
+    <!-- Middle right spike -->
+    <path fill="url(#ssy3-hair)" 
+          d="M 78,15 Q 78,30 76,45 Q 75,30 78,15"/>
+    
+    <!-- Secondary accent spikes (flowing tendrils) -->
+    <path fill="url(#ssy3-accent)" opacity="0.7"
+          d="M 48,18 Q 48,32 50,47 Q 51,32 48,18"/>
+    <path fill="url(#ssy3-accent)" opacity="0.7"
+          d="M 72,18 Q 72,32 70,47 Q 69,32 72,18"/>
+    <path fill="url(#ssy3-accent)" opacity="0.7"
+          d="M 20,30 Q 24,42 28,56 Q 25,42 20,30"/>
+    <path fill="url(#ssy3-accent)" opacity="0.7"
+          d="M 100,30 Q 96,42 92,56 Q 95,42 100,30"/>
+  </g>
+  
+  <!-- SSY Letters - integrated into the design -->
+  <g fill="url(#ssy3-text)">
+    <!-- S -->
+    <path d="M 25,70 Q 33,66 41,70 L 41,75 Q 33,71 25,75 L 25,80 Q 33,76 41,80 L 41,88 Q 33,92 25,88 L 25,83 L 31,83 L 31,85 Q 34,84 37,85 L 37,81 Q 33,83 29,81 Q 25,80 25,76 L 25,70 Z"/>
+    
+    <!-- S (second) -->
+    <path d="M 50,70 Q 58,66 66,70 L 66,75 Q 58,71 50,75 L 50,80 Q 58,76 66,80 L 66,88 Q 58,92 50,88 L 50,83 L 56,83 L 56,85 Q 59,84 62,85 L 62,81 Q 58,83 54,81 Q 50,80 50,76 L 50,70 Z"/>
+    
+    <!-- Y -->
+    <path d="M 75,70 L 83,80 L 91,70 L 97,70 L 87,84 L 87,92 L 79,92 L 79,84 L 69,70 Z"/>
+  </g>
+  
+  <!-- Energy flow lines connecting hair to letters -->
+  <g fill="none" stroke="url(#ssy3-accent)" stroke-width="0.8" opacity="0.5">
+    <path d="M 60,45 L 58,68"/>
+    <path d="M 35,55 L 33,72"/>
+    <path d="M 85,55 L 87,72"/>
+  </g>
+  
+  <!-- Fractal energy particles -->
+  <g opacity="0.85">
+    <circle cx="60" cy="8" r="3" fill="#E5B457"/>
+    <circle cx="42" cy="13" r="2.5" fill="#82B29D"/>
+    <circle cx="78" cy="13" r="2.5" fill="#82B29D"/>
+    <circle cx="30" cy="18" r="2" fill="#D66D0F"/>
+    <circle cx="90" cy="18" r="2" fill="#D66D0F"/>
+    <circle cx="48" cy="16" r="1.5" fill="#157389"/>
+    <circle cx="72" cy="16" r="1.5" fill="#157389"/>
+    <circle cx="15" cy="33" r="2" fill="#E5B457"/>
+    <circle cx="105" cy="33" r="2" fill="#E5B457"/>
+  </g>
+  
+  <!-- Base energy glow -->
+  <ellipse cx="60" cy="95" rx="35" ry="3" fill="url(#ssy3-accent)" opacity="0.6"/>
+  
+  <!-- Monochrome variant (hidden by default) -->
+  <g class="logo-mono" fill="currentColor" style="display: none;">
+    <!-- Simplified hair outline -->
+    <path d="M 60,10 Q 58,25 60,40 M 30,20 Q 32,35 35,50 M 90,20 Q 88,35 85,50 M 15,35 Q 20,48 25,62 M 105,35 Q 100,48 95,62 M 42,15 Q 42,30 44,45 M 78,15 Q 78,30 76,45" opacity="0.8"/>
+    <!-- SSY letters -->
+    <path d="M 25,70 Q 33,66 41,70 L 41,75 Q 33,71 25,75 L 25,80 Q 33,76 41,80 L 41,88 Q 33,92 25,88 L 25,83 L 31,83 L 31,85 Q 34,84 37,85 L 37,81 Q 33,83 29,81 Q 25,80 25,76 L 25,70 Z M 50,70 Q 58,66 66,70 L 66,75 Q 58,71 50,75 L 50,80 Q 58,76 66,80 L 66,88 Q 58,92 50,88 L 50,83 L 56,83 L 56,85 Q 59,84 62,85 L 62,81 Q 58,83 54,81 Q 50,80 50,76 L 50,70 Z M 75,70 L 83,80 L 91,70 L 97,70 L 87,84 L 87,92 L 79,92 L 79,84 L 69,70 Z"/>
+  </g>
+</svg>

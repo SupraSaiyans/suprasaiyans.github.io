@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- SSY Fractal Logo 5: Shield Badge with Crown Hair Accent -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 140" width="120" height="140">
+  <defs>
+    <!-- Shield gradient -->
+    <linearGradient id="ssy5-shield" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#115362"/>
+      <stop offset="50%" stop-color="#0C3747"/>
+      <stop offset="100%" stop-color="#0F2027"/>
+    </linearGradient>
+    
+    <!-- Border gradient -->
+    <linearGradient id="ssy5-border" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E5B457"/>
+      <stop offset="50%" stop-color="#D66D0F"/>
+      <stop offset="100%" stop-color="#9A4A23"/>
+    </linearGradient>
+    
+    <!-- Hair crown gradient -->
+    <linearGradient id="ssy5-hair" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#D66D0F"/>
+      <stop offset="50%" stop-color="#E5B457"/>
+      <stop offset="100%" stop-color="#D66D0F"/>
+    </linearGradient>
+    
+    <!-- Text gradient -->
+    <radialGradient id="ssy5-text" cx="50%" cy="40%">
+      <stop offset="0%" stop-color="#82B29D"/>
+      <stop offset="100%" stop-color="#157389"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Hair crown - Super Saiyan spiky hair above shield -->
+  <g opacity="0.9">
+    <!-- Central spike (tallest) -->
+    <path fill="url(#ssy5-hair)" 
+          d="M 60,5 Q 58,15 60,25 Q 62,15 60,5 M 55,7 Q 54,17 56,27 Q 57,17 55,7 M 65,7 Q 66,17 64,27 Q 63,17 65,7"/>
+    <!-- Left side spike -->
+    <path fill="url(#ssy5-hair)" 
+          d="M 45,10 Q 44,20 46,30 Q 47,20 45,10 M 40,12 Q 40,22 42,32 Q 43,22 40,12"/>
+    <!-- Right side spike -->
+    <path fill="url(#ssy5-hair)" 
+          d="M 75,10 Q 76,20 74,30 Q 73,20 75,10 M 80,12 Q 80,22 78,32 Q 77,22 80,12"/>
+    <!-- Far left spike -->
+    <path fill="url(#ssy5-hair)" 
+          d="M 30,15 Q 31,25 33,35 Q 34,25 30,15"/>
+    <!-- Far right spike -->
+    <path fill="url(#ssy5-hair)" 
+          d="M 90,15 Q 89,25 87,35 Q 86,25 90,15"/>
+    
+    <!-- Accent tendrils -->
+    <path fill="#82B29D" opacity="0.7"
+          d="M 50,8 Q 50,18 52,28 Q 53,18 50,8"/>
+    <path fill="#82B29D" opacity="0.7"
+          d="M 70,8 Q 70,18 68,28 Q 67,18 70,8"/>
+  </g>
+  
+  <!-- Shield body -->
+  <path fill="url(#ssy5-shield)" 
+        d="M 60,30 L 95,42 L 95,85 Q 95,105 60,125 Q 25,105 25,85 L 25,42 Z" 
+        opacity="0.95"/>
+  
+  <!-- Shield border -->
+  <path fill="none" stroke="url(#ssy5-border)" stroke-width="2.5"
+        d="M 60,30 L 95,42 L 95,85 Q 95,105 60,125 Q 25,105 25,85 L 25,42 Z" 
+        opacity="0.9"/>
+  
+  <!-- Inner shield detail -->
+  <path fill="none" stroke="url(#ssy5-border)" stroke-width="1" opacity="0.5"
+        d="M 60,37 L 88,47 L 88,83 Q 88,98 60,115 Q 32,98 32,83 L 32,47 Z"/>
+  
+  <!-- SSY Letters - centered in shield -->
+  <g fill="url(#ssy5-text)">
+    <!-- S -->
+    <path d="M 35,60 Q 42,56 49,60 L 49,65 Q 42,61 35,65 L 35,70 Q 42,66 49,70 L 49,78 Q 42,82 35,78 L 35,73 L 40,73 L 40,75 Q 43,74 46,75 L 46,71 Q 42,73 38,71 Q 35,70 35,66 L 35,60 Z"/>
+    
+    <!-- S (second) -->
+    <path d="M 56,60 Q 63,56 70,60 L 70,65 Q 63,61 56,65 L 56,70 Q 63,66 70,70 L 70,78 Q 63,82 56,78 L 56,73 L 61,73 L 61,75 Q 64,74 67,75 L 67,71 Q 63,73 59,71 Q 56,70 56,66 L 56,60 Z"/>
+    
+    <!-- Y -->
+    <path d="M 75,60 L 82,70 L 89,60 L 94,60 L 85,73 L 85,82 L 79,82 L 79,73 L 70,60 Z"/>
+  </g>
+  
+  <!-- Energy particles -->
+  <g opacity="0.85">
+    <circle cx="60" cy="4" r="2.5" fill="#E5B457"/>
+    <circle cx="45" cy="9" r="2" fill="#82B29D"/>
+    <circle cx="75" cy="9" r="2" fill="#82B29D"/>
+    <circle cx="30" cy="13" r="1.8" fill="#D66D0F"/>
+    <circle cx="90" cy="13" r="1.8" fill="#D66D0F"/>
+    <circle cx="60" cy="55" r="2" fill="#E5B457" opacity="0.7"/>
+  </g>
+  
+  <!-- Bottom shield decorative lines -->
+  <g fill="none" stroke="#157389" stroke-width="1" opacity="0.4">
+    <path d="M 40,95 Q 60,100 80,95"/>
+    <path d="M 45,105 Q 60,108 75,105"/>
+  </g>
+  
+  <!-- Monochrome variant (hidden by default) -->
+  <g class="logo-mono" fill="currentColor" style="display: none;">
+    <!-- Hair crown -->
+    <path d="M 60,5 Q 58,15 60,25 M 45,10 Q 44,20 46,30 M 75,10 Q 76,20 74,30 M 30,15 Q 31,25 33,35 M 90,15 Q 89,25 87,35" stroke="currentColor" stroke-width="1.5" fill="none" opacity="0.8"/>
+    <!-- Shield outline -->
+    <path d="M 60,30 L 95,42 L 95,85 Q 95,105 60,125 Q 25,105 25,85 L 25,42 Z" stroke="currentColor" stroke-width="2.5" fill="none"/>
+    <!-- SSY letters -->
+    <path d="M 35,60 Q 42,56 49,60 L 49,65 Q 42,61 35,65 L 35,70 Q 42,66 49,70 L 49,78 Q 42,82 35,78 L 35,73 L 40,73 L 40,75 Q 43,74 46,75 L 46,71 Q 42,73 38,71 Q 35,70 35,66 L 35,60 Z M 56,60 Q 63,56 70,60 L 70,65 Q 63,61 56,65 L 56,70 Q 63,66 70,70 L 70,78 Q 63,82 56,78 L 56,73 L 61,73 L 61,75 Q 64,74 67,75 L 67,71 Q 63,73 59,71 Q 56,70 56,66 L 56,60 Z M 75,60 L 82,70 L 89,60 L 94,60 L 85,73 L 85,82 L 79,82 L 79,73 L 70,60 Z"/>
+  </g>
+</svg>

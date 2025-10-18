@@ -424,7 +424,9 @@
             padding: 10px 20px;
             transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
             pointer-events: none;
-            will-change: transform, opacity;
+            /* Performance: Use CSS containment to isolate nav painting */
+            contain: layout style paint;
+            /* Performance: will-change removed - only add during animation via JS */
         }
         
         /* Fractal artifact - 4th child, perfectly centered in grid */
@@ -480,20 +482,37 @@
             justify-content: center;
             padding: 5px;
             border-radius: 50%;
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
-                        background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+            position: relative;
+            /* Performance: Only animate transform - background handled by ::after pseudo-element */
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
                         border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             background: rgba(6, 86, 109, 0.15);
             border: 1px solid rgba(6, 86, 109, 0.3);
-            /* Static shadow instead of animated box-shadow */
+            /* Static shadow - no animation */
             box-shadow: 0 2px 8px rgba(6, 86, 109, 0.15);
         }
         
+        /* Background layer for hover - animates opacity only */
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: rgba(6, 86, 109, 0.1);
+            opacity: 0;
+            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+            pointer-events: none;
+        }
+        
         .nav-link:hover {
-            background: rgba(6, 86, 109, 0.25);
             border-color: rgba(6, 86, 109, 0.5);
             transform: translateY(-3px) scale(1.08);
-            /* Optimized: only transform and opacity animate, not box-shadow */
+            /* Performance: background animation moved to ::after pseudo-element */
+        }
+        
+        .nav-link:hover::after {
+            opacity: 1;
         }
         
         /* Pre-baked glow effect using pseudo-element for hover */
@@ -505,7 +524,7 @@
             background: radial-gradient(circle, rgba(6, 86, 109, 0.3) 0%, transparent 70%);
             opacity: 0;
             transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: -1;
+            z-index: -2;
             pointer-events: none;
         }
         
@@ -517,15 +536,15 @@
         .nav-artifact-icon {
             height: 60px;
             width: auto;
-            /* Optimized: static filter, no animation */
-            filter: drop-shadow(0 0 6px rgba(6, 86, 109, 0.5));
+            /* Performance: Replaced drop-shadow with pre-baked CSS glow on parent */
+            /* This eliminates expensive filter re-calculation on every frame */
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
                         opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             opacity: 0.95;
         }
         
         .nav-link:hover .nav-artifact-icon {
-            /* Only animate transform and opacity, not filter */
+            /* Only animate transform and opacity - no filter */
             transform: scale(1.05);
             opacity: 1;
         }
@@ -534,16 +553,36 @@
         .fractal-icon {
             height: 80px;
             width: auto;
-            /* Optimized: static filter, reduced complexity */
-            filter: drop-shadow(0 0 10px rgba(6, 86, 109, 0.7));
+            /* Performance: Removed drop-shadow filter entirely - using CSS glow on wrapper instead */
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
                         opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             opacity: 0.98;
         }
         
+        /* Add glow to fractal artifact wrapper */
+        .nav-fractal-artifact {
+            position: relative;
+        }
+        
+        .nav-fractal-artifact::before {
+            content: '';
+            position: absolute;
+            inset: -15px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(6, 86, 109, 0.4) 0%, rgba(122, 48, 19, 0.3) 40%, transparent 70%);
+            opacity: 0.7;
+            z-index: -1;
+            pointer-events: none;
+            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
         .fractal-icon:hover {
             /* Only animate transform and opacity */
             transform: translateY(-3px) scale(1.08);
+            opacity: 1;
+        }
+        
+        .nav-fractal-artifact:hover::before {
             opacity: 1;
         }
 
@@ -557,6 +596,32 @@
         .nav-link:active {
             transform: translateY(-2px) scale(1.02);
             transition: all 0.1s ease;
+        }
+        
+        /* Prefers-reduced-motion: Disable animations for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            .nav-menu {
+                transition: none;
+            }
+            
+            .nav-link,
+            .nav-link::before,
+            .nav-link::after,
+            .nav-artifact-icon,
+            .fractal-icon,
+            .nav-fractal-artifact::before {
+                transition: none;
+            }
+            
+            /* Still allow hover state changes, but instantly */
+            .nav-link:hover {
+                transform: none;
+            }
+            
+            .nav-link:hover .nav-artifact-icon,
+            .fractal-icon:hover {
+                transform: none;
+            }
         }
 
         /* Section Styles */
@@ -4588,23 +4653,58 @@
             
             let lastScrollY = window.scrollY;
             let ticking = false;
+            let isAnimating = false;
             const scrollThreshold = 100; // Minimum scroll distance before hiding
+            
+            // Performance: Add will-change only when animating, remove when done
+            function startAnimation() {
+                if (!isAnimating) {
+                    isAnimating = true;
+                    navMenu.style.willChange = 'transform, opacity';
+                }
+            }
+            
+            function endAnimation() {
+                if (isAnimating) {
+                    // Remove will-change after animation completes (300ms transition)
+                    setTimeout(() => {
+                        isAnimating = false;
+                        navMenu.style.willChange = 'auto';
+                    }, 350);
+                }
+            }
             
             function updateNavVisibility() {
                 const currentScrollY = window.scrollY;
+                let stateChanged = false;
                 
                 // Don't hide if we're near the top of the page
                 if (currentScrollY < scrollThreshold) {
-                    navMenu.classList.remove('nav-hidden');
+                    if (navMenu.classList.contains('nav-hidden')) {
+                        navMenu.classList.remove('nav-hidden');
+                        stateChanged = true;
+                    }
                 } else {
                     // Scrolling down - hide nav
                     if (currentScrollY > lastScrollY) {
-                        navMenu.classList.add('nav-hidden');
+                        if (!navMenu.classList.contains('nav-hidden')) {
+                            navMenu.classList.add('nav-hidden');
+                            stateChanged = true;
+                        }
                     } 
                     // Scrolling up - show nav
                     else if (currentScrollY < lastScrollY) {
-                        navMenu.classList.remove('nav-hidden');
+                        if (navMenu.classList.contains('nav-hidden')) {
+                            navMenu.classList.remove('nav-hidden');
+                            stateChanged = true;
+                        }
                     }
+                }
+                
+                // Performance: Only manage will-change when state actually changes
+                if (stateChanged) {
+                    startAnimation();
+                    endAnimation();
                 }
                 
                 lastScrollY = currentScrollY;
@@ -4618,11 +4718,45 @@
                 }
             }
             
-            // Listen for scroll events
+            // Listen for scroll events with passive flag for better performance
             window.addEventListener('scroll', onScroll, { passive: true });
             
             // Ensure nav is visible on page load
             navMenu.classList.remove('nav-hidden');
+            
+            // Performance: Add will-change to nav links only during hover
+            // This reduces memory pressure by not promoting all links to GPU layers permanently
+            const navLinks = document.querySelectorAll('.nav-link');
+            const fractalIcon = document.querySelector('.fractal-icon');
+            
+            function addWillChange() {
+                this.style.willChange = 'transform, opacity';
+            }
+            
+            function removeWillChange() {
+                // Remove after transition completes (400ms)
+                setTimeout(() => {
+                    this.style.willChange = 'auto';
+                }, 450);
+            }
+            
+            // Apply to nav links
+            navLinks.forEach(link => {
+                link.addEventListener('mouseenter', addWillChange);
+                link.addEventListener('mouseleave', removeWillChange);
+            });
+            
+            // Apply to center fractal icon
+            if (fractalIcon) {
+                fractalIcon.addEventListener('mouseenter', function() {
+                    this.style.willChange = 'transform, opacity';
+                });
+                fractalIcon.addEventListener('mouseleave', function() {
+                    setTimeout(() => {
+                        this.style.willChange = 'auto';
+                    }, 450);
+                });
+            }
         })();
     </script>
 

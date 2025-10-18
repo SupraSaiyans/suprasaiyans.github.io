@@ -45,6 +45,11 @@
             --accent-gold-orange: #EC991D;
             --accent-gold: #E5B457;
             
+            /* Kastanje button palette - Darker, warmer tone with orange hint */
+            --btn-kastanje-dark: #572A14;
+            --btn-kastanje-medium: #9A4A23;
+            --btn-kastanje-light: #A3581D;
+            
             /* Neutral earthy tones */
             --neutral-earth: #654D34;
             
@@ -64,12 +69,19 @@
             --gradient-fractal-mixed: linear-gradient(135deg, var(--accent-teal) 0%, var(--accent-teal-bright) 30%, var(--accent-gold) 70%, var(--accent-orange) 100%);
             --gradient-text: linear-gradient(45deg, var(--accent-gold) 0%, var(--accent-teal-light) 50%, var(--accent-gold-orange) 100%);
             
+            /* Kastanje CTA button gradient - Darker, warmer tone */
+            --gradient-cta-kastanje: linear-gradient(135deg, var(--btn-kastanje-dark) 0%, var(--btn-kastanje-medium) 50%, var(--btn-kastanje-light) 100%);
+            --gradient-cta-kastanje-hover: linear-gradient(135deg, var(--btn-kastanje-light) 0%, var(--btn-kastanje-medium) 50%, var(--btn-kastanje-dark) 100%);
+            
             /* Shadow system with fractal glow */
             --shadow-sm: 0 2px 8px rgba(21, 115, 137, 0.15);
             --shadow-md: 0 4px 16px rgba(21, 115, 137, 0.25);
             --shadow-lg: 0 8px 32px rgba(21, 115, 137, 0.35);
             --shadow-glow: 0 0 20px rgba(229, 180, 87, 0.4);
             --shadow-glow-warm: 0 0 30px rgba(214, 109, 15, 0.5);
+            
+            /* Kastanje button shadow - Warmer, darker glow */
+            --shadow-glow-kastanje: 0 0 30px rgba(163, 88, 29, 0.5);
             
             /* Border cutout/notch variables */
             --notch-size: 12px;
@@ -467,7 +479,7 @@
             font-size: 24px;
             font-weight: bold;
             color: var(--text-primary);
-            background: var(--gradient-fractal-warm);
+            background: var(--gradient-cta-kastanje);
             text-decoration: none;
             /* Apply subtle notched corners */
             clip-path: polygon(
@@ -484,8 +496,9 @@
             text-transform: uppercase;
             position: relative;
             overflow: hidden;
-            border: 2px solid var(--accent-gold-orange);
-            box-shadow: var(--shadow-glow-warm);
+            border: 2px solid var(--btn-kastanje-light);
+            box-shadow: var(--shadow-glow-kastanje);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
         
         /* Fallback for browsers without clip-path support */
@@ -524,8 +537,8 @@
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: var(--shadow-glow-warm), var(--shadow-lg);
-            background: linear-gradient(135deg, var(--accent-gold-orange) 0%, var(--accent-orange) 50%, var(--accent-warm) 100%);
+            box-shadow: var(--shadow-glow-kastanje), var(--shadow-lg);
+            background: var(--gradient-cta-kastanje-hover);
         }
 
         /* SSY STUDIOS Button - Cool fractal gradient with notched corners */

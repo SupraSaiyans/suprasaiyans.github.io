@@ -3991,20 +3991,13 @@
         }
         
         .powerlevel-fractal h2 {
-            /* Dimmed complementary gradient for subheader */
-            background: linear-gradient(135deg,
-                #a89054 0%,      /* Darker muted gold */
-                #3a7088 40%,     /* Muted teal */
-                #b88f63 70%,     /* Muted warm tan */
-                #4a7a8a 100%);   /* Lighter muted teal */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            /* Match Spotlight base model - clear and readable */
+            color: var(--spotlight-heading-color);
+            opacity: var(--spotlight-heading-opacity);
             /* Remove conflicting text-shadow from parent .section h2 */
             text-shadow: none;
-            /* Dimmed drop-shadow effect for hierarchy */
-            filter: drop-shadow(0 1px 4px rgba(168, 144, 84, 0.2))
-                    drop-shadow(0 0 6px rgba(58, 112, 136, 0.15));
+            /* Simple clean appearance */
+            filter: none;
         }
         
         .powerlevel-fractal h3 {

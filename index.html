@@ -290,32 +290,7 @@
             }
         }
         
-        /* Corner accent dots for fractal aesthetic */
-        .container::before, .section-content::before {
-            content: '';
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: var(--gradient-fractal-mixed);
-            border-radius: 50%;
-            top: var(--notch-size-lg);
-            left: var(--notch-size-lg);
-            opacity: 0.7;
-            box-shadow: var(--shadow-glow);
-        }
-        
-        .container::after, .section-content::after {
-            content: '';
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: var(--gradient-fractal-warm);
-            border-radius: 50%;
-            bottom: var(--notch-size-lg);
-            right: var(--notch-size-lg);
-            opacity: 0.7;
-            box-shadow: var(--shadow-glow-warm);
-        }
+        /* Corner accent dots removed - these created unwanted "bulb" artifacts on edges */
 
         .logo {
             width: 300px;
@@ -624,7 +599,7 @@
             position: fixed;
             top: 20px;
             left: 50%;
-            transform: translateX(calc(-50% + 9px));
+            transform: translateX(calc(-50% - 3px));
             z-index: 1000;
             display: grid;
             grid-template-columns: auto auto auto auto auto auto auto;
@@ -810,7 +785,7 @@
 
         /* Hidden state - collapses upwards */
         .nav-menu.nav-hidden {
-            transform: translateX(calc(-50% + 12px)) translateY(-100px);
+            transform: translateX(calc(-50% - 3px)) translateY(-100px);
             opacity: 0;
             pointer-events: none;
         }

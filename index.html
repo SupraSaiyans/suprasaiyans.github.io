@@ -191,31 +191,7 @@
             contain: layout style paint;
         }
         
-        /* Optimized Corner Ornaments - External SVG files for caching */
-        .corner-ornaments {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 1;
-            pointer-events: none;
-            background-image:
-                url('corner-ornament-tl.svg'),
-                url('corner-ornament-tr.svg'),
-                url('corner-ornament-bl.svg'),
-                url('corner-ornament-br.svg');
-            background-position:
-                top left,
-                top right,
-                bottom left,
-                bottom right;
-            background-size: 300px 300px;
-            background-repeat: no-repeat;
-            /* Performance: contain property isolates painting */
-            contain: layout style paint;
-        }
+
 
         /* Subtle Background Ambiance - Static */
         /* Note: body::after is now used for corner ornaments above */
@@ -619,15 +595,15 @@
             background: linear-gradient(135deg, var(--accent-teal-light) 0%, var(--accent-teal-bright) 50%, var(--accent-teal) 100%);
         }
 
-        /* Navigation Styles - CSS Grid for perfect symmetry with SVG fractal artifact centered */
+        /* Navigation Styles - CSS Grid for symmetry */
         .nav-menu {
             position: fixed;
             top: 20px;
             left: 50%;
-            transform: translateX(calc(-50% + 12px));
+            transform: translateX(calc(-50% + 9px));
             z-index: 1000;
             display: grid;
-            grid-template-columns: auto auto auto auto auto auto auto;
+            grid-template-columns: auto auto auto auto auto auto;
             column-gap: 16px;
             align-items: center;
             justify-content: center;
@@ -639,19 +615,7 @@
             /* Performance: will-change removed - only add during animation via JS */
         }
         
-        /* Fractal artifact - 4th child, perfectly centered in grid */
-        .nav-fractal-artifact {
-            grid-column: 4;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            pointer-events: auto;
-            /* Add extra horizontal spacing around fractal for visual balance */
-            margin-left: 20px;
-            margin-right: 20px;
-        }
-        
-        /* Left-side nav links (children 1, 2, 3) - grid positions 1, 2, 3 */
+        /* Nav links - grid positions 1 through 6 */
         .nav-menu > .nav-link:nth-child(1) {
             grid-column: 1;
             pointer-events: auto;
@@ -667,7 +631,11 @@
             pointer-events: auto;
         }
         
-        /* Right-side nav links (children 5, 6, 7) - grid positions 5, 6, 7 */
+        .nav-menu > .nav-link:nth-child(4) {
+            grid-column: 4;
+            pointer-events: auto;
+        }
+        
         .nav-menu > .nav-link:nth-child(5) {
             grid-column: 5;
             pointer-events: auto;
@@ -675,11 +643,6 @@
         
         .nav-menu > .nav-link:nth-child(6) {
             grid-column: 6;
-            pointer-events: auto;
-        }
-        
-        .nav-menu > .nav-link:nth-child(7) {
-            grid-column: 7;
             pointer-events: auto;
         }
         
@@ -767,50 +730,11 @@
             opacity: 1;
         }
         
-        /* Center fractal artifact - larger and more prominent */
-        .fractal-icon {
-            height: 80px;
-            width: auto;
-            /* Performance: Removed drop-shadow filter entirely - using CSS glow on wrapper instead */
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                        opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            opacity: 0.98;
-        }
-        
-        /* Add glow to fractal artifact wrapper with updated palette */
-        .nav-fractal-artifact {
-            position: relative;
-        }
-        
-        .nav-fractal-artifact::before {
-            content: '';
-            position: absolute;
-            inset: -15px;
-            border-radius: 50%;
-            background: radial-gradient(circle, 
-                rgba(229, 180, 87, 0.45) 0%, 
-                rgba(21, 115, 137, 0.35) 30%,
-                rgba(214, 109, 15, 0.25) 50%, 
-                transparent 75%);
-            opacity: 0.7;
-            z-index: -1;
-            pointer-events: none;
-            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .fractal-icon:hover {
-            /* Only animate transform and opacity */
-            transform: translateY(-3px) scale(1.08);
-            opacity: 1;
-        }
-        
-        .nav-fractal-artifact:hover::before {
-            opacity: 1;
-        }
+
 
         /* Hidden state - collapses upwards */
         .nav-menu.nav-hidden {
-            transform: translateX(calc(-50% + 12px)) translateY(-100px);
+            transform: translateX(calc(-50% + 9px)) translateY(-100px);
             opacity: 0;
             pointer-events: none;
         }
@@ -828,9 +752,7 @@
             }
             
             .nav-link,
-            .nav-artifact-icon,
-            .fractal-icon,
-            .nav-fractal-artifact::before {
+            .nav-artifact-icon {
                 transition: none;
             }
             
@@ -847,8 +769,7 @@
                 opacity: 0.9;
             }
             
-            .nav-link:hover .nav-artifact-icon,
-            .fractal-icon:hover {
+            .nav-link:hover .nav-artifact-icon {
                 transform: none;
                 opacity: 1;
             }
@@ -1197,10 +1118,6 @@
                 display: none;
             }
             
-            .nav-fractal-artifact {
-                display: none;
-            }
-            
             .container, .section-content {
                 padding: 20px;
                 margin: 10px;
@@ -1368,17 +1285,8 @@
                 height: 50px;
             }
             
-            .fractal-icon {
-                height: 65px;
-            }
-            
             .nav-menu {
                 column-gap: 10px;
-            }
-            
-            .nav-fractal-artifact {
-                margin-left: 14px;
-                margin-right: 14px;
             }
         }
 
@@ -1388,17 +1296,8 @@
                 height: 70px;
             }
             
-            .fractal-icon {
-                height: 90px;
-            }
-            
             .nav-menu {
                 column-gap: 20px;
-            }
-            
-            .nav-fractal-artifact {
-                margin-left: 26px;
-                margin-right: 26px;
             }
         }
 
@@ -3998,9 +3897,7 @@
     <!-- Simplified border accents -->
     <div class="border-ornaments"></div>
     
-    <!-- Optimized corner ornaments (external SVGs for caching) -->
-    <div class="corner-ornaments"></div>
-    
+
     <!-- Navigation -->
     <nav class="nav-menu">
         <a href="#home" class="nav-link" title="Lǎo Shīfu" aria-label="Navigate to Lǎo Shīfu section">
@@ -4012,9 +3909,6 @@
         <a href="#nft-gallery" class="nav-link" title="NFT Gallery" aria-label="Navigate to NFT Gallery section">
             <img src="artifact-nftgallery.svg" alt="NFT Gallery Artifact" class="nav-artifact-icon">
         </a>
-        <div class="nav-fractal-artifact">
-            <img src="fractal-artifact.svg" alt="Fractal Artifact" class="fractal-icon">
-        </div>
         <a href="#lore" class="nav-link" title="SupraVerse" aria-label="Navigate to SupraVerse section">
             <img src="artifact-supraverse.svg" alt="SupraVerse Artifact" class="nav-artifact-icon">
         </a>
@@ -5888,7 +5782,6 @@
             // Performance: Add will-change to nav links only during hover
             // This reduces memory pressure by not promoting all links to GPU layers permanently
             const navLinks = document.querySelectorAll('.nav-link');
-            const fractalIcon = document.querySelector('.fractal-icon');
             
             function addWillChange() {
                 this.style.willChange = 'transform, opacity';
@@ -5906,18 +5799,6 @@
                 link.addEventListener('mouseenter', addWillChange);
                 link.addEventListener('mouseleave', removeWillChange);
             });
-            
-            // Apply to center fractal icon
-            if (fractalIcon) {
-                fractalIcon.addEventListener('mouseenter', function() {
-                    this.style.willChange = 'transform, opacity';
-                });
-                fractalIcon.addEventListener('mouseleave', function() {
-                    setTimeout(() => {
-                        this.style.willChange = 'auto';
-                    }, 450);
-                });
-            }
         })();
     </script>
 

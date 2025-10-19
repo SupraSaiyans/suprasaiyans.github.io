@@ -111,11 +111,11 @@
               fill="none" 
               opacity="0.9"/>
         
-        <!-- Decorative fractal nodes at key points -->
-        <circle cx="0" cy="-290" r="4" fill="var(--lao-frame-accent, #e2aa42)" opacity="0.95"/>
-        <circle cx="260" cy="0" r="4" fill="var(--lao-frame-primary, #06566d)" opacity="0.95"/>
-        <circle cx="0" cy="205" r="4" fill="var(--lao-frame-warm, #7a3013)" opacity="0.95"/>
-        <circle cx="-260" cy="0" r="4" fill="var(--lao-frame-primary, #06566d)" opacity="0.95"/>
+        <!-- Decorative fractal nodes at key points - subtle translucent glow -->
+        <circle cx="0" cy="-290" r="4" fill="var(--lao-frame-accent, #e2aa42)" opacity="0.25"/>
+        <circle cx="260" cy="0" r="4" fill="var(--lao-frame-primary, #06566d)" opacity="0.35"/>
+        <circle cx="0" cy="205" r="4" fill="var(--lao-frame-warm, #7a3013)" opacity="0.35"/>
+        <circle cx="-260" cy="0" r="4" fill="var(--lao-frame-primary, #06566d)" opacity="0.35"/>
         
         <!-- Subtle connecting arcs for richness -->
         <path d="M 0,-290 Q -150,-180 -260,0" 
@@ -146,21 +146,21 @@
               opacity="0.3"
               stroke-dasharray="6,6"/>
         
-        <!-- Small fractal ornamental shapes -->
+        <!-- Small fractal ornamental shapes - subtle translucent accents -->
         <path d="M -50,-250 L -45,-240 L -50,-230 L -55,-240 Z" 
               fill="var(--lao-frame-accent, #e2aa42)" 
-              opacity="0.7"/>
+              opacity="0.2"/>
         
         <path d="M 50,-250 L 55,-240 L 50,-230 L 45,-240 Z" 
               fill="var(--lao-frame-accent, #e2aa42)" 
-              opacity="0.7"/>
+              opacity="0.2"/>
         
         <path d="M -240,40 L -230,45 L -240,50 L -250,45 Z" 
               fill="var(--lao-frame-primary, #06566d)" 
-              opacity="0.7"/>
+              opacity="0.3"/>
         
         <path d="M 240,40 L 250,45 L 240,50 L 230,45 Z" 
               fill="var(--lao-frame-primary, #06566d)" 
-              opacity="0.7"/>
+              opacity="0.3"/>
     </g>
 </svg>

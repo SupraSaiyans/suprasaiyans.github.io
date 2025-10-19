@@ -1919,13 +1919,15 @@
             }
         }
 
-        /* Spotlight Section - Data-driven layout */
+        /* Spotlight Section - Data-driven layout (shares structure with NFT Gallery) */
         #spotlight-featured-container {
             margin: 30px 0;
         }
 
         /* Featured Spotlight - Extra Large Tile (~3x area) */
-        .spotlight-featured-tile {
+        /* Uses .gallery-featured-tile class (shared with NFT Gallery) */
+        .spotlight-featured-tile,
+        .gallery-featured-tile {
             position: relative;
             contain: layout style paint;
             background: linear-gradient(135deg, 
@@ -1944,13 +1946,15 @@
             min-height: 400px;
         }
 
-        .spotlight-featured-tile:hover {
+        .spotlight-featured-tile:hover,
+        .gallery-featured-tile:hover {
             transform: translateY(-8px) scale(1.02);
             border-color: var(--border-color-glow);
         }
 
         /* Featured tile fractal accent */
-        .spotlight-featured-tile::before {
+        .spotlight-featured-tile::before,
+        .gallery-featured-tile::before {
             content: '';
             position: absolute;
             top: -2px;
@@ -1968,18 +1972,21 @@
             transition: opacity 0.3s ease;
         }
 
-        .spotlight-featured-tile:hover::before {
+        .spotlight-featured-tile:hover::before,
+        .gallery-featured-tile:hover::before {
             opacity: 0.3;
         }
 
         /* Featured tile image container */
-        .spotlight-featured-image {
+        .spotlight-featured-image,
+        .gallery-featured-image {
             position: relative;
             overflow: hidden;
             grid-column: 1;
         }
 
-        .spotlight-featured-image img {
+        .spotlight-featured-image img,
+        .gallery-featured-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -1987,13 +1994,17 @@
             transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
-        .spotlight-featured-tile:hover .spotlight-featured-image img {
+        .spotlight-featured-tile:hover .spotlight-featured-image img,
+        .spotlight-featured-tile:hover .gallery-featured-image img,
+        .gallery-featured-tile:hover .spotlight-featured-image img,
+        .gallery-featured-tile:hover .gallery-featured-image img {
             transform: scale(1.05);
             opacity: 0.9;
         }
 
         /* Featured tile content */
-        .spotlight-featured-content {
+        .spotlight-featured-content,
+        .gallery-featured-content {
             grid-column: 2;
             padding: 40px;
             display: flex;
@@ -2006,7 +2017,8 @@
                 rgba(15, 32, 39, 0.95) 100%);
         }
 
-        .spotlight-featured-content h3 {
+        .spotlight-featured-content h3,
+        .gallery-featured-content h3 {
             margin: 0 0 10px 0;
             font-size: 2em;
             color: var(--nft-title-color); /* Use canonical NFT title color token */
@@ -2019,7 +2031,8 @@
                 2px 2px 4px rgba(0, 0, 0, 0.6);
         }
 
-        .spotlight-featured-content .spotlight-number {
+        .spotlight-featured-content .spotlight-number,
+        .gallery-featured-content .gallery-number {
             font-size: 0.7em;
             color: var(--accent-teal-light);
             display: block;
@@ -2028,7 +2041,8 @@
             letter-spacing: 1px;
         }
 
-        .spotlight-featured-content p {
+        .spotlight-featured-content p,
+        .gallery-featured-content p {
             margin: 0 0 20px 0;
             font-size: 1.1em;
             color: var(--text-secondary); /* Canonical subheader color */
@@ -2036,13 +2050,15 @@
             text-align: left; /* Explicit left alignment */
         }
 
-        .spotlight-featured-actions {
+        .spotlight-featured-actions,
+        .gallery-featured-actions {
             display: flex;
             gap: 15px;
             margin-top: 20px;
         }
 
-        .spotlight-featured-action {
+        .spotlight-featured-action,
+        .gallery-featured-action {
             flex: 1;
             text-align: center;
             padding: 12px 20px;
@@ -2054,45 +2070,53 @@
             cursor: pointer;
         }
 
-        .spotlight-featured-action:hover {
+        .spotlight-featured-action:hover,
+        .gallery-featured-action:hover {
             transform: scale(1.05);
         }
 
-        .spotlight-featured-action.mint {
+        .spotlight-featured-action.mint,
+        .gallery-featured-action.mint {
             background: var(--gradient-cta-kastanje);
         }
 
-        .spotlight-featured-action.mint:hover {
+        .spotlight-featured-action.mint:hover,
+        .gallery-featured-action.mint:hover {
             background: var(--gradient-cta-kastanje-hover);
         }
 
-        .spotlight-featured-action.trade {
+        .spotlight-featured-action.trade,
+        .gallery-featured-action.trade {
             background: linear-gradient(135deg, 
                 var(--accent-teal) 0%, 
                 var(--accent-teal-light) 100%);
         }
 
-        .spotlight-featured-action.trade:hover {
+        .spotlight-featured-action.trade:hover,
+        .gallery-featured-action.trade:hover {
             background: linear-gradient(135deg, 
                 var(--accent-teal-light) 0%, 
                 var(--accent-teal-bright) 100%);
         }
 
-        .spotlight-featured-action a {
+        .spotlight-featured-action a,
+        .gallery-featured-action a {
             color: var(--text-primary);
             text-decoration: none;
             display: block;
         }
 
-        /* Spotlight Cards Grid - Standard cards for items 2-4 */
-        #spotlight-cards-grid {
+        /* Spotlight/Gallery Cards Grid - Standard cards for items 2-4 (Spotlight) or 2-16 (NFT Gallery) */
+        #spotlight-cards-grid,
+        .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             margin: 30px 0;
         }
 
-        .spotlight-card {
+        .spotlight-card,
+        .gallery-card {
             position: relative;
             contain: layout style paint;
             background: linear-gradient(135deg, 
@@ -2106,12 +2130,14 @@
             cursor: pointer;
         }
 
-        .spotlight-card:hover {
+        .spotlight-card:hover,
+        .gallery-card:hover {
             transform: translateY(-8px) scale(1.02);
             border-color: var(--border-color-glow);
         }
 
-        .spotlight-card::before {
+        .spotlight-card::before,
+        .gallery-card::before {
             content: '';
             position: absolute;
             top: -2px;
@@ -2129,23 +2155,27 @@
             transition: opacity 0.3s ease;
         }
 
-        .spotlight-card:hover::before {
+        .spotlight-card:hover::before,
+        .gallery-card:hover::before {
             opacity: 0.3;
         }
 
-        .spotlight-card img {
+        .spotlight-card img,
+        .gallery-card img {
             width: 100%;
             height: auto;
             display: block;
             transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
-        .spotlight-card:hover img {
+        .spotlight-card:hover img,
+        .gallery-card:hover img {
             transform: scale(1.05);
             opacity: 0.9;
         }
 
-        .spotlight-card-caption {
+        .spotlight-card-caption,
+        .gallery-card-caption {
             position: absolute;
             bottom: 0;
             left: 0;
@@ -2159,11 +2189,15 @@
             transition: transform 0.3s ease;
         }
 
-        .spotlight-card:hover .spotlight-card-caption {
+        .spotlight-card:hover .spotlight-card-caption,
+        .spotlight-card:hover .gallery-card-caption,
+        .gallery-card:hover .spotlight-card-caption,
+        .gallery-card:hover .gallery-card-caption {
             transform: translateY(0);
         }
 
-        .spotlight-card-caption h4 {
+        .spotlight-card-caption h4,
+        .gallery-card-caption h4 {
             margin: 0 0 8px 0;
             font-size: 1.1em;
             color: var(--text-gold);
@@ -2183,20 +2217,23 @@
                 0 0 8px rgba(0, 0, 0, 0.8);
         }
 
-        .spotlight-card-caption p {
+        .spotlight-card-caption p,
+        .gallery-card-caption p {
             margin: 0 0 12px 0;
             font-size: 0.9em;
             color: var(--text-secondary);
             line-height: 1.4;
         }
 
-        .spotlight-card-actions {
+        .spotlight-card-actions,
+        .gallery-card-actions {
             display: flex;
             gap: 10px;
             margin-top: 12px;
         }
 
-        .spotlight-card-action {
+        .spotlight-card-action,
+        .gallery-card-action {
             flex: 1;
             text-align: center;
             padding: 8px 12px;
@@ -2208,31 +2245,37 @@
             cursor: pointer;
         }
 
-        .spotlight-card-action:hover {
+        .spotlight-card-action:hover,
+        .gallery-card-action:hover {
             transform: scale(1.05);
         }
 
-        .spotlight-card-action.mint {
+        .spotlight-card-action.mint,
+        .gallery-card-action.mint {
             background: var(--gradient-cta-kastanje);
         }
 
-        .spotlight-card-action.mint:hover {
+        .spotlight-card-action.mint:hover,
+        .gallery-card-action.mint:hover {
             background: var(--gradient-cta-kastanje-hover);
         }
 
-        .spotlight-card-action.trade {
+        .spotlight-card-action.trade,
+        .gallery-card-action.trade {
             background: linear-gradient(135deg, 
                 var(--accent-teal) 0%, 
                 var(--accent-teal-light) 100%);
         }
 
-        .spotlight-card-action.trade:hover {
+        .spotlight-card-action.trade:hover,
+        .gallery-card-action.trade:hover {
             background: linear-gradient(135deg, 
                 var(--accent-teal-light) 0%, 
                 var(--accent-teal-bright) 100%);
         }
 
-        .spotlight-card-action a {
+        .spotlight-card-action a,
+        .gallery-card-action a {
             color: var(--text-primary);
             text-decoration: none;
             display: block;
@@ -2376,7 +2419,8 @@
             display: block;
         }
 
-        /* Loading indicator for Spotlight */
+        /* Loading indicator - shared by Spotlight and NFT Gallery */
+        .gallery-loading,
         .spotlight-loading {
             text-align: center;
             font-size: 1.2em;
@@ -2395,9 +2439,9 @@
             margin: 30px 0;
         }
         
-        /* Featured NFT uses same styling as Spotlight featured */
+        /* Featured NFT uses same styling as Spotlight featured (via shared .gallery-featured-tile) */
         .nft-featured-tile {
-            /* Inherits all .spotlight-featured-tile styles */
+            /* Inherits all .gallery-featured-tile styles */
             position: relative;
             contain: layout style paint;
             background: linear-gradient(135deg, 
@@ -2553,16 +2597,13 @@
             display: block;
         }
         
-        /* NFT Cards Grid - 5×3 layout (15 cards) */
+        /* NFT Cards Grid - 5×3 layout (15 cards) - uses shared .gallery-grid */
         #nft-cards-grid {
-            display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 20px;
-            margin: 30px 0;
         }
         
         .nft-card {
-            /* Same as spotlight-card */
+            /* Same as gallery-card (shared styling above) */
             position: relative;
             contain: layout style paint;
             background: linear-gradient(135deg, 
@@ -2718,24 +2759,32 @@
         
         /* NFT History List - Now uses shared .history-* classes defined above */
 
-        /* Responsive adjustments for Spotlight */
+        /* Responsive adjustments for Spotlight and NFT Gallery (shared) */
         @media (max-width: 768px) {
-            .spotlight-featured-tile {
+            .spotlight-featured-tile,
+            .gallery-featured-tile,
+            .nft-featured-tile {
                 grid-template-columns: 1fr;
                 min-height: auto;
             }
 
-            .spotlight-featured-image {
+            .spotlight-featured-image,
+            .gallery-featured-image,
+            .nft-featured-image {
                 grid-column: 1;
                 min-height: 250px;
             }
 
-            .spotlight-featured-content {
+            .spotlight-featured-content,
+            .gallery-featured-content,
+            .nft-featured-content {
                 grid-column: 1;
                 padding: 30px 20px;
             }
 
-            .spotlight-featured-content h3 {
+            .spotlight-featured-content h3,
+            .gallery-featured-content h3,
+            .nft-featured-content h3 {
                 font-size: 1.5em;
             }
             
@@ -2746,12 +2795,15 @@
                 font-size: 1.4em; /* Increased from 1.3em for better mobile visibility */
             }
 
-            .spotlight-card-caption {
+            .spotlight-card-caption,
+            .gallery-card-caption,
+            .nft-card-caption {
                 transform: translateY(0);
                 position: relative;
             }
 
-            #spotlight-cards-grid {
+            #spotlight-cards-grid,
+            .gallery-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -2771,11 +2823,15 @@
         }
 
         @media (max-width: 480px) {
-            .spotlight-featured-content {
+            .spotlight-featured-content,
+            .gallery-featured-content,
+            .nft-featured-content {
                 padding: 20px 15px;
             }
 
-            .spotlight-featured-actions {
+            .spotlight-featured-actions,
+            .gallery-featured-actions,
+            .nft-featured-actions {
                 flex-direction: column;
             }
 
@@ -2784,6 +2840,13 @@
             .nft-history-thumbnail {
                 width: 50px;
                 height: 50px;
+            }
+            
+            /* Adjust thumbnail-title gap for narrow screens */
+            .history-item,
+            .spotlight-history-item,
+            .nft-history-item {
+                gap: 25px; /* Reduce from 30px to 25px on narrow screens */
             }
 
             .history-info h4,
@@ -2796,14 +2859,17 @@
             .history-action,
             .spotlight-history-action,
             .nft-history-action {
-                padding: 6px 14px; /* Increased from 5px 12px for better tap targets */
+                padding: 8px 16px; /* Increased from 6px 14px for better tap targets */
                 font-size: 0.85em; /* Increased from 0.75em for better mobile visibility */
-                min-width: 40px; /* Ensure minimum tap target size */
-                min-height: 40px; /* Ensure minimum tap target size */
+                min-width: 44px; /* Ensure minimum tap target size (44x44px for better accessibility) */
+                min-height: 44px; /* Ensure minimum tap target size */
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
         }
 
-        /* Responsive adjustments for NFT Gallery */
+        /* Responsive adjustments for NFT Gallery specific grid layout */
         @media (max-width: 1200px) {
             #nft-cards-grid {
                 grid-template-columns: repeat(4, 1fr);
@@ -2817,26 +2883,12 @@
         }
 
         @media (max-width: 768px) {
-            .nft-featured-tile {
+            #nft-cards-grid {
                 grid-template-columns: 1fr;
-                min-height: auto;
-            }
-
-            .nft-featured-image {
-                grid-column: 1;
-                min-height: 250px;
-            }
-
-            .nft-featured-content {
-                grid-column: 1;
-                padding: 30px 20px;
-            }
-
-            .nft-featured-content h3 {
-                font-size: 1.5em;
             }
             
-            /* History heading visibility improvement shared with Spotlight (applied above at line ~2755) */
+            /* NFT Gallery featured tile uses shared responsive styles defined above */
+            /* History heading visibility improvement shared with Spotlight (applied above) */
 
             .nft-card-caption {
                 transform: translateY(0);
@@ -4313,11 +4365,11 @@
             
             <!-- Featured Spotlight (newest item) - dynamically populated -->
             <div id="spotlight-featured-container">
-                <div class="spotlight-loading">Loading Featured Spotlight...</div>
+                <div class="gallery-loading">Loading Featured Spotlight...</div>
             </div>
             
             <!-- Spotlight Cards (next 3 items) - dynamically populated -->
-            <div id="spotlight-cards-grid">
+            <div id="spotlight-cards-grid" class="gallery-grid">
                 <!-- Loading indicator removed after featured loads -->
             </div>
             
@@ -4412,11 +4464,11 @@
             
             <!-- Featured NFT (newest item) - dynamically populated -->
             <div id="nft-featured-container">
-                <div class="spotlight-loading">Loading Featured NFT...</div>
+                <div class="gallery-loading">Loading Featured NFT...</div>
             </div>
             
             <!-- NFT Cards (next 15 items in 5×3 grid) - dynamically populated -->
-            <div id="nft-cards-grid">
+            <div id="nft-cards-grid" class="gallery-grid">
                 <!-- Cards dynamically populated here -->
             </div>
             
@@ -5887,7 +5939,7 @@
                     historyContainer.innerHTML = '';
 
                     if (sortedItems.length === 0) {
-                        featuredContainer.innerHTML = '<div class="spotlight-loading">No spotlight items available.</div>';
+                        featuredContainer.innerHTML = '<div class="gallery-loading">No spotlight items available.</div>';
                         return;
                     }
 
@@ -5917,7 +5969,7 @@
                 } catch (error) {
                     console.error('Error loading Spotlight:', error);
                     featuredContainer.innerHTML = `
-                        <div class="spotlight-loading" style="color: var(--accent-warm);">
+                        <div class="gallery-loading" style="color: var(--accent-warm);">
                             Unable to load Spotlight. Please try again later.
                         </div>
                     `;
@@ -5929,33 +5981,33 @@
              */
             function createFeaturedTile(item) {
                 const tile = document.createElement('div');
-                tile.className = 'spotlight-featured-tile';
+                tile.className = 'spotlight-featured-tile gallery-featured-tile';
                 tile.setAttribute('data-item-id', item.id);
 
                 tile.innerHTML = `
-                    <div class="spotlight-featured-image">
+                    <div class="spotlight-featured-image gallery-featured-image">
                         <img src="${escapeHtml(item.image)}" 
                              loading="eager" 
                              width="600"
                              height="600"
                              alt="${escapeHtml('Spotlight #' + item.number + ' - ' + item.title)}">
                     </div>
-                    <div class="spotlight-featured-content">
+                    <div class="spotlight-featured-content gallery-featured-content">
                         <h3>
-                            <span class="spotlight-number">Spotlight #${escapeHtml(item.number.toString())}</span>
+                            <span class="spotlight-number gallery-number">Spotlight #${escapeHtml(item.number.toString())}</span>
                             ${escapeHtml(item.title)}
                         </h3>
                         <p>${escapeHtml(item.description)}</p>
-                        <div class="spotlight-featured-actions">
+                        <div class="spotlight-featured-actions gallery-featured-actions">
                             ${item.mintUrl ? `
-                                <div class="spotlight-featured-action mint">
+                                <div class="spotlight-featured-action gallery-featured-action mint">
                                     <a href="${escapeHtml(item.mintUrl)}" 
                                        target="_blank" 
                                        rel="noopener noreferrer">Mint</a>
                                 </div>
                             ` : ''}
                             ${item.tradeUrl ? `
-                                <div class="spotlight-featured-action trade">
+                                <div class="spotlight-featured-action gallery-featured-action trade">
                                     <a href="${escapeHtml(item.tradeUrl)}" 
                                        target="_blank" 
                                        rel="noopener noreferrer">Trade</a>
@@ -5973,26 +6025,26 @@
              */
             function createSpotlightCard(item) {
                 const card = document.createElement('div');
-                card.className = 'spotlight-card';
+                card.className = 'spotlight-card gallery-card';
                 card.setAttribute('data-item-id', item.id);
 
                 card.innerHTML = `
                     <img src="${escapeHtml(item.image)}" 
                          loading="lazy" 
                          alt="${escapeHtml('Spotlight #' + item.number + ' - ' + item.title)}">
-                    <div class="spotlight-card-caption">
+                    <div class="spotlight-card-caption gallery-card-caption">
                         <h4>Spotlight #${escapeHtml(item.number.toString())} - ${escapeHtml(item.title)}</h4>
                         <p>${escapeHtml(item.description)}</p>
-                        <div class="spotlight-card-actions">
+                        <div class="spotlight-card-actions gallery-card-actions">
                             ${item.mintUrl ? `
-                                <div class="spotlight-card-action mint">
+                                <div class="spotlight-card-action gallery-card-action mint">
                                     <a href="${escapeHtml(item.mintUrl)}" 
                                        target="_blank" 
                                        rel="noopener noreferrer">Mint</a>
                                 </div>
                             ` : ''}
                             ${item.tradeUrl ? `
-                                <div class="spotlight-card-action trade">
+                                <div class="spotlight-card-action gallery-card-action trade">
                                     <a href="${escapeHtml(item.tradeUrl)}" 
                                        target="_blank" 
                                        rel="noopener noreferrer">Trade</a>
@@ -6094,8 +6146,8 @@
                     }, { passive: true });
                 }
 
-                // Spotlight cards
-                const cards = document.querySelectorAll('.spotlight-card');
+                // Spotlight cards (includes gallery-card class)
+                const cards = document.querySelectorAll('.spotlight-card, .gallery-card');
                 cards.forEach(card => {
                     card.addEventListener('mouseenter', function() {
                         this.style.willChange = 'transform, opacity';
@@ -6117,7 +6169,7 @@
                 });
 
                 // History items
-                const historyItems = document.querySelectorAll('.spotlight-history-item');
+                const historyItems = document.querySelectorAll('.spotlight-history-item, .history-item');
                 historyItems.forEach(item => {
                     item.addEventListener('mouseenter', function() {
                         this.style.willChange = 'transform, background';
@@ -6191,7 +6243,7 @@
                     historyContainer.innerHTML = '';
 
                     if (sortedItems.length === 0) {
-                        featuredContainer.innerHTML = '<div class="spotlight-loading">No NFT items available.</div>';
+                        featuredContainer.innerHTML = '<div class="gallery-loading">No NFT items available.</div>';
                         return;
                     }
 
@@ -6221,7 +6273,7 @@
                 } catch (error) {
                     console.error('Error loading NFT Gallery:', error);
                     featuredContainer.innerHTML = `
-                        <div class="spotlight-loading" style="color: var(--accent-warm);">
+                        <div class="gallery-loading" style="color: var(--accent-warm);">
                             Unable to load NFT Gallery. Please try again later.
                         </div>
                     `;
@@ -6233,11 +6285,11 @@
              */
             function createNFTFeaturedTile(item) {
                 const tile = document.createElement('div');
-                tile.className = 'nft-featured-tile';
+                tile.className = 'nft-featured-tile gallery-featured-tile';
                 tile.setAttribute('data-item-id', item.id);
 
                 tile.innerHTML = `
-                    <div class="nft-featured-image">
+                    <div class="nft-featured-image gallery-featured-image">
                         <img src="${escapeHtml(item.image)}" 
                              fetchpriority="high"
                              decoding="async"
@@ -6246,22 +6298,22 @@
                              width="600"
                              height="600">
                     </div>
-                    <div class="nft-featured-content">
+                    <div class="nft-featured-content gallery-featured-content">
                         <h3>
-                            <span class="nft-number">NFT SSYS #${escapeHtml(item.number.toString())}</span>
+                            <span class="nft-number gallery-number">NFT SSYS #${escapeHtml(item.number.toString())}</span>
                             ${escapeHtml(item.title)}
                         </h3>
                         <p>${escapeHtml(item.description)}</p>
-                        <div class="nft-featured-actions">
+                        <div class="nft-featured-actions gallery-featured-actions">
                             ${item.mintUrl ? `
-                                <div class="nft-featured-action mint">
+                                <div class="nft-featured-action gallery-featured-action mint">
                                     <a href="${escapeHtml(item.mintUrl)}" 
                                        target="_blank" 
                                        rel="noopener noreferrer">Mint</a>
                                 </div>
                             ` : ''}
                             ${item.tradeUrl ? `
-                                <div class="nft-featured-action trade">
+                                <div class="nft-featured-action gallery-featured-action trade">
                                     <a href="${escapeHtml(item.tradeUrl)}" 
                                        target="_blank" 
                                        rel="noopener noreferrer">Trade</a>
@@ -6279,7 +6331,7 @@
              */
             function createNFTCard(item) {
                 const card = document.createElement('div');
-                card.className = 'nft-card';
+                card.className = 'nft-card gallery-card';
                 card.setAttribute('data-item-id', item.id);
 
                 card.innerHTML = `
@@ -6288,19 +6340,19 @@
                          alt="${escapeHtml('NFT SSYS #' + item.number + ' - ' + item.title)}"
                          width="300"
                          height="300">
-                    <div class="nft-card-caption">
+                    <div class="nft-card-caption gallery-card-caption">
                         <h4>NFT SSYS #${escapeHtml(item.number.toString())} - ${escapeHtml(item.title)}</h4>
                         <p>${escapeHtml(item.description)}</p>
-                        <div class="nft-card-actions">
+                        <div class="nft-card-actions gallery-card-actions">
                             ${item.mintUrl ? `
-                                <div class="nft-card-action mint">
+                                <div class="nft-card-action gallery-card-action mint">
                                     <a href="${escapeHtml(item.mintUrl)}" 
                                        target="_blank" 
                                        rel="noopener noreferrer">Mint</a>
                                 </div>
                             ` : ''}
                             ${item.tradeUrl ? `
-                                <div class="nft-card-action trade">
+                                <div class="nft-card-action gallery-card-action trade">
                                     <a href="${escapeHtml(item.tradeUrl)}" 
                                        target="_blank" 
                                        rel="noopener noreferrer">Trade</a>
@@ -6402,8 +6454,8 @@
                     }, { passive: true });
                 }
 
-                // NFT cards
-                const cards = document.querySelectorAll('.nft-card');
+                // NFT cards (includes gallery-card class)
+                const cards = document.querySelectorAll('.nft-card, .gallery-card');
                 cards.forEach(card => {
                     card.addEventListener('mouseenter', function() {
                         this.style.willChange = 'transform, opacity';
@@ -6425,7 +6477,7 @@
                 });
 
                 // History items
-                const historyItems = document.querySelectorAll('.nft-history-item');
+                const historyItems = document.querySelectorAll('.nft-history-item, .history-item');
                 historyItems.forEach(item => {
                     item.addEventListener('mouseenter', function() {
                         this.style.willChange = 'transform, background';

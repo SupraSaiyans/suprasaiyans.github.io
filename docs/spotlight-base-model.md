@@ -35,6 +35,40 @@ All sections following the Spotlight base model use this three-tier structure:
    - Tiny masked thumbnails (60×60px)
    - Title and action links only
    - Fractal clip-path on thumbnails
+   - Uses shared spacing and color tokens (see below)
+
+### Shared History Styles
+
+History lists across both Spotlight and NFT Gallery sections share common tokens for consistency:
+
+**Spacing Token** (`--history-gap`):
+- Controls gap between thumbnail and title
+- Default: `24px` at ≥480px viewport width
+- Responsive: `20px` at <480px viewport width
+- See [UI Tokens documentation](./ui-tokens.md) for tuning guidance
+
+**Color Token** (`--nft-title-color`):
+- Controls history item title color
+- Default: `var(--text-gold)` → `#E5B457`
+- Ensures ≥4.5:1 contrast for accessibility
+- Applied to both `.spotlight-history-info h4` and `.nft-history-info h4`
+
+**Layout Pattern**:
+```css
+.spotlight-history-item,
+.nft-history-item {
+    display: flex;
+    gap: var(--history-gap); /* Responsive spacing */
+    align-items: center;
+}
+
+.spotlight-history-info h4,
+.nft-history-info h4 {
+    color: var(--nft-title-color); /* Consistent color */
+}
+```
+
+This shared approach ensures visual harmony and makes spacing/color adjustments consistent across sections.
 
 ### Data Schema
 
@@ -110,6 +144,8 @@ The base model exposes CSS custom properties for easy customization:
 - **featured-grid-span**: How many columns/rows featured items span
 - **card-min-width**: Minimum card width before grid collapses
 - **history-thumbnail-size**: Size of history list thumbnails
+
+**Note**: History spacing (`--history-gap`) and color tokens (`--nft-title-color`, `--history-title-color`) are documented separately in [UI Tokens documentation](./ui-tokens.md).
 
 ## Typography
 

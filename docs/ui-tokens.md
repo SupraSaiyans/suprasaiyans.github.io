@@ -4,6 +4,63 @@
 
 This document describes the CSS custom properties (tokens) used throughout the SupraSaiyans website for maintaining consistent design system values. These tokens enable easy tuning of spacing, colors, and layout parameters while preserving visual harmony.
 
+## Shared Section Header Classes
+
+Both **Spotlight** and **NFT Gallery** sections now use a unified set of CSS classes for consistent header styling and easier maintenance. The shared header classes are:
+
+- `.section-header` - Wrapper for section headers (applied to `.section-content`)
+- `.section-title` - Section title (h1) with golden gradient styling
+- `.section-subtitle` - Section subtitle (h2) with clean, readable styling
+- `.history-heading` - History section heading (h3) with gold color and consistent spacing
+
+### Shared Header Styling
+
+All section titles (h1) use the same golden gradient:
+```css
+.section-title,
+.spotlight-fractal h1,
+#nft-gallery h1 {
+    background: linear-gradient(135deg, 
+        #e8b86d 0%,      /* Warm golden */
+        #06566d 35%,     /* Teal light */
+        #f4a460 65%,     /* Sandy brown/copper */
+        #4a9fb8 100%);   /* Lighter teal */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
+    filter: drop-shadow(0 2px 8px rgba(232, 184, 109, 0.4))
+            drop-shadow(0 0 12px rgba(6, 86, 109, 0.3));
+}
+```
+
+All section subtitles (h2) use the same clean styling:
+```css
+.section-subtitle,
+.spotlight-fractal h2,
+#nft-gallery h2 {
+    color: var(--text-primary);
+    opacity: 0.9;
+    text-shadow: none;
+    filter: none;
+}
+```
+
+All history headings (h3) use the same gold styling:
+```css
+.history-heading,
+#spotlight-history h3,
+#nft-history h3 {
+    font-size: 1.3em;
+    color: var(--text-gold);
+    margin: 0 0 20px 0;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1px;
+}
+```
+
+**Note**: Any changes to these shared styles will automatically apply to both Spotlight and NFT Gallery sections, ensuring visual harmony.
+
 ## History Section Tokens
 
 ### Shared History Classes

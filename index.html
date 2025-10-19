@@ -1836,8 +1836,14 @@
             }
         }
         
-        /* Spotlight title enhancements - Simplified and harmonious */
-        .spotlight-fractal h1 {
+        /* =================================================================
+           SHARED SECTION HEADER STYLES - Used by Spotlight & NFT Gallery
+           ================================================================= */
+        
+        /* Shared section title styling (h1) */
+        .section-title,
+        .spotlight-fractal h1,
+        #nft-gallery h1 {
             /* Enhanced gradient to better complement the fractal corners */
             background: linear-gradient(135deg, 
                 #e8b86d 0%,      /* Warm golden - complements warm accents */
@@ -1854,7 +1860,10 @@
                     drop-shadow(0 0 12px rgba(6, 86, 109, 0.3));
         }
         
-        .spotlight-fractal h2 {
+        /* Shared section subtitle styling (h2) */
+        .section-subtitle,
+        .spotlight-fractal h2,
+        #nft-gallery h2 {
             /* Remove blue fade overlay/gradient - use standard heading color for clarity */
             color: var(--text-primary);
             opacity: 0.9;
@@ -1862,6 +1871,17 @@
             text-shadow: none;
             /* Simple clean appearance */
             filter: none;
+        }
+        
+        /* Shared history heading styling (h3) */
+        .history-heading,
+        #spotlight-history h3,
+        #nft-history h3 {
+            font-size: 1.3em;
+            color: var(--text-gold);
+            margin: 0 0 20px 0;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 1px;
         }
         
         /* Responsive adjustments for spotlight fractal corners */
@@ -2377,38 +2397,12 @@
         }
 
         /* =================================================================
-           NFT GALLERY - Mirrors Spotlight Base Model
+           NFT GALLERY - Reuses Shared Section Header Styles
            ================================================================= */
         
-        /* Override powerlevel-fractal dimmed styling for NFT Gallery - match Spotlight exactly */
-        #nft-gallery h1 {
-            /* Match Spotlight header gradient exactly */
-            background: linear-gradient(135deg, 
-                #e8b86d 0%,      /* Warm golden - complements warm accents */
-                #06566d 35%,     /* Teal light - matches fractal gradients */
-                #f4a460 65%,     /* Sandy brown/copper - harmonizes with warm tones */
-                #4a9fb8 100%);   /* Lighter teal - adds depth */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            /* Remove conflicting text-shadow from parent */
-            text-shadow: none;
-            /* Match Spotlight drop-shadow effect */
-            filter: drop-shadow(0 2px 8px rgba(232, 184, 109, 0.4))
-                    drop-shadow(0 0 12px rgba(6, 86, 109, 0.3));
-        }
+        /* NFT Gallery h1 and h2 now use shared .section-title and .section-subtitle styles above */
         
-        #nft-gallery h2 {
-            /* Match Spotlight base model - clear and readable */
-            color: var(--text-primary);
-            opacity: 0.9;
-            /* Remove conflicting text-shadow */
-            text-shadow: none;
-            /* Simple clean appearance */
-            filter: none;
-        }
-        
-        /* Reuse Spotlight styles for NFT Gallery */
+        /* NFT Gallery specific layout */
         #nft-featured-container {
             margin: 30px 0;
         }
@@ -4314,9 +4308,9 @@
             </svg>
         </div>
         
-        <div class="section-content">
-            <h1>Spotlight</h1>
-            <h2>SSY Permissionless Curations</h2>
+        <div class="section-content section-header">
+            <h1 class="section-title">Spotlight</h1>
+            <h2 class="section-subtitle">SSY Permissionless Curations</h2>
             <p style="font-size: 1.2em; line-height: 1.6; margin: 20px 0;">
                 Discover the latest featured collections and explore our curated history of spotlight releases.
             </p>
@@ -4413,9 +4407,9 @@
                 </circle>
             </svg>
         </div>
-        <div class="section-content">
-            <h1>NFT Gallery</h1>
-            <h2>Supra Saiyans Studios Portfolio</h2>
+        <div class="section-content section-header">
+            <h1 class="section-title">NFT Gallery</h1>
+            <h2 class="section-subtitle">Supra Saiyans Studios Portfolio</h2>
             <p style="font-size: 1.2em; line-height: 1.6; margin: 20px 0;">
                 Discover the latest collections from Supra Saiyans Studios and explore our complete NFT history.
             </p>
@@ -6020,6 +6014,7 @@
                 const section = document.createElement('div');
                 
                 const heading = document.createElement('h3');
+                heading.className = 'history-heading';
                 heading.textContent = 'Spotlight History';
                 section.appendChild(heading);
 
@@ -6325,6 +6320,7 @@
                 const section = document.createElement('div');
                 
                 const heading = document.createElement('h3');
+                heading.className = 'history-heading';
                 heading.textContent = 'NFT Gallery History';
                 section.appendChild(heading);
 

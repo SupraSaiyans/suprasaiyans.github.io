@@ -117,6 +117,15 @@
             
             /* Alpha Gallery title readability enhancement */
             --alpha-title-stroke: 2px;
+            
+            /* Spotlight Base Model Tokens - Shared by sections */
+            --spotlight-heading-color: var(--text-primary);
+            --spotlight-heading-opacity: 0.9;
+            --spotlight-outline-intensity: 0.3;
+            --spotlight-glow-intensity: 0.4;
+            --spotlight-featured-grid-span: 2; /* Featured tiles span 2 columns/rows */
+            --spotlight-card-min-width: 250px;
+            --spotlight-history-thumbnail-size: 60px;
         }
         
         body {
@@ -2024,20 +2033,13 @@
         }
         
         .spotlight-fractal h2 {
-            /* Complementary gradient for subheader */
-            background: linear-gradient(135deg,
-                #c9a961 0%,      /* Muted gold - softer than h1 */
-                #4a9fb8 40%,     /* Lighter teal */
-                #d4a574 70%,     /* Warm tan */
-                #06566d 100%);   /* Deep teal - grounds the gradient */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            /* Remove blue fade overlay/gradient - use standard heading color for clarity */
+            color: var(--text-primary);
+            opacity: 0.9;
             /* Remove conflicting text-shadow from parent .section h2 */
             text-shadow: none;
-            /* Softer fade effect for hierarchy */
-            filter: drop-shadow(0 1px 6px rgba(201, 169, 97, 0.35))
-                    drop-shadow(0 0 10px rgba(74, 159, 184, 0.25));
+            /* Simple clean appearance */
+            filter: none;
         }
         
         /* Responsive adjustments for spotlight fractal corners */
@@ -2623,6 +2625,11 @@
             opacity: 0.8;
         }
         
+        /* Remove all SVG animations in Lao Shifu section */
+        .laoshi-section animate {
+            display: none;
+        }
+        
         .laoshi-centerpiece {
             position: relative;
             z-index: 3;
@@ -2637,7 +2644,7 @@
             contain: layout style paint;
         }
         
-        /* Fractal curved frame - decorative outline */
+        /* Fractal curved frame - decorative outline - STATIC (no animation) */
         .laoshi-frame {
             position: absolute;
             width: 680px;
@@ -2649,25 +2656,11 @@
             opacity: var(--logo-frame-opacity);
             color: var(--logo-frame-color);
             pointer-events: none;
-            animation: frameRotateSlow 80s linear infinite;
+            /* Animation removed per requirements */
             contain: layout style paint;
         }
         
-        /* Only apply will-change during animation/hover for performance */
-        .laoshi-centerpiece:hover .laoshi-frame {
-            will-change: transform;
-        }
-        
-        @keyframes frameRotateSlow {
-            from {
-                transform: translate(-50%, -50%) rotate(0deg);
-            }
-            to {
-                transform: translate(-50%, -50%) rotate(360deg);
-            }
-        }
-        
-        /* Performance-safe halo behind logo */
+        /* Performance-safe halo behind logo - STATIC (no animation) */
         .laoshi-halo {
             position: absolute;
             width: var(--logo-halo-size);
@@ -2685,18 +2678,7 @@
             filter: blur(var(--logo-halo-blur));
             opacity: 0.6;
             pointer-events: none;
-            animation: haloGlow 8s ease-in-out infinite;
-        }
-        
-        @keyframes haloGlow {
-            0%, 100% {
-                opacity: 0.6;
-                transform: translate(-50%, -50%) scale(1);
-            }
-            50% {
-                opacity: 0.85;
-                transform: translate(-50%, -50%) scale(1.1);
-            }
+            /* Animation removed per requirements */
         }
         
         /* Logo link wrapper for better accessibility */
@@ -2704,22 +2686,16 @@
             position: relative;
             z-index: 2;
             display: inline-block;
-            transition: transform 0.3s ease;
+            /* Remove hover animation */
             border-radius: 8px;
             outline-offset: 8px;
-        }
-        
-        .laoshi-logo-link:hover,
-        .laoshi-logo-link:focus {
-            transform: scale(1.02);
-            will-change: transform;
         }
         
         .laoshi-logo-link:focus {
             outline: 3px solid var(--logo-frame-accent);
         }
         
-        /* Logo image with optimized effects */
+        /* Logo image with optimized effects - STATIC (no animation) */
         .laoshi-logo {
             position: relative;
             z-index: 2;
@@ -2731,7 +2707,8 @@
             -webkit-clip-path: url(#lao-fractal-clip);
             /* Simplified drop shadow for better performance */
             filter: drop-shadow(0 0 35px rgba(6, 86, 109, 0.6));
-            animation: logoFloat var(--lao-logo-motion-duration) ease-in-out infinite;
+            /* Reposition: down slightly and 10px to the right */
+            transform: translate(10px, 10px);
             contain: layout style paint;
         }
         
@@ -2740,30 +2717,6 @@
             .laoshi-logo {
                 border-radius: 50%;
                 box-shadow: 0 0 35px rgba(6, 86, 109, 0.6);
-            }
-        }
-        
-        @keyframes logoFloat {
-            0%, 100% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(calc(-1 * var(--lao-logo-float-distance)));
-            }
-        }
-        
-        /* Apply will-change only during hover for better performance */
-        .laoshi-logo-link:hover .laoshi-logo {
-            animation: logoHover 4s ease-in-out infinite;
-            will-change: transform;
-        }
-        
-        @keyframes logoHover {
-            0%, 100% {
-                transform: translateY(0px) scale(1);
-            }
-            50% {
-                transform: translateY(calc(-1 * var(--lao-logo-hover-distance))) scale(var(--lao-logo-motion-scale));
             }
         }
         
@@ -2783,7 +2736,6 @@
                 var(--accent-teal),
                 var(--accent-warm)
             );
-            background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -2791,27 +2743,9 @@
             text-shadow: 
                 0 0 40px rgba(6, 86, 109, 0.5),
                 1px 1px 2px rgba(42, 62, 64, 0.3);
-            animation: titleGradient 8s ease infinite, titleGlow 4s ease-in-out infinite;
+            /* Animations removed per requirements */
+            opacity: 0.95;
             contain: layout style paint;
-        }
-        
-        @keyframes titleGradient {
-            0%, 100% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-        }
-        
-        /* Replace filter animation with opacity-based glow for smoother performance */
-        @keyframes titleGlow {
-            0%, 100% {
-                opacity: 0.9;
-            }
-            50% {
-                opacity: 1;
-            }
         }
         
         /* Mobile responsive for LaoShi section */
@@ -2885,18 +2819,7 @@
         
         /* Respect user preference for reduced motion */
         @media (prefers-reduced-motion: reduce) {
-            .laoshi-frame {
-                animation: none;
-            }
-            
-            .laoshi-halo {
-                animation: none;
-            }
-            
-            .laoshi-logo {
-                animation: none;
-            }
-            
+            /* Lao Shifu animations already removed globally */
             .laoshi-logo-link:hover .laoshi-logo {
                 animation: none;
                 transform: none;

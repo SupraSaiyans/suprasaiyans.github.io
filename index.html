@@ -130,6 +130,15 @@
             /* History Section Tokens - Adjustable spacing and color */
             --history-gap: 24px; /* Thumbnail to title spacing (20-30px range, 24px default) */
             --history-title-color: var(--text-gold); /* Match NFT title color for consistency */
+            --nft-title-color: var(--text-gold); /* NFT title color token for consistency */
+            
+            /* Menu Tokens - Silk-Cut Ripple buttons */
+            --menu-radius: 16px; /* Base border radius for menu buttons */
+            --menu-cut-depth: 10px; /* Depth of the curvy cutouts */
+            --menu-accent: var(--nft-title-color); /* Primary accent color for menu */
+            --menu-accent-rim: color-mix(in oklab, var(--menu-accent) 25%, transparent); /* Iridescent rim color */
+            --menu-bg: linear-gradient(180deg, color-mix(in oklab, var(--glass-bg) 85%, var(--menu-accent) 15%), var(--glass-bg)); /* Soft satin gradient background */
+            --header-grid-offset: 0px; /* Anchor button layout with header composition */
         }
         
         body {
@@ -674,83 +683,71 @@
             pointer-events: auto;
         }
         
-        /* Nav link base styles - updated with organic curvy cutouts matching fractal aesthetic */
+        /* Nav link base styles - Silk-Cut Ripple buttons with CSS mask */
         .nav-link {
             white-space: nowrap;
             flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 8px;
+            padding: 8px 12px;
+            min-width: 40px;
+            min-height: 40px; /* Ensure ≥40×40px hit area for accessibility */
             position: relative;
-            /* Performance: Only animate transform - background handled by ::after pseudo-element */
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                        border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            background: rgba(21, 115, 137, 0.18);
-            border: 2px solid rgba(130, 178, 157, 0.25);
-            /* Organic curvy cutout shape matching site aesthetic */
-            clip-path: polygon(
-                12% 0%, 88% 0%, 
-                95% 5%, 100% 12%, 100% 88%,
-                95% 95%, 88% 100%, 12% 100%,
-                5% 95%, 0% 88%, 0% 12%,
-                5% 5%
-            );
+            /* Performance: Only animate transform and opacity */
+            transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+                        opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--menu-bg);
+            border-radius: var(--menu-radius);
+            /* Silk-Cut Ripple: CSS mask with radial gradients for curvy cutouts */
+            -webkit-mask-image: 
+                radial-gradient(circle at 20% 50%, transparent var(--menu-cut-depth), black calc(var(--menu-cut-depth) + 2px)),
+                radial-gradient(circle at 80% 50%, transparent var(--menu-cut-depth), black calc(var(--menu-cut-depth) + 2px)),
+                linear-gradient(black, black);
+            -webkit-mask-composite: source-in;
+            mask-image: 
+                radial-gradient(circle at 20% 50%, transparent var(--menu-cut-depth), black calc(var(--menu-cut-depth) + 2px)),
+                radial-gradient(circle at 80% 50%, transparent var(--menu-cut-depth), black calc(var(--menu-cut-depth) + 2px)),
+                linear-gradient(black, black);
+            mask-composite: intersect;
+            /* Iridescent rim along top-left edge */
+            border-top: 1px solid var(--menu-accent-rim);
+            border-left: 1px solid var(--menu-accent-rim);
             /* Static shadow with new palette */
             box-shadow: var(--shadow-sm);
         }
         
-        /* Background layer for hover - animates opacity only with fractal gradient */
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            clip-path: inherit;
-            background: radial-gradient(circle at center, 
-                rgba(130, 178, 157, 0.2) 0%, 
-                rgba(21, 115, 137, 0.15) 60%, 
-                transparent 100%);
-            opacity: 0;
-            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: -1;
-            pointer-events: none;
+        /* Fallback for browsers without CSS mask support - graceful pill shape */
+        @supports not (mask-image: radial-gradient(circle, black, black)) {
+            .nav-link {
+                border-radius: calc(var(--menu-radius) * 2);
+                -webkit-mask-image: none;
+                mask-image: none;
+            }
         }
         
+        /* Hover state - transform and opacity only for 60 FPS performance */
         .nav-link:hover {
-            border-color: rgba(229, 180, 87, 0.6);
-            transform: translateY(-3px) scale(1.08);
-            /* Performance: background animation moved to ::after pseudo-element */
-        }
-        
-        .nav-link:hover::after {
+            transform: translateY(-1px) scale(1.02);
             opacity: 1;
         }
         
-        /* Pre-baked glow effect using pseudo-element for hover with fractal colors */
-        .nav-link::before {
-            content: '';
-            position: absolute;
-            inset: -10px;
-            /* Slightly softer cutout for glow effect */
-            clip-path: polygon(
-                10% 0%, 90% 0%, 
-                97% 7%, 100% 15%, 100% 85%,
-                97% 93%, 90% 100%, 10% 100%,
-                3% 93%, 0% 85%, 0% 15%,
-                3% 7%
-            );
-            background: radial-gradient(circle, 
-                rgba(229, 180, 87, 0.35) 0%, 
-                rgba(21, 115, 137, 0.25) 50%, 
-                transparent 75%);
-            opacity: 0;
-            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: -2;
-            pointer-events: none;
+        /* Active state - reset translate, slight scale down */
+        .nav-link:active {
+            transform: translateY(0) scale(0.99);
+            transition: transform 0.1s ease, opacity 0.1s ease;
         }
         
-        .nav-link:hover::before {
-            opacity: 1;
+        /* Focus state - visible inner focus ring for accessibility */
+        .nav-link:focus {
+            outline: 2px solid var(--menu-accent);
+            outline-offset: -2px;
+        }
+        
+        /* Ensure keyboard focus is visible */
+        .nav-link:focus-visible {
+            outline: 2px solid var(--menu-accent);
+            outline-offset: -2px;
         }
         
         /* Artifact icons for nav links */
@@ -819,11 +816,11 @@
         }
 
         .nav-link:active {
-            transform: translateY(-2px) scale(1.02);
-            transition: all 0.1s ease;
+            transform: translateY(0) scale(0.99);
+            transition: transform 0.1s ease, opacity 0.1s ease;
         }
         
-        /* Prefers-reduced-motion: Comprehensive accessibility support */
+        /* Prefers-reduced-motion: Swap motion for subtle brightness/opacity shift */
         @media (prefers-reduced-motion: reduce) {
             /* Navigation */
             .nav-menu {
@@ -831,8 +828,6 @@
             }
             
             .nav-link,
-            .nav-link::before,
-            .nav-link::after,
             .nav-artifact-icon,
             .fractal-icon,
             .nav-fractal-artifact::before {
@@ -841,11 +836,21 @@
             
             .nav-link:hover {
                 transform: none;
+                /* Instead of motion, use subtle brightness/opacity shift */
+                filter: brightness(1.15);
+                opacity: 0.95;
+            }
+            
+            .nav-link:active {
+                transform: none;
+                filter: brightness(1.05);
+                opacity: 0.9;
             }
             
             .nav-link:hover .nav-artifact-icon,
             .fractal-icon:hover {
                 transform: none;
+                opacity: 1;
             }
             
             /* Social buttons and CTAs */
@@ -1308,6 +1313,18 @@
             
             .logo {
                 width: 250px;
+            }
+            
+            /* History gap responsive adjustment - tighter on narrow screens */
+            :root {
+                --history-gap: 20px;
+            }
+        }
+        
+        /* History gap responsive adjustment - default at wider screens */
+        @media (min-width: 480px) {
+            :root {
+                --history-gap: 24px;
             }
         }
         
@@ -2268,7 +2285,7 @@
         .spotlight-history-info h4 {
             margin: 0 0 4px 0;
             font-size: 0.95em;
-            color: var(--history-title-color); /* Match NFT title color */
+            color: var(--nft-title-color); /* Use exact NFT title color token */
             font-family: 'Bebas Neue', sans-serif;
             letter-spacing: 0.5px;
         }
@@ -2626,6 +2643,19 @@
             text-overflow: ellipsis;
             /* Fallback for browsers without line-clamp support */
             max-height: calc(1.4em * 2); /* line-height * number of lines */
+            position: relative;
+        }
+        
+        /* Subtle gradient mask to indicate truncation (progressive enhancement) */
+        .nft-card-caption p::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 30%;
+            height: 1.4em;
+            background: linear-gradient(to right, transparent, rgba(15, 32, 39, 0.95));
+            pointer-events: none;
         }
         
         .nft-card-actions {
@@ -2739,7 +2769,7 @@
         .nft-history-info h4 {
             margin: 0 0 4px 0;
             font-size: 0.95em;
-            color: var(--history-title-color); /* Match NFT title color */
+            color: var(--nft-title-color); /* Use exact NFT title color token */
             font-family: 'Bebas Neue', sans-serif;
             letter-spacing: 0.5px;
         }

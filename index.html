@@ -2222,12 +2222,14 @@
             display: block;
         }
 
-        /* Spotlight History List - Minimal inline list */
-        #spotlight-history {
+        /* Shared History List Styles - Used by Spotlight and NFT Gallery */
+        #spotlight-history,
+        #nft-history {
             margin: 40px 0;
         }
 
-        #spotlight-history h3 {
+        #spotlight-history h3,
+        #nft-history h3 {
             font-size: 1.3em;
             color: var(--text-gold);
             margin: 0 0 20px 0;
@@ -2235,13 +2237,17 @@
             letter-spacing: 1px;
         }
 
-        .spotlight-history-list {
+        .history-list,
+        .spotlight-history-list,
+        .nft-history-list {
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
 
-        .spotlight-history-item {
+        .history-item,
+        .spotlight-history-item,
+        .nft-history-item {
             display: flex;
             align-items: center;
             gap: var(--thumb-title-gap); /* Adjustable spacing token for text alignment */
@@ -2252,13 +2258,17 @@
             transition: transform 0.2s ease, background 0.2s ease;
         }
 
-        .spotlight-history-item:hover {
+        .history-item:hover,
+        .spotlight-history-item:hover,
+        .nft-history-item:hover {
             transform: translateX(5px);
             background: rgba(17, 83, 98, 0.3);
             border-color: var(--border-color-glow);
         }
 
-        .spotlight-history-thumbnail {
+        .history-thumbnail,
+        .spotlight-history-thumbnail,
+        .nft-history-thumbnail {
             width: 60px;
             height: 60px;
             flex-shrink: 0;
@@ -2270,19 +2280,25 @@
             );
         }
 
-        .spotlight-history-thumbnail img {
+        .history-thumbnail img,
+        .spotlight-history-thumbnail img,
+        .nft-history-thumbnail img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
         }
 
-        .spotlight-history-info {
+        .history-info,
+        .spotlight-history-info,
+        .nft-history-info {
             flex: 1;
             min-width: 0;
         }
 
-        .spotlight-history-info h4 {
+        .history-info h4,
+        .spotlight-history-info h4,
+        .nft-history-info h4 {
             margin: 0 0 4px 0;
             font-size: 0.95em;
             color: var(--nft-title-color); /* Use exact NFT title color token */
@@ -2290,13 +2306,17 @@
             letter-spacing: 0.5px;
         }
 
-        .spotlight-history-actions {
+        .history-actions,
+        .spotlight-history-actions,
+        .nft-history-actions {
             display: flex;
             gap: 8px;
             flex-shrink: 0;
         }
 
-        .spotlight-history-action {
+        .history-action,
+        .spotlight-history-action,
+        .nft-history-action {
             padding: 6px 14px;
             border-radius: 3px;
             font-size: 0.8em;
@@ -2306,31 +2326,43 @@
             cursor: pointer;
         }
 
-        .spotlight-history-action:hover {
+        .history-action:hover,
+        .spotlight-history-action:hover,
+        .nft-history-action:hover {
             transform: scale(1.05);
         }
 
-        .spotlight-history-action.mint {
+        .history-action.mint,
+        .spotlight-history-action.mint,
+        .nft-history-action.mint {
             background: var(--gradient-cta-kastanje);
         }
 
-        .spotlight-history-action.mint:hover {
+        .history-action.mint:hover,
+        .spotlight-history-action.mint:hover,
+        .nft-history-action.mint:hover {
             background: var(--gradient-cta-kastanje-hover);
         }
 
-        .spotlight-history-action.trade {
+        .history-action.trade,
+        .spotlight-history-action.trade,
+        .nft-history-action.trade {
             background: linear-gradient(135deg, 
                 var(--accent-teal) 0%, 
                 var(--accent-teal-light) 100%);
         }
 
-        .spotlight-history-action.trade:hover {
+        .history-action.trade:hover,
+        .spotlight-history-action.trade:hover,
+        .nft-history-action.trade:hover {
             background: linear-gradient(135deg, 
                 var(--accent-teal-light) 0%, 
                 var(--accent-teal-bright) 100%);
         }
 
-        .spotlight-history-action a {
+        .history-action a,
+        .spotlight-history-action a,
+        .nft-history-action a {
             color: var(--text-primary);
             text-decoration: none;
             display: block;
@@ -2706,119 +2738,7 @@
             display: block;
         }
         
-        /* NFT History List - Minimal inline list (same as Spotlight) */
-        #nft-history {
-            margin: 40px 0;
-        }
-        
-        #nft-history h3 {
-            font-size: 1.3em;
-            color: var(--text-gold);
-            margin: 0 0 20px 0;
-            font-family: 'Bebas Neue', sans-serif;
-            letter-spacing: 1px;
-        }
-        
-        .nft-history-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        .nft-history-item {
-            display: flex;
-            align-items: center;
-            gap: var(--thumb-title-gap); /* Adjustable spacing token for text alignment */
-            padding: 12px;
-            background: rgba(15, 32, 39, 0.6);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            transition: transform 0.2s ease, background 0.2s ease;
-        }
-        
-        .nft-history-item:hover {
-            transform: translateX(5px);
-            background: rgba(17, 83, 98, 0.3);
-            border-color: var(--border-color-glow);
-        }
-        
-        .nft-history-thumbnail {
-            width: 60px;
-            height: 60px;
-            flex-shrink: 0;
-            border-radius: 4px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            clip-path: polygon(
-                8% 0%, 92% 0%, 100% 8%, 100% 92%, 92% 100%, 8% 100%, 0% 92%, 0% 8%
-            );
-        }
-        
-        .nft-history-thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        
-        .nft-history-info {
-            flex: 1;
-            min-width: 0;
-        }
-        
-        .nft-history-info h4 {
-            margin: 0 0 4px 0;
-            font-size: 0.95em;
-            color: var(--nft-title-color); /* Use exact NFT title color token */
-            font-family: 'Bebas Neue', sans-serif;
-            letter-spacing: 0.5px;
-        }
-        
-        .nft-history-actions {
-            display: flex;
-            gap: 8px;
-            flex-shrink: 0;
-        }
-        
-        .nft-history-action {
-            padding: 6px 14px;
-            border-radius: 3px;
-            font-size: 0.8em;
-            font-weight: bold;
-            text-transform: uppercase;
-            transition: transform 0.2s ease;
-            cursor: pointer;
-        }
-        
-        .nft-history-action:hover {
-            transform: scale(1.05);
-        }
-        
-        .nft-history-action.mint {
-            background: var(--gradient-cta-kastanje);
-        }
-        
-        .nft-history-action.mint:hover {
-            background: var(--gradient-cta-kastanje-hover);
-        }
-        
-        .nft-history-action.trade {
-            background: linear-gradient(135deg, 
-                var(--accent-teal) 0%, 
-                var(--accent-teal-light) 100%);
-        }
-        
-        .nft-history-action.trade:hover {
-            background: linear-gradient(135deg, 
-                var(--accent-teal-light) 0%, 
-                var(--accent-teal-bright) 100%);
-        }
-        
-        .nft-history-action a {
-            color: var(--text-primary);
-            text-decoration: none;
-            display: block;
-        }
+        /* NFT History List - Now uses shared .history-* classes defined above */
 
         /* Responsive adjustments for Spotlight */
         @media (max-width: 768px) {
@@ -2850,11 +2770,15 @@
                 grid-template-columns: 1fr;
             }
 
-            .spotlight-history-item {
+            .history-item,
+            .spotlight-history-item,
+            .nft-history-item {
                 flex-wrap: wrap;
             }
 
-            .spotlight-history-actions {
+            .history-actions,
+            .spotlight-history-actions,
+            .nft-history-actions {
                 width: 100%;
                 justify-content: flex-end;
                 margin-top: 8px;
@@ -2870,16 +2794,22 @@
                 flex-direction: column;
             }
 
-            .spotlight-history-thumbnail {
+            .history-thumbnail,
+            .spotlight-history-thumbnail,
+            .nft-history-thumbnail {
                 width: 50px;
                 height: 50px;
             }
 
-            .spotlight-history-info h4 {
+            .history-info h4,
+            .spotlight-history-info h4,
+            .nft-history-info h4 {
                 font-size: 0.85em;
             }
 
-            .spotlight-history-action {
+            .history-action,
+            .spotlight-history-action,
+            .nft-history-action {
                 padding: 5px 12px;
                 font-size: 0.75em;
             }
@@ -2927,15 +2857,7 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .nft-history-item {
-                flex-wrap: wrap;
-            }
-
-            .nft-history-actions {
-                width: 100%;
-                justify-content: flex-end;
-                margin-top: 8px;
-            }
+            /* History items use shared responsive styles above */
         }
 
         @media (max-width: 480px) {
@@ -2951,19 +2873,7 @@
                 grid-template-columns: 1fr;
             }
 
-            .nft-history-thumbnail {
-                width: 50px;
-                height: 50px;
-            }
-
-            .nft-history-info h4 {
-                font-size: 0.85em;
-            }
-
-            .nft-history-action {
-                padding: 5px 12px;
-                font-size: 0.75em;
-            }
+            /* History items use shared responsive styles above */
         }
 
         /* ========================================
@@ -6114,7 +6024,7 @@
                 section.appendChild(heading);
 
                 const list = document.createElement('div');
-                list.className = 'spotlight-history-list';
+                list.className = 'history-list spotlight-history-list';
 
                 items.forEach(item => {
                     const historyItem = createHistoryItem(item);
@@ -6130,28 +6040,28 @@
              */
             function createHistoryItem(item) {
                 const div = document.createElement('div');
-                div.className = 'spotlight-history-item';
+                div.className = 'history-item spotlight-history-item';
                 div.setAttribute('data-item-id', item.id);
 
                 div.innerHTML = `
-                    <div class="spotlight-history-thumbnail">
+                    <div class="history-thumbnail spotlight-history-thumbnail">
                         <img src="${escapeHtml(item.image)}" 
                              loading="lazy" 
                              alt="${escapeHtml('Spotlight #' + item.number)}">
                     </div>
-                    <div class="spotlight-history-info">
+                    <div class="history-info spotlight-history-info">
                         <h4>Spotlight #${escapeHtml(item.number.toString())} - ${escapeHtml(item.title)}</h4>
                     </div>
-                    <div class="spotlight-history-actions">
+                    <div class="history-actions spotlight-history-actions">
                         ${item.mintUrl ? `
-                            <div class="spotlight-history-action mint">
+                            <div class="history-action spotlight-history-action mint">
                                 <a href="${escapeHtml(item.mintUrl)}" 
                                    target="_blank" 
                                    rel="noopener noreferrer">Mint</a>
                             </div>
                         ` : ''}
                         ${item.tradeUrl ? `
-                            <div class="spotlight-history-action trade">
+                            <div class="history-action spotlight-history-action trade">
                                 <a href="${escapeHtml(item.tradeUrl)}" 
                                    target="_blank" 
                                    rel="noopener noreferrer">Trade</a>
@@ -6419,7 +6329,7 @@
                 section.appendChild(heading);
 
                 const list = document.createElement('div');
-                list.className = 'nft-history-list';
+                list.className = 'history-list nft-history-list';
 
                 items.forEach(item => {
                     const historyItem = createNFTHistoryItem(item);
@@ -6435,30 +6345,30 @@
              */
             function createNFTHistoryItem(item) {
                 const div = document.createElement('div');
-                div.className = 'nft-history-item';
+                div.className = 'history-item nft-history-item';
                 div.setAttribute('data-item-id', item.id);
 
                 div.innerHTML = `
-                    <div class="nft-history-thumbnail">
+                    <div class="history-thumbnail nft-history-thumbnail">
                         <img src="${escapeHtml(item.image)}" 
                              loading="lazy" 
                              alt="${escapeHtml('NFT SSYS #' + item.number)}"
                              width="60"
                              height="60">
                     </div>
-                    <div class="nft-history-info">
+                    <div class="history-info nft-history-info">
                         <h4>NFT SSYS #${escapeHtml(item.number.toString())} - ${escapeHtml(item.title)}</h4>
                     </div>
-                    <div class="nft-history-actions">
+                    <div class="history-actions nft-history-actions">
                         ${item.mintUrl ? `
-                            <div class="nft-history-action mint">
+                            <div class="history-action nft-history-action mint">
                                 <a href="${escapeHtml(item.mintUrl)}" 
                                    target="_blank" 
                                    rel="noopener noreferrer">Mint</a>
                             </div>
                         ` : ''}
                         ${item.tradeUrl ? `
-                            <div class="nft-history-action trade">
+                            <div class="history-action nft-history-action trade">
                                 <a href="${escapeHtml(item.tradeUrl)}" 
                                    target="_blank" 
                                    rel="noopener noreferrer">Trade</a>

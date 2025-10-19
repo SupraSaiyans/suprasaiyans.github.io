@@ -6,23 +6,37 @@ This document describes the CSS custom properties (tokens) used throughout the S
 
 ## History Section Tokens
 
-### --history-gap
+### Shared History Classes
+
+Both **Spotlight History** and **NFT Gallery History** sections now use a unified set of CSS classes for consistent styling and easier maintenance. The shared classes are:
+
+- `.history-list` - Container for history items
+- `.history-item` - Individual history item row
+- `.history-thumbnail` - Thumbnail image container
+- `.history-info` - Text content area
+- `.history-actions` - Action buttons container
+- `.history-action` - Individual action button
+
+Each section also maintains section-specific classes (`.spotlight-history-*`, `.nft-history-*`) as fallbacks for backward compatibility.
+
+### --thumb-title-gap
 
 **Purpose**: Controls the spacing between thumbnail and title in history list items.
 
-**Default**: `24px`
+**Default**: `30px`
 
-**Range**: 20-30px (recommended)
+**Range**: 25-35px (recommended)
 
 **Responsive Behavior**:
-- `< 480px`: `20px` (tighter spacing on narrow screens)
-- `≥ 480px`: `24px` (default spacing)
+- `< 480px`: Thumbnails reduce to 50x50px with maintained gap
+- `≥ 480px`: Thumbnails are 60x60px with default 30px gap
 
 **Usage**:
 ```css
+.history-item,
 .spotlight-history-item,
 .nft-history-item {
-    gap: var(--history-gap);
+    gap: var(--thumb-title-gap);
 }
 ```
 
@@ -30,6 +44,7 @@ This document describes the CSS custom properties (tokens) used throughout the S
 - Increase for more breathing room (better for accessibility)
 - Decrease for denser layouts (better for limited viewport height)
 - Consider line-height and font-size when adjusting
+- This token is shared between Spotlight and NFT Gallery for consistent left-alignment
 
 ### --history-title-color
 
@@ -47,6 +62,7 @@ This document describes the CSS custom properties (tokens) used throughout the S
 
 **Usage**:
 ```css
+.history-info h4,
 .spotlight-history-info h4,
 .nft-history-info h4,
 .nft-card-caption h4 {
@@ -55,6 +71,23 @@ This document describes the CSS custom properties (tokens) used throughout the S
 ```
 
 **Contrast**: Ensures ≥4.5:1 contrast ratio against dark backgrounds for WCAG AA compliance.
+
+### History Header Styles
+
+Both sections use identical h3 styling for their history headers:
+
+```css
+#spotlight-history h3,
+#nft-history h3 {
+    font-size: 1.3em;
+    color: var(--text-gold);
+    margin: 0 0 20px 0;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1px;
+}
+```
+
+**Note**: Any changes to history header styles will automatically apply to both sections.
 
 ## Menu Tokens (Silk-Cut Ripple Buttons)
 
@@ -189,6 +222,47 @@ This document describes the CSS custom properties (tokens) used throughout the S
 ### CSS Custom Properties
 - **Supported**: All modern browsers (IE11 requires polyfill or static fallbacks)
 
+## Unified History Structure
+
+### Making Layout Changes
+
+To modify the layout of both Spotlight History and NFT Gallery History sections simultaneously, edit the shared `.history-*` classes in the CSS. The specific classes are:
+
+1. **Container styles**: `.history-list` (flex layout, gap between items)
+2. **Item styles**: `.history-item` (flex layout, padding, background, borders)
+3. **Thumbnail styles**: `.history-thumbnail` (size, borders, clip-path)
+4. **Info styles**: `.history-info` (flex grow, typography)
+5. **Actions styles**: `.history-actions` (flex layout, button spacing)
+6. **Action button styles**: `.history-action` (padding, colors, hover effects)
+
+### Example: Adjusting History Item Spacing
+
+To change the gap between history items in both sections:
+
+```css
+.history-list,
+.spotlight-history-list,
+.nft-history-list {
+    gap: 20px; /* Changed from 15px to 20px */
+}
+```
+
+This single change will affect both Spotlight and NFT Gallery history lists.
+
+### Maintaining Section-Specific Styles
+
+If you need section-specific styling (e.g., different colors for Spotlight vs NFT Gallery), add specific rules after the shared rules:
+
+```css
+/* Shared styles apply to both */
+.history-item { ... }
+
+/* Section-specific override */
+.spotlight-history-item {
+    border-color: #special-spotlight-color;
+}
+```
+
 ## Related Documentation
 
 - [Menu Component](./menu.md) - Silk-Cut Ripple button implementation
@@ -197,4 +271,4 @@ This document describes the CSS custom properties (tokens) used throughout the S
 
 ---
 
-*Last updated: 2025-10-19*
+*Last updated: 2025-10-19 - Added unified history structure documentation*

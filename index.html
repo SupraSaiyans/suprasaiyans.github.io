@@ -1940,7 +1940,7 @@
             margin-bottom: 30px;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: var(--thumb-title-gap); /* Use consistent spacing token */
+            gap: 0; /* No gap - seamless alignment between image and content */
             min-height: 400px;
         }
 
@@ -2012,19 +2012,11 @@
             color: var(--nft-title-color); /* Use canonical NFT title color token */
             font-family: 'Bebas Neue', sans-serif;
             letter-spacing: 1px; /* Consistent letter spacing */
-            paint-order: stroke fill;
-            -webkit-text-stroke: var(--alpha-title-stroke) #000000;
-            text-stroke: var(--alpha-title-stroke) #000000;
+            /* Reduced stroke for better color vibrancy - was washing out gold */
             text-shadow: 
-                -1px -1px 0 #000,
-                1px -1px 0 #000,
-                -1px 1px 0 #000,
-                1px 1px 0 #000,
-                -2px -2px 0 #000,
-                2px -2px 0 #000,
-                -2px 2px 0 #000,
-                2px 2px 0 #000,
-                0 0 8px rgba(0, 0, 0, 0.8);
+                1px 1px 2px rgba(0, 0, 0, 0.8),
+                -1px -1px 2px rgba(0, 0, 0, 0.8),
+                2px 2px 4px rgba(0, 0, 0, 0.6);
         }
 
         .spotlight-featured-content .spotlight-number {
@@ -2252,15 +2244,6 @@
             margin: 40px 0;
         }
 
-        #spotlight-history h3,
-        #nft-history h3 {
-            font-size: 1.3em;
-            color: var(--text-gold);
-            margin: 0 0 20px 0;
-            font-family: 'Bebas Neue', sans-serif;
-            letter-spacing: 1px;
-        }
-
         .history-list,
         .spotlight-history-list,
         .nft-history-list {
@@ -2429,7 +2412,7 @@
             margin-bottom: 30px;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: var(--thumb-title-gap); /* Use consistent spacing token */
+            gap: 0; /* No gap - seamless alignment between image and content */
             min-height: 400px;
         }
         
@@ -2498,19 +2481,11 @@
             color: var(--nft-title-color); /* Use canonical NFT title color token */
             font-family: 'Bebas Neue', sans-serif;
             letter-spacing: 1px; /* Consistent letter spacing */
-            paint-order: stroke fill;
-            -webkit-text-stroke: var(--alpha-title-stroke) #000000;
-            text-stroke: var(--alpha-title-stroke) #000000;
+            /* Reduced stroke for better color vibrancy - was washing out gold */
             text-shadow: 
-                -1px -1px 0 #000,
-                1px -1px 0 #000,
-                -1px 1px 0 #000,
-                1px 1px 0 #000,
-                -2px -2px 0 #000,
-                2px -2px 0 #000,
-                -2px 2px 0 #000,
-                2px 2px 0 #000,
-                0 0 8px rgba(0, 0, 0, 0.8);
+                1px 1px 2px rgba(0, 0, 0, 0.8),
+                -1px -1px 2px rgba(0, 0, 0, 0.8),
+                2px 2px 4px rgba(0, 0, 0, 0.6);
         }
         
         .nft-featured-content .nft-number {
@@ -2763,6 +2738,13 @@
             .spotlight-featured-content h3 {
                 font-size: 1.5em;
             }
+            
+            /* Increase history heading visibility on mobile */
+            .history-heading,
+            #spotlight-history h3,
+            #nft-history h3 {
+                font-size: 1.4em; /* Increased from 1.3em for better mobile visibility */
+            }
 
             .spotlight-card-caption {
                 transform: translateY(0);
@@ -2807,14 +2789,17 @@
             .history-info h4,
             .spotlight-history-info h4,
             .nft-history-info h4 {
-                font-size: 0.85em;
+                font-size: 0.95em; /* Increased from 0.85em for better mobile visibility */
+                line-height: 1.4;
             }
 
             .history-action,
             .spotlight-history-action,
             .nft-history-action {
-                padding: 5px 12px;
-                font-size: 0.75em;
+                padding: 6px 14px; /* Increased from 5px 12px for better tap targets */
+                font-size: 0.85em; /* Increased from 0.75em for better mobile visibility */
+                min-width: 40px; /* Ensure minimum tap target size */
+                min-height: 40px; /* Ensure minimum tap target size */
             }
         }
 
@@ -2850,6 +2835,8 @@
             .nft-featured-content h3 {
                 font-size: 1.5em;
             }
+            
+            /* History heading visibility improvement shared with Spotlight (applied above at line ~2755) */
 
             .nft-card-caption {
                 transform: translateY(0);

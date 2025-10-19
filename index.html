@@ -2075,6 +2075,516 @@
             }
         }
 
+        /* Spotlight Section - Data-driven layout */
+        #spotlight-featured-container {
+            margin: 30px 0;
+        }
+
+        /* Featured Spotlight - Extra Large Tile (~3x area) */
+        .spotlight-featured-tile {
+            position: relative;
+            contain: layout style paint;
+            background: linear-gradient(135deg, 
+                rgba(17, 83, 98, 0.15) 0%, 
+                rgba(15, 32, 39, 0.85) 50%, 
+                rgba(12, 55, 71, 0.15) 100%);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            cursor: pointer;
+            margin-bottom: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            min-height: 400px;
+        }
+
+        .spotlight-featured-tile:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--border-color-glow);
+        }
+
+        /* Featured tile fractal accent */
+        .spotlight-featured-tile::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                var(--accent-teal) 0%, 
+                transparent 30%, 
+                var(--accent-warm) 70%, 
+                var(--accent-gold) 100%);
+            opacity: 0;
+            z-index: -1;
+            border-radius: 8px;
+            transition: opacity 0.3s ease;
+        }
+
+        .spotlight-featured-tile:hover::before {
+            opacity: 0.3;
+        }
+
+        /* Featured tile image container */
+        .spotlight-featured-image {
+            position: relative;
+            overflow: hidden;
+            grid-column: 1;
+        }
+
+        .spotlight-featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .spotlight-featured-tile:hover .spotlight-featured-image img {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        /* Featured tile content */
+        .spotlight-featured-content {
+            grid-column: 2;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(to right, 
+                rgba(15, 32, 39, 0.8) 0%, 
+                rgba(15, 32, 39, 0.95) 100%);
+        }
+
+        .spotlight-featured-content h3 {
+            margin: 0 0 10px 0;
+            font-size: 2em;
+            color: var(--text-gold);
+            font-family: 'Bebas Neue', sans-serif;
+            paint-order: stroke fill;
+            -webkit-text-stroke: var(--alpha-title-stroke) #000000;
+            text-stroke: var(--alpha-title-stroke) #000000;
+            text-shadow: 
+                -1px -1px 0 #000,
+                1px -1px 0 #000,
+                -1px 1px 0 #000,
+                1px 1px 0 #000,
+                -2px -2px 0 #000,
+                2px -2px 0 #000,
+                -2px 2px 0 #000,
+                2px 2px 0 #000,
+                0 0 8px rgba(0, 0, 0, 0.8);
+        }
+
+        .spotlight-featured-content .spotlight-number {
+            font-size: 0.7em;
+            color: var(--accent-teal-light);
+            display: block;
+            margin-bottom: 5px;
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+
+        .spotlight-featured-content p {
+            margin: 0 0 20px 0;
+            font-size: 1.1em;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .spotlight-featured-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .spotlight-featured-action {
+            flex: 1;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-size: 1em;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            cursor: pointer;
+        }
+
+        .spotlight-featured-action:hover {
+            transform: scale(1.05);
+        }
+
+        .spotlight-featured-action.mint {
+            background: var(--gradient-cta-kastanje);
+        }
+
+        .spotlight-featured-action.mint:hover {
+            background: var(--gradient-cta-kastanje-hover);
+        }
+
+        .spotlight-featured-action.trade {
+            background: linear-gradient(135deg, 
+                var(--accent-teal) 0%, 
+                var(--accent-teal-light) 100%);
+        }
+
+        .spotlight-featured-action.trade:hover {
+            background: linear-gradient(135deg, 
+                var(--accent-teal-light) 0%, 
+                var(--accent-teal-bright) 100%);
+        }
+
+        .spotlight-featured-action a {
+            color: var(--text-primary);
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Spotlight Cards Grid - Standard cards for items 2-4 */
+        #spotlight-cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .spotlight-card {
+            position: relative;
+            contain: layout style paint;
+            background: linear-gradient(135deg, 
+                rgba(17, 83, 98, 0.15) 0%, 
+                rgba(15, 32, 39, 0.85) 50%, 
+                rgba(12, 55, 71, 0.15) 100%);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            cursor: pointer;
+        }
+
+        .spotlight-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--border-color-glow);
+        }
+
+        .spotlight-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                var(--accent-teal) 0%, 
+                transparent 30%, 
+                var(--accent-warm) 70%, 
+                var(--accent-gold) 100%);
+            opacity: 0;
+            z-index: -1;
+            border-radius: 8px;
+            transition: opacity 0.3s ease;
+        }
+
+        .spotlight-card:hover::before {
+            opacity: 0.3;
+        }
+
+        .spotlight-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .spotlight-card:hover img {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        .spotlight-card-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, 
+                rgba(15, 32, 39, 0.95) 0%, 
+                rgba(15, 32, 39, 0.85) 60%, 
+                transparent 100%);
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .spotlight-card:hover .spotlight-card-caption {
+            transform: translateY(0);
+        }
+
+        .spotlight-card-caption h4 {
+            margin: 0 0 8px 0;
+            font-size: 1.1em;
+            color: var(--text-gold);
+            font-family: 'Bebas Neue', sans-serif;
+            paint-order: stroke fill;
+            -webkit-text-stroke: var(--alpha-title-stroke) #000000;
+            text-stroke: var(--alpha-title-stroke) #000000;
+            text-shadow: 
+                -1px -1px 0 #000,
+                1px -1px 0 #000,
+                -1px 1px 0 #000,
+                1px 1px 0 #000,
+                -2px -2px 0 #000,
+                2px -2px 0 #000,
+                -2px 2px 0 #000,
+                2px 2px 0 #000,
+                0 0 8px rgba(0, 0, 0, 0.8);
+        }
+
+        .spotlight-card-caption p {
+            margin: 0 0 12px 0;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        .spotlight-card-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .spotlight-card-action {
+            flex: 1;
+            text-align: center;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            cursor: pointer;
+        }
+
+        .spotlight-card-action:hover {
+            transform: scale(1.05);
+        }
+
+        .spotlight-card-action.mint {
+            background: var(--gradient-cta-kastanje);
+        }
+
+        .spotlight-card-action.mint:hover {
+            background: var(--gradient-cta-kastanje-hover);
+        }
+
+        .spotlight-card-action.trade {
+            background: linear-gradient(135deg, 
+                var(--accent-teal) 0%, 
+                var(--accent-teal-light) 100%);
+        }
+
+        .spotlight-card-action.trade:hover {
+            background: linear-gradient(135deg, 
+                var(--accent-teal-light) 0%, 
+                var(--accent-teal-bright) 100%);
+        }
+
+        .spotlight-card-action a {
+            color: var(--text-primary);
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Spotlight History List - Minimal inline list */
+        #spotlight-history {
+            margin: 40px 0;
+        }
+
+        #spotlight-history h3 {
+            font-size: 1.3em;
+            color: var(--text-gold);
+            margin: 0 0 20px 0;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        .spotlight-history-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .spotlight-history-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px;
+            background: rgba(15, 32, 39, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .spotlight-history-item:hover {
+            transform: translateX(5px);
+            background: rgba(17, 83, 98, 0.3);
+            border-color: var(--border-color-glow);
+        }
+
+        .spotlight-history-thumbnail {
+            width: 60px;
+            height: 60px;
+            flex-shrink: 0;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            clip-path: polygon(
+                8% 0%, 92% 0%, 100% 8%, 100% 92%, 92% 100%, 8% 100%, 0% 92%, 0% 8%
+            );
+        }
+
+        .spotlight-history-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .spotlight-history-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .spotlight-history-info h4 {
+            margin: 0 0 4px 0;
+            font-size: 0.95em;
+            color: var(--text-primary);
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .spotlight-history-actions {
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .spotlight-history-action {
+            padding: 6px 14px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .spotlight-history-action:hover {
+            transform: scale(1.05);
+        }
+
+        .spotlight-history-action.mint {
+            background: var(--gradient-cta-kastanje);
+        }
+
+        .spotlight-history-action.mint:hover {
+            background: var(--gradient-cta-kastanje-hover);
+        }
+
+        .spotlight-history-action.trade {
+            background: linear-gradient(135deg, 
+                var(--accent-teal) 0%, 
+                var(--accent-teal-light) 100%);
+        }
+
+        .spotlight-history-action.trade:hover {
+            background: linear-gradient(135deg, 
+                var(--accent-teal-light) 0%, 
+                var(--accent-teal-bright) 100%);
+        }
+
+        .spotlight-history-action a {
+            color: var(--text-primary);
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Loading indicator for Spotlight */
+        .spotlight-loading {
+            text-align: center;
+            font-size: 1.2em;
+            color: var(--text-secondary);
+            padding: 40px;
+        }
+
+        /* Responsive adjustments for Spotlight */
+        @media (max-width: 768px) {
+            .spotlight-featured-tile {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .spotlight-featured-image {
+                grid-column: 1;
+                min-height: 250px;
+            }
+
+            .spotlight-featured-content {
+                grid-column: 1;
+                padding: 30px 20px;
+            }
+
+            .spotlight-featured-content h3 {
+                font-size: 1.5em;
+            }
+
+            .spotlight-card-caption {
+                transform: translateY(0);
+                position: relative;
+            }
+
+            #spotlight-cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .spotlight-history-item {
+                flex-wrap: wrap;
+            }
+
+            .spotlight-history-actions {
+                width: 100%;
+                justify-content: flex-end;
+                margin-top: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .spotlight-featured-content {
+                padding: 20px 15px;
+            }
+
+            .spotlight-featured-actions {
+                flex-direction: column;
+            }
+
+            .spotlight-history-thumbnail {
+                width: 50px;
+                height: 50px;
+            }
+
+            .spotlight-history-info h4 {
+                font-size: 0.85em;
+            }
+
+            .spotlight-history-action {
+                padding: 5px 12px;
+                font-size: 0.75em;
+            }
+        }
+
         /* ========================================
            COOKIE CONSENT BANNER STYLES
            ========================================
@@ -3725,54 +4235,22 @@
             <h1>Spotlight</h1>
             <h2>SSY Permissionless Curations</h2>
             <p style="font-size: 1.2em; line-height: 1.6; margin: 20px 0;">
+                Discover the latest featured collections and explore our curated history of spotlight releases.
             </p>
             
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="images/RISEOFTHESUPIUMCOLLECTIONIMAGE.PNG" loading="lazy" alt="Spotlight #3 - Rise of the Supium">
-                    <div class="gallery-caption">
-                        <h4>Spotlight #3 - Rise of the Supium</h4>
-                        <p>Earth is being overwhelmed, the SupraVerse is darkening.</p>
-                        <div class="gallery-actions">
-                            <div class="gallery-action mint">
-                                <a href="https://crystara.trade/marketplace/riseofthesupium" target="_blank">Mint</a>
-                            </div>
-                            <div class="gallery-action trade">
-                                <a href="https://crystara.trade/trade/riseofthesupium" target="_blank">Trade</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/ZENEXCREWV2COLLECTIONIMAGE.png" loading="lazy" alt="Spotlight #2 - Zenex Crew v2">
-                    <div class="gallery-caption">
-                        <h4>Spotlight #2 - Zenex Crew v2</h4>
-                        <p>Supra Waifus</p>
-                        <div class="gallery-actions">
-                            <div class="gallery-action mint">
-                                <a href="https://crystara.trade/marketplace/zenexcrew-v2" target="_blank">Mint</a>
-                            </div>
-                            <div class="gallery-action trade">
-                                <a href="https://crystara.trade/trade/zenexcrew-v2" target="_blank">Trade</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/WARRIORAUCTIONCOLLECTIONIMAGE1.PNG" loading="lazy" alt="Spotlight #1 - Warrior Auction">
-                    <div class="gallery-caption">
-                        <h4>Spotlight #1 - Warrior Auction</h4>
-                        <p>Yours Truly Special</p>
-                        <div class="gallery-actions">
-                            <div class="gallery-action mint">
-                                <a href="https://crystara.trade/marketplace/warriorauction" target="_blank">Mint</a>
-                            </div>
-                            <div class="gallery-action trade">
-                                <a href="https://crystara.trade/trade/warriorauction" target="_blank">Trade</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <!-- Featured Spotlight (newest item) - dynamically populated -->
+            <div id="spotlight-featured-container">
+                <div class="spotlight-loading">Loading Featured Spotlight...</div>
+            </div>
+            
+            <!-- Spotlight Cards (next 3 items) - dynamically populated -->
+            <div id="spotlight-cards-grid">
+                <!-- Loading indicator removed after featured loads -->
+            </div>
+            
+            <!-- Spotlight History (remaining items) - dynamically populated -->
+            <div id="spotlight-history">
+                <!-- Will be populated if there are more than 4 items -->
             </div>
 
             <div style="margin-top: 30px;">
@@ -5793,6 +6271,306 @@
                 document.addEventListener('DOMContentLoaded', loadAlphaGallery);
             } else {
                 loadAlphaGallery();
+            }
+        })();
+    </script>
+
+    <!-- Spotlight Section Data Loader -->
+    <script>
+        (function() {
+            'use strict';
+
+            const SPOTLIGHT_DATA_URL = 'assets/data/spotlight.json';
+            const FEATURED_CONTAINER_ID = 'spotlight-featured-container';
+            const CARDS_CONTAINER_ID = 'spotlight-cards-grid';
+            const HISTORY_CONTAINER_ID = 'spotlight-history';
+
+            /**
+             * Fetch and render the Spotlight section
+             */
+            async function loadSpotlight() {
+                const featuredContainer = document.getElementById(FEATURED_CONTAINER_ID);
+                const cardsContainer = document.getElementById(CARDS_CONTAINER_ID);
+                const historyContainer = document.getElementById(HISTORY_CONTAINER_ID);
+
+                if (!featuredContainer || !cardsContainer || !historyContainer) {
+                    console.warn('Spotlight containers not found');
+                    return;
+                }
+
+                try {
+                    // Fetch spotlight data
+                    const response = await fetch(SPOTLIGHT_DATA_URL);
+                    if (!response.ok) {
+                        throw new Error(`Failed to load spotlight data: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+                    
+                    // Sort items by datePublished (newest first)
+                    const sortedItems = data.items.sort((a, b) => {
+                        return new Date(b.datePublished) - new Date(a.datePublished);
+                    });
+
+                    // Clear loading indicator
+                    featuredContainer.innerHTML = '';
+                    cardsContainer.innerHTML = '';
+                    historyContainer.innerHTML = '';
+
+                    if (sortedItems.length === 0) {
+                        featuredContainer.innerHTML = '<div class="spotlight-loading">No spotlight items available.</div>';
+                        return;
+                    }
+
+                    // Render featured item (newest)
+                    if (sortedItems.length >= 1) {
+                        const featuredTile = createFeaturedTile(sortedItems[0]);
+                        featuredContainer.appendChild(featuredTile);
+                    }
+
+                    // Render next 3 items as cards
+                    const cardItems = sortedItems.slice(1, 4);
+                    cardItems.forEach(item => {
+                        const card = createSpotlightCard(item);
+                        cardsContainer.appendChild(card);
+                    });
+
+                    // Render remaining items in history list
+                    const historyItems = sortedItems.slice(4);
+                    if (historyItems.length > 0) {
+                        const historySection = createHistorySection(historyItems);
+                        historyContainer.appendChild(historySection);
+                    }
+
+                    // Apply hover optimizations
+                    setupSpotlightHoverOptimizations();
+
+                } catch (error) {
+                    console.error('Error loading Spotlight:', error);
+                    featuredContainer.innerHTML = `
+                        <div class="spotlight-loading" style="color: var(--accent-warm);">
+                            Unable to load Spotlight. Please try again later.
+                        </div>
+                    `;
+                }
+            }
+
+            /**
+             * Create featured spotlight tile (extra large)
+             */
+            function createFeaturedTile(item) {
+                const tile = document.createElement('div');
+                tile.className = 'spotlight-featured-tile';
+                tile.setAttribute('data-item-id', item.id);
+
+                tile.innerHTML = `
+                    <div class="spotlight-featured-image">
+                        <img src="${escapeHtml(item.image)}" 
+                             loading="eager" 
+                             alt="${escapeHtml('Spotlight #' + item.number + ' - ' + item.title)}">
+                    </div>
+                    <div class="spotlight-featured-content">
+                        <h3>
+                            <span class="spotlight-number">Spotlight #${escapeHtml(item.number.toString())}</span>
+                            ${escapeHtml(item.title)}
+                        </h3>
+                        <p>${escapeHtml(item.description)}</p>
+                        <div class="spotlight-featured-actions">
+                            ${item.mintUrl ? `
+                                <div class="spotlight-featured-action mint">
+                                    <a href="${escapeHtml(item.mintUrl)}" 
+                                       target="_blank" 
+                                       rel="noopener noreferrer">Mint</a>
+                                </div>
+                            ` : ''}
+                            ${item.tradeUrl ? `
+                                <div class="spotlight-featured-action trade">
+                                    <a href="${escapeHtml(item.tradeUrl)}" 
+                                       target="_blank" 
+                                       rel="noopener noreferrer">Trade</a>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+
+                return tile;
+            }
+
+            /**
+             * Create spotlight card (standard size)
+             */
+            function createSpotlightCard(item) {
+                const card = document.createElement('div');
+                card.className = 'spotlight-card';
+                card.setAttribute('data-item-id', item.id);
+
+                card.innerHTML = `
+                    <img src="${escapeHtml(item.image)}" 
+                         loading="lazy" 
+                         alt="${escapeHtml('Spotlight #' + item.number + ' - ' + item.title)}">
+                    <div class="spotlight-card-caption">
+                        <h4>Spotlight #${escapeHtml(item.number.toString())} - ${escapeHtml(item.title)}</h4>
+                        <p>${escapeHtml(item.description)}</p>
+                        <div class="spotlight-card-actions">
+                            ${item.mintUrl ? `
+                                <div class="spotlight-card-action mint">
+                                    <a href="${escapeHtml(item.mintUrl)}" 
+                                       target="_blank" 
+                                       rel="noopener noreferrer">Mint</a>
+                                </div>
+                            ` : ''}
+                            ${item.tradeUrl ? `
+                                <div class="spotlight-card-action trade">
+                                    <a href="${escapeHtml(item.tradeUrl)}" 
+                                       target="_blank" 
+                                       rel="noopener noreferrer">Trade</a>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+
+                return card;
+            }
+
+            /**
+             * Create history section with minimal list items
+             */
+            function createHistorySection(items) {
+                const section = document.createElement('div');
+                
+                const heading = document.createElement('h3');
+                heading.textContent = 'Spotlight History';
+                section.appendChild(heading);
+
+                const list = document.createElement('div');
+                list.className = 'spotlight-history-list';
+
+                items.forEach(item => {
+                    const historyItem = createHistoryItem(item);
+                    list.appendChild(historyItem);
+                });
+
+                section.appendChild(list);
+                return section;
+            }
+
+            /**
+             * Create a history list item
+             */
+            function createHistoryItem(item) {
+                const div = document.createElement('div');
+                div.className = 'spotlight-history-item';
+                div.setAttribute('data-item-id', item.id);
+
+                div.innerHTML = `
+                    <div class="spotlight-history-thumbnail">
+                        <img src="${escapeHtml(item.image)}" 
+                             loading="lazy" 
+                             alt="${escapeHtml('Spotlight #' + item.number)}">
+                    </div>
+                    <div class="spotlight-history-info">
+                        <h4>Spotlight #${escapeHtml(item.number.toString())} - ${escapeHtml(item.title)}</h4>
+                    </div>
+                    <div class="spotlight-history-actions">
+                        ${item.mintUrl ? `
+                            <div class="spotlight-history-action mint">
+                                <a href="${escapeHtml(item.mintUrl)}" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer">Mint</a>
+                            </div>
+                        ` : ''}
+                        ${item.tradeUrl ? `
+                            <div class="spotlight-history-action trade">
+                                <a href="${escapeHtml(item.tradeUrl)}" 
+                                   target="_blank" 
+                                   rel="noopener noreferrer">Trade</a>
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+
+                return div;
+            }
+
+            /**
+             * Setup hover optimizations for Spotlight elements
+             */
+            function setupSpotlightHoverOptimizations() {
+                // Featured tile
+                const featuredTile = document.querySelector('.spotlight-featured-tile');
+                if (featuredTile) {
+                    featuredTile.addEventListener('mouseenter', function() {
+                        this.style.willChange = 'transform, opacity';
+                        const img = this.querySelector('img');
+                        if (img) {
+                            img.style.willChange = 'transform, opacity';
+                        }
+                    }, { passive: true });
+
+                    featuredTile.addEventListener('mouseleave', function() {
+                        setTimeout(() => {
+                            this.style.willChange = 'auto';
+                            const img = this.querySelector('img');
+                            if (img) {
+                                img.style.willChange = 'auto';
+                            }
+                        }, 300);
+                    }, { passive: true });
+                }
+
+                // Spotlight cards
+                const cards = document.querySelectorAll('.spotlight-card');
+                cards.forEach(card => {
+                    card.addEventListener('mouseenter', function() {
+                        this.style.willChange = 'transform, opacity';
+                        const img = this.querySelector('img');
+                        if (img) {
+                            img.style.willChange = 'transform, opacity';
+                        }
+                    }, { passive: true });
+
+                    card.addEventListener('mouseleave', function() {
+                        setTimeout(() => {
+                            this.style.willChange = 'auto';
+                            const img = this.querySelector('img');
+                            if (img) {
+                                img.style.willChange = 'auto';
+                            }
+                        }, 300);
+                    }, { passive: true });
+                });
+
+                // History items
+                const historyItems = document.querySelectorAll('.spotlight-history-item');
+                historyItems.forEach(item => {
+                    item.addEventListener('mouseenter', function() {
+                        this.style.willChange = 'transform, background';
+                    }, { passive: true });
+
+                    item.addEventListener('mouseleave', function() {
+                        setTimeout(() => {
+                            this.style.willChange = 'auto';
+                        }, 200);
+                    }, { passive: true });
+                });
+            }
+
+            /**
+             * Basic XSS prevention - escape HTML characters
+             */
+            function escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+
+            // Initialize when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', loadSpotlight);
+            } else {
+                loadSpotlight();
             }
         })();
     </script>

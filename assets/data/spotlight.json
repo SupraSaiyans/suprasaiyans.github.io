@@ -1,0 +1,54 @@
+{
+  "items": [
+    {
+      "id": "spotlight-001",
+      "number": 1,
+      "title": "Warrior Auction",
+      "description": "Yours Truly Special",
+      "image": "images/WARRIORAUCTIONCOLLECTIONIMAGE1.PNG",
+      "datePublished": "2025-01-10",
+      "mintUrl": "https://crystara.trade/marketplace/warriorauction",
+      "tradeUrl": "https://crystara.trade/trade/warriorauction"
+    },
+    {
+      "id": "spotlight-002",
+      "number": 2,
+      "title": "Zenex Crew v2",
+      "description": "Supra Waifus",
+      "image": "images/ZENEXCREWV2COLLECTIONIMAGE.png",
+      "datePublished": "2025-01-18",
+      "mintUrl": "https://crystara.trade/marketplace/zenexcrew-v2",
+      "tradeUrl": "https://crystara.trade/trade/zenexcrew-v2"
+    },
+    {
+      "id": "spotlight-003",
+      "number": 3,
+      "title": "Rise of the Supium",
+      "description": "Earth is being overwhelmed, the SupraVerse is darkening.",
+      "image": "images/RISEOFTHESUPIUMCOLLECTIONIMAGE.PNG",
+      "datePublished": "2025-01-25",
+      "mintUrl": "https://crystara.trade/marketplace/riseofthesupium",
+      "tradeUrl": "https://crystara.trade/trade/riseofthesupium"
+    },
+    {
+      "id": "spotlight-004",
+      "number": 4,
+      "title": "Supium Genesis Wave",
+      "description": "The first wave of the Supium invasion brings new power to the SupraVerse.",
+      "image": "images/SUPRAGONSUPRACORNCOLLECTIONIMAGE.PNG",
+      "datePublished": "2025-02-01",
+      "mintUrl": "https://crystara.trade/marketplace/supium-genesis",
+      "tradeUrl": "https://crystara.trade/trade/supium-genesis"
+    },
+    {
+      "id": "spotlight-005",
+      "number": 5,
+      "title": "Fractal Awakening",
+      "description": "Where chaos meets order in perfect harmony within the SupraVerse.",
+      "image": "images/RelicofEssenceCollectionImage.png",
+      "datePublished": "2025-02-08",
+      "mintUrl": "https://crystara.trade/marketplace/fractal-awakening",
+      "tradeUrl": "https://crystara.trade/trade/fractal-awakening"
+    }
+  ]
+}

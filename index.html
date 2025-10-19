@@ -128,7 +128,7 @@
             --spotlight-history-thumbnail-size: 60px;
             
             /* History Section Tokens - Adjustable spacing and color */
-            --history-gap: 24px; /* Thumbnail to title spacing (20-30px range, 24px default) */
+            --thumb-title-gap: 30px; /* Thumbnail to title spacing (25-35px range, 30px default) */
             --history-title-color: var(--text-gold); /* Match NFT title color for consistency */
             --nft-title-color: var(--text-gold); /* NFT title color token for consistency */
             
@@ -1315,16 +1315,16 @@
                 width: 250px;
             }
             
-            /* History gap responsive adjustment - tighter on narrow screens */
+            /* Thumbnail-to-title gap responsive adjustment - tighter on narrow screens */
             :root {
-                --history-gap: 20px;
+                --thumb-title-gap: 25px;
             }
         }
         
-        /* History gap responsive adjustment - default at wider screens */
+        /* Thumbnail-to-title gap responsive adjustment - default at wider screens */
         @media (min-width: 480px) {
             :root {
-                --history-gap: 24px;
+                --thumb-title-gap: 30px;
             }
         }
         
@@ -2244,7 +2244,7 @@
         .spotlight-history-item {
             display: flex;
             align-items: center;
-            gap: var(--history-gap); /* Adjustable spacing token for text alignment */
+            gap: var(--thumb-title-gap); /* Adjustable spacing token for text alignment */
             padding: 12px;
             background: rgba(15, 32, 39, 0.6);
             border: 1px solid var(--border-color);
@@ -2728,7 +2728,7 @@
         .nft-history-item {
             display: flex;
             align-items: center;
-            gap: var(--history-gap); /* Adjustable spacing token for text alignment */
+            gap: var(--thumb-title-gap); /* Adjustable spacing token for text alignment */
             padding: 12px;
             background: rgba(15, 32, 39, 0.6);
             border: 1px solid var(--border-color);
@@ -4630,7 +4630,7 @@
     </section>
 
     <style>
-        /* Medium Feed Styles */
+        /* Medium Feed Styles - Matching NFT/Spotlight History Layout */
         #medium-feed-container {
             width: 100%;
             margin: 30px 0;
@@ -4687,145 +4687,131 @@
             box-shadow: 0 5px 15px rgba(6, 86, 109, 0.3);
         }
 
+        /* Medium Articles List - Matches History Layout */
         .medium-articles {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
             margin-top: 20px;
         }
 
         .medium-article {
-            background: rgba(6, 86, 109, 0.15);
+            display: flex;
+            align-items: center;
+            gap: var(--thumb-title-gap); /* Use same spacing token as history */
+            padding: 12px;
+            background: rgba(15, 32, 39, 0.6);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            /* Performance: Removed backdrop-filter, using semi-transparent bg instead */
-        }
-
-        .medium-article::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-warm), var(--accent-teal-light), var(--accent-warm-light));
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            border-radius: 6px;
+            transition: transform 0.2s ease, background 0.2s ease;
         }
 
         .medium-article:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-teal-light);
-            box-shadow: 0 10px 30px rgba(6, 86, 109, 0.3);
-            background: rgba(6, 86, 109, 0.25);
+            transform: translateX(5px);
+            background: rgba(17, 83, 98, 0.3);
+            border-color: var(--border-color-glow);
         }
 
-        .medium-article:hover::before {
-            opacity: 1;
-        }
-
-        .medium-article-title {
-            font-size: 1.3em;
-            font-weight: bold;
-            margin-bottom: 12px;
-            color: var(--text-primary);
-            line-height: 1.4;
-        }
-
-        .medium-article-title a {
-            color: var(--text-primary);
-            text-decoration: none;
-            background: linear-gradient(45deg, var(--accent-warm), var(--accent-teal-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            transition: all 0.3s ease;
-            /* Subtle faded text shadow matching nav-link colors */
-            text-shadow: 
-                1px 1px 2px rgba(226, 170, 66, 0.3),
-                -1px -1px 2px rgba(42, 62, 64, 0.3),
-                2px 2px 3px rgba(226, 170, 66, 0.2),
-                -2px -2px 3px rgba(42, 62, 64, 0.2);
-        }
-
-        .medium-article-title a:hover {
-            background: linear-gradient(45deg, var(--accent-teal-light), var(--accent-warm));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .medium-article-meta {
+        .medium-article-thumbnail {
+            width: 60px;
+            height: 60px;
+            flex-shrink: 0;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 12px;
-            color: var(--text-secondary);
-            font-size: 0.9em;
+            justify-content: center;
+            background: rgba(6, 86, 109, 0.2);
+            clip-path: polygon(
+                8% 0%, 92% 0%, 100% 8%, 100% 92%, 92% 100%, 8% 100%, 0% 92%, 0% 8%
+            );
+        }
+
+        .medium-icon {
+            width: 32px;
+            height: 32px;
+            color: var(--accent-teal-light);
+        }
+
+        .medium-article-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .medium-article-info h4 {
+            margin: 0 0 4px 0;
+            font-size: 0.95em;
+            color: var(--nft-title-color); /* Use exact NFT title color token */
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .medium-article-info h4 a {
+            color: var(--nft-title-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .medium-article-info h4 a:hover {
+            color: var(--accent-warm-light);
         }
 
         .medium-article-date {
+            font-size: 0.85em;
+            color: var(--text-secondary);
+            opacity: 0.8;
+        }
+
+        .medium-article-actions {
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .medium-article-action {
+            padding: 6px 14px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: transform 0.2s ease;
+            cursor: pointer;
+            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 4px;
+            background: linear-gradient(135deg, 
+                var(--accent-teal) 0%, 
+                var(--accent-teal-light) 100%);
+            color: var(--text-primary);
         }
 
-        .medium-article-date svg {
-            width: 16px;
-            height: 16px;
-            color: var(--accent-teal-light);
+        .medium-article-action:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, 
+                var(--accent-teal-light) 0%, 
+                var(--accent-teal-bright) 100%);
         }
 
-        .medium-article-description {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin-bottom: 15px;
-            font-size: 0.95em;
+        .medium-article-action.share {
+            background: var(--gradient-cta-kastanje);
         }
 
-        .medium-article-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
-            color: var(--accent-teal-light);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            font-size: 0.9em;
-        }
-
-        .medium-article-link svg {
-            width: 16px;
-            height: 16px;
-            transition: transform 0.3s ease;
-        }
-
-        .medium-article-link:hover {
-            color: var(--accent-warm-light);
-            gap: 8px;
-        }
-
-        .medium-article-link:hover svg {
-            transform: translateX(3px);
+        .medium-article-action.share:hover {
+            background: var(--gradient-cta-kastanje-hover);
         }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .medium-articles {
-                grid-template-columns: 1fr;
-                gap: 20px;
+            .medium-article-actions {
+                flex-direction: column;
+                gap: 6px;
             }
 
-            .medium-article-title {
-                font-size: 1.2em;
-            }
-
-            .medium-article {
-                padding: 16px;
+            .medium-article-action {
+                padding: 5px 10px;
+                font-size: 0.75em;
             }
         }
     </style>
@@ -4870,30 +4856,37 @@
 
                     function createArticleCard(article) {
                         const description = stripHtml(article.description);
-                        const truncatedDescription = truncateText(description, 150);
+                        const truncatedDescription = truncateText(description, 120);
 
                         return `
                     <article class="medium-article">
-                        <h3 class="medium-article-title">
-                            <a href="${article.link}" target="_blank" rel="noopener noreferrer">
-                                ${article.title}
-                            </a>
-                        </h3>
-                        <div class="medium-article-meta">
-                            <div class="medium-article-date">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/>
-                                </svg>
-                                <span>${formatDate(article.pubDate)}</span>
-                            </div>
-                        </div>
-                        <p class="medium-article-description">${truncatedDescription}</p>
-                        <a href="${article.link}" class="medium-article-link" target="_blank" rel="noopener noreferrer">
-                            Read More
-                            <svg viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                        <div class="medium-article-thumbnail">
+                            <svg viewBox="0 0 24 24" fill="currentColor" class="medium-icon">
+                                <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/>
                             </svg>
-                        </a>
+                        </div>
+                        <div class="medium-article-info">
+                            <h4>
+                                <a href="${article.link}" target="_blank" rel="noopener noreferrer">
+                                    ${article.title}
+                                </a>
+                            </h4>
+                            <div class="medium-article-date">${formatDate(article.pubDate)}</div>
+                        </div>
+                        <div class="medium-article-actions">
+                            <a href="${article.link}" class="medium-article-action" target="_blank" rel="noopener noreferrer">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                                    <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/>
+                                </svg>
+                                Read
+                            </a>
+                            <a href="https://medium.com/@suprasaiyans" class="medium-article-action share" target="_blank" rel="noopener noreferrer">
+                                <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
+                                    <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+                                </svg>
+                                Share
+                            </a>
+                        </div>
                     </article>
                 `;
             }

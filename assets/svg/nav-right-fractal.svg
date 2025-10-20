@@ -1,0 +1,49 @@
+<svg width="160" height="48" viewBox="0 0 160 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Right flowing fractal ornament with layered warm gradient curves -->
+  <defs>
+    <!-- Warm gradient: gold → copper → deep copper (reversed direction for right flow) -->
+    <linearGradient id="warmGradientR1" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E5B457;stop-opacity:0.8"/>
+      <stop offset="50%" style="stop-color:#D48A45;stop-opacity:0.7"/>
+      <stop offset="100%" style="stop-color:#A4552B;stop-opacity:0.6"/>
+    </linearGradient>
+    
+    <linearGradient id="warmGradientR2" x1="100%" y1="50%" x2="0%" y2="50%">
+      <stop offset="0%" style="stop-color:#E5B457;stop-opacity:0.6"/>
+      <stop offset="60%" style="stop-color:#D48A45;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#A4552B;stop-opacity:0.4"/>
+    </linearGradient>
+    
+    <linearGradient id="warmGradientR3" x1="100%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#D48A45;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#A4552B;stop-opacity:0.3"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Layered flowing curves from right to left (mirrored) -->
+  <!-- Top curve layer -->
+  <path d="M 160,12 Q 120,8 80,10 T 0,14" 
+        stroke="url(#warmGradientR1)" 
+        stroke-width="3" 
+        fill="none" 
+        stroke-linecap="round"/>
+  
+  <!-- Middle curve layer -->
+  <path d="M 160,24 Q 110,20 60,22 T 0,26" 
+        stroke="url(#warmGradientR2)" 
+        stroke-width="4" 
+        fill="none" 
+        stroke-linecap="round"/>
+  
+  <!-- Bottom curve layer -->
+  <path d="M 160,36 Q 115,32 70,34 T 0,38" 
+        stroke="url(#warmGradientR3)" 
+        stroke-width="3" 
+        fill="none" 
+        stroke-linecap="round"/>
+  
+  <!-- Subtle glow accents -->
+  <circle cx="130" cy="24" r="4" fill="url(#warmGradientR1)" opacity="0.4"/>
+  <circle cx="90" cy="24" r="3" fill="url(#warmGradientR2)" opacity="0.3"/>
+  <circle cx="50" cy="24" r="3" fill="url(#warmGradientR3)" opacity="0.3"/>
+</svg>

@@ -290,7 +290,8 @@
             }
         }
         
-        /* Corner accent dots for fractal aesthetic */
+        /* Corner accent dots removed per Option B - no longer needed for minimal outline design */
+        /* 
         .container::before, .section-content::before {
             content: '';
             position: absolute;
@@ -316,6 +317,7 @@
             opacity: 0.7;
             box-shadow: var(--shadow-glow-warm);
         }
+        */
 
         .logo {
             width: 300px;
@@ -3643,7 +3645,8 @@
             pointer-events: none;
             z-index: 10;
             overflow: visible;
-            opacity: 0.85;
+            opacity: 0.35; /* Reduced for subtle outline effect */
+            background: transparent; /* No fill, outline only */
         }
         
         .fractal-corner-tl {
@@ -3669,22 +3672,20 @@
         .fractal-svg {
             width: 100%;
             height: 100%;
-            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.4))
-                    drop-shadow(0 0 20px rgba(6, 86, 109, 0.5))
-                    drop-shadow(0 0 30px rgba(122, 48, 19, 0.3));
+            /* Removed heavy drop-shadow filters for minimal outline effect */
+            opacity: 0; /* Hide SVG content, show only ::before outline */
         }
         
-        /* 3D Cutout Effect Layer */
+        /* Thin outline border for subtle frame effect */
         .fractal-corner::before {
             content: '';
             position: absolute;
-            top: 3px;
-            left: 3px;
-            width: 100%;
-            height: 100%;
-            opacity: 0.3;
-            filter: blur(2px);
-            z-index: -1;
+            inset: 0;
+            border: 1px solid color-mix(in oklab, var(--nft-title-color, #E5B457) 55%, transparent);
+            opacity: 0.35; /* Low contrast outline */
+            pointer-events: none;
+            border-radius: 4px; /* Subtle rounding to match fractal curves */
+            z-index: 1;
         }
         
         /* Enhanced link categories with fractal theme */

@@ -2202,21 +2202,14 @@
         .gallery-card-caption h4 {
             margin: 0 0 8px 0;
             font-size: 1.1em;
-            color: var(--text-gold);
+            color: var(--nft-title-color); /* Use canonical NFT title color token */
             font-family: 'Bebas Neue', sans-serif;
-            paint-order: stroke fill;
-            -webkit-text-stroke: var(--alpha-title-stroke) #000000;
-            text-stroke: var(--alpha-title-stroke) #000000;
+            letter-spacing: 0.5px; /* Consistent letter spacing */
+            /* Simplified shadow for better color vibrancy - removed heavy stroke that washed out gold */
             text-shadow: 
-                -1px -1px 0 #000,
-                1px -1px 0 #000,
-                -1px 1px 0 #000,
-                1px 1px 0 #000,
-                -2px -2px 0 #000,
-                2px -2px 0 #000,
-                -2px 2px 0 #000,
-                2px 2px 0 #000,
-                0 0 8px rgba(0, 0, 0, 0.8);
+                1px 1px 2px rgba(0, 0, 0, 0.8),
+                -1px -1px 2px rgba(0, 0, 0, 0.8),
+                2px 2px 4px rgba(0, 0, 0, 0.6);
         }
 
         .spotlight-card-caption p,

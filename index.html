@@ -3688,7 +3688,7 @@
             z-index: 1;
         }
         
-        /* Enhanced link categories with fractal theme */
+        /* Enhanced accordion-style link categories with fractal theme */
         .powerlevel-fractal .link-category {
             background: linear-gradient(
                 135deg,
@@ -3721,7 +3721,6 @@
         }
         
         .powerlevel-fractal .link-category:hover {
-            transform: translateY(-5px);
             border-color: rgba(122, 48, 19, 0.6);
             box-shadow: 
                 0 10px 40px rgba(6, 86, 109, 0.4),
@@ -3733,6 +3732,121 @@
             transform: scale(1);
         }
         
+        /* Accordion details element */
+        .powerlevel-fractal .phase-accordion {
+            background: transparent;
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        /* Accordion summary (header/toggle) */
+        .powerlevel-fractal .phase-accordion summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            position: relative;
+            /* Minimum touch target size for mobile */
+            min-height: 44px;
+            transition: opacity 0.3s ease;
+        }
+        
+        /* Remove default disclosure triangle */
+        .powerlevel-fractal .phase-accordion summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        /* Phase title styling */
+        .powerlevel-fractal .phase-accordion summary .phase-title {
+            /* Dimmed gradient matching the section header style */
+            background: linear-gradient(135deg,
+                #8a7444 0%,      /* Muted gold */
+                #3a7088 50%,     /* Muted teal */
+                #9a7a52 100%);   /* Muted tan */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.4em;
+            font-weight: bold;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 1px;
+        }
+        
+        /* Chevron toggle icon */
+        .powerlevel-fractal .phase-accordion summary .toggle-icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            margin-left: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0.7;
+        }
+        
+        /* Chevron SVG styling */
+        .powerlevel-fractal .phase-accordion summary .toggle-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: #8a7444;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        /* Rotate chevron when open */
+        .powerlevel-fractal .phase-accordion[open] summary .toggle-icon {
+            transform: rotate(180deg);
+            opacity: 1;
+        }
+        
+        /* Hover effects for summary */
+        .powerlevel-fractal .phase-accordion summary:hover {
+            opacity: 1;
+        }
+        
+        .powerlevel-fractal .phase-accordion summary:hover .toggle-icon {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        .powerlevel-fractal .phase-accordion[open] summary:hover .toggle-icon {
+            transform: rotate(180deg) scale(1.1);
+        }
+        
+        /* Focus styles for keyboard navigation */
+        .powerlevel-fractal .phase-accordion summary:focus {
+            outline: 2px solid rgba(138, 116, 68, 0.6);
+            outline-offset: 2px;
+        }
+        
+        .powerlevel-fractal .phase-accordion summary:focus-visible {
+            outline: 2px solid rgba(138, 116, 68, 0.8);
+            outline-offset: 2px;
+        }
+        
+        /* Content area */
+        .powerlevel-fractal .phase-accordion .phase-content {
+            padding: 0 20px 20px 20px;
+            opacity: 0;
+            transform: translateY(-10px);
+            animation: fadeInSlide 0.3s ease forwards;
+        }
+        
+        @keyframes fadeInSlide {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Legacy h4 styling for backward compatibility */
         .powerlevel-fractal .link-category h4 {
             /* Dimmed gradient matching the section header style */
             background: linear-gradient(135deg,
@@ -5133,50 +5247,94 @@
             
             <div class="links-grid">
                 <div class="link-category">
-                    <h4>⚡ Phase 1: The Discovery</h4>
-                    <ul class="link-list">
-                        <li>Launch $SUPSAI token</li>
-                        <li>Establish core community</li>
-                        <li>Release SupraVerse NFT Collections</li>
-                        <li>Publish website & NFT Spotlights</li>
-                        <li>$SUPSAI & NFT tokenomics alpha</li>
-                        <li>Foundations for open source DAO</li>
-                    </ul>
+                    <details class="phase-accordion">
+                        <summary aria-label="Toggle Phase 1: The Discovery details">
+                            <span class="phase-title">⚡ Phase 1: The Discovery</span>
+                            <span class="toggle-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                        </summary>
+                        <div class="phase-content">
+                            <ul class="link-list">
+                                <li>Launch $SUPSAI token</li>
+                                <li>Establish core community</li>
+                                <li>Release SupraVerse NFT Collections</li>
+                                <li>Publish website & NFT Spotlights</li>
+                                <li>$SUPSAI & NFT tokenomics alpha</li>
+                                <li>Foundations for open source DAO</li>
+                            </ul>
+                        </div>
+                    </details>
                 </div>
 
                 <div class="link-category">
-                    <h4>🐍 Phase 2: The Transformation</h4>
-                    <ul class="link-list">
-                        <li>Onboard creators for NFT Spotlight</li>
-                        <li>$SUPSAI tokenomics & NFT beta</li>
-                        <li>Onboard inhouse visual artists</li>
-                        <li>Create Crystara verified collection</li>
-                        <li>GameFi lore alpha</li>
-                        <li>Staking mechanisms alpha</li>
-                        <li>DAO community governance development & alpha</li>
-                    </ul>
+                    <details class="phase-accordion">
+                        <summary aria-label="Toggle Phase 2: The Transformation details">
+                            <span class="phase-title">🐍 Phase 2: The Transformation</span>
+                            <span class="toggle-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                        </summary>
+                        <div class="phase-content">
+                            <ul class="link-list">
+                                <li>Onboard creators for NFT Spotlight</li>
+                                <li>$SUPSAI tokenomics & NFT beta</li>
+                                <li>Onboard inhouse visual artists</li>
+                                <li>Create Crystara verified collection</li>
+                                <li>GameFi lore alpha</li>
+                                <li>Staking mechanisms alpha</li>
+                                <li>DAO community governance development & alpha</li>
+                            </ul>
+                        </div>
+                    </details>
                 </div>
 
                 <div class="link-category">
-                    <h4>🌟 Phase 3: The Ascension</h4>
-                    <ul class="link-list">
-                        <li>Advanced DeFi deflationary ecosystem & staking</li>
-                        <li>GameFi lore beta</li>
-                        <li>Advanced ethics, transparency, security & just DAO</li>
-                        <li>DAO community governance beta</li>
-                        <li>Support for ethical causes beta</li>
-                    </ul>
+                    <details class="phase-accordion">
+                        <summary aria-label="Toggle Phase 3: The Ascension details">
+                            <span class="phase-title">🌟 Phase 3: The Ascension</span>
+                            <span class="toggle-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                        </summary>
+                        <div class="phase-content">
+                            <ul class="link-list">
+                                <li>Advanced DeFi deflationary ecosystem & staking</li>
+                                <li>GameFi lore beta</li>
+                                <li>Advanced ethics, transparency, security & just DAO</li>
+                                <li>DAO community governance beta</li>
+                                <li>Support for ethical causes beta</li>
+                            </ul>
+                        </div>
+                    </details>
                 </div>
 
                 <div class="link-category">
-                    <h4>🐉 Phase 4: The Rebirth</h4>
-                    <ul class="link-list">
-                        <li>SSY as DAO support to health of Supra Ecosystem</li>
-                        <li>SSY as watchdog & guardians to Supra Ecosystem</li>
-                        <li>GameFi elements mainnet</li>
-                        <li>DAO community governance mainnet</li>
-                        <li>Revolutionary advanced ethics & DeFi ecosystem</li>
-                    </ul>
+                    <details class="phase-accordion">
+                        <summary aria-label="Toggle Phase 4: The Rebirth details">
+                            <span class="phase-title">🐉 Phase 4: The Rebirth</span>
+                            <span class="toggle-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                        </summary>
+                        <div class="phase-content">
+                            <ul class="link-list">
+                                <li>SSY as DAO support to health of Supra Ecosystem</li>
+                                <li>SSY as watchdog & guardians to Supra Ecosystem</li>
+                                <li>GameFi elements mainnet</li>
+                                <li>DAO community governance mainnet</li>
+                                <li>Revolutionary advanced ethics & DeFi ecosystem</li>
+                            </ul>
+                        </div>
+                    </details>
                 </div>
             </div>
         </div>

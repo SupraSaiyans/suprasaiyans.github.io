@@ -2513,12 +2513,9 @@
             font-size: 2em;
             color: var(--nft-title-color); /* Use canonical NFT title color token */
             font-family: 'Bebas Neue', sans-serif;
-            letter-spacing: 1px; /* Consistent letter spacing */
-            /* Reduced stroke for better color vibrancy - was washing out gold */
-            text-shadow: 
-                1px 1px 2px rgba(0, 0, 0, 0.8),
-                -1px -1px 2px rgba(0, 0, 0, 0.8),
-                2px 2px 4px rgba(0, 0, 0, 0.6);
+            letter-spacing: 0; /* Match PR186 canonical */
+            /* Remove all text-shadow for canonical PR186 match */
+            text-shadow: none;
         }
         
         .nft-featured-content .nft-number {
@@ -2666,8 +2663,10 @@
         .nft-card-caption h4 {
             margin: 0 0 8px 0;
             font-size: 1em;
-            color: var(--text-gold);
+            color: var(--nft-title-color); /* Match canonical NFT title color token */
             font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0; /* Match PR186 canonical */
+            text-shadow: none; /* Ensure no inherited shadows */
         }
         
         .nft-card-caption p {

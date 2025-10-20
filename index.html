@@ -2825,33 +2825,126 @@
                 flex-direction: column;
             }
 
+            /* Mobile-only unification: Featured tiles and cards at same size */
+            /* Unify featured tiles - make them render like cards on mobile */
+            .spotlight-featured-tile,
+            .nft-featured-tile,
+            .gallery-featured-tile {
+                display: flex;
+                flex-direction: column;
+                min-height: auto;
+                max-width: 100%;
+            }
+
+            .spotlight-featured-image,
+            .nft-featured-image,
+            .gallery-featured-image {
+                height: 220px; /* Consistent image height */
+                min-height: 220px;
+            }
+
+            .spotlight-featured-image img,
+            .nft-featured-image img,
+            .gallery-featured-image img {
+                object-fit: cover;
+            }
+
+            /* Unify all card types to match sizing */
+            .spotlight-card,
+            .nft-card,
+            .gallery-card {
+                max-width: 100%;
+            }
+
+            .spotlight-card img,
+            .nft-card img,
+            .gallery-card img {
+                height: 220px; /* Match featured tile image height */
+                object-fit: cover;
+            }
+
+            /* Unified caption styling for all card types */
+            .spotlight-card-caption,
+            .nft-card-caption,
+            .gallery-card-caption,
+            .spotlight-featured-content,
+            .nft-featured-content,
+            .gallery-featured-content {
+                padding: 15px;
+            }
+
+            .spotlight-card-caption h4,
+            .nft-card-caption h4,
+            .gallery-card-caption h4,
+            .spotlight-featured-content h3,
+            .nft-featured-content h3,
+            .gallery-featured-content h3 {
+                font-size: 1.1em; /* Consistent title size */
+            }
+
+            .spotlight-card-caption p,
+            .nft-card-caption p,
+            .gallery-card-caption p,
+            .spotlight-featured-content p,
+            .nft-featured-content p,
+            .gallery-featured-content p {
+                font-size: 0.9em; /* Consistent description size */
+            }
+
+            /* Soften button styles on mobile - reduce visual prominence */
+            .spotlight-featured-action,
+            .gallery-featured-action,
+            .nft-featured-action,
+            .spotlight-card-action,
+            .gallery-card-action,
+            .nft-card-action {
+                padding: 4px 8px; /* Reduced from 12px 20px / 8px 12px / 6px 10px */
+                font-size: 0.75em; /* Reduced from 1em / 0.9em / 0.8em */
+                min-height: 44px; /* Maintain tap target size */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Reduce gap between buttons */
+            .spotlight-featured-actions,
+            .gallery-featured-actions,
+            .nft-featured-actions,
+            .spotlight-card-actions,
+            .gallery-card-actions,
+            .nft-card-actions {
+                gap: 8px; /* Reduced from 15px / 10px */
+            }
+
+            /* Make history items smaller on mobile */
             .history-thumbnail,
             .spotlight-history-thumbnail,
             .nft-history-thumbnail {
-                width: 50px;
-                height: 50px;
+                width: 44px; /* Reduced from 60px */
+                height: 44px; /* Reduced from 60px */
             }
             
             /* Adjust thumbnail-title gap for narrow screens */
             .history-item,
             .spotlight-history-item,
             .nft-history-item {
-                gap: 25px; /* Reduce from 30px to 25px on narrow screens */
+                gap: 20px; /* Reduced from 30px to maintain readability */
             }
 
             .history-info h4,
             .spotlight-history-info h4,
             .nft-history-info h4 {
-                font-size: 0.95em; /* Increased from 0.85em for better mobile visibility */
+                font-size: 0.8em; /* Reduced from 0.95em for compact mobile layout */
                 line-height: 1.4;
             }
 
+            /* Reduce history action button prominence */
             .history-action,
             .spotlight-history-action,
             .nft-history-action {
-                padding: 8px 16px; /* Increased from 6px 14px for better tap targets */
-                font-size: 0.85em; /* Increased from 0.75em for better mobile visibility */
-                min-width: 44px; /* Ensure minimum tap target size (44x44px for better accessibility) */
+                padding: 4px 8px; /* Reduced from 6px 14px */
+                font-size: 0.7em; /* Reduced from 0.8em */
+                min-width: 44px; /* Ensure minimum tap target size (44x44px for accessibility) */
                 min-height: 44px; /* Ensure minimum tap target size */
                 display: flex;
                 align-items: center;

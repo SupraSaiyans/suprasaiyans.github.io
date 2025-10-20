@@ -6282,13 +6282,13 @@
                              fetchpriority="high"
                              decoding="async"
                              loading="eager"
-                             alt="${escapeHtml('NFT SSYS #' + item.number + ' - ' + item.title)}"
+                             alt="${escapeHtml('SSY #' + item.number + ' - ' + item.title)}"
                              width="600"
                              height="600">
                     </div>
                     <div class="nft-featured-content gallery-featured-content">
                         <h3>
-                            <span class="nft-number gallery-number">NFT SSYS #${escapeHtml(item.number.toString())}</span>
+                            <span class="nft-number gallery-number">SSY #${escapeHtml(item.number.toString())}</span>
                             ${escapeHtml(item.title)}
                         </h3>
                         <p>${escapeHtml(item.description)}</p>
@@ -6325,11 +6325,11 @@
                 card.innerHTML = `
                     <img src="${escapeHtml(item.image)}" 
                          loading="lazy" 
-                         alt="${escapeHtml('NFT SSYS #' + item.number + ' - ' + item.title)}"
+                         alt="${escapeHtml('SSY #' + item.number + ' - ' + item.title)}"
                          width="300"
                          height="300">
                     <div class="nft-card-caption gallery-card-caption">
-                        <h4>NFT SSYS #${escapeHtml(item.number.toString())} - ${escapeHtml(item.title)}</h4>
+                        <h4>SSY #${escapeHtml(item.number.toString())} - ${escapeHtml(item.title)}</h4>
                         <p>${escapeHtml(item.description)}</p>
                         <div class="nft-card-actions gallery-card-actions">
                             ${item.mintUrl ? `
@@ -6388,12 +6388,12 @@
                     <div class="history-thumbnail nft-history-thumbnail">
                         <img src="${escapeHtml(item.image)}" 
                              loading="lazy" 
-                             alt="${escapeHtml('NFT SSYS #' + item.number)}"
+                             alt="${escapeHtml('SSY #' + item.number)}"
                              width="60"
                              height="60">
                     </div>
                     <div class="history-info nft-history-info">
-                        <h4>NFT SSYS #${escapeHtml(item.number.toString())} - ${escapeHtml(item.title)}</h4>
+                        <h4>SSY #${escapeHtml(item.number.toString())} - ${escapeHtml(item.title)}</h4>
                     </div>
                     <div class="history-actions nft-history-actions">
                         ${item.mintUrl ? `

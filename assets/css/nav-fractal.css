@@ -28,24 +28,21 @@
 /* Apply fractal inlay mask to all nav links EXCEPT placeholder */
 .nav-link:not(.nav-placeholder) {
     /* Override previous mask with fractal SVG mask */
+    /* Mask scales to button size, maintaining original dimensions */
     -webkit-mask-image: url('../svg/nav-button-mask-fractal.svg');
-    -webkit-mask-size: 220px 52px;
+    -webkit-mask-size: 100% 100%;
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-position: center;
     
     mask-image: url('../svg/nav-button-mask-fractal.svg');
-    mask-size: 220px 52px;
+    mask-size: 100% 100%;
     mask-repeat: no-repeat;
     mask-position: center;
     
     /* Update background with warm gradient */
     background: var(--menu-bg-fractal);
     
-    /* Ensure exact sizing to match mask - prevents layout shift */
-    min-width: 220px;
-    max-width: 220px;
-    min-height: 52px;
-    max-height: 52px;
+    /* NO size changes - preserve original button dimensions */
 }
 
 /* ============================================
@@ -60,22 +57,18 @@
         -webkit-mask-image: none;
         mask-image: none;
         
-        /* Preserve sizing */
-        min-width: 220px;
-        max-width: 220px;
-        min-height: 52px;
-        max-height: 52px;
+        /* Preserve original sizing - no changes */
     }
     
     /* Add subtle notch hints with pseudo-elements */
     .nav-link:not(.nav-placeholder)::before {
         content: '';
         position: absolute;
-        left: 60px;
+        left: 25%;
         top: 50%;
         transform: translateY(-50%);
-        width: 8px;
-        height: 12px;
+        width: 6px;
+        height: 10px;
         border-radius: 50%;
         background: rgba(0, 0, 0, 0.15);
         pointer-events: none;
@@ -84,11 +77,11 @@
     .nav-link:not(.nav-placeholder)::after {
         content: '';
         position: absolute;
-        right: 60px;
+        right: 25%;
         top: 50%;
         transform: translateY(-50%);
-        width: 10px;
-        height: 14px;
+        width: 8px;
+        height: 12px;
         border-radius: 50%;
         background: rgba(0, 0, 0, 0.15);
         pointer-events: none;
@@ -224,11 +217,5 @@
         display: none;
     }
     
-    /* Slightly reduce button size on mobile if needed */
-    .nav-link:not(.nav-placeholder) {
-        min-width: 180px;
-        max-width: 180px;
-        -webkit-mask-size: 180px 52px;
-        mask-size: 180px 52px;
-    }
+    /* Mask scales to button size automatically - no size changes needed */
 }

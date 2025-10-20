@@ -1,0 +1,61 @@
+<svg width="80" height="60" viewBox="0 0 80 60" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- Warm gradient matching site palette -->
+        <linearGradient id="navRightGrad" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" style="stop-color:#E5B457;stop-opacity:0.8"/>
+            <stop offset="50%" style="stop-color:#D66D0F;stop-opacity:0.6"/>
+            <stop offset="100%" style="stop-color:#9A4A23;stop-opacity:0.7"/>
+        </linearGradient>
+        
+        <!-- Glow filter for depth -->
+        <filter id="navRightGlow">
+            <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+            <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+    
+    <!-- Flowing curvy fractal shape pointing left, mirrored from left decoration -->
+    <g filter="url(#navRightGlow)" opacity="0.85">
+        <!-- Main flowing curve body -->
+        <path d="M 70,30 
+                 Q 65,20 55,18 
+                 T 40,22 
+                 Q 30,25 22,30
+                 Q 15,33 10,30
+                 L 8,32
+                 Q 14,36 22,33
+                 Q 30,30 40,28
+                 T 55,34
+                 Q 65,38 70,30 Z" 
+              fill="url(#navRightGrad)" 
+              stroke="#E5B457" 
+              stroke-width="0.5"
+              opacity="0.9"/>
+        
+        <!-- Upper flowing accent -->
+        <path d="M 65,22 
+                 Q 58,18 48,20
+                 L 45,22
+                 Q 52,21 60,24
+                 Q 64,26 65,22 Z"
+              fill="url(#navRightGrad)"
+              opacity="0.7"/>
+        
+        <!-- Lower flowing accent -->
+        <path d="M 65,36
+                 Q 58,40 48,38
+                 L 45,36
+                 Q 52,37 60,34
+                 Q 64,32 65,36 Z"
+              fill="url(#navRightGrad)"
+              opacity="0.7"/>
+        
+        <!-- Detail swirls -->
+        <circle cx="62" cy="30" r="2" fill="#E5B457" opacity="0.8"/>
+        <circle cx="45" cy="26" r="1.5" fill="#D66D0F" opacity="0.7"/>
+        <circle cx="45" cy="34" r="1.5" fill="#D66D0F" opacity="0.7"/>
+    </g>
+</svg>

@@ -1,0 +1,61 @@
+<svg width="80" height="60" viewBox="0 0 80 60" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <!-- Warm gradient matching site palette -->
+        <linearGradient id="navLeftGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#E5B457;stop-opacity:0.8"/>
+            <stop offset="50%" style="stop-color:#D66D0F;stop-opacity:0.6"/>
+            <stop offset="100%" style="stop-color:#9A4A23;stop-opacity:0.7"/>
+        </linearGradient>
+        
+        <!-- Glow filter for depth -->
+        <filter id="navLeftGlow">
+            <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+            <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+        </filter>
+    </defs>
+    
+    <!-- Flowing curvy fractal shape pointing right, organic form -->
+    <g filter="url(#navLeftGlow)" opacity="0.85">
+        <!-- Main flowing curve body -->
+        <path d="M 10,30 
+                 Q 15,20 25,18 
+                 T 40,22 
+                 Q 50,25 58,30
+                 Q 65,33 70,30
+                 L 72,32
+                 Q 66,36 58,33
+                 Q 50,30 40,28
+                 T 25,34
+                 Q 15,38 10,30 Z" 
+              fill="url(#navLeftGrad)" 
+              stroke="#E5B457" 
+              stroke-width="0.5"
+              opacity="0.9"/>
+        
+        <!-- Upper flowing accent -->
+        <path d="M 15,22 
+                 Q 22,18 32,20
+                 L 35,22
+                 Q 28,21 20,24
+                 Q 16,26 15,22 Z"
+              fill="url(#navLeftGrad)"
+              opacity="0.7"/>
+        
+        <!-- Lower flowing accent -->
+        <path d="M 15,36
+                 Q 22,40 32,38
+                 L 35,36
+                 Q 28,37 20,34
+                 Q 16,32 15,36 Z"
+              fill="url(#navLeftGrad)"
+              opacity="0.7"/>
+        
+        <!-- Detail swirls -->
+        <circle cx="18" cy="30" r="2" fill="#E5B457" opacity="0.8"/>
+        <circle cx="35" cy="26" r="1.5" fill="#D66D0F" opacity="0.7"/>
+        <circle cx="35" cy="34" r="1.5" fill="#D66D0F" opacity="0.7"/>
+    </g>
+</svg>

@@ -18,7 +18,7 @@
         vibrant teals, warm oranges/golds, and earthy neutrals.
         
         Primary Blues: #0F2027 (deep oceanic), #0C3747 (dark teal), #115362 (medium teal)
-        Accent Teals: #157389 (bright teal), #82B29D (sage green)
+        Accent Teals: #157389 (bright teal), #C4956C (warm copper)
         Warm Accents: #572A14 (deep brown), #9A4A23 (terracotta), #A3581D (warm orange)
         Bright Accents: #D66D0F (vibrant orange), #EC991D (golden orange), #E5B457 (soft gold)
         Neutrals: #654D34 (earthy brown)
@@ -31,10 +31,10 @@
             --primary-medium: #115362;
             --primary-light: #157389;
             
-            /* Accent teals and sage */
+            /* Accent teals and warm copper */
             --accent-teal: #115362;
             --accent-teal-light: #157389;
-            --accent-teal-bright: #82B29D;
+            --accent-teal-bright: #C4956C; /* Replaced sage green with warm copper */
             --accent-cyan: #0C3747;
             
             /* Warm accent system - Browns, oranges, golds */
@@ -132,10 +132,12 @@
             --history-title-color: var(--text-gold); /* Match NFT title color for consistency */
             --nft-title-color: var(--text-gold); /* NFT title color token for consistency */
             
-            /* Menu Tokens - Silk-Cut Ripple buttons */
+            /* Menu Tokens - Curvy Fractal buttons with warm palette */
             --menu-radius: 16px; /* Base border radius for menu buttons */
             --menu-cut-depth: 10px; /* Depth of the curvy cutouts */
-            --menu-accent: var(--nft-title-color); /* Primary accent color for menu */
+            --menu-accent-warm: #E5B457; /* Warm gold accent for menu */
+            --menu-accent-gradient: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-orange) 50%, var(--accent-warm) 100%); /* Warm gradient accent */
+            --menu-accent: var(--menu-accent-warm); /* Primary accent color for menu */
             --menu-accent-rim: color-mix(in oklab, var(--menu-accent) 25%, transparent); /* Iridescent rim color */
             --menu-bg: linear-gradient(180deg, color-mix(in oklab, var(--glass-bg) 85%, var(--menu-accent) 15%), var(--glass-bg)); /* Soft satin gradient background */
             --header-grid-offset: 0px; /* Anchor button layout with header composition */
@@ -683,7 +685,7 @@
             pointer-events: auto;
         }
         
-        /* Nav link base styles - Silk-Cut Ripple buttons with CSS mask */
+        /* Nav link base styles - Curvy Fractal buttons with SVG mask */
         .nav-link {
             white-space: nowrap;
             flex-shrink: 0;
@@ -699,17 +701,15 @@
                         opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);
             background: var(--menu-bg);
             border-radius: var(--menu-radius);
-            /* Silk-Cut Ripple: CSS mask with radial gradients for curvy cutouts */
-            -webkit-mask-image: 
-                radial-gradient(circle at 20% 50%, transparent var(--menu-cut-depth), black calc(var(--menu-cut-depth) + 2px)),
-                radial-gradient(circle at 80% 50%, transparent var(--menu-cut-depth), black calc(var(--menu-cut-depth) + 2px)),
-                linear-gradient(black, black);
-            -webkit-mask-composite: source-in;
-            mask-image: 
-                radial-gradient(circle at 20% 50%, transparent var(--menu-cut-depth), black calc(var(--menu-cut-depth) + 2px)),
-                radial-gradient(circle at 80% 50%, transparent var(--menu-cut-depth), black calc(var(--menu-cut-depth) + 2px)),
-                linear-gradient(black, black);
-            mask-composite: intersect;
+            /* Curvy Fractal: SVG mask for organic flowing shape */
+            -webkit-mask-image: url('assets/svg/nav-button-mask.svg');
+            -webkit-mask-size: 100% 100%;
+            -webkit-mask-position: center;
+            -webkit-mask-repeat: no-repeat;
+            mask-image: url('assets/svg/nav-button-mask.svg');
+            mask-size: 100% 100%;
+            mask-position: center;
+            mask-repeat: no-repeat;
             /* Iridescent rim along top-left edge */
             border-top: 1px solid var(--menu-accent-rim);
             border-left: 1px solid var(--menu-accent-rim);
@@ -717,10 +717,10 @@
             box-shadow: var(--shadow-sm);
         }
         
-        /* Fallback for browsers without CSS mask support - graceful pill shape */
-        @supports not (mask-image: radial-gradient(circle, black, black)) {
+        /* Fallback for browsers without CSS mask support - graceful rounded shape */
+        @supports not (mask-image: url('assets/svg/nav-button-mask.svg')) {
             .nav-link {
-                border-radius: calc(var(--menu-radius) * 2);
+                border-radius: calc(var(--menu-radius) * 1.5);
                 -webkit-mask-image: none;
                 mask-image: none;
             }

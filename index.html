@@ -137,7 +137,7 @@
             --menu-cut-depth: 10px; /* Depth of the curvy cutouts */
             --menu-accent: var(--nft-title-color); /* Primary accent color for menu */
             --menu-accent-rim: color-mix(in oklab, var(--menu-accent) 25%, transparent); /* Iridescent rim color */
-            --menu-bg: linear-gradient(180deg, color-mix(in oklab, var(--glass-bg) 85%, var(--menu-accent) 15%), var(--glass-bg)); /* Soft satin gradient background */
+            --menu-bg: linear-gradient(180deg, rgba(15, 32, 39, 0.05), rgba(15, 32, 39, 0.05)); /* 95% transparent background */
             --header-grid-offset: 0px; /* Anchor button layout with header composition */
         }
         
@@ -4580,8 +4580,10 @@
         }
 
         .medium-icon {
-            width: 32px;
-            height: 32px;
+            width: 50px;
+            height: auto;
+            max-height: 50px;
+            object-fit: contain;
             color: var(--accent-teal-light);
         }
 
@@ -4712,9 +4714,7 @@
                         return `
                     <article class="medium-article">
                         <div class="medium-article-thumbnail">
-                            <svg viewBox="0 0 24 24" fill="currentColor" class="medium-icon">
-                                <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/>
-                            </svg>
+                            <img src="fractal-artifact.svg" alt="SupraVerse Artifact" class="medium-icon">
                         </div>
                         <div class="medium-article-info">
                             <h4>

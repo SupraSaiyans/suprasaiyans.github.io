@@ -3,6 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 
+        Cache-busting revision for JSON data files (spotlight.json, nft-gallery.json).
+        Update this value during each deploy to ensure browsers fetch the latest data.
+        
+        Recommended approaches:
+        1. Manual: Set to current timestamp (e.g., YYYYMMDDHHMMSS format)
+        2. CI/CD: Replace with commit SHA using: sed -i "s/content=\"[^\"]*\"/content=\"$GITHUB_SHA\"/" index.html
+        3. CI/CD with timestamp: date +%Y%m%d%H%M%S
+        
+        Current value is the initial build timestamp.
+    -->
+    <meta name="build-rev" content="20251031155600">
     <title>SupraSaiyans</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <!-- Preload critical LCP image -->
@@ -6046,6 +6058,18 @@
         })();
     </script>
 
+    <!-- Cache-busting utility for JSON data loaders -->
+    <script>
+        /**
+         * Shared utility: Get cache-busting revision value from meta tag or fallback to timestamp.
+         * Used by Spotlight and NFT Gallery loaders to ensure fresh data fetches after deploys.
+         */
+        function getCacheBustRev() {
+            const metaTag = document.querySelector('meta[name="build-rev"]');
+            return metaTag ? metaTag.getAttribute('content') : Date.now().toString();
+        }
+    </script>
+
     <!-- Spotlight Section Data Loader -->
     <script>
         (function() {
@@ -6070,8 +6094,9 @@
                 }
 
                 try {
-                    // Fetch spotlight data
-                    const response = await fetch(SPOTLIGHT_DATA_URL);
+                    // Fetch spotlight data with cache-busting
+                    const cacheBustUrl = `${SPOTLIGHT_DATA_URL}?v=${getCacheBustRev()}`;
+                    const response = await fetch(cacheBustUrl, { cache: 'no-store' });
                     if (!response.ok) {
                         throw new Error(`Failed to load spotlight data: ${response.status}`);
                     }
@@ -6374,8 +6399,9 @@
                 }
 
                 try {
-                    // Fetch NFT data
-                    const response = await fetch(NFT_DATA_URL);
+                    // Fetch NFT data with cache-busting
+                    const cacheBustUrl = `${NFT_DATA_URL}?v=${getCacheBustRev()}`;
+                    const response = await fetch(cacheBustUrl, { cache: 'no-store' });
                     if (!response.ok) {
                         throw new Error(`Failed to load NFT data: ${response.status}`);
                     }

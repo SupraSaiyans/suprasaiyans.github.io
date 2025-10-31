@@ -6058,6 +6058,18 @@
         })();
     </script>
 
+    <!-- Cache-busting utility for JSON data loaders -->
+    <script>
+        /**
+         * Shared utility: Get cache-busting revision value from meta tag or fallback to timestamp.
+         * Used by Spotlight and NFT Gallery loaders to ensure fresh data fetches after deploys.
+         */
+        function getCacheBustRev() {
+            const metaTag = document.querySelector('meta[name="build-rev"]');
+            return metaTag ? metaTag.getAttribute('content') : Date.now().toString();
+        }
+    </script>
+
     <!-- Spotlight Section Data Loader -->
     <script>
         (function() {
@@ -6067,14 +6079,6 @@
             const FEATURED_CONTAINER_ID = 'spotlight-featured-container';
             const CARDS_CONTAINER_ID = 'spotlight-cards-grid';
             const HISTORY_CONTAINER_ID = 'spotlight-history';
-
-            /**
-             * Get cache-busting revision value from meta tag or fallback to timestamp
-             */
-            function getCacheBustRev() {
-                const metaTag = document.querySelector('meta[name="build-rev"]');
-                return metaTag ? metaTag.getAttribute('content') : Date.now().toString();
-            }
 
             /**
              * Fetch and render the Spotlight section
@@ -6380,14 +6384,6 @@
             const FEATURED_CONTAINER_ID = 'nft-featured-container';
             const CARDS_CONTAINER_ID = 'nft-cards-grid';
             const HISTORY_CONTAINER_ID = 'nft-history';
-
-            /**
-             * Get cache-busting revision value from meta tag or fallback to timestamp
-             */
-            function getCacheBustRev() {
-                const metaTag = document.querySelector('meta[name="build-rev"]');
-                return metaTag ? metaTag.getAttribute('content') : Date.now().toString();
-            }
 
             /**
              * Fetch and render the NFT Gallery section

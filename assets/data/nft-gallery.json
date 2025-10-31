@@ -1,6 +1,16 @@
 {
   "items": [
     {
+      "id": "nft-019",
+      "number": 19,
+      "title": "Artificial Infinity",
+      "description": "Ripples of Entropy",
+      "image": "images/ARTIFICIALINFINITYCOLLECTIONIMAGE.png",
+      "datePublished": "2025-10-31",
+      "mintUrl": "https://crystara.trade/marketplace/artificialinfinity",
+      "tradeUrl": "https://crystara.trade/trade/artificialinfinity"
+    },
+    {
       "id": "nft-018",
       "number": 18,
       "title": "Relic of Essence",

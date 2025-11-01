@@ -1320,6 +1320,7 @@
             /* Thumbnail-to-title gap responsive adjustment - tighter on narrow screens */
             :root {
                 --thumb-title-gap: 25px;
+                --mobile-card-image-height: 220px; /* Unified image height for cards and featured tiles on mobile */
             }
         }
         
@@ -2869,19 +2870,32 @@
                 flex-direction: column;
                 min-height: auto;
                 max-width: 100%;
+                grid-template-columns: 1fr; /* Override desktop 2-column grid */
             }
 
             .spotlight-featured-image,
             .nft-featured-image,
             .gallery-featured-image {
-                height: 220px; /* Consistent image height */
-                min-height: 220px;
+                height: var(--mobile-card-image-height); /* Use shared variable */
+                min-height: var(--mobile-card-image-height);
+                grid-column: 1; /* Ensure single column layout */
             }
 
             .spotlight-featured-image img,
             .nft-featured-image img,
             .gallery-featured-image img {
+                width: 100%;
+                height: 100%;
                 object-fit: cover;
+                display: block;
+            }
+
+            /* Featured content behaves like card caption on mobile */
+            .spotlight-featured-content,
+            .nft-featured-content,
+            .gallery-featured-content {
+                position: relative; /* Match card caption positioning */
+                grid-column: 1; /* Ensure single column layout */
             }
 
             /* Unify all card types to match sizing */
@@ -2894,8 +2908,10 @@
             .spotlight-card img,
             .nft-card img,
             .gallery-card img {
-                height: 220px; /* Match featured tile image height */
+                height: var(--mobile-card-image-height); /* Use shared variable */
+                width: 100%;
                 object-fit: cover;
+                display: block;
             }
 
             /* Unified caption styling for all card types */

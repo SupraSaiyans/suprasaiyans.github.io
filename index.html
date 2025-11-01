@@ -2854,10 +2854,28 @@
                 padding: 20px 15px;
             }
 
+            /* Featured actions remain in row layout on mobile to match regular card actions */
             .spotlight-featured-actions,
             .gallery-featured-actions,
             .nft-featured-actions {
-                flex-direction: column;
+                display: flex;
+                flex-direction: row;
+                gap: 8px;
+                align-items: center;
+                flex-wrap: nowrap;
+            }
+
+            /* Override any full-width styles for featured action buttons on mobile */
+            .spotlight-featured-action,
+            .gallery-featured-action,
+            .nft-featured-action {
+                width: auto !important;
+                flex: 1;
+                white-space: nowrap;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 44px;
             }
 
             /* Mobile-only unification: Featured tiles and cards at same size */
@@ -3025,9 +3043,7 @@
                 padding: 20px 15px;
             }
 
-            .nft-featured-actions {
-                flex-direction: column;
-            }
+            /* NFT featured actions styling already handled in main 480px media query above */
 
             #nft-cards-grid {
                 grid-template-columns: 1fr;

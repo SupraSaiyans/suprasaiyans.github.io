@@ -2206,6 +2206,17 @@
             letter-spacing: 0; /* Match PR186 canonical */
             /* Remove all text-shadow for canonical PR186 match */
             text-shadow: none;
+            /* 2-line clamping for titles - both WebKit and Firefox fallback */
+            /* WebKit line-clamp works in Chrome/Safari/Edge; max-height fallback for Firefox */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.2;
+            max-height: calc(1.2em * 2); /* Firefox fallback: line-height * 2 lines */
+            word-break: break-word;
+            white-space: normal;
         }
 
         .spotlight-card-caption p,
@@ -2214,6 +2225,16 @@
             font-size: 0.9em;
             color: var(--text-secondary);
             line-height: 1.4;
+            /* 2-line clamping for subtitles - both WebKit and Firefox fallback */
+            /* WebKit line-clamp works in Chrome/Safari/Edge; max-height fallback for Firefox */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-height: calc(1.4em * 2); /* Firefox fallback: line-height * 2 lines */
+            word-break: break-word;
+            white-space: normal;
         }
 
         .spotlight-card-actions,
@@ -2669,6 +2690,17 @@
             font-family: 'Bebas Neue', sans-serif;
             letter-spacing: 0; /* Match PR186 canonical */
             text-shadow: none; /* Ensure no inherited shadows */
+            /* 2-line clamping for titles - both WebKit and Firefox fallback */
+            /* WebKit line-clamp works in Chrome/Safari/Edge; max-height fallback for Firefox */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.2;
+            max-height: calc(1.2em * 2); /* Firefox fallback: line-height * 2 lines */
+            word-break: break-word;
+            white-space: normal;
         }
         
         .nft-card-caption p {
@@ -2677,6 +2709,7 @@
             color: var(--text-secondary);
             line-height: 1.4;
             /* Line clamping to 2 lines with ellipsis for better readability */
+            /* WebKit line-clamp works in Chrome/Safari/Edge; max-height fallback for Firefox */
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
@@ -2685,6 +2718,8 @@
             /* Fallback for browsers without line-clamp support */
             max-height: calc(1.4em * 2); /* line-height * number of lines */
             position: relative;
+            word-break: break-word;
+            white-space: normal;
         }
         
         /* Subtle gradient mask to indicate truncation (progressive enhancement) */

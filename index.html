@@ -6070,6 +6070,52 @@
         })();
     </script>
 
+    <!-- Shared Utility Functions for Gallery Sections -->
+    <script>
+        /**
+         * Shared utility functions for image rendering
+         */
+        window.GalleryUtils = window.GalleryUtils || {};
+
+        /**
+         * Generate responsive picture element HTML with WebP support
+         * @param {string} imagePath - Original image path (PNG/JPG)
+         * @param {string} alt - Alt text for the image
+         * @param {string} loading - Loading strategy ('eager' or 'lazy')
+         * @param {number} width - Image width
+         * @param {number} height - Image height
+         * @param {string} sizes - Optional sizes attribute for srcset
+         * @returns {string} HTML string for picture element
+         */
+        window.GalleryUtils.createResponsivePicture = function(imagePath, alt, loading = 'lazy', width = null, height = null, sizes = null) {
+            // Convert path to WebP version (e.g., image.png -> image.webp)
+            const webpPath = imagePath.replace(/\.(png|jpg|jpeg|PNG|JPG|JPEG)$/, '.webp');
+            
+            // Escape HTML for security
+            const escapeHtml = (text) => {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            };
+            
+            const widthAttr = width ? `width="${width}"` : '';
+            const heightAttr = height ? `height="${height}"` : '';
+            const sizesAttr = sizes ? `sizes="${escapeHtml(sizes)}"` : '';
+            
+            return `
+                <picture>
+                    <source srcset="${escapeHtml(webpPath)}" type="image/webp">
+                    <img src="${escapeHtml(imagePath)}" 
+                         alt="${escapeHtml(alt)}"
+                         loading="${loading}"
+                         ${widthAttr}
+                         ${heightAttr}
+                         ${sizesAttr}>
+                </picture>
+            `;
+        };
+    </script>
+
     <!-- Spotlight Section Data Loader -->
     <script>
         (function() {
@@ -6159,7 +6205,7 @@
                 tile.setAttribute('data-item-id', item.id);
 
                 const altText = 'Spotlight #' + item.number + ' - ' + item.title;
-                const pictureHtml = createResponsivePicture(
+                const pictureHtml = window.GalleryUtils.createResponsivePicture(
                     item.image, 
                     altText, 
                     'eager', 
@@ -6209,7 +6255,7 @@
                 card.setAttribute('data-item-id', item.id);
 
                 const altText = 'Spotlight #' + item.number + ' - ' + item.title;
-                const pictureHtml = createResponsivePicture(
+                const pictureHtml = window.GalleryUtils.createResponsivePicture(
                     item.image, 
                     altText, 
                     'lazy', 
@@ -6277,7 +6323,7 @@
                 div.setAttribute('data-item-id', item.id);
 
                 const altText = 'Spotlight #' + item.number;
-                const pictureHtml = createResponsivePicture(
+                const pictureHtml = window.GalleryUtils.createResponsivePicture(
                     item.image, 
                     altText, 
                     'lazy', 
@@ -6385,37 +6431,6 @@
                 return div.innerHTML;
             }
 
-            /**
-             * Generate responsive picture element HTML with WebP support
-             * @param {string} imagePath - Original image path (PNG/JPG)
-             * @param {string} alt - Alt text for the image
-             * @param {string} loading - Loading strategy ('eager' or 'lazy')
-             * @param {number} width - Image width
-             * @param {number} height - Image height
-             * @param {string} sizes - Optional sizes attribute for srcset
-             * @returns {string} HTML string for picture element
-             */
-            function createResponsivePicture(imagePath, alt, loading = 'lazy', width = null, height = null, sizes = null) {
-                // Convert path to WebP version (e.g., image.png -> image.webp)
-                const webpPath = imagePath.replace(/\.(png|jpg|jpeg|PNG|JPG|JPEG)$/, '.webp');
-                
-                const widthAttr = width ? `width="${width}"` : '';
-                const heightAttr = height ? `height="${height}"` : '';
-                const sizesAttr = sizes ? `sizes="${escapeHtml(sizes)}"` : '';
-                
-                return `
-                    <picture>
-                        <source srcset="${escapeHtml(webpPath)}" type="image/webp" ${sizesAttr}>
-                        <img src="${escapeHtml(imagePath)}" 
-                             alt="${escapeHtml(alt)}"
-                             loading="${loading}"
-                             ${widthAttr}
-                             ${heightAttr}
-                             ${sizesAttr}>
-                    </picture>
-                `;
-            }
-
             // Initialize when DOM is ready
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', loadSpotlight);
@@ -6513,7 +6528,7 @@
                 tile.setAttribute('data-item-id', item.id);
 
                 const altText = 'SSY #' + item.number + ' - ' + item.title;
-                const pictureHtml = createResponsivePicture(
+                const pictureHtml = window.GalleryUtils.createResponsivePicture(
                     item.image, 
                     altText, 
                     'eager', 
@@ -6563,7 +6578,7 @@
                 card.setAttribute('data-item-id', item.id);
 
                 const altText = 'SSY #' + item.number + ' - ' + item.title;
-                const pictureHtml = createResponsivePicture(
+                const pictureHtml = window.GalleryUtils.createResponsivePicture(
                     item.image, 
                     altText, 
                     'lazy', 
@@ -6631,7 +6646,7 @@
                 div.setAttribute('data-item-id', item.id);
 
                 const altText = 'SSY #' + item.number;
-                const pictureHtml = createResponsivePicture(
+                const pictureHtml = window.GalleryUtils.createResponsivePicture(
                     item.image, 
                     altText, 
                     'lazy', 
@@ -6737,37 +6752,6 @@
                 const div = document.createElement('div');
                 div.textContent = text;
                 return div.innerHTML;
-            }
-
-            /**
-             * Generate responsive picture element HTML with WebP support
-             * @param {string} imagePath - Original image path (PNG/JPG)
-             * @param {string} alt - Alt text for the image
-             * @param {string} loading - Loading strategy ('eager' or 'lazy')
-             * @param {number} width - Image width
-             * @param {number} height - Image height
-             * @param {string} sizes - Optional sizes attribute for srcset
-             * @returns {string} HTML string for picture element
-             */
-            function createResponsivePicture(imagePath, alt, loading = 'lazy', width = null, height = null, sizes = null) {
-                // Convert path to WebP version (e.g., image.png -> image.webp)
-                const webpPath = imagePath.replace(/\.(png|jpg|jpeg|PNG|JPG|JPEG)$/, '.webp');
-                
-                const widthAttr = width ? `width="${width}"` : '';
-                const heightAttr = height ? `height="${height}"` : '';
-                const sizesAttr = sizes ? `sizes="${escapeHtml(sizes)}"` : '';
-                
-                return `
-                    <picture>
-                        <source srcset="${escapeHtml(webpPath)}" type="image/webp" ${sizesAttr}>
-                        <img src="${escapeHtml(imagePath)}" 
-                             alt="${escapeHtml(alt)}"
-                             loading="${loading}"
-                             ${widthAttr}
-                             ${heightAttr}
-                             ${sizesAttr}>
-                    </picture>
-                `;
             }
 
             // Initialize when DOM is ready

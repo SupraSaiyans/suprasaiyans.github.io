@@ -83,7 +83,6 @@
 
         // Fetch the navigation partial
         fetch(NAV_PARTIAL_URL, { 
-            cache: 'no-store',
             headers: {
                 'Accept': 'text/html'
             }
@@ -125,8 +124,8 @@
                 navElement.style.opacity = '0';
                 navElement.style.transform = 'translateY(-10px)';
                 
-                // Force reflow
-                navElement.offsetHeight;
+                // Force reflow to ensure transition works
+                void navElement.offsetHeight;
                 
                 // Animate in
                 navElement.style.transition = 'opacity 0.3s ease-out, transform 0.3s ease-out';
@@ -154,34 +153,22 @@
     }
 
     /**
-     * Remove event listeners after navigation is loaded
-     */
-    function removeInteractionListeners() {
-        document.removeEventListener('touchstart', loadNavigation, { passive: true });
-        document.removeEventListener('mousemove', loadNavigation, { passive: true });
-        document.removeEventListener('keydown', loadNavigation);
-    }
-
-    /**
      * Set up interaction-based loading
      */
     function setupInteractionLoading() {
         // Load on first touch
         document.addEventListener('touchstart', function onTouch() {
             loadNavigation();
-            removeInteractionListeners();
         }, { passive: true, once: true });
 
         // Load on first mouse movement
         document.addEventListener('mousemove', function onMouseMove() {
             loadNavigation();
-            removeInteractionListeners();
         }, { passive: true, once: true });
 
         // Load on first keyboard interaction
         document.addEventListener('keydown', function onKeyDown() {
             loadNavigation();
-            removeInteractionListeners();
         }, { once: true });
     }
 
@@ -231,7 +218,6 @@
             requestIdleCallback(
                 () => {
                     loadNavigation();
-                    removeInteractionListeners();
                 },
                 { timeout: IDLE_TIMEOUT }
             );
@@ -240,13 +226,11 @@
             if (document.readyState === 'complete') {
                 setTimeout(() => {
                     loadNavigation();
-                    removeInteractionListeners();
                 }, LOAD_DELAY_AFTER_WINDOW_LOAD);
             } else {
                 window.addEventListener('load', function() {
                     setTimeout(() => {
                         loadNavigation();
-                        removeInteractionListeners();
                     }, LOAD_DELAY_AFTER_WINDOW_LOAD);
                 }, { once: true });
             }

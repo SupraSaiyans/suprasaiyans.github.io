@@ -43,16 +43,26 @@
     {
       "id": "spotlight-005",
       "number": 5,
+      "title": "Supra OG",
+      "description": "Supra Heroes United!",
+      "image": "images/SUPRAOG.png",
+      "datePublished": "2025-05-01",
+      "mintUrl": "https://crystara.trade/marketplace/og",
+      "tradeUrl": "https://crystara.trade/trade/og"
+    },
+    {
+      "id": "spotlight-006",
+      "number": 6,
       "title": "Warrior Auction",
       "description": "Yours Truly Special",
       "image": "images/WARRIORAUCTIONCOLLECTIONIMAGE1.PNG",
-      "datePublished": "2025-05-01",
+      "datePublished": "2025-06-01",
       "mintUrl": "https://crystara.trade/marketplace/warriorauction",
       "tradeUrl": "https://crystara.trade/trade/warriorauction"
      },
      {
-      "id": "spotlight-006",
-      "number": 6,
+      "id": "spotlight-007",
+      "number": 7,
       "title": "Artificial Infinity",
       "description": "Ripples of Entropy",
       "image": "images/ARTIFICIALINFINITYCOLLECTIONIMAGE.png",

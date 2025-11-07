@@ -41,9 +41,11 @@ function parseArgs() {
 
   for (const arg of args) {
     if (arg.startsWith('--type=')) {
-      options.type = arg.split('=')[1];
+      const value = arg.split('=')[1];
+      if (value) options.type = value;
     } else if (arg.startsWith('--data=')) {
-      options.data = arg.split('=')[1];
+      const value = arg.split('=')[1];
+      if (value) options.data = value;
     } else if (arg === '--interactive') {
       options.interactive = true;
     } else if (arg === '--generate') {

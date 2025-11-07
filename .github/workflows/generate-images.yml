@@ -65,7 +65,7 @@ jobs:
             
             echo "Processing $DATA_FILE..."
             
-            # Extract image paths from JSON using jq (available in ubuntu-latest)
+            # Extract image paths from JSON using Node.js
             # Handle both "images/FILE.PNG" and "FILE.png" formats
             IMAGE_PATHS=$(node -e "
               const fs = require('fs');

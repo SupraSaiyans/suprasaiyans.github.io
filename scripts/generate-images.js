@@ -43,9 +43,11 @@ function parseArgs() {
 
   for (const arg of args) {
     if (arg.startsWith('--basename=')) {
-      options.basename = arg.split('=')[1];
+      const value = arg.split('=')[1];
+      if (value) options.basename = value;
     } else if (arg.startsWith('--outDir=')) {
-      options.outDir = arg.split('=')[1];
+      const value = arg.split('=')[1];
+      if (value) options.outDir = value;
     } else if (arg === '--force') {
       options.force = true;
     } else if (arg === '--all') {

@@ -1,0 +1,183 @@
+name: Generate Responsive Images
+
+on:
+  # Allow manual trigger
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Force regeneration of existing images'
+        required: false
+        type: boolean
+        default: false
+  
+  # Trigger on push to feature branch
+  push:
+    branches:
+      - 'feature/add-generated-images'
+  
+  # Trigger on PR targeting feature branch
+  pull_request:
+    branches:
+      - 'feature/add-generated-images'
+
+permissions:
+  contents: write
+
+jobs:
+  generate-images:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Create output directory
+        run: mkdir -p assets/images
+      
+      - name: Extract and process images from data files
+        id: process_images
+        run: |
+          echo "Processing images from spotlight.json and nft-gallery.json..."
+          
+          # Track statistics
+          PROCESSED=0
+          GENERATED=0
+          SKIPPED=0
+          FAILED=0
+          
+          # Parse JSON files and extract image basenames
+          for DATA_FILE in assets/data/spotlight.json assets/data/nft-gallery.json; do
+            if [ ! -f "$DATA_FILE" ]; then
+              echo "Warning: $DATA_FILE not found"
+              continue
+            fi
+            
+            echo "Processing $DATA_FILE..."
+            
+            # Extract image paths from JSON using jq (available in ubuntu-latest)
+            # Handle both "images/FILE.PNG" and "FILE.png" formats
+            IMAGE_PATHS=$(node -e "
+              const fs = require('fs');
+              const data = JSON.parse(fs.readFileSync('$DATA_FILE', 'utf-8'));
+              const images = data.items.map(item => item.image).filter(Boolean);
+              console.log(images.join('\n'));
+            ")
+            
+            # Process each image
+            while IFS= read -r IMAGE_PATH; do
+              [ -z "$IMAGE_PATH" ] && continue
+              
+              # Extract basename (filename without extension)
+              BASENAME=$(basename "$IMAGE_PATH" | sed 's/\.[^.]*$//')
+              
+              echo "  Processing: $BASENAME"
+              
+              # Find source image (check both /images and root directory)
+              SOURCE_FILE=""
+              for DIR in images .; do
+                for EXT in png PNG jpg JPG jpeg JPEG; do
+                  CANDIDATE="${DIR}/${BASENAME}.${EXT}"
+                  if [ -f "$CANDIDATE" ]; then
+                    SOURCE_FILE="$CANDIDATE"
+                    break 2
+                  fi
+                done
+              done
+              
+              if [ -z "$SOURCE_FILE" ]; then
+                echo "  ⚠ Source file not found for: $BASENAME"
+                FAILED=$((FAILED + 1))
+                continue
+              fi
+              
+              echo "  Found source: $SOURCE_FILE"
+              
+              # Generate responsive variants
+              FORCE_FLAG=""
+              if [ "${{ inputs.force }}" = "true" ]; then
+                FORCE_FLAG="--force"
+              fi
+              
+              if node scripts/generate-images.js --basename="$BASENAME" --outDir=assets/images $FORCE_FLAG; then
+                echo "  ✓ Generated variants for $BASENAME"
+                PROCESSED=$((PROCESSED + 1))
+              else
+                echo "  ✗ Failed to generate variants for $BASENAME"
+                FAILED=$((FAILED + 1))
+              fi
+              
+            done <<< "$IMAGE_PATHS"
+          done
+          
+          # Output summary
+          echo ""
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "SUMMARY"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "Images processed: $PROCESSED"
+          echo "Images failed: $FAILED"
+          echo ""
+          
+          # Set outputs for later steps
+          echo "processed=$PROCESSED" >> $GITHUB_OUTPUT
+          echo "failed=$FAILED" >> $GITHUB_OUTPUT
+      
+      - name: Check for generated files
+        id: check_changes
+        run: |
+          if [ -n "$(git status --porcelain assets/images/)" ]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "Generated images detected"
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No new images generated"
+          fi
+      
+      - name: Commit and push generated images
+        if: steps.check_changes.outputs.has_changes == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          git add assets/images/
+          
+          # Create detailed commit message
+          COMMIT_MSG="Generate responsive image variants
+          
+          - Processed: ${{ steps.process_images.outputs.processed }} images
+          - Failed: ${{ steps.process_images.outputs.failed }} images
+          
+          Generated AVIF, WebP, and JPG variants at multiple widths (400w, 800w, 1200w, 1600w)
+          for items in spotlight.json and nft-gallery.json.
+          
+          [skip ci]"
+          
+          git commit -m "$COMMIT_MSG"
+          git push
+      
+      - name: Summary
+        if: always()
+        run: |
+          echo "### Image Generation Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Processed:** ${{ steps.process_images.outputs.processed }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Failed:** ${{ steps.process_images.outputs.failed }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Changes committed:** ${{ steps.check_changes.outputs.has_changes }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ steps.check_changes.outputs.has_changes }}" = "true" ]; then
+            echo "✓ New responsive image variants have been generated and committed." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "ℹ All image variants already exist. Use workflow_dispatch with force=true to regenerate." >> $GITHUB_STEP_SUMMARY
+          fi

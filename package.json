@@ -1,0 +1,18 @@
+{
+  "name": "suprasaiyans-website",
+  "version": "1.0.0",
+  "description": "SupraSaiyans static website with responsive image generation",
+  "private": true,
+  "scripts": {
+    "generate-images": "node scripts/generate-images.js",
+    "add-gallery-item": "node scripts/add-gallery-item.js"
+  },
+  "dependencies": {
+    "sharp": "^0.33.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "author": "SupraSaiyans",
+  "license": "ISC"
+}

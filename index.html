@@ -6078,7 +6078,7 @@
         window.GalleryUtils = window.GalleryUtils || {};
 
         /**
-         * Generate responsive picture element HTML with WebP support
+         * Generate responsive picture element HTML with AVIF/WebP/JPG variants and fallback
          * @param {string} imagePath - Original image path (PNG/JPG)
          * @param {string} alt - Alt text for the image
          * @param {string} loading - Loading strategy ('eager' or 'lazy')
@@ -6088,9 +6088,6 @@
          * @returns {string} HTML string for picture element
          */
         window.GalleryUtils.createResponsivePicture = function(imagePath, alt, loading = 'lazy', width = null, height = null, sizes = null) {
-            // Convert path to WebP version (e.g., image.png -> image.webp)
-            const webpPath = imagePath.replace(/\.(png|jpg|jpeg|PNG|JPG|JPEG)$/, '.webp');
-            
             // Escape HTML for security
             const escapeHtml = (text) => {
                 const div = document.createElement('div');
@@ -6098,19 +6095,36 @@
                 return div.innerHTML;
             };
             
+            // Extract basename from image path (e.g., "images/FILE.PNG" -> "FILE")
+            const pathParts = imagePath.split('/');
+            const filename = pathParts[pathParts.length - 1];
+            const basename = filename.replace(/\.(png|jpg|jpeg|PNG|JPG|JPEG)$/, '');
+            
+            // Generate srcset for responsive variants (if they exist in assets/images/)
+            const widths = [400, 800, 1200, 1600];
+            const avifSrcset = widths.map(w => `assets/images/${basename}-${w}w.avif ${w}w`).join(', ');
+            const webpSrcset = widths.map(w => `assets/images/${basename}-${w}w.webp ${w}w`).join(', ');
+            const jpgSrcset = widths.map(w => `assets/images/${basename}-${w}w.jpg ${w}w`).join(', ');
+            
+            // Fallback to simple WebP if generated variants don't exist
+            const webpPath = imagePath.replace(/\.(png|jpg|jpeg|PNG|JPG|JPEG)$/, '.webp');
+            
             const widthAttr = width ? `width="${width}"` : '';
             const heightAttr = height ? `height="${height}"` : '';
-            const sizesAttr = sizes ? `sizes="${escapeHtml(sizes)}"` : '';
+            const defaultSizes = sizes || '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw';
+            const sizesAttr = `sizes="${escapeHtml(defaultSizes)}"`;
             
             return `
                 <picture>
+                    <source srcset="${escapeHtml(avifSrcset)}" type="image/avif" ${sizesAttr}>
+                    <source srcset="${escapeHtml(webpSrcset)}" type="image/webp" ${sizesAttr}>
+                    <source srcset="${escapeHtml(jpgSrcset)}" type="image/jpeg" ${sizesAttr}>
                     <source srcset="${escapeHtml(webpPath)}" type="image/webp">
                     <img src="${escapeHtml(imagePath)}" 
                          alt="${escapeHtml(alt)}"
                          loading="${loading}"
                          ${widthAttr}
-                         ${heightAttr}
-                         ${sizesAttr}>
+                         ${heightAttr}>
                 </picture>
             `;
         };

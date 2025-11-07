@@ -107,14 +107,33 @@
             // Check for prefers-reduced-motion
             const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             
+            // Inject any style tags from the partial (for scroll-collapse CSS)
+            const styleElements = tempDiv.querySelectorAll('style');
+            styleElements.forEach(style => {
+                document.head.appendChild(style.cloneNode(true));
+            });
+            
             // Inject the navigation
             placeholder.parentNode.replaceChild(navElement, placeholder);
+            
+            // Execute any script tags from the partial (for initTopNav function)
+            const scriptElements = tempDiv.querySelectorAll('script');
+            scriptElements.forEach(scriptEl => {
+                const newScript = document.createElement('script');
+                if (scriptEl.src) {
+                    newScript.src = scriptEl.src;
+                } else {
+                    newScript.textContent = scriptEl.textContent;
+                }
+                document.body.appendChild(newScript);
+            });
             
             // Mark as loaded
             navLoaded = true;
             loadingInProgress = false;
 
-            // Run initialization function if it exists
+            // Run scroll-collapse initialization if defined (from top-nav.html)
+            // This sets up the hide-on-scroll-down, show-on-scroll-up behavior
             if (typeof window.initTopNav === 'function') {
                 window.initTopNav();
             }

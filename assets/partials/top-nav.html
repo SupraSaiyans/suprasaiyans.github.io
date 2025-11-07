@@ -1,4 +1,22 @@
-<nav class="nav-menu" role="navigation" aria-label="Main Navigation">
+<style>
+    /* Scroll-collapse navigation styles */
+    .top-nav {
+        transition: transform 0.3s ease-out;
+    }
+    
+    .top-nav.collapsed {
+        transform: translateX(calc(-50% + 9px)) translateY(-100%) !important;
+    }
+    
+    /* Ensure smooth transitions on mobile and desktop */
+    @media (max-width: 768px) {
+        .top-nav.collapsed {
+            transform: translateX(-50%) translateY(-100%) !important;
+        }
+    }
+</style>
+
+<nav class="nav-menu top-nav" role="navigation" aria-label="Main Navigation">
     <a href="#home" class="nav-link" title="Lǎo Shīfu" aria-label="Navigate to Lǎo Shīfu section">
         <img src="artifact-laoshifu.svg" alt="Lǎo Shīfu Artifact" class="nav-artifact-icon">
     </a>
@@ -21,3 +39,132 @@
         <img src="artifact-saiyans9000.svg" alt="Over 9000 Saiyans Artifact" class="nav-artifact-icon">
     </a>
 </nav>
+
+<script>
+/**
+ * Initialize scroll-collapse behavior for top navigation
+ * - Hides nav on scroll down, shows on scroll up
+ * - Respects prefers-reduced-motion
+ * - Uses requestAnimationFrame throttling for performance
+ * - Keeps nav visible when keyboard user focuses within
+ */
+window.initTopNav = function() {
+    'use strict';
+    
+    const nav = document.querySelector('.top-nav');
+    if (!nav) {
+        console.warn('Top nav not found');
+        return;
+    }
+    
+    // Guard against multiple initializations
+    if (nav._scrollCollapseInitialized) {
+        return;
+    }
+    nav._scrollCollapseInitialized = true;
+    
+    // Respect prefers-reduced-motion - do nothing if user prefers reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+    }
+    
+    // Scroll state tracking
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+    let isCollapsed = false;
+    let isFocusedWithin = false;
+    
+    const SCROLL_THRESHOLD = 12; // Small threshold to avoid jitter
+    const TOP_THRESHOLD = 10; // Keep nav visible when near top
+    
+    /**
+     * Update nav visibility based on scroll position
+     */
+    function updateNavVisibility() {
+        const currentScrollY = window.scrollY;
+        const scrollDelta = currentScrollY - lastScrollY;
+        
+        // Keep nav visible at top of page
+        if (currentScrollY <= TOP_THRESHOLD) {
+            if (isCollapsed) {
+                nav.classList.remove('collapsed');
+                isCollapsed = false;
+            }
+            lastScrollY = currentScrollY;
+            ticking = false;
+            return;
+        }
+        
+        // Keep nav visible when focused within (keyboard accessibility)
+        if (isFocusedWithin) {
+            if (isCollapsed) {
+                nav.classList.remove('collapsed');
+                isCollapsed = false;
+            }
+            lastScrollY = currentScrollY;
+            ticking = false;
+            return;
+        }
+        
+        // Scrolling down - collapse nav
+        if (scrollDelta > SCROLL_THRESHOLD && !isCollapsed) {
+            nav.classList.add('collapsed');
+            isCollapsed = true;
+        }
+        // Scrolling up - show nav
+        else if (scrollDelta < -SCROLL_THRESHOLD && isCollapsed) {
+            nav.classList.remove('collapsed');
+            isCollapsed = false;
+        }
+        
+        lastScrollY = currentScrollY;
+        ticking = false;
+    }
+    
+    /**
+     * Request animation frame throttled scroll handler
+     */
+    function onScroll() {
+        if (!ticking) {
+            requestAnimationFrame(updateNavVisibility);
+            ticking = true;
+        }
+    }
+    
+    /**
+     * Handle focus within nav - keep nav visible for keyboard users
+     */
+    function onFocusIn() {
+        isFocusedWithin = true;
+        if (isCollapsed) {
+            nav.classList.remove('collapsed');
+            isCollapsed = false;
+        }
+    }
+    
+    /**
+     * Handle focus leaving nav
+     */
+    function onFocusOut(event) {
+        // Check if focus moved outside nav
+        if (!nav.contains(event.relatedTarget)) {
+            isFocusedWithin = false;
+        }
+    }
+    
+    // Attach passive scroll listener for performance
+    window.addEventListener('scroll', onScroll, { passive: true });
+    
+    // Attach focus listeners for accessibility
+    nav.addEventListener('focusin', onFocusIn);
+    nav.addEventListener('focusout', onFocusOut);
+    
+    // Expose cleanup function on nav element
+    nav._cleanupScrollCollapse = function() {
+        window.removeEventListener('scroll', onScroll);
+        nav.removeEventListener('focusin', onFocusIn);
+        nav.removeEventListener('focusout', onFocusOut);
+        nav._scrollCollapseInitialized = false;
+    };
+};
+</script>

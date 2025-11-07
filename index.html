@@ -6070,52 +6070,6 @@
         })();
     </script>
 
-    <!-- Shared Utility Functions for Gallery Sections -->
-    <script>
-        /**
-         * Shared utility functions for image rendering
-         */
-        window.GalleryUtils = window.GalleryUtils || {};
-
-        /**
-         * Generate responsive picture element HTML with WebP support
-         * @param {string} imagePath - Original image path (PNG/JPG)
-         * @param {string} alt - Alt text for the image
-         * @param {string} loading - Loading strategy ('eager' or 'lazy')
-         * @param {number} width - Image width
-         * @param {number} height - Image height
-         * @param {string} sizes - Optional sizes attribute for srcset
-         * @returns {string} HTML string for picture element
-         */
-        window.GalleryUtils.createResponsivePicture = function(imagePath, alt, loading = 'lazy', width = null, height = null, sizes = null) {
-            // Convert path to WebP version (e.g., image.png -> image.webp)
-            const webpPath = imagePath.replace(/\.(png|jpg|jpeg|PNG|JPG|JPEG)$/, '.webp');
-            
-            // Escape HTML for security
-            const escapeHtml = (text) => {
-                const div = document.createElement('div');
-                div.textContent = text;
-                return div.innerHTML;
-            };
-            
-            const widthAttr = width ? `width="${width}"` : '';
-            const heightAttr = height ? `height="${height}"` : '';
-            const sizesAttr = sizes ? `sizes="${escapeHtml(sizes)}"` : '';
-            
-            return `
-                <picture>
-                    <source srcset="${escapeHtml(webpPath)}" type="image/webp">
-                    <img src="${escapeHtml(imagePath)}" 
-                         alt="${escapeHtml(alt)}"
-                         loading="${loading}"
-                         ${widthAttr}
-                         ${heightAttr}
-                         ${sizesAttr}>
-                </picture>
-            `;
-        };
-    </script>
-
     <!-- Spotlight Section Data Loader -->
     <script>
         (function() {
@@ -6204,19 +6158,13 @@
                 tile.className = 'spotlight-featured-tile gallery-featured-tile';
                 tile.setAttribute('data-item-id', item.id);
 
-                const altText = 'Spotlight #' + item.number + ' - ' + item.title;
-                const pictureHtml = window.GalleryUtils.createResponsivePicture(
-                    item.image, 
-                    altText, 
-                    'eager', 
-                    600, 
-                    600,
-                    '(max-width: 768px) 100vw, 600px'
-                );
-
                 tile.innerHTML = `
                     <div class="spotlight-featured-image gallery-featured-image">
-                        ${pictureHtml}
+                        <img src="${escapeHtml(item.image)}" 
+                             loading="eager" 
+                             width="600"
+                             height="600"
+                             alt="${escapeHtml('Spotlight #' + item.number + ' - ' + item.title)}">
                     </div>
                     <div class="spotlight-featured-content gallery-featured-content">
                         <h3>
@@ -6254,18 +6202,10 @@
                 card.className = 'spotlight-card gallery-card';
                 card.setAttribute('data-item-id', item.id);
 
-                const altText = 'Spotlight #' + item.number + ' - ' + item.title;
-                const pictureHtml = window.GalleryUtils.createResponsivePicture(
-                    item.image, 
-                    altText, 
-                    'lazy', 
-                    300, 
-                    300,
-                    '(max-width: 480px) 100vw, (max-width: 768px) 50vw, 300px'
-                );
-
                 card.innerHTML = `
-                    ${pictureHtml}
+                    <img src="${escapeHtml(item.image)}" 
+                         loading="lazy" 
+                         alt="${escapeHtml('Spotlight #' + item.number + ' - ' + item.title)}">
                     <div class="spotlight-card-caption gallery-card-caption">
                         <h4>Spotlight #${escapeHtml(item.number.toString())} - ${escapeHtml(item.title)}</h4>
                         <p>${escapeHtml(item.description)}</p>
@@ -6322,18 +6262,13 @@
                 div.className = 'history-item spotlight-history-item';
                 div.setAttribute('data-item-id', item.id);
 
-                const altText = 'Spotlight #' + item.number;
-                const pictureHtml = window.GalleryUtils.createResponsivePicture(
-                    item.image, 
-                    altText, 
-                    'lazy', 
-                    60, 
-                    60
-                );
-
                 div.innerHTML = `
                     <div class="history-thumbnail spotlight-history-thumbnail">
-                        ${pictureHtml}
+                        <img src="${escapeHtml(item.image)}" 
+                             loading="lazy" 
+                             width="60"
+                             height="60"
+                             alt="${escapeHtml('Spotlight #' + item.number)}">
                     </div>
                     <div class="history-info spotlight-history-info">
                         <h4>Spotlight #${escapeHtml(item.number.toString())} - ${escapeHtml(item.title)}</h4>
@@ -6527,19 +6462,15 @@
                 tile.className = 'nft-featured-tile gallery-featured-tile';
                 tile.setAttribute('data-item-id', item.id);
 
-                const altText = 'SSY #' + item.number + ' - ' + item.title;
-                const pictureHtml = window.GalleryUtils.createResponsivePicture(
-                    item.image, 
-                    altText, 
-                    'eager', 
-                    600, 
-                    600,
-                    '(max-width: 768px) 100vw, 600px'
-                );
-
                 tile.innerHTML = `
                     <div class="nft-featured-image gallery-featured-image">
-                        ${pictureHtml}
+                        <img src="${escapeHtml(item.image)}" 
+                             fetchpriority="high"
+                             decoding="async"
+                             loading="eager"
+                             alt="${escapeHtml('SSY #' + item.number + ' - ' + item.title)}"
+                             width="600"
+                             height="600">
                     </div>
                     <div class="nft-featured-content gallery-featured-content">
                         <h3>
@@ -6577,18 +6508,12 @@
                 card.className = 'nft-card gallery-card';
                 card.setAttribute('data-item-id', item.id);
 
-                const altText = 'SSY #' + item.number + ' - ' + item.title;
-                const pictureHtml = window.GalleryUtils.createResponsivePicture(
-                    item.image, 
-                    altText, 
-                    'lazy', 
-                    300, 
-                    300,
-                    '(max-width: 480px) 100vw, (max-width: 768px) 50vw, 300px'
-                );
-
                 card.innerHTML = `
-                    ${pictureHtml}
+                    <img src="${escapeHtml(item.image)}" 
+                         loading="lazy" 
+                         alt="${escapeHtml('SSY #' + item.number + ' - ' + item.title)}"
+                         width="300"
+                         height="300">
                     <div class="nft-card-caption gallery-card-caption">
                         <h4>SSY #${escapeHtml(item.number.toString())} - ${escapeHtml(item.title)}</h4>
                         <p>${escapeHtml(item.description)}</p>
@@ -6645,18 +6570,13 @@
                 div.className = 'history-item nft-history-item';
                 div.setAttribute('data-item-id', item.id);
 
-                const altText = 'SSY #' + item.number;
-                const pictureHtml = window.GalleryUtils.createResponsivePicture(
-                    item.image, 
-                    altText, 
-                    'lazy', 
-                    60, 
-                    60
-                );
-
                 div.innerHTML = `
                     <div class="history-thumbnail nft-history-thumbnail">
-                        ${pictureHtml}
+                        <img src="${escapeHtml(item.image)}" 
+                             loading="lazy" 
+                             alt="${escapeHtml('SSY #' + item.number)}"
+                             width="60"
+                             height="60">
                     </div>
                     <div class="history-info nft-history-info">
                         <h4>SSY #${escapeHtml(item.number.toString())} - ${escapeHtml(item.title)}</h4>

@@ -4,6 +4,11 @@
         transition: transform 0.3s ease-out;
     }
     
+    /* 
+     * Collapsed state moves nav off-screen upward
+     * Uses !important to override base .nav-menu transform
+     * The 9px offset matches the base centering in index.html (.nav-menu uses translateX(calc(-50% + 9px)))
+     */
     .top-nav.collapsed {
         transform: translateX(calc(-50% + 9px)) translateY(-100%) !important;
     }

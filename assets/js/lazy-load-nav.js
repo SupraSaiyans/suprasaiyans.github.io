@@ -117,6 +117,8 @@
             placeholder.parentNode.replaceChild(navElement, placeholder);
             
             // Execute any script tags from the partial (for initTopNav function)
+            // Security note: This is safe because we're fetching from our own domain (/assets/partials/top-nav.html)
+            // The partial is a trusted source, not user-generated content
             const scriptElements = tempDiv.querySelectorAll('script');
             scriptElements.forEach(scriptEl => {
                 const newScript = document.createElement('script');

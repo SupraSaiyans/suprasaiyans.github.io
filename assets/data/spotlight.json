@@ -79,6 +79,16 @@
       "datePublished": "2025-12-01",
       "mintUrl": "https://crystara.trade/marketplace/syrupnft",
       "tradeUrl": "https://crystara.trade/trade/syrupnft"
+     },
+     {
+      "id": "spotlight-009",
+      "number": 9,
+      "title": "Supra Heroes OG",
+      "description": "Supra Heroes Unite!",
+      "image": "images/SUPRAHEROESOGCOLLECTIONIMAGE.png",
+      "datePublished": "2025-12-26",
+      "mintUrl": "https://crystara.trade/marketplace/supraheroesog",
+      "tradeUrl": "https://crystara.trade/trade/supraheroesog"
     }
   ]
 }

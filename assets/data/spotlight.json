@@ -69,6 +69,16 @@
       "datePublished": "2025-10-31",
       "mintUrl": "https://crystara.trade/marketplace/artificialinfinity",
       "tradeUrl": "https://crystara.trade/trade/artificialinfinity"
+     },
+     {
+      "id": "spotlight-008",
+      "number": 8,
+      "title": "Syrup NFT",
+      "description": "Community Supra Dino",
+      "image": "images/SYRUPNFTCOLLECTIONIMAGE.PNG",
+      "datePublished": "2025-12-01",
+      "mintUrl": "https://crystara.trade/marketplace/syrupnft",
+      "tradeUrl": "https://crystara.trade/trade/syrupnft"
     }
   ]
 }

@@ -1,0 +1,4589 @@
+        /* 
+        SupraSaiyans Color Palette - Extracted from WARRIORAUCTIONCOLLECTIONIMAGE1.PNG
+        This palette reflects the warrior/fractal aesthetic with deep oceanic blues, 
+        vibrant teals, warm oranges/golds, and earthy neutrals.
+        
+        Primary Blues: #0F2027 (deep oceanic), #0C3747 (dark teal), #115362 (medium teal)
+        Accent Teals: #157389 (bright teal), #82B29D (sage green)
+        Warm Accents: #572A14 (deep brown), #9A4A23 (terracotta), #A3581D (warm orange)
+        Bright Accents: #D66D0F (vibrant orange), #EC991D (golden orange), #E5B457 (soft gold)
+        Neutrals: #654D34 (earthy brown)
+        */
+        
+        :root {
+            /* Primary color system - Deep oceanic blues */
+            --primary-dark: #0F2027;
+            --primary-dark-alt: #0C3747;
+            --primary-medium: #115362;
+            --primary-light: #157389;
+            
+            /* Accent teals and sage */
+            --accent-teal: #115362;
+            --accent-teal-light: #157389;
+            --accent-teal-bright: #82B29D;
+            --accent-cyan: #0C3747;
+            
+            /* Warm accent system - Browns, oranges, golds */
+            --accent-warm-deep: #572A14;
+            --accent-warm: #9A4A23;
+            --accent-warm-light: #A3581D;
+            --accent-orange: #D66D0F;
+            --accent-gold-orange: #EC991D;
+            --accent-gold: #E5B457;
+            
+            /* Kastanje button palette - Darker, warmer tone with orange hint */
+            --btn-kastanje-dark: #572A14;
+            --btn-kastanje-medium: #9A4A23;
+            --btn-kastanje-light: #A3581D;
+            
+            /* Neutral earthy tones */
+            --neutral-earth: #654D34;
+            
+            /* Text colors */
+            --text-primary: #ffffff;
+            --text-secondary: #e0e0e0;
+            --text-gold: #E5B457;
+            
+            /* UI elements */
+            --border-color: rgba(130, 178, 157, 0.15);
+            --border-color-glow: rgba(229, 180, 87, 0.3);
+            --glass-bg: rgba(15, 32, 39, 0.88);
+            
+            /* Fractal-inspired gradients */
+            --gradient-fractal-warm: linear-gradient(135deg, var(--accent-warm) 0%, var(--accent-orange) 50%, var(--accent-gold-orange) 100%);
+            --gradient-fractal-cool: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-teal) 50%, var(--accent-teal-light) 100%);
+            --gradient-fractal-mixed: linear-gradient(135deg, var(--accent-teal) 0%, var(--accent-teal-bright) 30%, var(--accent-gold) 70%, var(--accent-orange) 100%);
+            --gradient-text: linear-gradient(45deg, var(--accent-gold) 0%, var(--accent-teal-light) 50%, var(--accent-gold-orange) 100%);
+            
+            /* Kastanje CTA button gradient - Darker, warmer tone */
+            --gradient-cta-kastanje: linear-gradient(135deg, var(--btn-kastanje-dark) 0%, var(--btn-kastanje-medium) 50%, var(--btn-kastanje-light) 100%);
+            --gradient-cta-kastanje-hover: linear-gradient(135deg, var(--btn-kastanje-light) 0%, var(--btn-kastanje-medium) 50%, var(--btn-kastanje-dark) 100%);
+            
+            /* Lao Shifu Logo Frame - Fractal curved frame theming */
+            --logo-frame-color: #06566d;
+            --logo-frame-accent: #e2aa42;
+            --logo-frame-stroke: 4px;
+            --logo-frame-opacity: 0.9;
+            --logo-halo-opacity: 0.15;
+            --logo-halo-size: 400px;
+            --logo-halo-blur: 80px;
+            
+            /* Lao Shifu Fractal Frame - New clipPath/mask variables */
+            --lao-frame-primary: #06566d;
+            --lao-frame-accent: #e2aa42;
+            --lao-frame-warm: #7a3013;
+            --lao-frame-stroke-width: 3;
+            --lao-frame-outline-opacity: 0.85;
+            --lao-frame-detail-opacity: 0.6;
+            --lao-halo-opacity: 0.15;
+            
+            /* Lao Shifu Logo Animation Tuning */
+            --lao-logo-motion-duration: 6s;
+            --lao-logo-motion-scale: 1.03;
+            --lao-logo-float-distance: 15px;
+            --lao-logo-hover-distance: 20px;
+            
+            /* Shadow system with fractal glow */
+            --shadow-sm: 0 2px 8px rgba(21, 115, 137, 0.15);
+            --shadow-md: 0 4px 16px rgba(21, 115, 137, 0.25);
+            --shadow-lg: 0 8px 32px rgba(21, 115, 137, 0.35);
+            --shadow-glow: 0 0 20px rgba(229, 180, 87, 0.4);
+            --shadow-glow-warm: 0 0 30px rgba(214, 109, 15, 0.5);
+            
+            /* Kastanje button shadow - Warmer, darker glow */
+            --shadow-glow-kastanje: 0 0 30px rgba(163, 88, 29, 0.5);
+            
+            /* Border cutout/notch variables */
+            --notch-size: 12px;
+            --notch-size-lg: 20px;
+            
+            /* Section spacing variables for consistent layout */
+            --section-spacing-desktop: 60px;
+            --section-spacing-mobile: 80px;
+            
+            /* Title readability enhancement for featured items */
+            --alpha-title-stroke: 2px;
+            
+            /* Spotlight Base Model Tokens - Shared by sections */
+            --spotlight-heading-color: var(--text-primary);
+            --spotlight-heading-opacity: 0.9;
+            --spotlight-outline-intensity: 0.3;
+            --spotlight-glow-intensity: 0.4;
+            --spotlight-featured-grid-span: 2; /* Featured tiles span 2 columns/rows */
+            --spotlight-card-min-width: 250px;
+            --spotlight-history-thumbnail-size: 60px;
+            
+            /* History Section Tokens - Adjustable spacing and color */
+            --thumb-title-gap: 30px; /* Thumbnail to title spacing (25-35px range, 30px default) */
+            --history-title-color: var(--text-gold); /* Match NFT title color for consistency */
+            --nft-title-color: var(--text-gold); /* NFT title color token for consistency */
+            
+            /* Menu Tokens - Silk-Cut Ripple buttons */
+            --menu-radius: 16px; /* Base border radius for menu buttons */
+            --menu-cut-depth: 10px; /* Depth of the curvy cutouts */
+            --menu-accent: var(--nft-title-color); /* Primary accent color for menu */
+            --menu-accent-rim: color-mix(in oklab, var(--menu-accent) 25%, transparent); /* Iridescent rim color */
+            --menu-bg: linear-gradient(180deg, rgba(15, 32, 39, 0.05), rgba(15, 32, 39, 0.05)); /* 95% transparent background */
+            --header-grid-offset: 0px; /* Anchor button layout with header composition */
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: var(--primary-dark);
+            font-family: 'Arial', sans-serif;
+            color: var(--text-primary);
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Fixed background optimization - separate layer to avoid repaint on scroll */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('images/BACKGROUNDSESSION21.PNG') center center / cover no-repeat;
+            z-index: 0;
+            will-change: transform;
+        }
+
+        /* Optimized Overlay System - Unified approach for cohesion with globe/fractal background */
+        
+        /* Center radial glow - complements globe artwork with new palette */
+        
+        /* Simplified border accents - updated with new palette */
+        .border-ornaments {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            pointer-events: none;
+            background: 
+                /* Top accent - cool teal */
+                linear-gradient(180deg, 
+                    rgba(21, 115, 137, 0.25) 0%, 
+                    transparent 60px),
+                /* Bottom accent - warm gold/orange */
+                linear-gradient(0deg, 
+                    rgba(214, 109, 15, 0.25) 0%, 
+                    transparent 60px);
+            contain: layout style paint;
+        }
+        
+        /* Optimized Corner Ornaments - External SVG files for caching */
+        .corner-ornaments {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            pointer-events: none;
+            background-image:
+                url('corner-ornament-tl.svg'),
+                url('corner-ornament-tr.svg'),
+                url('corner-ornament-bl.svg'),
+                url('corner-ornament-br.svg');
+            background-position:
+                top left,
+                top right,
+                bottom left,
+                bottom right;
+            background-size: 300px 300px;
+            background-repeat: no-repeat;
+            /* Performance: contain property isolates painting */
+            contain: layout style paint;
+        }
+
+        /* Subtle Background Ambiance - Static */
+        /* Note: body::after is now used for corner ornaments above */
+
+        /* Clip-path utilities for notched/cutout corners - fractal aesthetic */
+        .notch-corners {
+            clip-path: polygon(
+                var(--notch-size) 0%, 
+                100% 0%, 
+                100% calc(100% - var(--notch-size)), 
+                calc(100% - var(--notch-size)) 100%, 
+                0% 100%, 
+                0% var(--notch-size)
+            );
+        }
+        
+        .notch-corners-all {
+            clip-path: polygon(
+                var(--notch-size) 0%, 
+                calc(100% - var(--notch-size)) 0%, 
+                100% var(--notch-size), 
+                100% calc(100% - var(--notch-size)), 
+                calc(100% - var(--notch-size)) 100%, 
+                var(--notch-size) 100%, 
+                0% calc(100% - var(--notch-size)), 
+                0% var(--notch-size)
+            );
+        }
+        
+        /* Fallback for browsers without clip-path support */
+        @supports not (clip-path: polygon(0 0)) {
+            .notch-corners,
+            .notch-corners-all {
+                clip-path: none;
+                border-radius: 12px;
+            }
+        }
+        
+        .container, .section-content {
+            text-align: center;
+            max-width: 900px;
+            padding: 40px;
+            position: relative;
+            z-index: 2;
+            /* Apply notched corners with fractal aesthetic */
+            clip-path: polygon(
+                var(--notch-size-lg) 0%, 
+                calc(100% - var(--notch-size-lg)) 0%, 
+                100% var(--notch-size-lg), 
+                100% calc(100% - var(--notch-size-lg)), 
+                calc(100% - var(--notch-size-lg)) 100%, 
+                var(--notch-size-lg) 100%, 
+                0% calc(100% - var(--notch-size-lg)), 
+                0% var(--notch-size-lg)
+            );
+            /* Updated background with new palette */
+            background: var(--glass-bg);
+            border: 2px solid var(--border-color);
+            margin: 20px;
+            /* Subtle inner glow for fractal depth */
+            box-shadow: 
+                inset 0 0 40px rgba(21, 115, 137, 0.1),
+                var(--shadow-md);
+            position: relative;
+        }
+        
+        /* Fallback for browsers without clip-path support */
+        @supports not (clip-path: polygon(0 0)) {
+            .container, .section-content {
+                clip-path: none;
+                border-radius: 15px;
+            }
+        }
+        
+        /* Corner accent dots removed per Option B - no longer needed for minimal outline design */
+        /* 
+        .container::before, .section-content::before {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--gradient-fractal-mixed);
+            border-radius: 50%;
+            top: var(--notch-size-lg);
+            left: var(--notch-size-lg);
+            opacity: 0.7;
+            box-shadow: var(--shadow-glow);
+        }
+        
+        .container::after, .section-content::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--gradient-fractal-warm);
+            border-radius: 50%;
+            bottom: var(--notch-size-lg);
+            right: var(--notch-size-lg);
+            opacity: 0.7;
+            box-shadow: var(--shadow-glow-warm);
+        }
+        */
+
+        .logo {
+            width: 300px;
+            height: auto;
+            margin-bottom: 40px;
+            /* Performance: Reduced drop-shadow with new palette colors */
+            filter: drop-shadow(0 0 12px rgba(229, 180, 87, 0.5)) 
+                    drop-shadow(0 0 6px rgba(21, 115, 137, 0.3));
+        }
+
+        /* Modern Social Grid Styles */
+        .social-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 40px;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .social-row {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .social-button {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            /* Removed backdrop-filter for performance */
+            min-width: 120px;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .social-button:focus {
+            outline: 3px solid rgba(255, 255, 255, 0.5);
+            outline-offset: 2px;
+        }
+
+        .social-icon {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .verified-icon {
+            width: 16px;
+            height: 16px;
+            margin-left: 4px;
+        }
+
+        .social-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .social-button span,
+        .social-button .social-icon,
+        .social-button .verified-icon {
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-button:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-button:hover::before {
+            opacity: 1;
+        }
+
+        .social-button:hover .social-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .social-button:active {
+            transform: translateY(-4px) scale(1.02);
+        }
+
+        /* Platform-specific colors and effects */
+        .telegram-btn {
+            background: linear-gradient(135deg, #229ED9, #1e8bc3);
+            border-color: #229ED9;
+        }
+        .telegram-btn:hover {
+            box-shadow: 0 12px 30px rgba(34, 158, 217, 0.4), 0 0 30px rgba(34, 158, 217, 0.3);
+        }
+
+        .twitter-btn {
+            background: linear-gradient(135deg, #1DA1F2, #1991db);
+            border-color: #1DA1F2;
+        }
+        .twitter-btn:hover {
+            box-shadow: 0 12px 30px rgba(29, 161, 242, 0.4), 0 0 30px rgba(29, 161, 242, 0.3);
+        }
+
+        .discord-btn {
+            background: linear-gradient(135deg, #5865F2, #4752c4);
+            border-color: #5865F2;
+        }
+        .discord-btn:hover {
+            box-shadow: 0 12px 30px rgba(88, 101, 242, 0.4), 0 0 30px rgba(88, 101, 242, 0.3);
+        }
+
+        .medium-btn {
+            background: linear-gradient(135deg, #12100E, #2d2d2d);
+            border-color: #12100E;
+        }
+        .medium-btn:hover {
+            box-shadow: 0 12px 30px rgba(18, 16, 14, 0.4), 0 0 30px rgba(255, 255, 255, 0.1);
+        }
+
+        .github-btn {
+            background: linear-gradient(135deg, #333, #24292e);
+            border-color: #333;
+            color: #ffffff;
+        }
+        .github-btn:hover {
+            box-shadow: 0 12px 30px rgba(51, 51, 51, 0.4), 0 0 30px rgba(255, 255, 255, 0.1);
+        }
+
+        .supra-btn {
+            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            border-color: #ff6b35;
+        }
+        .supra-btn:hover {
+            box-shadow: 0 12px 30px rgba(255, 107, 53, 0.4), 0 0 30px rgba(255, 107, 53, 0.3);
+        }
+
+        .crystara-btn {
+            background: linear-gradient(135deg, #9932cc, #ba55d3);
+            border-color: #9932cc;
+        }
+        .crystara-btn:hover {
+            box-shadow: 0 12px 30px rgba(153, 50, 204, 0.4), 0 0 30px rgba(153, 50, 204, 0.3);
+        }
+
+        .pumpit-btn {
+            background: linear-gradient(135deg, #00ff88, #00cc6a);
+            border-color: #00ff88;
+            color: #000;
+        }
+        .pumpit-btn:hover {
+            box-shadow: 0 12px 30px rgba(0, 255, 136, 0.4), 0 0 30px rgba(0, 255, 136, 0.3);
+        }
+
+
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--text-primary);
+            background: var(--gradient-cta-kastanje);
+            text-decoration: none;
+            /* Apply subtle notched corners */
+            clip-path: polygon(
+                var(--notch-size) 0%, 
+                calc(100% - var(--notch-size)) 0%, 
+                100% var(--notch-size), 
+                100% calc(100% - var(--notch-size)), 
+                calc(100% - var(--notch-size)) 100%, 
+                var(--notch-size) 100%, 
+                0% calc(100% - var(--notch-size)), 
+                0% var(--notch-size)
+            );
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--btn-kastanje-light);
+            box-shadow: var(--shadow-glow-kastanje);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* Fallback for browsers without clip-path support */
+        @supports not (clip-path: polygon(0 0)) {
+            .cta-button {
+                clip-path: none;
+                border-radius: 10px;
+            }
+        }
+
+        .cta-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) rotate(45deg);
+            }
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-glow-kastanje), var(--shadow-lg);
+            background: var(--gradient-cta-kastanje-hover);
+        }
+
+        /* SSY STUDIOS Button - Cool fractal gradient with notched corners */
+        .nft-button {
+            display: inline-block;
+            padding: 15px 30px;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--text-primary);
+            background: var(--gradient-fractal-cool);
+            text-decoration: none;
+            /* Apply subtle notched corners */
+            clip-path: polygon(
+                var(--notch-size) 0%, 
+                calc(100% - var(--notch-size)) 0%, 
+                100% var(--notch-size), 
+                100% calc(100% - var(--notch-size)), 
+                calc(100% - var(--notch-size)) 100%, 
+                var(--notch-size) 100%, 
+                0% calc(100% - var(--notch-size)), 
+                0% var(--notch-size)
+            );
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--accent-teal-bright);
+            box-shadow: 
+                inset 0 0 0 2px rgba(130, 178, 157, 0.5),
+                var(--shadow-md);
+        }
+        
+        /* Fallback for browsers without clip-path support */
+        @supports not (clip-path: polygon(0 0)) {
+            .nft-button {
+                clip-path: none;
+                border-radius: 10px;
+            }
+        }
+
+        .nft-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transform: rotate(45deg);
+            animation: shimmer 3s infinite;
+        }
+
+        .nft-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 
+                var(--shadow-glow),
+                inset 0 0 0 2px rgba(130, 178, 157, 0.8);
+            background: linear-gradient(135deg, var(--accent-teal-light) 0%, var(--accent-teal-bright) 50%, var(--accent-teal) 100%);
+        }
+
+        /* Navigation Styles - CSS Grid for perfect symmetry with SVG fractal artifact centered */
+        .nav-menu {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(calc(-50% + 9px));
+            z-index: 1000;
+            display: grid;
+            grid-template-columns: auto auto auto auto auto auto auto;
+            column-gap: 16px;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            pointer-events: none;
+            /* Performance: Use CSS containment to isolate nav painting */
+            contain: layout style paint;
+            /* Performance: will-change removed - only add during animation via JS */
+        }
+        
+        /* Fractal artifact - 4th child, perfectly centered in grid */
+        .nav-fractal-artifact {
+            grid-column: 4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: auto;
+            /* Add extra horizontal spacing around fractal for visual balance */
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        
+        /* Left-side nav links (children 1, 2, 3) - grid positions 1, 2, 3 */
+        .nav-menu > .nav-link:nth-child(1) {
+            grid-column: 1;
+            pointer-events: auto;
+        }
+        
+        .nav-menu > .nav-link:nth-child(2) {
+            grid-column: 2;
+            pointer-events: auto;
+        }
+        
+        .nav-menu > .nav-link:nth-child(3) {
+            grid-column: 3;
+            pointer-events: auto;
+        }
+        
+        /* Right-side nav links (children 5, 6, 7) - grid positions 5, 6, 7 */
+        .nav-menu > .nav-link:nth-child(5) {
+            grid-column: 5;
+            pointer-events: auto;
+        }
+        
+        .nav-menu > .nav-link:nth-child(6) {
+            grid-column: 6;
+            pointer-events: auto;
+        }
+        
+        .nav-menu > .nav-link:nth-child(7) {
+            grid-column: 7;
+            pointer-events: auto;
+        }
+        
+        /* Nav link base styles - Silk-Cut Ripple buttons with CSS mask */
+        .nav-link {
+            white-space: nowrap;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 12px;
+            min-width: 40px;
+            min-height: 40px; /* Ensure ≥40×40px hit area for accessibility */
+            position: relative;
+            /* Performance: Only animate transform and opacity */
+            transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+                        opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--menu-bg);
+            border-radius: var(--menu-radius);
+            /* Silk-Cut Ripple: CSS mask with radial gradients for curvy cutouts */
+            -webkit-mask-image: 
+                radial-gradient(circle at 20% 50%, transparent var(--menu-cut-depth), black calc(var(--menu-cut-depth) + 2px)),
+                radial-gradient(circle at 80% 50%, transparent var(--menu-cut-depth), black calc(var(--menu-cut-depth) + 2px)),
+                linear-gradient(black, black);
+            -webkit-mask-composite: source-in;
+            mask-image: 
+                radial-gradient(circle at 20% 50%, transparent var(--menu-cut-depth), black calc(var(--menu-cut-depth) + 2px)),
+                radial-gradient(circle at 80% 50%, transparent var(--menu-cut-depth), black calc(var(--menu-cut-depth) + 2px)),
+                linear-gradient(black, black);
+            mask-composite: intersect;
+            /* Iridescent rim along top-left edge */
+            border-top: 1px solid var(--menu-accent-rim);
+            border-left: 1px solid var(--menu-accent-rim);
+            /* Static shadow with new palette */
+            box-shadow: var(--shadow-sm);
+        }
+        
+        /* Fallback for browsers without CSS mask support - graceful pill shape */
+        @supports not (mask-image: radial-gradient(circle, black, black)) {
+            .nav-link {
+                border-radius: calc(var(--menu-radius) * 2);
+                -webkit-mask-image: none;
+                mask-image: none;
+            }
+        }
+        
+        /* Hover state - transform and opacity only for 60 FPS performance */
+        .nav-link:hover {
+            transform: translateY(-1px) scale(1.02);
+            opacity: 1;
+        }
+        
+        /* Active state - reset translate, slight scale down */
+        .nav-link:active {
+            transform: translateY(0) scale(0.99);
+            transition: transform 0.1s ease, opacity 0.1s ease;
+        }
+        
+        /* Focus state - visible inner focus ring for accessibility */
+        .nav-link:focus {
+            outline: 2px solid var(--menu-accent);
+            outline-offset: -2px;
+        }
+        
+        /* Ensure keyboard focus is visible */
+        .nav-link:focus-visible {
+            outline: 2px solid var(--menu-accent);
+            outline-offset: -2px;
+        }
+        
+        /* Artifact icons for nav links */
+        .nav-artifact-icon {
+            height: 60px;
+            width: auto;
+            /* Performance: Replaced drop-shadow with pre-baked CSS glow on parent */
+            /* This eliminates expensive filter re-calculation on every frame */
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                        opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0.95;
+        }
+        
+        .nav-link:hover .nav-artifact-icon {
+            /* Only animate transform and opacity - no filter */
+            transform: scale(1.05);
+            opacity: 1;
+        }
+        
+        /* Center fractal artifact - larger and more prominent */
+        .fractal-icon {
+            height: 80px;
+            width: auto;
+            /* Performance: Removed drop-shadow filter entirely - using CSS glow on wrapper instead */
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                        opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0.98;
+        }
+        
+        /* Add glow to fractal artifact wrapper with updated palette */
+        .nav-fractal-artifact {
+            position: relative;
+        }
+        
+        .nav-fractal-artifact::before {
+            content: '';
+            position: absolute;
+            inset: -15px;
+            border-radius: 50%;
+            background: radial-gradient(circle, 
+                rgba(229, 180, 87, 0.45) 0%, 
+                rgba(21, 115, 137, 0.35) 30%,
+                rgba(214, 109, 15, 0.25) 50%, 
+                transparent 75%);
+            opacity: 0.7;
+            z-index: -1;
+            pointer-events: none;
+            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .fractal-icon:hover {
+            /* Only animate transform and opacity */
+            transform: translateY(-3px) scale(1.08);
+            opacity: 1;
+        }
+        
+        .nav-fractal-artifact:hover::before {
+            opacity: 1;
+        }
+
+        /* Hidden state - collapses upwards */
+        .nav-menu.nav-hidden {
+            transform: translateX(calc(-50% + 12px)) translateY(-100px);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .nav-link:active {
+            transform: translateY(0) scale(0.99);
+            transition: transform 0.1s ease, opacity 0.1s ease;
+        }
+        
+        /* Prefers-reduced-motion: Swap motion for subtle brightness/opacity shift */
+        @media (prefers-reduced-motion: reduce) {
+            /* Navigation */
+            .nav-menu {
+                transition: none;
+            }
+            
+            .nav-link,
+            .nav-artifact-icon,
+            .fractal-icon,
+            .nav-fractal-artifact::before {
+                transition: none;
+            }
+            
+            .nav-link:hover {
+                transform: none;
+                /* Instead of motion, use subtle brightness/opacity shift */
+                filter: brightness(1.15);
+                opacity: 0.95;
+            }
+            
+            .nav-link:active {
+                transform: none;
+                filter: brightness(1.05);
+                opacity: 0.9;
+            }
+            
+            .nav-link:hover .nav-artifact-icon,
+            .fractal-icon:hover {
+                transform: none;
+                opacity: 1;
+            }
+            
+            /* Social buttons and CTAs */
+            .social-button,
+            .social-icon,
+            .cta-button,
+            .nft-button,
+            .compact-social-btn {
+                transition: none;
+                animation: none;
+            }
+            
+            .social-button:hover,
+            .cta-button:hover,
+            .nft-button:hover {
+                transform: none;
+            }
+            
+            /* Disable shimmer animation */
+            .cta-button::after,
+            .nft-button::after {
+                animation: none;
+            }
+            
+            /* Gallery items */
+            .gallery-item,
+            .gallery-item img {
+                transition: none;
+            }
+            
+            .gallery-item:hover {
+                transform: none;
+            }
+            
+            /* Fractal corner animations (static mode) */
+            /* SVG animations are paused via CSS */
+            @supports (animation-play-state: paused) {
+                * {
+                    animation-play-state: paused !important;
+                }
+            }
+        }
+
+        /* Section Styles */
+        .section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: var(--section-spacing-desktop) 20px;
+            position: relative;
+            z-index: 2;
+            /* Performance: reduce rendering work for off-screen sections */
+            content-visibility: auto;
+            contain-intrinsic-size: auto 100vh;
+        }
+
+        .section h1, .section h2, .section h3 {
+            margin-bottom: 20px;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            /* Fractal-inspired text shadow with new palette */
+            text-shadow: 
+                1px 1px 3px rgba(229, 180, 87, 0.4),
+                -1px -1px 3px rgba(21, 115, 137, 0.3),
+                2px 2px 5px rgba(214, 109, 15, 0.3),
+                -2px -2px 5px rgba(130, 178, 157, 0.2);
+        }
+
+        .section h1 {
+            font-size: 3.5em;
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            font-size: 2.5em;
+            margin-bottom: 25px;
+        }
+
+        .section h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        /* Links List Styles */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+
+        .link-category {
+            background: rgba(21, 115, 137, 0.28);
+            padding: 25px;
+            /* Apply subtle notched corners */
+            clip-path: polygon(
+                var(--notch-size) 0%, 
+                100% 0%, 
+                100% calc(100% - var(--notch-size)), 
+                calc(100% - var(--notch-size)) 100%, 
+                0% 100%, 
+                0% var(--notch-size)
+            );
+            border: 2px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+        }
+        
+        /* Fallback for browsers without clip-path support */
+        @supports not (clip-path: polygon(0 0)) {
+            .link-category {
+                clip-path: none;
+                border-radius: 10px;
+            }
+        }
+
+        .link-category h4 {
+            color: var(--accent-gold);
+            margin-bottom: 15px;
+            font-size: 1.3em;
+            /* Fractal-inspired text shadow */
+            text-shadow: 
+                1px 1px 3px rgba(229, 180, 87, 0.4),
+                -1px -1px 3px rgba(21, 115, 137, 0.3),
+                2px 2px 5px rgba(214, 109, 15, 0.3);
+        }
+
+        .link-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .link-list li {
+            margin: 10px 0;
+        }
+
+        .link-list a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 8px 12px;
+            display: block;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .link-list a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-left-color: var(--accent-teal-light);
+            transform: translateX(5px);
+            color: var(--text-primary);
+        }
+
+        /* ========================================
+           NFT GALLERY STYLES
+           ========================================
+           All styles for the NFT Gallery section.
+           When adding new NFT boxes, ensure they follow
+           the same structure and styling patterns.
+        */
+        
+        /* Gallery Grid Layout */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        /* Gallery Item Container - with notched corners */
+        .gallery-item {
+            position: relative;
+            /* Apply notched corners for fractal aesthetic */
+            clip-path: polygon(
+                var(--notch-size) 0%, 
+                calc(100% - var(--notch-size)) 0%, 
+                100% var(--notch-size), 
+                100% calc(100% - var(--notch-size)), 
+                calc(100% - var(--notch-size)) 100%, 
+                var(--notch-size) 100%, 
+                0% calc(100% - var(--notch-size)), 
+                0% var(--notch-size)
+            );
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            border: 2px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        /* Fallback for browsers without clip-path support */
+        @supports not (clip-path: polygon(0 0)) {
+            .gallery-item {
+                clip-path: none;
+                border-radius: 10px;
+            }
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            border-color: var(--border-color-glow);
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* Gallery Item Images */
+        .gallery-item img {
+            width: 100%;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            transition: filter 0.3s ease;
+        }
+        
+        /* Fallback for browsers that don't support aspect-ratio */
+        @supports not (aspect-ratio: 1/1) {
+            .gallery-item img {
+                height: 250px;
+            }
+        }
+
+        .gallery-item:hover img {
+            filter: brightness(1.1);
+        }
+
+        /* Gallery Caption Overlay */
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--glass-bg);
+            color: var(--text-primary);
+            padding: 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .gallery-caption h4 {
+            /* Fractal-inspired text shadow with new palette */
+            text-shadow: 
+                1px 1px 3px rgba(229, 180, 87, 0.4),
+                -1px -1px 3px rgba(21, 115, 137, 0.3),
+                2px 2px 5px rgba(214, 109, 15, 0.3);
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* Gallery Action Buttons (Mint/Trade) */
+        .gallery-actions {
+            display: flex;
+            width: 100%;
+            gap: 1px;
+            margin-top: 5px;
+        }
+
+        .gallery-action {
+            flex: 1;
+            padding: 8px 12px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: rgba(21, 115, 137, 0.8);
+            border: 1px solid var(--border-color);
+        }
+
+        .gallery-action:first-child {
+            border-right: none;
+        }
+
+        .gallery-action:hover {
+            background: var(--accent-teal-light);
+            transform: scale(1.02);
+        }
+
+        /* Mint Button Styling - with fractal warm gradient */
+        .gallery-action.mint {
+            background: var(--gradient-fractal-warm);
+        }
+
+        .gallery-action.mint:hover {
+            background: linear-gradient(135deg, var(--accent-gold-orange) 0%, var(--accent-orange) 50%, var(--accent-warm) 100%);
+        }
+
+        /* Trade Button Styling - with fractal cool gradient */
+        .gallery-action.trade {
+            background: var(--gradient-fractal-cool);
+        }
+
+        .gallery-action.trade:hover {
+            background: linear-gradient(135deg, var(--accent-teal-light) 0%, var(--accent-teal) 50%, var(--accent-cyan) 100%);
+        }
+
+        /* Gallery Action Links - Ensure white color for consistency */
+        .gallery-action a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* End of NFT Gallery Styles */
+
+        /* ==========================================
+           ALPHA GALLERY STYLES
+           ==========================================
+           Frameless, data-driven gallery with fractal accents.
+           Performance-optimized with CSS containment and 
+           GPU-accelerated animations (transform/opacity only).
+        */
+
+
+        /* Crystara link styling - old school purple */
+        .crystara-link {
+            color: #9932cc;
+            text-decoration: underline;
+            transition: all 0.3s ease;
+        }
+
+        .crystara-link:hover {
+            color: #ba55d3;
+            text-shadow: 0 0 5px rgba(153, 50, 204, 0.5);
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .nav-fractal-artifact {
+                display: none;
+            }
+            
+            .container, .section-content {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            .section {
+                padding-top: var(--section-spacing-mobile);
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            
+            /* Home section should also follow mobile spacing */
+            #home.section {
+                padding-top: var(--section-spacing-mobile) !important;
+            }
+            
+            .section h1 {
+                font-size: 2.2em;
+            }
+            
+            .section h2 {
+                font-size: 1.8em;
+            }
+            
+            .section h3 {
+                font-size: 1.5em;
+            }
+            
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Optimize CTA buttons for mobile */
+            .cta-button, .nft-button {
+                padding: 12px 24px;
+                font-size: 18px;
+            }
+
+            /* Mobile responsive social grid */
+            .social-grid {
+                gap: 16px;
+                max-width: 100%;
+                padding: 0 10px;
+            }
+
+            .social-row {
+                gap: 12px;
+            }
+
+            .social-button {
+                min-width: 100px;
+                padding: 10px 12px;
+                font-size: 13px;
+                flex: 1;
+                max-width: 120px;
+            }
+
+            .social-icon {
+                width: 18px;
+                height: 18px;
+            }
+
+            .verified-icon {
+                width: 14px;
+                height: 14px;
+            }
+
+            /* Stack social buttons vertically on very small screens */
+            @media (max-width: 480px) {
+                .social-row {
+                    flex-direction: column;
+                    align-items: center;
+                }
+
+                .social-button {
+                    width: 100%;
+                    max-width: 200px;
+                }
+            }
+        }
+        
+        /* Extra small screens optimization */
+        @media (max-width: 480px) {
+            .container, .section-content {
+                padding: 15px;
+                margin: 8px;
+            }
+            
+            .section h1 {
+                font-size: 2em;
+            }
+            
+            .section h2 {
+                font-size: 1.6em;
+            }
+            
+            .section h3 {
+                font-size: 1.3em;
+            }
+            
+            .cta-button, .nft-button {
+                padding: 10px 20px;
+                font-size: 16px;
+            }
+            
+            .logo {
+                width: 250px;
+            }
+            
+            /* Thumbnail-to-title gap responsive adjustment - tighter on narrow screens */
+            :root {
+                --thumb-title-gap: 25px;
+            }
+        }
+        
+        /* Thumbnail-to-title gap responsive adjustment - default at wider screens */
+        @media (min-width: 480px) {
+            :root {
+                --thumb-title-gap: 30px;
+            }
+        }
+        
+        /* Ultra small screens (iPhone SE, etc.) */
+        @media (max-width: 375px) {
+            .container, .section-content {
+                padding: 12px;
+                margin: 5px;
+            }
+            
+            .section {
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+            
+            .section h1 {
+                font-size: 1.8em;
+            }
+            
+            .section h2 {
+                font-size: 1.5em;
+            }
+            
+            .section h3 {
+                font-size: 1.2em;
+            }
+            
+            .cta-button, .nft-button {
+                padding: 10px 18px;
+                font-size: 15px;
+            }
+            
+            .logo {
+                width: 220px;
+            }
+        }
+
+        /* Medium screens - adjust for centered navigation */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .nav-artifact-icon {
+                height: 50px;
+            }
+            
+            .fractal-icon {
+                height: 65px;
+            }
+            
+            .nav-menu {
+                column-gap: 10px;
+            }
+            
+            .nav-fractal-artifact {
+                margin-left: 14px;
+                margin-right: 14px;
+            }
+        }
+
+        /* Large screens - ensure navigation doesn't get too spread out */
+        @media (min-width: 1400px) {
+            .nav-artifact-icon {
+                height: 70px;
+            }
+            
+            .fractal-icon {
+                height: 90px;
+            }
+            
+            .nav-menu {
+                column-gap: 20px;
+            }
+            
+            .nav-fractal-artifact {
+                margin-left: 26px;
+                margin-right: 26px;
+            }
+        }
+
+        /* Home section - ensure uniform spacing to match other sections */
+        #home.section {
+            padding-top: var(--section-spacing-desktop);
+        }
+
+        /* ========================================
+           OVER 9000 SAIYANS COMPACT SOCIAL GRID
+           ========================================
+           Compact social media buttons for footer section
+        */
+        
+        .compact-social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 120px));
+            gap: 16px;
+            justify-content: center;
+            margin: 30px auto;
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        .compact-social-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px 12px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 11px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid rgba(255, 255, 255, 0.15);
+            /* Removed backdrop-filter for performance */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            background: rgba(6, 34, 46, 0.85);
+            min-height: 90px;
+        }
+
+        .compact-social-btn:focus {
+            outline: 3px solid rgba(255, 255, 255, 0.5);
+            outline-offset: 2px;
+        }
+
+        .compact-icon {
+            width: 32px;
+            height: 32px;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            flex-shrink: 0;
+        }
+
+        .compact-label {
+            text-align: center;
+            line-height: 1.2;
+            position: relative;
+            z-index: 1;
+        }
+
+        .compact-social-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 0;
+        }
+
+        .compact-social-btn:hover {
+            transform: translateY(-6px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .compact-social-btn:hover::before {
+            opacity: 1;
+        }
+
+        .compact-social-btn:hover .compact-icon {
+            transform: scale(1.15) rotate(3deg);
+        }
+
+        .compact-social-btn:active {
+            transform: translateY(-3px) scale(1.02);
+        }
+
+        /* Platform-specific compact button colors */
+        .telegram-compact {
+            background: linear-gradient(135deg, rgba(34, 158, 217, 0.25), rgba(30, 139, 195, 0.2));
+        }
+        .telegram-compact:hover {
+            background: linear-gradient(135deg, rgba(34, 158, 217, 0.4), rgba(30, 139, 195, 0.3));
+            box-shadow: 0 8px 20px rgba(34, 158, 217, 0.3), 0 0 25px rgba(34, 158, 217, 0.2);
+        }
+
+        .twitter-compact {
+            background: linear-gradient(135deg, rgba(29, 161, 242, 0.25), rgba(25, 145, 219, 0.2));
+        }
+        .twitter-compact:hover {
+            background: linear-gradient(135deg, rgba(29, 161, 242, 0.4), rgba(25, 145, 219, 0.3));
+            box-shadow: 0 8px 20px rgba(29, 161, 242, 0.3), 0 0 25px rgba(29, 161, 242, 0.2);
+        }
+
+        .discord-compact {
+            background: linear-gradient(135deg, rgba(88, 101, 242, 0.25), rgba(71, 82, 196, 0.2));
+        }
+        .discord-compact:hover {
+            background: linear-gradient(135deg, rgba(88, 101, 242, 0.4), rgba(71, 82, 196, 0.3));
+            box-shadow: 0 8px 20px rgba(88, 101, 242, 0.3), 0 0 25px rgba(88, 101, 242, 0.2);
+        }
+
+        .medium-compact {
+            background: linear-gradient(135deg, rgba(18, 16, 14, 0.4), rgba(45, 45, 45, 0.3));
+        }
+        .medium-compact:hover {
+            background: linear-gradient(135deg, rgba(18, 16, 14, 0.6), rgba(45, 45, 45, 0.4));
+            box-shadow: 0 8px 20px rgba(18, 16, 14, 0.4), 0 0 25px rgba(255, 255, 255, 0.1);
+        }
+
+        .github-compact {
+            background: linear-gradient(135deg, rgba(51, 51, 51, 0.3), rgba(36, 41, 46, 0.2));
+        }
+        .github-compact:hover {
+            background: linear-gradient(135deg, rgba(51, 51, 51, 0.5), rgba(36, 41, 46, 0.4));
+            box-shadow: 0 8px 20px rgba(51, 51, 51, 0.4), 0 0 25px rgba(255, 255, 255, 0.1);
+        }
+
+        .supra-compact {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.25), rgba(247, 147, 30, 0.2));
+        }
+        .supra-compact:hover {
+            background: linear-gradient(135deg, rgba(255, 107, 53, 0.4), rgba(247, 147, 30, 0.3));
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3), 0 0 25px rgba(255, 107, 53, 0.2);
+        }
+
+        .crystara-compact {
+            background: linear-gradient(135deg, rgba(153, 50, 204, 0.25), rgba(186, 85, 211, 0.2));
+        }
+        .crystara-compact:hover {
+            background: linear-gradient(135deg, rgba(153, 50, 204, 0.4), rgba(186, 85, 211, 0.3));
+            box-shadow: 0 8px 20px rgba(153, 50, 204, 0.3), 0 0 25px rgba(153, 50, 204, 0.2);
+        }
+
+        .pumpit-compact {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 204, 106, 0.15));
+            color: #ffffff;
+        }
+        .pumpit-compact:hover {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.35), rgba(0, 204, 106, 0.25));
+            box-shadow: 0 8px 20px rgba(0, 255, 136, 0.3), 0 0 25px rgba(0, 255, 136, 0.2);
+        }
+
+        /* Mobile responsive for compact grid */
+        @media (max-width: 768px) {
+            .compact-social-grid {
+                grid-template-columns: repeat(auto-fit, minmax(85px, 105px));
+                gap: 10px;
+                padding: 10px;
+                max-width: 100%;
+            }
+
+            .compact-social-btn {
+                padding: 12px 8px;
+                font-size: 10px;
+                min-height: 80px;
+            }
+
+            .compact-icon {
+                width: 26px;
+                height: 26px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .compact-social-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+                padding: 8px;
+            }
+
+            .compact-social-btn {
+                padding: 10px 6px;
+                font-size: 9px;
+                min-height: 75px;
+            }
+
+            .compact-icon {
+                width: 24px;
+                height: 24px;
+            }
+        }
+        
+        @media (max-width: 375px) {
+            .compact-social-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 6px;
+            }
+            
+            .compact-social-btn {
+                padding: 8px 5px;
+                font-size: 8.5px;
+                min-height: 70px;
+            }
+        }
+
+        /* ========================================
+           FOOTER FOLDOUT SECTION
+           ========================================
+           Slim copyright footer with glassmorphism effect
+        */
+        
+        .footer-foldout {
+            position: relative;
+            z-index: 2;
+            padding: 20px;
+            text-align: center;
+            /* Performance: Replaced backdrop-filter with increased opacity */
+            background: rgba(6, 34, 46, 0.95);
+            border-top: 1px solid var(--border-color);
+            margin-top: 0;
+        }
+        
+        .footer-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 12px 20px;
+            background: rgba(6, 86, 109, 0.15);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Subtle gradient animation on footer */
+        .footer-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(6, 86, 109, 0.2),
+                transparent
+            );
+            animation: footerShimmer 8s ease-in-out infinite;
+        }
+        
+        @keyframes footerShimmer {
+            0%, 100% {
+                left: -100%;
+            }
+            50% {
+                left: 100%;
+            }
+        }
+        
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+            font-weight: 400;
+            background: linear-gradient(135deg, var(--accent-teal-light), var(--accent-warm-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Mobile responsive for footer */
+        @media (max-width: 768px) {
+            .footer-foldout {
+                padding: 12px 8px;
+            }
+            
+            .footer-content {
+                padding: 10px 12px;
+                margin: 0 5px;
+            }
+            
+            .footer-text {
+                font-size: 0.8em;
+                line-height: 1.4;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .footer-foldout {
+                padding: 10px 5px;
+            }
+            
+            .footer-content {
+                padding: 8px 10px;
+            }
+            
+            .footer-text {
+                font-size: 0.75em;
+                line-height: 1.3;
+            }
+        }
+        
+        @media (max-width: 375px) {
+            .footer-text {
+                font-size: 0.7em;
+            }
+        }
+
+        /* ========================================
+           SPOTLIGHT SECTION FRACTAL FRAME STYLES
+           ========================================
+           Hyper-artistic 3D fractal corner cutouts
+        */
+        
+        .spotlight-fractal {
+            position: relative;
+            overflow: visible;
+        }
+        
+        .spotlight-fractal .section-content {
+            position: relative;
+            border: 3px solid transparent;
+            background: 
+                linear-gradient(var(--glass-bg), var(--glass-bg)) padding-box,
+                linear-gradient(
+                    135deg,
+                    rgba(21, 115, 137, 0.8),
+                    rgba(214, 109, 15, 0.6),
+                    rgba(130, 178, 157, 0.7),
+                    rgba(229, 180, 87, 0.6)
+                ) border-box;
+            background-clip: padding-box, border-box;
+            box-shadow: 
+                0 0 50px rgba(21, 115, 137, 0.5),
+                inset 0 0 70px rgba(214, 109, 15, 0.2),
+                0 25px 70px rgba(0, 0, 0, 0.35);
+            animation: spotlightPulse 10s ease-in-out infinite;
+        }
+        
+        @keyframes spotlightPulse {
+            0%, 100% {
+                box-shadow: 
+                    0 0 50px rgba(21, 115, 137, 0.5),
+                    inset 0 0 70px rgba(214, 109, 15, 0.2),
+                    0 25px 70px rgba(0, 0, 0, 0.35);
+            }
+            50% {
+                box-shadow: 
+                    0 0 70px rgba(229, 180, 87, 0.7),
+                    inset 0 0 90px rgba(21, 115, 137, 0.3),
+                    0 30px 80px rgba(0, 0, 0, 0.45);
+            }
+        }
+        
+        /* 3D Fractal corner decorations with advanced mathematical patterns */
+        .spotlight-corner {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            pointer-events: none;
+            z-index: 10;
+            overflow: visible;
+            mix-blend-mode: screen;
+            opacity: 0.8;
+        }
+        
+        .spotlight-corner-tl {
+            top: -30px;
+            left: -30px;
+        }
+        
+        .spotlight-corner-tr {
+            top: -30px;
+            right: -30px;
+        }
+        
+        .spotlight-corner-bl {
+            bottom: -30px;
+            left: -30px;
+        }
+        
+        .spotlight-corner-br {
+            bottom: -30px;
+            right: -30px;
+        }
+        
+        .spotlight-fractal-svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 0 20px rgba(229, 180, 87, 0.8))
+                    drop-shadow(0 0 35px rgba(21, 115, 137, 0.6));
+        }
+        
+        /* Enhanced border glow for Spotlight */
+        .spotlight-fractal .section-content::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(
+                45deg,
+                rgba(6, 86, 109, 0.9),
+                rgba(122, 48, 19, 0.7),
+                rgba(0, 61, 82, 0.9),
+                rgba(117, 47, 21, 0.7)
+            );
+            background-size: 400% 400%;
+            border-radius: 15px;
+            z-index: -1;
+            animation: spotlightBorderFlow 18s ease infinite;
+            filter: blur(10px);
+            opacity: 0.7;
+        }
+        
+        @keyframes spotlightBorderFlow {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+        
+        /* =================================================================
+           SHARED SECTION HEADER STYLES - Used by Spotlight & NFT Gallery
+           ================================================================= */
+        
+        /* Shared section title styling (h1) */
+        .section-title,
+        .spotlight-fractal h1,
+        #nft-gallery h1 {
+            /* Enhanced gradient to better complement the fractal corners */
+            background: linear-gradient(135deg, 
+                #e8b86d 0%,      /* Warm golden - complements warm accents */
+                #06566d 35%,     /* Teal light - matches fractal gradients */
+                #f4a460 65%,     /* Sandy brown/copper - harmonizes with warm tones */
+                #4a9fb8 100%);   /* Lighter teal - adds depth */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            /* Remove conflicting text-shadow from parent .section h1 */
+            text-shadow: none;
+            /* Simplified elegant fade effect - single subtle glow */
+            filter: drop-shadow(0 2px 8px rgba(232, 184, 109, 0.4))
+                    drop-shadow(0 0 12px rgba(6, 86, 109, 0.3));
+        }
+        
+        /* Shared section subtitle styling (h2) */
+        .section-subtitle,
+        .spotlight-fractal h2,
+        #nft-gallery h2 {
+            /* Remove blue fade overlay/gradient - use standard heading color for clarity */
+            color: var(--text-primary);
+            opacity: 0.9;
+            /* Remove conflicting text-shadow from parent .section h2 */
+            text-shadow: none;
+            /* Simple clean appearance */
+            filter: none;
+        }
+        
+        /* Shared history heading styling (h3) */
+        .history-heading,
+        #spotlight-history h3,
+        #nft-history h3 {
+            font-size: 1.3em;
+            color: var(--text-gold);
+            margin: 0 0 20px 0;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 1px;
+            /* Override inherited text-shadow from .section h3 for clean gold appearance */
+            text-shadow: none;
+        }
+        
+        /* Responsive adjustments for spotlight fractal corners */
+        @media (max-width: 768px) {
+            .spotlight-corner {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .spotlight-corner-tl,
+            .spotlight-corner-tr,
+            .spotlight-corner-bl,
+            .spotlight-corner-br {
+                top: -15px;
+                bottom: -15px;
+                left: -15px;
+                right: -15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .spotlight-corner {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .spotlight-corner-tl,
+            .spotlight-corner-tr,
+            .spotlight-corner-bl,
+            .spotlight-corner-br {
+                top: -10px;
+                bottom: -10px;
+                left: -10px;
+                right: -10px;
+            }
+        }
+
+        /* Spotlight Section - Data-driven layout (shares structure with NFT Gallery) */
+        #spotlight-featured-container {
+            margin: 30px 0;
+        }
+
+        /* Featured Spotlight - Extra Large Tile (~3x area) */
+        /* Uses .gallery-featured-tile class (shared with NFT Gallery) */
+        .spotlight-featured-tile,
+        .gallery-featured-tile {
+            position: relative;
+            contain: layout style paint;
+            background: linear-gradient(135deg, 
+                rgba(17, 83, 98, 0.15) 0%, 
+                rgba(15, 32, 39, 0.85) 50%, 
+                rgba(12, 55, 71, 0.15) 100%);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            cursor: pointer;
+            margin-bottom: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0; /* No gap - seamless alignment between image and content */
+            min-height: 400px;
+        }
+
+        .spotlight-featured-tile:hover,
+        .gallery-featured-tile:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--border-color-glow);
+        }
+
+        /* Featured tile fractal accent */
+        .spotlight-featured-tile::before,
+        .gallery-featured-tile::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                var(--accent-teal) 0%, 
+                transparent 30%, 
+                var(--accent-warm) 70%, 
+                var(--accent-gold) 100%);
+            opacity: 0;
+            z-index: -1;
+            border-radius: 8px;
+            transition: opacity 0.3s ease;
+        }
+
+        .spotlight-featured-tile:hover::before,
+        .gallery-featured-tile:hover::before {
+            opacity: 0.3;
+        }
+
+        /* Featured tile image container */
+        .spotlight-featured-image,
+        .gallery-featured-image {
+            position: relative;
+            overflow: hidden;
+            grid-column: 1;
+        }
+
+        .spotlight-featured-image img,
+        .gallery-featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .spotlight-featured-tile:hover .spotlight-featured-image img,
+        .spotlight-featured-tile:hover .gallery-featured-image img,
+        .gallery-featured-tile:hover .spotlight-featured-image img,
+        .gallery-featured-tile:hover .gallery-featured-image img {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        /* Featured tile content */
+        .spotlight-featured-content,
+        .gallery-featured-content {
+            grid-column: 2;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start; /* Explicit left alignment */
+            text-align: left; /* Ensure all text is left-aligned */
+            background: linear-gradient(to right, 
+                rgba(15, 32, 39, 0.8) 0%, 
+                rgba(15, 32, 39, 0.95) 100%);
+        }
+
+        .spotlight-featured-content h3,
+        .gallery-featured-content h3 {
+            margin: 0 0 10px 0;
+            font-size: 2em;
+            color: var(--nft-title-color); /* Use canonical NFT title color token */
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0; /* Match PR186 canonical */
+            /* Remove all text-shadow for canonical PR186 match */
+            text-shadow: none;
+        }
+
+        .spotlight-featured-content .spotlight-number,
+        .gallery-featured-content .gallery-number {
+            font-size: 0.7em;
+            color: var(--accent-teal-light);
+            display: block;
+            margin-bottom: 5px;
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+
+        .spotlight-featured-content p,
+        .gallery-featured-content p {
+            margin: 0 0 20px 0;
+            font-size: 1.1em;
+            color: var(--text-secondary); /* Canonical subheader color */
+            line-height: 1.6;
+            text-align: left; /* Explicit left alignment */
+        }
+
+        .spotlight-featured-actions,
+        .gallery-featured-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .spotlight-featured-action,
+        .gallery-featured-action {
+            flex: 1;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-size: 1em;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            cursor: pointer;
+        }
+
+        .spotlight-featured-action:hover,
+        .gallery-featured-action:hover {
+            transform: scale(1.05);
+        }
+
+        .spotlight-featured-action.mint,
+        .gallery-featured-action.mint {
+            background: var(--gradient-cta-kastanje);
+        }
+
+        .spotlight-featured-action.mint:hover,
+        .gallery-featured-action.mint:hover {
+            background: var(--gradient-cta-kastanje-hover);
+        }
+
+        .spotlight-featured-action.trade,
+        .gallery-featured-action.trade {
+            background: linear-gradient(135deg, 
+                var(--accent-teal) 0%, 
+                var(--accent-teal-light) 100%);
+        }
+
+        .spotlight-featured-action.trade:hover,
+        .gallery-featured-action.trade:hover {
+            background: linear-gradient(135deg, 
+                var(--accent-teal-light) 0%, 
+                var(--accent-teal-bright) 100%);
+        }
+
+        .spotlight-featured-action a,
+        .gallery-featured-action a {
+            color: var(--text-primary);
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Spotlight/Gallery Cards Grid - Standard cards for items 2-4 (Spotlight) or 2-16 (NFT Gallery) */
+        #spotlight-cards-grid,
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .spotlight-card,
+        .gallery-card {
+            position: relative;
+            contain: layout style paint;
+            background: linear-gradient(135deg, 
+                rgba(17, 83, 98, 0.15) 0%, 
+                rgba(15, 32, 39, 0.85) 50%, 
+                rgba(12, 55, 71, 0.15) 100%);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            cursor: pointer;
+        }
+
+        .spotlight-card:hover,
+        .gallery-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--border-color-glow);
+        }
+
+        .spotlight-card::before,
+        .gallery-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                var(--accent-teal) 0%, 
+                transparent 30%, 
+                var(--accent-warm) 70%, 
+                var(--accent-gold) 100%);
+            opacity: 0;
+            z-index: -1;
+            border-radius: 8px;
+            transition: opacity 0.3s ease;
+        }
+
+        .spotlight-card:hover::before,
+        .gallery-card:hover::before {
+            opacity: 0.3;
+        }
+
+        .spotlight-card img,
+        .gallery-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .spotlight-card:hover img,
+        .gallery-card:hover img {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        .spotlight-card-caption,
+        .gallery-card-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, 
+                rgba(15, 32, 39, 0.95) 0%, 
+                rgba(15, 32, 39, 0.85) 60%, 
+                transparent 100%);
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .spotlight-card:hover .spotlight-card-caption,
+        .spotlight-card:hover .gallery-card-caption,
+        .gallery-card:hover .spotlight-card-caption,
+        .gallery-card:hover .gallery-card-caption {
+            transform: translateY(0);
+        }
+
+        .spotlight-card-caption h4,
+        .gallery-card-caption h4 {
+            margin: 0 0 8px 0;
+            font-size: 1.1em;
+            color: var(--nft-title-color); /* Use canonical NFT title color token */
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0; /* Match PR186 canonical */
+            /* Remove all text-shadow for canonical PR186 match */
+            text-shadow: none;
+            /* 2-line clamping for titles - both WebKit and Firefox fallback */
+            /* WebKit line-clamp works in Chrome/Safari/Edge; max-height fallback for Firefox */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.2;
+            max-height: calc(1.2em * 2); /* Firefox fallback: line-height * 2 lines */
+            word-break: break-word;
+            white-space: normal;
+        }
+
+        .spotlight-card-caption p,
+        .gallery-card-caption p {
+            margin: 0 0 12px 0;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            line-height: 1.4;
+            /* 2-line clamping for subtitles - both WebKit and Firefox fallback */
+            /* WebKit line-clamp works in Chrome/Safari/Edge; max-height fallback for Firefox */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-height: calc(1.4em * 2); /* Firefox fallback: line-height * 2 lines */
+            word-break: break-word;
+            white-space: normal;
+        }
+
+        .spotlight-card-actions,
+        .gallery-card-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .spotlight-card-action,
+        .gallery-card-action {
+            flex: 1;
+            text-align: center;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            cursor: pointer;
+        }
+
+        .spotlight-card-action:hover,
+        .gallery-card-action:hover {
+            transform: scale(1.05);
+        }
+
+        .spotlight-card-action.mint,
+        .gallery-card-action.mint {
+            background: var(--gradient-cta-kastanje);
+        }
+
+        .spotlight-card-action.mint:hover,
+        .gallery-card-action.mint:hover {
+            background: var(--gradient-cta-kastanje-hover);
+        }
+
+        .spotlight-card-action.trade,
+        .gallery-card-action.trade {
+            background: linear-gradient(135deg, 
+                var(--accent-teal) 0%, 
+                var(--accent-teal-light) 100%);
+        }
+
+        .spotlight-card-action.trade:hover,
+        .gallery-card-action.trade:hover {
+            background: linear-gradient(135deg, 
+                var(--accent-teal-light) 0%, 
+                var(--accent-teal-bright) 100%);
+        }
+
+        .spotlight-card-action a,
+        .gallery-card-action a {
+            color: var(--text-primary);
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Shared History List Styles - Used by Spotlight and NFT Gallery */
+        #spotlight-history,
+        #nft-history {
+            margin: 40px 0;
+        }
+
+        .history-list,
+        .spotlight-history-list,
+        .nft-history-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .history-item,
+        .spotlight-history-item,
+        .nft-history-item {
+            display: flex;
+            align-items: center;
+            gap: var(--thumb-title-gap); /* Adjustable spacing token for text alignment */
+            padding: 12px;
+            background: rgba(15, 32, 39, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .history-item:hover,
+        .spotlight-history-item:hover,
+        .nft-history-item:hover {
+            transform: translateX(5px);
+            background: rgba(17, 83, 98, 0.3);
+            border-color: var(--border-color-glow);
+        }
+
+        .history-thumbnail,
+        .spotlight-history-thumbnail,
+        .nft-history-thumbnail {
+            width: 60px;
+            height: 60px;
+            flex-shrink: 0;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            clip-path: polygon(
+                8% 0%, 92% 0%, 100% 8%, 100% 92%, 92% 100%, 8% 100%, 0% 92%, 0% 8%
+            );
+        }
+
+        .history-thumbnail img,
+        .spotlight-history-thumbnail img,
+        .nft-history-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .history-info,
+        .spotlight-history-info,
+        .nft-history-info {
+            flex: 1;
+            min-width: 0;
+            text-align: left; /* Explicit left alignment */
+        }
+
+        .history-info h4,
+        .spotlight-history-info h4,
+        .nft-history-info h4 {
+            margin: 0 0 4px 0;
+            font-size: 0.95em;
+            color: var(--nft-title-color); /* Use exact NFT title color token */
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .history-actions,
+        .spotlight-history-actions,
+        .nft-history-actions {
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .history-action,
+        .spotlight-history-action,
+        .nft-history-action {
+            padding: 6px 14px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: transform 0.2s ease;
+            cursor: pointer;
+        }
+
+        .history-action:hover,
+        .spotlight-history-action:hover,
+        .nft-history-action:hover {
+            transform: scale(1.05);
+        }
+
+        .history-action.mint,
+        .spotlight-history-action.mint,
+        .nft-history-action.mint {
+            background: var(--gradient-cta-kastanje);
+        }
+
+        .history-action.mint:hover,
+        .spotlight-history-action.mint:hover,
+        .nft-history-action.mint:hover {
+            background: var(--gradient-cta-kastanje-hover);
+        }
+
+        .history-action.trade,
+        .spotlight-history-action.trade,
+        .nft-history-action.trade {
+            background: linear-gradient(135deg, 
+                var(--accent-teal) 0%, 
+                var(--accent-teal-light) 100%);
+        }
+
+        .history-action.trade:hover,
+        .spotlight-history-action.trade:hover,
+        .nft-history-action.trade:hover {
+            background: linear-gradient(135deg, 
+                var(--accent-teal-light) 0%, 
+                var(--accent-teal-bright) 100%);
+        }
+
+        .history-action a,
+        .spotlight-history-action a,
+        .nft-history-action a {
+            color: var(--text-primary);
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Loading indicator - shared by Spotlight and NFT Gallery */
+        .gallery-loading,
+        .spotlight-loading {
+            text-align: center;
+            font-size: 1.2em;
+            color: var(--text-secondary);
+            padding: 40px;
+        }
+
+        /* =================================================================
+           NFT GALLERY - Reuses Shared Section Header Styles
+           ================================================================= */
+        
+        /* NFT Gallery h1 and h2 now use shared .section-title and .section-subtitle styles above */
+        
+        /* NFT Gallery specific layout */
+        #nft-featured-container {
+            margin: 30px 0;
+        }
+        
+        /* Featured NFT uses same styling as Spotlight featured (via shared .gallery-featured-tile) */
+        .nft-featured-tile {
+            /* Inherits all .gallery-featured-tile styles */
+            position: relative;
+            contain: layout style paint;
+            background: linear-gradient(135deg, 
+                rgba(17, 83, 98, 0.15) 0%, 
+                rgba(15, 32, 39, 0.85) 50%, 
+                rgba(12, 55, 71, 0.15) 100%);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            cursor: pointer;
+            margin-bottom: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0; /* No gap - seamless alignment between image and content */
+            min-height: 400px;
+        }
+        
+        .nft-featured-tile:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--border-color-glow);
+        }
+        
+        .nft-featured-tile::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                var(--accent-teal) 0%, 
+                transparent 30%, 
+                var(--accent-warm) 70%, 
+                var(--accent-gold) 100%);
+            opacity: 0;
+            z-index: -1;
+            border-radius: 8px;
+            transition: opacity 0.3s ease;
+        }
+        
+        .nft-featured-tile:hover::before {
+            opacity: 0.3;
+        }
+        
+        .nft-featured-image {
+            position: relative;
+            overflow: hidden;
+            grid-column: 1;
+        }
+        
+        .nft-featured-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        
+        .nft-featured-tile:hover .nft-featured-image img {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+        
+        .nft-featured-content {
+            grid-column: 2;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start; /* Explicit left alignment */
+            text-align: left; /* Ensure all text is left-aligned */
+            background: linear-gradient(to right, 
+                rgba(15, 32, 39, 0.8) 0%, 
+                rgba(15, 32, 39, 0.95) 100%);
+        }
+        
+        .nft-featured-content h3 {
+            margin: 0 0 10px 0;
+            font-size: 2em;
+            color: var(--nft-title-color); /* Use canonical NFT title color token */
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0; /* Match PR186 canonical */
+            /* Remove all text-shadow for canonical PR186 match */
+            text-shadow: none;
+        }
+        
+        .nft-featured-content .nft-number {
+            font-size: 0.7em;
+            color: var(--accent-teal-light);
+            display: block;
+            margin-bottom: 5px;
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+        
+        .nft-featured-content p {
+            margin: 0 0 20px 0;
+            font-size: 1.1em;
+            color: var(--text-secondary); /* Canonical subheader color */
+            line-height: 1.6;
+            text-align: left; /* Explicit left alignment */
+        }
+        
+        .nft-featured-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .nft-featured-action {
+            flex: 1;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: 4px;
+            font-size: 1em;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .nft-featured-action:hover {
+            transform: scale(1.05);
+        }
+        
+        .nft-featured-action.mint {
+            background: var(--gradient-cta-kastanje);
+        }
+        
+        .nft-featured-action.mint:hover {
+            background: var(--gradient-cta-kastanje-hover);
+        }
+        
+        .nft-featured-action.trade {
+            background: linear-gradient(135deg, 
+                var(--accent-teal) 0%, 
+                var(--accent-teal-light) 100%);
+        }
+        
+        .nft-featured-action.trade:hover {
+            background: linear-gradient(135deg, 
+                var(--accent-teal-light) 0%, 
+                var(--accent-teal-bright) 100%);
+        }
+        
+        .nft-featured-action a {
+            color: var(--text-primary);
+            text-decoration: none;
+            display: block;
+        }
+        
+        /* NFT Cards Grid - 5×3 layout (15 cards) - uses shared .gallery-grid */
+        #nft-cards-grid {
+            grid-template-columns: repeat(5, 1fr);
+        }
+        
+        .nft-card {
+            /* Same as gallery-card (shared styling above) */
+            position: relative;
+            contain: layout style paint;
+            background: linear-gradient(135deg, 
+                rgba(17, 83, 98, 0.15) 0%, 
+                rgba(15, 32, 39, 0.85) 50%, 
+                rgba(12, 55, 71, 0.15) 100%);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .nft-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: var(--border-color-glow);
+        }
+        
+        .nft-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                var(--accent-teal) 0%, 
+                transparent 30%, 
+                var(--accent-warm) 70%, 
+                var(--accent-gold) 100%);
+            opacity: 0;
+            z-index: -1;
+            border-radius: 8px;
+            transition: opacity 0.3s ease;
+        }
+        
+        .nft-card:hover::before {
+            opacity: 0.3;
+        }
+        
+        .nft-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        
+        .nft-card:hover img {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+        
+        .nft-card-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, 
+                rgba(15, 32, 39, 0.95) 0%, 
+                rgba(15, 32, 39, 0.85) 60%, 
+                transparent 100%);
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .nft-card:hover .nft-card-caption {
+            transform: translateY(0);
+        }
+        
+        .nft-card-caption h4 {
+            margin: 0 0 8px 0;
+            font-size: 1em;
+            color: var(--nft-title-color); /* Match canonical NFT title color token */
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0; /* Match PR186 canonical */
+            text-shadow: none; /* Ensure no inherited shadows */
+            /* 2-line clamping for titles - both WebKit and Firefox fallback */
+            /* WebKit line-clamp works in Chrome/Safari/Edge; max-height fallback for Firefox */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.2;
+            max-height: calc(1.2em * 2); /* Firefox fallback: line-height * 2 lines */
+            word-break: break-word;
+            white-space: normal;
+        }
+        
+        .nft-card-caption p {
+            margin: 0 0 12px 0;
+            font-size: 0.85em;
+            color: var(--text-secondary);
+            line-height: 1.4;
+            /* Line clamping to 2 lines with ellipsis for better readability */
+            /* WebKit line-clamp works in Chrome/Safari/Edge; max-height fallback for Firefox */
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            /* Fallback for browsers without line-clamp support */
+            max-height: calc(1.4em * 2); /* line-height * number of lines */
+            position: relative;
+            word-break: break-word;
+            white-space: normal;
+        }
+        
+        /* Subtle gradient mask to indicate truncation (progressive enhancement) */
+        .nft-card-caption p::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 30%;
+            height: 1.4em;
+            background: linear-gradient(to right, transparent, rgba(15, 32, 39, 0.95));
+            pointer-events: none;
+        }
+        
+        .nft-card-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+        
+        .nft-card-action {
+            flex: 1;
+            text-align: center;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: transform 0.2s ease, opacity 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .nft-card-action:hover {
+            transform: scale(1.05);
+        }
+        
+        .nft-card-action.mint {
+            background: var(--gradient-cta-kastanje);
+        }
+        
+        .nft-card-action.mint:hover {
+            background: var(--gradient-cta-kastanje-hover);
+        }
+        
+        .nft-card-action.trade {
+            background: linear-gradient(135deg, 
+                var(--accent-teal) 0%, 
+                var(--accent-teal-light) 100%);
+        }
+        
+        .nft-card-action.trade:hover {
+            background: linear-gradient(135deg, 
+                var(--accent-teal-light) 0%, 
+                var(--accent-teal-bright) 100%);
+        }
+        
+        .nft-card-action a {
+            color: var(--text-primary);
+            text-decoration: none;
+            display: block;
+        }
+        
+        /* NFT History List - Now uses shared .history-* classes defined above */
+
+        /* Responsive adjustments for Spotlight and NFT Gallery (shared) */
+        @media (max-width: 768px) {
+            .spotlight-featured-tile,
+            .gallery-featured-tile,
+            .nft-featured-tile {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .spotlight-featured-image,
+            .gallery-featured-image,
+            .nft-featured-image {
+                grid-column: 1;
+                min-height: 250px;
+            }
+
+            .spotlight-featured-content,
+            .gallery-featured-content,
+            .nft-featured-content {
+                grid-column: 1;
+                padding: 30px 20px;
+            }
+
+            .spotlight-featured-content h3,
+            .gallery-featured-content h3,
+            .nft-featured-content h3 {
+                font-size: 1.5em;
+            }
+            
+            /* Increase history heading visibility on mobile */
+            .history-heading,
+            #spotlight-history h3,
+            #nft-history h3 {
+                font-size: 1.4em; /* Increased from 1.3em for better mobile visibility */
+            }
+
+            .spotlight-card-caption,
+            .gallery-card-caption,
+            .nft-card-caption {
+                transform: translateY(0);
+                position: relative;
+            }
+
+            #spotlight-cards-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .history-item,
+            .spotlight-history-item,
+            .nft-history-item {
+                flex-wrap: wrap;
+            }
+
+            .history-actions,
+            .spotlight-history-actions,
+            .nft-history-actions {
+                width: 100%;
+                justify-content: flex-end;
+                margin-top: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .spotlight-featured-content,
+            .gallery-featured-content,
+            .nft-featured-content {
+                padding: 20px 15px;
+            }
+
+            .spotlight-featured-actions,
+            .gallery-featured-actions,
+            .nft-featured-actions {
+                flex-direction: column;
+            }
+
+            /* Mobile-only unification: Featured tiles and cards at same size */
+            /* Unify featured tiles - make them render like cards on mobile */
+            .spotlight-featured-tile,
+            .nft-featured-tile,
+            .gallery-featured-tile {
+                display: flex;
+                flex-direction: column;
+                min-height: auto;
+                max-width: 100%;
+            }
+
+            .spotlight-featured-image,
+            .nft-featured-image,
+            .gallery-featured-image {
+                height: 220px; /* Consistent image height */
+                min-height: 220px;
+            }
+
+            .spotlight-featured-image img,
+            .nft-featured-image img,
+            .gallery-featured-image img {
+                object-fit: cover;
+            }
+
+            /* Unify all card types to match sizing */
+            .spotlight-card,
+            .nft-card,
+            .gallery-card {
+                max-width: 100%;
+            }
+
+            .spotlight-card img,
+            .nft-card img,
+            .gallery-card img {
+                height: 220px; /* Match featured tile image height */
+                object-fit: cover;
+            }
+
+            /* Unified caption styling for all card types */
+            .spotlight-card-caption,
+            .nft-card-caption,
+            .gallery-card-caption,
+            .spotlight-featured-content,
+            .nft-featured-content,
+            .gallery-featured-content {
+                padding: 15px;
+            }
+
+            .spotlight-card-caption h4,
+            .nft-card-caption h4,
+            .gallery-card-caption h4,
+            .spotlight-featured-content h3,
+            .nft-featured-content h3,
+            .gallery-featured-content h3 {
+                font-size: 1.1em; /* Consistent title size */
+            }
+
+            .spotlight-card-caption p,
+            .nft-card-caption p,
+            .gallery-card-caption p,
+            .spotlight-featured-content p,
+            .nft-featured-content p,
+            .gallery-featured-content p {
+                font-size: 0.9em; /* Consistent description size */
+            }
+
+            /* Soften button styles on mobile - reduce visual prominence */
+            .spotlight-featured-action,
+            .gallery-featured-action,
+            .nft-featured-action,
+            .spotlight-card-action,
+            .gallery-card-action,
+            .nft-card-action {
+                padding: 4px 8px; /* Reduced from 12px 20px / 8px 12px / 6px 10px */
+                font-size: 0.75em; /* Reduced from 1em / 0.9em / 0.8em */
+                min-height: 44px; /* Maintain tap target size */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* Reduce gap between buttons */
+            .spotlight-featured-actions,
+            .gallery-featured-actions,
+            .nft-featured-actions,
+            .spotlight-card-actions,
+            .gallery-card-actions,
+            .nft-card-actions {
+                gap: 8px; /* Reduced from 15px / 10px */
+            }
+
+            /* Make history items smaller on mobile */
+            .history-thumbnail,
+            .spotlight-history-thumbnail,
+            .nft-history-thumbnail {
+                width: 44px; /* Reduced from 60px */
+                height: 44px; /* Reduced from 60px */
+            }
+            
+            /* Adjust thumbnail-title gap for narrow screens */
+            .history-item,
+            .spotlight-history-item,
+            .nft-history-item {
+                gap: 20px; /* Reduced from 30px to maintain readability */
+            }
+
+            .history-info h4,
+            .spotlight-history-info h4,
+            .nft-history-info h4 {
+                font-size: 0.8em; /* Reduced from 0.95em for compact mobile layout */
+                line-height: 1.4;
+            }
+
+            /* Reduce history action button prominence */
+            .history-action,
+            .spotlight-history-action,
+            .nft-history-action {
+                padding: 4px 8px; /* Reduced from 6px 14px */
+                font-size: 0.7em; /* Reduced from 0.8em */
+                min-width: 44px; /* Ensure minimum tap target size (44x44px for accessibility) */
+                min-height: 44px; /* Ensure minimum tap target size */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        /* Responsive adjustments for NFT Gallery specific grid layout */
+        @media (max-width: 1200px) {
+            #nft-cards-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            #nft-cards-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            #nft-cards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            /* NFT Gallery featured tile uses shared responsive styles defined above */
+            /* History heading visibility improvement shared with Spotlight (applied above) */
+
+            .nft-card-caption {
+                transform: translateY(0);
+                position: relative;
+            }
+
+            #nft-cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            /* History items use shared responsive styles above */
+        }
+
+        @media (max-width: 480px) {
+            .nft-featured-content {
+                padding: 20px 15px;
+            }
+
+            .nft-featured-actions {
+                flex-direction: column;
+            }
+
+            #nft-cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* History items use shared responsive styles above */
+        }
+
+        /* ========================================
+           COOKIE CONSENT BANNER STYLES
+           ========================================
+           Glassy bottom banner matching site aesthetic
+        */
+        
+        /* ========================================
+           LAOSHI ART SECTION STYLES
+           ========================================
+           Epic artistic section with fractal backgrounds
+        */
+        
+        .laoshi-section {
+            position: relative;
+            overflow: hidden;
+            background: transparent;
+        }
+        
+        .laoshi-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        
+        /* Remove all SVG animations in Lao Shifu section */
+        .laoshi-section animate {
+            display: none;
+        }
+        
+        .laoshi-centerpiece {
+            position: relative;
+            z-index: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 650px;
+            padding: 60px 40px;
+            box-sizing: border-box;
+            contain: layout style paint;
+        }
+        
+        /* Fractal curved frame - decorative outline - STATIC (no animation) */
+        .laoshi-frame {
+            position: absolute;
+            width: 680px;
+            height: 680px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            opacity: var(--logo-frame-opacity);
+            color: var(--logo-frame-color);
+            pointer-events: none;
+            /* Animation removed per requirements */
+            contain: layout style paint;
+        }
+        
+        /* Performance-safe halo behind logo - STATIC (no animation) */
+        .laoshi-halo {
+            position: absolute;
+            width: var(--logo-halo-size);
+            height: var(--logo-halo-size);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            background: radial-gradient(
+                circle,
+                rgba(226, 170, 66, var(--logo-halo-opacity)) 0%,
+                rgba(6, 86, 109, calc(var(--logo-halo-opacity) * 0.7)) 40%,
+                transparent 70%
+            );
+            filter: blur(var(--logo-halo-blur));
+            opacity: 0.6;
+            pointer-events: none;
+            /* Animation removed per requirements */
+        }
+        
+        /* Logo link wrapper for better accessibility */
+        .laoshi-logo-link {
+            position: relative;
+            z-index: 2;
+            display: inline-block;
+            /* Remove hover animation */
+            border-radius: 8px;
+            outline-offset: 8px;
+        }
+        
+        .laoshi-logo-link:focus {
+            outline: 3px solid var(--logo-frame-accent);
+        }
+        
+        /* Logo image with optimized effects - STATIC (no animation) */
+        .laoshi-logo {
+            position: relative;
+            z-index: 2;
+            width: 380px;
+            height: auto;
+            display: block;
+            /* Circular shape for clean rendering inside frame */
+            border-radius: 50%;
+            /* Simplified drop shadow for better performance */
+            filter: drop-shadow(0 0 35px rgba(6, 86, 109, 0.6));
+            /* Reposition: down slightly and 10px to the right */
+            transform: translate(10px, 10px);
+            contain: layout style paint;
+        }
+        
+        .laoshi-title {
+            position: relative;
+            z-index: 2;
+            margin-top: 40px;
+            font-size: 4em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            background: linear-gradient(
+                45deg,
+                var(--accent-warm),
+                var(--accent-teal-light),
+                var(--accent-warm-light),
+                var(--accent-teal),
+                var(--accent-warm)
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            /* Simplified text shadow for better performance */
+            text-shadow: 
+                0 0 40px rgba(6, 86, 109, 0.5),
+                1px 1px 2px rgba(42, 62, 64, 0.3);
+            /* Animations removed per requirements */
+            opacity: 0.95;
+            contain: layout style paint;
+        }
+        
+        /* Mobile responsive for LaoShi section */
+        @media (max-width: 768px) {
+            .laoshi-frame {
+                width: 450px;
+                height: 450px;
+            }
+            
+            .laoshi-halo {
+                width: 300px;
+                height: 300px;
+            }
+            
+            .laoshi-logo {
+                width: 260px;
+            }
+            
+            .laoshi-title {
+                font-size: 2.2em;
+                margin-top: 25px;
+            }
+            
+            .laoshi-centerpiece {
+                padding: 40px 20px;
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .laoshi-frame {
+                width: 360px;
+                height: 360px;
+            }
+            
+            .laoshi-halo {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .laoshi-logo {
+                width: 200px;
+            }
+            
+            .laoshi-title {
+                font-size: 1.8em;
+                letter-spacing: 0.05em;
+                margin-top: 20px;
+            }
+        }
+        
+        @media (max-width: 375px) {
+            .laoshi-frame {
+                width: 280px;
+                height: 280px;
+            }
+            
+            .laoshi-halo {
+                width: 220px;
+                height: 220px;
+            }
+            
+            .laoshi-logo {
+                width: 180px;
+            }
+            
+            .laoshi-title {
+                font-size: 1.6em;
+            }
+        }
+        
+        /* Respect user preference for reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            /* Lao Shifu animations already removed globally */
+            .laoshi-logo-link:hover .laoshi-logo {
+                animation: none;
+                transform: none;
+                will-change: auto;
+            }
+            
+            .laoshi-title {
+                animation: none;
+            }
+        }
+        
+        /* End of LaoShi Art Section Styles */
+        
+        #cookie-consent-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            /* Minimal and unobtrusive design */
+            background: rgba(6, 34, 46, 0.95);
+            border-top: 1px solid var(--border-color);
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
+            padding: 12px 20px;
+            transform: translateY(100%);
+            /* Minimal animations respecting prefers-reduced-motion */
+            transition: transform 0.3s ease;
+        }
+        
+        #cookie-consent-banner.show {
+            transform: translateY(0);
+        }
+        
+        .cookie-banner-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .cookie-banner-text {
+            flex: 1;
+            min-width: 250px;
+            color: var(--text-secondary);
+            font-size: 0.85em;
+            line-height: 1.5;
+        }
+        
+        .cookie-banner-text strong {
+            color: var(--text-primary);
+            display: inline;
+            margin-right: 8px;
+            font-size: 0.95em;
+            /* Remove gradient for simpler appearance */
+        }
+        
+        .cookie-banner-text a {
+            color: var(--accent-teal-light);
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+        
+        .cookie-banner-text a:hover {
+            color: var(--accent-warm-light);
+        }
+        
+        .cookie-banner-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .cookie-btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: 1px solid transparent;
+            font-weight: 500;
+            font-size: 0.85em;
+            cursor: pointer;
+            /* Minimal transitions */
+            transition: background 0.2s ease, transform 0.2s ease;
+            text-decoration: none;
+            display: inline-block;
+            /* Remove fancy effects */
+        }
+        
+        /* Remove fancy ::before pseudo-element */
+        .cookie-btn::before {
+            display: none;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .cookie-btn-accept {
+            background: var(--accent-warm);
+            color: var(--text-primary);
+            border-color: var(--accent-warm);
+        }
+        
+        .cookie-btn-accept:hover {
+            background: var(--accent-warm-light);
+            border-color: var(--accent-warm-light);
+        }
+        
+        .cookie-btn-manage {
+            background: transparent;
+            color: var(--text-primary);
+            border-color: var(--accent-teal);
+        }
+        
+        .cookie-btn-manage:hover {
+            background: rgba(6, 86, 109, 0.3);
+        }
+        
+        .cookie-btn-decline {
+            background: transparent;
+            color: var(--text-secondary);
+            border-color: var(--border-color);
+        }
+        
+        .cookie-btn-decline:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+        }
+        
+        /* Privacy Settings Button - Minimal unobtrusive design */
+        #privacy-settings-btn {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            padding: 8px 12px;
+            background: rgba(6, 34, 46, 0.9);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: var(--text-primary);
+            font-size: 0.8em;
+            cursor: pointer;
+            z-index: 999;
+            /* Minimal transition */
+            transition: background 0.2s ease;
+            display: none;
+            opacity: 0.7;
+        }
+        
+        #privacy-settings-btn.show {
+            display: block;
+        }
+        
+        #privacy-settings-btn:hover {
+            background: rgba(6, 86, 109, 0.9);
+            opacity: 1;
+        }
+        
+        /* ========================================
+           PRIVACY POLICY MODAL STYLES
+           ========================================
+           Full-screen modal matching site aesthetic
+        */
+        
+        #privacy-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* Performance: Replaced backdrop-filter with solid background */
+            background: rgba(6, 34, 46, 0.98);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        #privacy-modal.show {
+            display: flex;
+        }
+        
+        .privacy-modal-content {
+            /* Performance: Replaced backdrop-filter with increased opacity */
+            background: rgba(6, 34, 46, 0.97);
+            border: 2px solid var(--border-color);
+            border-radius: 15px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 40px;
+            position: relative;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+        
+        .privacy-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        .privacy-modal-header h2 {
+            font-size: 2.5em;
+            background: linear-gradient(45deg, var(--accent-warm), var(--accent-teal-light), var(--accent-warm-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0;
+        }
+        
+        .privacy-modal-close {
+            background: transparent;
+            border: 2px solid var(--border-color);
+            color: var(--text-primary);
+            font-size: 1.5em;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            line-height: 1;
+        }
+        
+        .privacy-modal-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent-warm);
+            transform: rotate(90deg);
+        }
+        
+        .privacy-modal-body {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        .privacy-modal-body h3 {
+            color: var(--text-primary);
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, var(--accent-teal-light), var(--accent-warm-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .privacy-modal-body h4 {
+            color: var(--text-primary);
+            font-size: 1.2em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .privacy-modal-body p {
+            margin-bottom: 15px;
+        }
+        
+        .privacy-modal-body ul {
+            margin: 15px 0;
+            padding-left: 25px;
+        }
+        
+        .privacy-modal-body li {
+            margin-bottom: 10px;
+        }
+        
+        .privacy-modal-body strong {
+            color: var(--text-primary);
+        }
+        
+        .privacy-modal-body a {
+            color: var(--accent-teal-light);
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+        
+        .privacy-modal-body a:hover {
+            color: var(--accent-warm-light);
+        }
+        
+        .privacy-highlight {
+            background: rgba(6, 86, 109, 0.2);
+            border-left: 3px solid var(--accent-teal-light);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        /* Mobile Responsive for Cookie Banner and Privacy Modal */
+        @media (max-width: 768px) {
+            #cookie-consent-banner {
+                padding: 15px;
+            }
+            
+            .cookie-banner-content {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+            
+            .cookie-banner-text {
+                min-width: 100%;
+                font-size: 0.9em;
+                line-height: 1.5;
+            }
+            
+            .cookie-banner-text strong {
+                font-size: 1em;
+                margin-bottom: 6px;
+            }
+            
+            .cookie-banner-actions {
+                width: 100%;
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .cookie-btn {
+                width: 100%;
+                text-align: center;
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+            
+            .privacy-modal-content {
+                padding: 20px;
+                max-height: 95vh;
+            }
+            
+            .privacy-modal-header h2 {
+                font-size: 1.8em;
+            }
+            
+            .privacy-modal-body {
+                font-size: 0.95em;
+                line-height: 1.7;
+            }
+            
+            .privacy-modal-body h3 {
+                font-size: 1.3em;
+            }
+            
+            .privacy-modal-body h4 {
+                font-size: 1.1em;
+            }
+            
+            #privacy-settings-btn {
+                bottom: 12px;
+                right: 12px;
+                font-size: 0.75em;
+                padding: 8px 12px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            #cookie-consent-banner {
+                padding: 12px;
+            }
+            
+            .cookie-banner-text {
+                font-size: 0.85em;
+            }
+            
+            .cookie-btn {
+                padding: 8px 16px;
+                font-size: 0.85em;
+            }
+            
+            .privacy-modal-content {
+                padding: 15px;
+            }
+            
+            .privacy-modal-header {
+                margin-bottom: 20px;
+                padding-bottom: 15px;
+            }
+            
+            .privacy-modal-header h2 {
+                font-size: 1.5em;
+            }
+            
+            .privacy-modal-body {
+                font-size: 0.9em;
+            }
+            
+            #privacy-settings-btn {
+                bottom: 10px;
+                right: 10px;
+                font-size: 0.7em;
+                padding: 6px 10px;
+            }
+        }
+        
+        @media (max-width: 375px) {
+            .cookie-banner-text {
+                font-size: 0.8em;
+            }
+            
+            .privacy-modal-header h2 {
+                font-size: 1.3em;
+            }
+        }
+
+        /* Respect user preference for reduced motion - Privacy UI */
+        @media (prefers-reduced-motion: reduce) {
+            #cookie-consent-banner {
+                transition: none;
+            }
+            
+            .cookie-btn {
+                transition: none;
+            }
+            
+            #privacy-settings-btn {
+                transition: none;
+            }
+        }
+
+        /* ========================================
+           POWERLEVEL FRACTAL SECTION STYLES
+           ========================================
+           Fractal-themed section with organic corners
+           and magical spacerider fairytale aesthetic
+        */
+        
+        .powerlevel-fractal {
+            position: relative;
+            overflow: visible;
+            isolation: isolate;
+        }
+        
+        /* Enhanced section content - matching Spotlight but with reduced brightness */
+        .powerlevel-fractal .section-content {
+            position: relative;
+            border: 2px solid transparent;
+            background: 
+                linear-gradient(var(--glass-bg), var(--glass-bg)) padding-box,
+                linear-gradient(
+                    135deg,
+                    rgba(21, 115, 137, 0.5),
+                    rgba(214, 109, 15, 0.35),
+                    rgba(130, 178, 157, 0.45),
+                    rgba(229, 180, 87, 0.35)
+                ) border-box;
+            background-clip: padding-box, border-box;
+            box-shadow: 
+                0 0 30px rgba(21, 115, 137, 0.25),
+                inset 0 0 40px rgba(214, 109, 15, 0.1),
+                0 15px 40px rgba(0, 0, 0, 0.25);
+            animation: powerlevelPulse 10s ease-in-out infinite;
+        }
+        
+        @keyframes powerlevelPulse {
+            0%, 100% {
+                box-shadow: 
+                    0 0 30px rgba(21, 115, 137, 0.25),
+                    inset 0 0 40px rgba(214, 109, 15, 0.1),
+                    0 15px 40px rgba(0, 0, 0, 0.25);
+            }
+            50% {
+                box-shadow: 
+                    0 0 42px rgba(130, 178, 157, 0.35),
+                    inset 0 0 55px rgba(229, 180, 87, 0.15),
+                    0 18px 50px rgba(0, 0, 0, 0.32);
+            }
+        }
+        
+        /* Dimmed glowing border effect - matching Spotlight style but less intense */
+        .powerlevel-fractal .section-content::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(
+                45deg,
+                rgba(21, 115, 137, 0.5),
+                rgba(214, 109, 15, 0.4),
+                rgba(130, 178, 157, 0.5),
+                rgba(229, 180, 87, 0.4)
+            );
+            background-size: 400% 400%;
+            border-radius: 15px;
+            z-index: -1;
+            animation: powerlevelBorderFlow 18s ease infinite;
+            filter: blur(6px);
+            opacity: 0.4;
+        }
+        
+        @keyframes powerlevelBorderFlow {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+        
+        /* ========================================
+           UNIVERSAL FRACTAL CORNER ORNAMENTS
+           ========================================
+           Beautiful curve-based fractal decorations
+           for all section frames. No straight edges.
+        */
+        
+        .fractal-corner {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            pointer-events: none;
+            z-index: 10;
+            overflow: visible;
+            opacity: 0.35; /* Reduced for subtle outline effect */
+            background: transparent; /* No fill, outline only */
+        }
+        
+        .fractal-corner-tl {
+            top: -30px;
+            left: -30px;
+        }
+        
+        .fractal-corner-tr {
+            top: -30px;
+            right: -30px;
+        }
+        
+        .fractal-corner-bl {
+            bottom: -30px;
+            left: -30px;
+        }
+        
+        .fractal-corner-br {
+            bottom: -30px;
+            right: -30px;
+        }
+        
+        .fractal-svg {
+            width: 100%;
+            height: 100%;
+            /* Removed heavy drop-shadow filters for minimal outline effect */
+            opacity: 0; /* Hide SVG content, show only ::before outline */
+        }
+        
+        /* Thin outline border for subtle frame effect */
+        .fractal-corner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid color-mix(in oklab, var(--nft-title-color, #E5B457) 55%, transparent);
+            opacity: 0.35; /* Low contrast outline */
+            pointer-events: none;
+            border-radius: 4px; /* Subtle rounding to match fractal curves */
+            z-index: 1;
+        }
+        
+        /* Enhanced accordion-style link categories with fractal theme */
+        .powerlevel-fractal .link-category {
+            background: linear-gradient(
+                135deg,
+                rgba(6, 86, 109, 0.25) 0%,
+                rgba(0, 61, 82, 0.2) 50%,
+                rgba(122, 48, 19, 0.15) 100%
+            );
+            border: 1px solid rgba(6, 86, 109, 0.4);
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .powerlevel-fractal .link-category::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(
+                circle,
+                rgba(6, 86, 109, 0.3) 0%,
+                transparent 70%
+            );
+            opacity: 0;
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            transform: scale(0);
+        }
+        
+        .powerlevel-fractal .link-category:hover {
+            border-color: rgba(122, 48, 19, 0.6);
+            box-shadow: 
+                0 10px 40px rgba(6, 86, 109, 0.4),
+                inset 0 0 30px rgba(122, 48, 19, 0.1);
+        }
+        
+        .powerlevel-fractal .link-category:hover::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Accordion details element */
+        .powerlevel-fractal .phase-accordion {
+            background: transparent;
+            border: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        /* Accordion summary (header/toggle) */
+        .powerlevel-fractal .phase-accordion summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            position: relative;
+            /* Minimum touch target size for mobile */
+            min-height: 44px;
+            transition: opacity 0.3s ease;
+        }
+        
+        /* Remove default disclosure triangle */
+        .powerlevel-fractal .phase-accordion summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        /* Phase title styling */
+        .powerlevel-fractal .phase-accordion summary .phase-title {
+            /* Dimmed gradient matching the section header style */
+            background: linear-gradient(135deg,
+                #8a7444 0%,      /* Muted gold */
+                #3a7088 50%,     /* Muted teal */
+                #9a7a52 100%);   /* Muted tan */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.4em;
+            font-weight: bold;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 1px;
+        }
+        
+        /* Chevron toggle icon */
+        .powerlevel-fractal .phase-accordion summary .toggle-icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            margin-left: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0.7;
+        }
+        
+        /* Chevron SVG styling */
+        .powerlevel-fractal .phase-accordion summary .toggle-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: #8a7444;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        
+        /* Rotate chevron when open */
+        .powerlevel-fractal .phase-accordion[open] summary .toggle-icon {
+            transform: rotate(180deg);
+            opacity: 1;
+        }
+        
+        /* Hover effects for summary */
+        .powerlevel-fractal .phase-accordion summary:hover {
+            opacity: 1;
+        }
+        
+        .powerlevel-fractal .phase-accordion summary:hover .toggle-icon {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        
+        .powerlevel-fractal .phase-accordion[open] summary:hover .toggle-icon {
+            transform: rotate(180deg) scale(1.1);
+        }
+        
+        /* Focus styles for keyboard navigation */
+        .powerlevel-fractal .phase-accordion summary:focus {
+            outline: 2px solid rgba(138, 116, 68, 0.6);
+            outline-offset: 2px;
+        }
+        
+        .powerlevel-fractal .phase-accordion summary:focus-visible {
+            outline: 2px solid rgba(138, 116, 68, 0.8);
+            outline-offset: 2px;
+        }
+        
+        /* Content area */
+        .powerlevel-fractal .phase-accordion .phase-content {
+            padding: 0 20px 20px 20px;
+            opacity: 0;
+            transform: translateY(-10px);
+            animation: fadeInSlide 0.3s ease forwards;
+        }
+        
+        @keyframes fadeInSlide {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Legacy h4 styling for backward compatibility */
+        .powerlevel-fractal .link-category h4 {
+            /* Dimmed gradient matching the section header style */
+            background: linear-gradient(135deg,
+                #8a7444 0%,      /* Muted gold */
+                #3a7088 50%,     /* Muted teal */
+                #9a7a52 100%);   /* Muted tan */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            /* Subtle faded text shadow matching nav-link colors but dimmed */
+            text-shadow: 
+                1px 1px 2px rgba(201, 169, 97, 0.2),
+                -1px -1px 2px rgba(42, 62, 64, 0.2),
+                2px 2px 3px rgba(201, 169, 97, 0.12),
+                -2px -2px 3px rgba(42, 62, 64, 0.12);
+            font-size: 1.4em;
+            font-weight: bold;
+            position: relative;
+        }
+        
+        .powerlevel-fractal .link-list li {
+            position: relative;
+            padding-left: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .powerlevel-fractal .link-list li::before {
+            content: '◈';
+            position: absolute;
+            left: 0;
+            color: rgba(6, 86, 109, 0.7);
+            font-size: 1.2em;
+            transition: all 0.3s ease;
+        }
+        
+        .powerlevel-fractal .link-list li:hover {
+            padding-left: 30px;
+            color: rgba(255, 255, 255, 1);
+        }
+        
+        .powerlevel-fractal .link-list li:hover::before {
+            color: rgba(122, 48, 19, 0.9);
+            transform: scale(1.3) rotate(45deg);
+        }
+        
+        /* Title enhancements for Powerlevel section - matching Spotlight but dimmed */
+        .powerlevel-fractal h1 {
+            /* Dimmed gradient matching Spotlight style */
+            background: linear-gradient(135deg, 
+                #c9a961 0%,      /* Muted gold - dimmed from Spotlight */
+                #4a7a8a 35%,     /* Muted teal - dimmed from Spotlight */
+                #d4a574 65%,     /* Warm tan - dimmed from Spotlight */
+                #3a7088 100%);   /* Deep muted teal - dimmed from Spotlight */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            /* Remove conflicting text-shadow from parent .section h1 */
+            text-shadow: none;
+            /* Dimmed drop-shadow effect */
+            filter: drop-shadow(0 1px 5px rgba(201, 169, 97, 0.2))
+                    drop-shadow(0 0 8px rgba(74, 122, 138, 0.18));
+        }
+        
+        .powerlevel-fractal h2 {
+            /* Match Spotlight base model - clear and readable */
+            color: var(--spotlight-heading-color);
+            opacity: var(--spotlight-heading-opacity);
+            /* Remove conflicting text-shadow from parent .section h2 */
+            text-shadow: none;
+            /* Simple clean appearance */
+            filter: none;
+        }
+        
+        .powerlevel-fractal h3 {
+            /* Dimmed gradient for h3 elements */
+            background: linear-gradient(135deg,
+                #8a7444 0%,      /* Even darker muted gold */
+                #2f5a6d 50%,     /* Deep muted teal */
+                #9a7a52 100%);   /* Muted tan */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            /* Remove conflicting text-shadow from parent .section h3 */
+            text-shadow: none;
+            /* Subtle drop-shadow */
+            filter: drop-shadow(0 1px 3px rgba(138, 116, 68, 0.18))
+                    drop-shadow(0 0 5px rgba(47, 90, 109, 0.12));
+        }
+        
+        /* Responsive adjustments for fractal corners */
+        @media (max-width: 768px) {
+            .fractal-corner {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .fractal-corner-tl {
+                top: -15px;
+                left: -15px;
+            }
+            
+            .fractal-corner-tr {
+                top: -15px;
+                right: -15px;
+            }
+            
+            .fractal-corner-bl {
+                bottom: -15px;
+                left: -15px;
+            }
+            
+            .fractal-corner-br {
+                bottom: -15px;
+                right: -15px;
+            }
+            
+            .powerlevel-content {
+                clip-path: polygon(
+                    0 0,
+                    10% 0,
+                    90% 0,
+                    100% 0,
+                    100% 10%,
+                    100% 90%,
+                    100% 100%,
+                    90% 100%,
+                    10% 100%,
+                    0 100%,
+                    0 90%,
+                    0 10%
+                );
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .fractal-corner {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .fractal-corner-tl {
+                top: -10px;
+                left: -10px;
+            }
+            
+            .fractal-corner-tr {
+                top: -10px;
+                right: -10px;
+            }
+            
+            .fractal-corner-bl {
+                bottom: -10px;
+                left: -10px;
+            }
+            
+            .fractal-corner-br {
+                bottom: -10px;
+                right: -10px;
+            }
+            
+            .powerlevel-content {
+                clip-path: polygon(
+                    0 0,
+                    8% 0,
+                    92% 0,
+                    100% 0,
+                    100% 8%,
+                    100% 92%,
+                    100% 100%,
+                    92% 100%,
+                    8% 100%,
+                    0 100%,
+                    0 92%,
+                    0 8%
+                );
+            }
+        }
+
+
+        /* Medium Feed Styles - Matching NFT/Spotlight History Layout */
+        #medium-feed-container {
+            width: 100%;
+            margin: 30px 0;
+        }
+
+        .medium-loading {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 20px;
+            border: 4px solid rgba(6, 86, 109, 0.3);
+            border-top-color: var(--accent-teal-light);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .medium-error {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+        }
+
+        .error-icon {
+            width: 60px;
+            height: 60px;
+            color: var(--accent-warm);
+            margin-bottom: 20px;
+        }
+
+        .medium-fallback-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            color: var(--text-primary);
+            background: rgba(6, 86, 109, 0.3);
+            text-decoration: none;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .medium-fallback-link:hover {
+            background: rgba(6, 86, 109, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(6, 86, 109, 0.3);
+        }
+
+        /* Medium Articles List - Matches History Layout */
+        .medium-articles {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .medium-article {
+            display: flex;
+            align-items: center;
+            gap: var(--thumb-title-gap); /* Use same spacing token as history */
+            padding: 12px;
+            background: rgba(15, 32, 39, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .medium-article:hover {
+            transform: translateX(5px);
+            background: rgba(17, 83, 98, 0.3);
+            border-color: var(--border-color-glow);
+        }
+
+        .medium-article-thumbnail {
+            width: 60px;
+            height: 60px;
+            flex-shrink: 0;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(6, 86, 109, 0.2);
+            clip-path: polygon(
+                8% 0%, 92% 0%, 100% 8%, 100% 92%, 92% 100%, 8% 100%, 0% 92%, 0% 8%
+            );
+        }
+
+        .medium-icon {
+            width: 50px;
+            height: auto;
+            max-height: 50px;
+            object-fit: contain;
+            color: var(--accent-teal-light);
+        }
+
+        .medium-article-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .medium-article-info h4 {
+            margin: 0 0 4px 0;
+            font-size: 0.95em;
+            color: var(--nft-title-color); /* Use exact NFT title color token */
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .medium-article-info h4 a {
+            color: var(--nft-title-color);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .medium-article-info h4 a:hover {
+            color: var(--accent-warm-light);
+        }
+
+        .medium-article-date {
+            font-size: 0.85em;
+            color: var(--text-secondary);
+            opacity: 0.8;
+        }
+
+        .medium-article-actions {
+            display: flex;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .medium-article-action {
+            padding: 6px 14px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: transform 0.2s ease;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: linear-gradient(135deg, 
+                var(--accent-teal) 0%, 
+                var(--accent-teal-light) 100%);
+            color: var(--text-primary);
+        }
+
+        .medium-article-action:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, 
+                var(--accent-teal-light) 0%, 
+                var(--accent-teal-bright) 100%);
+        }
+
+        .medium-article-action.share {
+            background: var(--gradient-cta-kastanje);
+        }
+
+        .medium-article-action.share:hover {
+            background: var(--gradient-cta-kastanje-hover);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .medium-article-actions {
+                flex-direction: column;
+                gap: 6px;
+            }
+
+            .medium-article-action {
+                padding: 5px 10px;
+                font-size: 0.75em;
+            }
+        }
+
+/* ============================================================
+   SCROLL PROGRESS INDICATOR
+   ============================================================ */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, #157389 0%, #E5B457 50%, #D66D0F 100%);
+    z-index: 9999;
+    transition: width 0.1s linear;
+    will-change: width;
+    box-shadow: 0 0 8px rgba(229, 180, 87, 0.6), 0 0 16px rgba(21, 115, 137, 0.4);
+}
+
+/* ============================================================
+   CUSTOM SCROLLBAR
+   ============================================================ */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #0F2027;
+}
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #157389, #E5B457);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #E5B457, #D66D0F);
+}
+
+/* ============================================================
+   SCROLL-REVEAL ANIMATIONS
+   ============================================================ */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.reveal.reveal-left {
+    transform: translateX(-30px);
+}
+.reveal.reveal-right {
+    transform: translateX(30px);
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+.reveal.delay-1 { transition-delay: 0.1s; }
+.reveal.delay-2 { transition-delay: 0.2s; }
+.reveal.delay-3 { transition-delay: 0.3s; }
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
+/* ============================================================
+   PAGE-LOAD REVEAL
+   ============================================================ */
+.page-load-overlay {
+    position: fixed;
+    inset: 0;
+    background: #0F2027;
+    z-index: 99998;
+    pointer-events: none;
+    animation: pageReveal 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+@keyframes pageReveal {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .page-load-overlay { animation: none; opacity: 0; }
+}
+
+/* ============================================================
+   ANIMATED GRADIENT TEXT ON HEADINGS
+   ============================================================ */
+.gradient-text-anim {
+    background: linear-gradient(90deg, #E5B457 0%, #157389 33%, #D66D0F 66%, #E5B457 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 6s linear infinite;
+}
+@keyframes gradientShift {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .gradient-text-anim {
+        animation: none;
+        background-position: 0% center;
+    }
+}
+
+/* ============================================================
+   TEXT-SHADOW GLOW ON HEADINGS
+   ============================================================ */
+.heading-glow {
+    text-shadow: 0 0 10px rgba(229, 180, 87, 0.5), 0 0 20px rgba(21, 115, 137, 0.3);
+}
+
+/* ============================================================
+   GALLERY CARD HOVER ENHANCEMENTS
+   ============================================================ */
+.nft-card, .gallery-card, .spotlight-card, .history-card {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.nft-card:hover, .gallery-card:hover, .spotlight-card:hover, .history-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(229, 180, 87, 0.25), 0 0 20px rgba(21, 115, 137, 0.2);
+}
+@media (prefers-reduced-motion: reduce) {
+    .nft-card, .gallery-card, .spotlight-card, .history-card {
+        transition: none;
+    }
+    .nft-card:hover, .gallery-card:hover, .spotlight-card:hover, .history-card:hover {
+        transform: none;
+    }
+}
+
+/* ============================================================
+   BUTTON RIPPLE EFFECT
+   ============================================================ */
+.btn-ripple {
+    position: relative;
+    overflow: hidden;
+}
+.btn-ripple .ripple-wave {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(0);
+    animation: rippleAnim 0.6s linear;
+    pointer-events: none;
+}
+@keyframes rippleAnim {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .btn-ripple .ripple-wave { animation: none; }
+}
+
+/* ============================================================
+   ENERGY WAVE ON FOOTER
+   ============================================================ */
+footer::before, .footer::before, .footer-section::before {
+    content: '';
+    display: block;
+    height: 3px;
+    background: linear-gradient(90deg, transparent 0%, #157389 20%, #E5B457 50%, #D66D0F 80%, transparent 100%);
+    background-size: 200% auto;
+    animation: energyWave 4s linear infinite;
+}
+@keyframes energyWave {
+    0% { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+@media (prefers-reduced-motion: reduce) {
+    footer::before, .footer::before, .footer-section::before {
+        animation: none;
+    }
+}
+
+/* ============================================================
+   FOCUS STATES FOR KEYBOARD NAVIGATION
+   ============================================================ */
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+    outline: 2px solid #157389;
+    outline-offset: 3px;
+    box-shadow: 0 0 0 4px rgba(21, 115, 137, 0.3);
+}
+
+/* ============================================================
+   HAMBURGER MENU
+   ============================================================ */
+#hamburger-btn {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 8px;
+    background: none;
+    border: none;
+    z-index: 10001;
+}
+#hamburger-btn span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #E5B457;
+    border-radius: 2px;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+}
+#hamburger-btn.open span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+#hamburger-btn.open span:nth-child(2) {
+    opacity: 0;
+}
+#hamburger-btn.open span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+#mobile-nav-drawer {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100vh;
+    background: rgba(15, 32, 39, 0.97);
+    border-left: 1px solid rgba(21, 115, 137, 0.3);
+    z-index: 10000;
+    flex-direction: column;
+    padding: 60px 24px 24px;
+    transform: translateX(100%);
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+}
+#mobile-nav-drawer.open {
+    transform: translateX(0);
+}
+#mobile-nav-drawer a {
+    color: #E5B457;
+    text-decoration: none;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(21, 115, 137, 0.2);
+    display: block;
+    transition: color 0.2s ease;
+}
+#mobile-nav-drawer a:hover {
+    color: #157389;
+}
+@media (max-width: 768px) {
+    #hamburger-btn {
+        display: flex;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    #mobile-nav-drawer {
+        transition: none;
+    }
+    #hamburger-btn span {
+        transition: none;
+    }
+}

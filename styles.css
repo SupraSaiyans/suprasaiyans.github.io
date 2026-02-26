@@ -4587,3 +4587,102 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
         transition: none;
     }
 }
+
+/* ============================================================
+   BEYOND8 SECTION
+   ============================================================ */
+.beyond8-section {
+    text-align: center;
+    padding: 80px 20px;
+    position: relative;
+}
+
+/* Remove the glass card/box — logo floats directly on page background */
+.beyond8-section .section-content {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    animation: none !important;
+}
+.beyond8-section .section-content::before,
+.beyond8-section .section-content::after {
+    display: none !important;
+}
+
+/* Floating bob — only transform is animated (GPU-accelerated) */
+.beyond8-logo-link {
+    display: inline-block;
+    position: relative;
+    animation: beyond8Float 5s ease-in-out infinite;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Glow halo via pseudo-element — animated with opacity only (GPU-accelerated) */
+.beyond8-logo-link::before {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center,
+        rgba(0, 255, 195, 0.35) 0%,
+        rgba(255, 215, 0, 0.25) 40%,
+        transparent 70%);
+    opacity: 0.6;
+    animation: beyond8GlowPulse 4s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.beyond8-logo-link:hover {
+    transform: scale(1.05) translateY(-4px);
+}
+
+.beyond8-logo-link:hover::before {
+    opacity: 1;
+}
+
+.beyond8-logo {
+    width: clamp(240px, 35vw, 380px);
+    height: auto;
+    display: block;
+    /* Single static drop-shadow that follows the transparent PNG shape */
+    filter: drop-shadow(0 0 14px rgba(0, 255, 195, 0.7));
+    position: relative;
+}
+
+@keyframes beyond8Float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-5px); }
+}
+
+@keyframes beyond8GlowPulse {
+    0%, 100% { opacity: 0.45; }
+    50%       { opacity: 0.9; }
+}
+
+.beyond8-name {
+    margin-top: 20px;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    letter-spacing: 0.15em;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.beyond8-cta-wrap {
+    margin-top: 28px;
+}
+
+@media (max-width: 768px) {
+    .beyond8-section {
+        padding: 60px 16px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .beyond8-logo-link,
+    .beyond8-logo-link::before {
+        animation: none;
+    }
+    .beyond8-logo-link:hover {
+        transform: scale(1.05);
+    }
+}

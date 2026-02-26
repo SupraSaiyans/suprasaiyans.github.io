@@ -4587,3 +4587,95 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
         transition: none;
     }
 }
+
+/* ============================================================
+   BEYOND8 SECTION
+   ============================================================ */
+#beyond8 {
+    background: radial-gradient(ellipse at center, #0d1f1f 0%, #0a0a0a 60%, #111 100%);
+}
+
+.beyond8-showcase {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.beyond8-logo-wrapper {
+    position: relative;
+    display: inline-block;
+    line-height: 0;
+}
+
+.beyond8-logo-link {
+    display: block;
+    position: relative;
+    border-radius: 12px;
+    text-decoration: none;
+    outline-offset: 4px;
+}
+
+.beyond8-logo-img {
+    display: block;
+    max-width: 480px;
+    width: 90vw;
+    height: auto;
+    border-radius: 12px;
+    position: relative;
+    z-index: 2;
+    animation: beyond8Float 6s ease-in-out infinite;
+}
+
+.beyond8-overlay-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 3;
+    opacity: 0.45;
+    pointer-events: none;
+    border-radius: 12px;
+    animation: beyond8Pulse 4s ease-in-out infinite;
+    mix-blend-mode: screen;
+}
+
+@keyframes beyond8Float {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-10px); }
+}
+
+@keyframes beyond8Pulse {
+    0%, 100% { opacity: 0.45; }
+    50%       { opacity: 0.75; }
+}
+
+.beyond8-logo-link:focus-visible {
+    outline: 2px solid #00ffc3;
+}
+
+.beyond8-logo-link:hover .beyond8-logo-img {
+    opacity: 0.85;
+}
+
+.beyond8-cta-wrapper {
+    margin-top: 30px;
+}
+
+@media (max-width: 768px) {
+    .beyond8-logo-img {
+        max-width: 320px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .beyond8-logo-img {
+        animation: none;
+    }
+    .beyond8-overlay-img {
+        animation: none;
+    }
+}

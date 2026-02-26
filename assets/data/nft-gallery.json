@@ -1,14 +1,24 @@
 {
   "items": [
             {
-      "id": "nft-021",
-      "number": 21,
+      "id": "nft-022",
+      "number": 22,
       "title": "Beyond Infinity",
       "description": "Let's Go Beyond!",
       "image": "images/BeyondInfinityCollectionImageFINAL.png",
       "datePublished": "2026-01-18",
       "mintUrl": "https://crystara.trade/marketplace/beyond8infinity",
       "tradeUrl": "https://crystara.trade/trade/beyond8infinity"
+    },
+    {
+      "id": "nft-021",
+      "number": 21,
+      "title": "Beenies Prophecy",
+      "description": "As The Paradox Foretold!",
+      "image": "images/Beenie.ThePurrrfectJedi.jpg",
+      "datePublished": "2025-12-11",
+      "mintUrl": "https://www.tradeport.xyz/supra/collection/0x84d1ae0bfc88cf3221f83fc2d9e1fefdc0b3cbfd7cb424d7650ceaee22cfa9e1?tab=mint&bottomTab=trades",
+      "tradeUrl": "https://www.tradeport.xyz/supra/collection/0x84d1ae0bfc88cf3221f83fc2d9e1fefdc0b3cbfd7cb424d7650ceaee22cfa9e1?tab=mint&bottomTab=trades"
     },
     {
       "id": "nft-020",

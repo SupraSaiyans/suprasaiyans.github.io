@@ -4312,12 +4312,35 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
    COMMUNITY TOKENS SECTION
    ============================================================ */
 
+/* Compact centered box — not full-width */
+#community-tokens {
+    min-height: auto;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+#community-tokens .section-content {
+    max-width: 460px;
+    padding: 24px;
+    text-align: center;
+}
+
+#community-tokens .section-title {
+    font-size: 1.8em;
+    margin-bottom: 8px;
+    line-height: 1.25;
+}
+
+#community-tokens .section-title span {
+    display: block;
+}
+
 .community-token-list {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin-top: 24px;
-    max-width: 480px;
+    margin-top: 16px;
+    max-width: 100%;
 }
 
 .community-token-row {
@@ -4400,6 +4423,11 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 }
 
 @media (max-width: 480px) {
+    #community-tokens .section-content {
+        max-width: 100%;
+        padding: 16px;
+    }
+
     .community-token-list {
         max-width: 100%;
     }

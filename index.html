@@ -51,6 +51,224 @@
     -->
     <div id="nav-placeholder"></div>
 
+    <!-- Beyond8 Showcase Section -->
+    <style>
+        /* ============================================================
+           BEYOND8 SHOWCASE SECTION
+           ============================================================ */
+        #beyond8 {
+            background: radial-gradient(ellipse at center, #0a1a24 0%, #060e14 60%, #030a10 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .beyond8-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1.5rem;
+            padding: 3rem 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .beyond8-logo-frame {
+            position: relative;
+            display: inline-block;
+            padding: 6px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #157389, #E5B457, #157389, #D66D0F, #157389);
+            background-size: 300% 300%;
+            animation: beyond8BorderShift 5s linear infinite;
+        }
+
+        @keyframes beyond8BorderShift {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .beyond8-logo-inner {
+            background: #060e14;
+            border-radius: 8px;
+            padding: 8px;
+            display: block;
+            position: relative;
+        }
+
+        .beyond8-logo-link {
+            display: block;
+            text-decoration: none;
+        }
+
+        .beyond8-logo-img {
+            display: block;
+            width: 380px;
+            max-width: 90vw;
+            height: auto;
+            border-radius: 6px;
+            position: relative;
+            z-index: 1;
+            animation: beyond8Bob 4s ease-in-out infinite;
+        }
+
+        @keyframes beyond8Bob {
+            0%, 100% { transform: translateY(0); }
+            50%       { transform: translateY(-14px); }
+        }
+
+        /* GPU-accelerated glow: opacity-only animation on a pseudo-element */
+        .beyond8-logo-inner::after {
+            content: '';
+            position: absolute;
+            inset: -20px;
+            border-radius: 16px;
+            background: radial-gradient(ellipse at center,
+                rgba(229, 180, 87, 0.45) 0%,
+                rgba(21, 115, 137, 0.35) 50%,
+                transparent 75%);
+            opacity: 0.6;
+            animation: beyond8AuraShift 5s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes beyond8AuraShift {
+            0%, 100% { opacity: 0.35; }
+            50%       { opacity: 0.85; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .beyond8-logo-img           { animation: none; }
+            .beyond8-logo-frame         { animation: none; }
+            .beyond8-logo-inner::after  { animation: none; opacity: 0.5; }
+        }
+
+        .beyond8-title {
+            font-size: clamp(2.8rem, 8vw, 5.5rem);
+            letter-spacing: 0.15em;
+            margin: 0;
+            line-height: 1.1;
+        }
+
+        .beyond8-tagline {
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            color: #c8d8e0;
+            margin: 0;
+            letter-spacing: 0.05em;
+            opacity: 0.9;
+        }
+
+        .beyond8-cta {
+            margin-top: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .beyond8-content {
+                padding: 2.5rem 1rem;
+                gap: 1.25rem;
+            }
+            .beyond8-logo-img {
+                width: 260px;
+            }
+        }
+    </style>
+
+    <section id="beyond8" class="section powerlevel-fractal">
+        <!-- Fractal Corners -->
+        <div class="fractal-corner fractal-corner-tl">
+            <svg viewBox="0 0 300 300" class="fractal-svg">
+                <path d="M 0,0 C 0,0 30,30 60,40 C 90,50 100,80 110,110 C 120,140 100,160 80,180 C 60,200 40,220 20,240 C 0,260 0,280 0,300"
+                      fill="none" stroke="url(#fractal-edge-3d)" stroke-width="3" opacity="0.7" filter="url(#fractal-depth-shadow)">
+                    <animate attributeName="stroke-dasharray" values="0,500;500,0;0,500" dur="12s" repeatCount="indefinite"/>
+                </path>
+                <path d="M 0,0 Q 50,20 80,50 Q 110,80 120,120 Q 130,160 110,190 Q 90,220 60,240 Q 30,260 0,280"
+                      fill="url(#fractal-glow-3d)" stroke="url(#fractal-edge-3d)" stroke-width="2" opacity="0.85" filter="url(#fractal-inner-glow)">
+                    <animate attributeName="opacity" values="0.85;1;0.85" dur="6s" repeatCount="indefinite"/>
+                </path>
+                <circle cx="60" cy="80" r="15" fill="url(#fractal-glow-3d)" opacity="0.5" filter="url(#fractal-inner-glow)">
+                    <animate attributeName="r" values="15;18;15" dur="4s" repeatCount="indefinite"/>
+                </circle>
+            </svg>
+        </div>
+
+        <div class="fractal-corner fractal-corner-tr">
+            <svg viewBox="0 0 300 300" class="fractal-svg">
+                <path d="M 300,0 C 300,0 270,30 240,40 C 210,50 200,80 190,110 C 180,140 200,160 220,180 C 240,200 260,220 280,240 C 300,260 300,280 300,300"
+                      fill="none" stroke="url(#fractal-edge-3d)" stroke-width="3" opacity="0.7" filter="url(#fractal-depth-shadow)">
+                    <animate attributeName="stroke-dasharray" values="0,500;500,0;0,500" dur="12s" begin="1s" repeatCount="indefinite"/>
+                </path>
+                <path d="M 300,0 Q 250,20 220,50 Q 190,80 180,120 Q 170,160 190,190 Q 210,220 240,240 Q 270,260 300,280"
+                      fill="url(#fractal-glow-3d)" stroke="url(#fractal-edge-3d)" stroke-width="2" opacity="0.85" filter="url(#fractal-inner-glow)">
+                    <animate attributeName="opacity" values="0.85;1;0.85" dur="6s" begin="1.5s" repeatCount="indefinite"/>
+                </path>
+                <circle cx="240" cy="80" r="15" fill="url(#fractal-glow-3d)" opacity="0.5" filter="url(#fractal-inner-glow)">
+                    <animate attributeName="r" values="15;18;15" dur="4s" begin="0.5s" repeatCount="indefinite"/>
+                </circle>
+            </svg>
+        </div>
+
+        <div class="fractal-corner fractal-corner-bl">
+            <svg viewBox="0 0 300 300" class="fractal-svg">
+                <path d="M 0,300 C 0,300 30,270 60,260 C 90,250 100,220 110,190 C 120,160 100,140 80,120 C 60,100 40,80 20,60 C 0,40 0,20 0,0"
+                      fill="none" stroke="url(#fractal-edge-3d)" stroke-width="3" opacity="0.7" filter="url(#fractal-depth-shadow)">
+                    <animate attributeName="stroke-dasharray" values="0,500;500,0;0,500" dur="12s" begin="2s" repeatCount="indefinite"/>
+                </path>
+                <path d="M 0,300 Q 50,280 80,250 Q 110,220 120,180 Q 130,140 110,110 Q 90,80 60,60 Q 30,40 0,20"
+                      fill="url(#fractal-glow-3d)" stroke="url(#fractal-edge-3d)" stroke-width="2" opacity="0.85" filter="url(#fractal-inner-glow)">
+                    <animate attributeName="opacity" values="0.85;1;0.85" dur="6s" begin="2.5s" repeatCount="indefinite"/>
+                </path>
+                <circle cx="60" cy="220" r="15" fill="url(#fractal-glow-3d)" opacity="0.5" filter="url(#fractal-inner-glow)">
+                    <animate attributeName="r" values="15;18;15" dur="4s" begin="1s" repeatCount="indefinite"/>
+                </circle>
+            </svg>
+        </div>
+
+        <div class="fractal-corner fractal-corner-br">
+            <svg viewBox="0 0 300 300" class="fractal-svg">
+                <path d="M 300,300 C 300,300 270,270 240,260 C 210,250 200,220 190,190 C 180,160 200,140 220,120 C 240,100 260,80 280,60 C 300,40 300,20 300,0"
+                      fill="none" stroke="url(#fractal-edge-3d)" stroke-width="3" opacity="0.7" filter="url(#fractal-depth-shadow)">
+                    <animate attributeName="stroke-dasharray" values="0,500;500,0;0,500" dur="12s" begin="3s" repeatCount="indefinite"/>
+                </path>
+                <path d="M 300,300 Q 250,280 220,250 Q 190,220 180,180 Q 170,140 190,110 Q 210,80 240,60 Q 270,40 300,20"
+                      fill="url(#fractal-glow-3d)" stroke="url(#fractal-edge-3d)" stroke-width="2" opacity="0.85" filter="url(#fractal-inner-glow)">
+                    <animate attributeName="opacity" values="0.85;1;0.85" dur="6s" begin="3.5s" repeatCount="indefinite"/>
+                </path>
+                <circle cx="240" cy="220" r="15" fill="url(#fractal-glow-3d)" opacity="0.5" filter="url(#fractal-inner-glow)">
+                    <animate attributeName="r" values="15;18;15" dur="4s" begin="1.5s" repeatCount="indefinite"/>
+                </circle>
+            </svg>
+        </div>
+
+        <div class="section-content beyond8-content reveal">
+            <h1 class="beyond8-title gradient-text-anim heading-glow">BEYOND 8</h1>
+            <p class="beyond8-tagline">Explore the Beyond8 Collection on Atmos</p>
+
+            <div class="beyond8-logo-frame">
+                <div class="beyond8-logo-inner">
+                    <a class="beyond8-logo-link"
+                       href="https://app.atmos.ag/en/token-studio/0xe8e41d96f7339899f612fb04c1fd9fa09016b1bc356512f49cf8ba6d7c867148"
+                       target="_blank" rel="noopener noreferrer"
+                       aria-label="View the Beyond8 collection on Atmos">
+                        <img src="images/Beyond8RecolorNoTagGlow.png"
+                             alt="Beyond8 — Recolor Glow edition"
+                             class="beyond8-logo-img"
+                             loading="lazy" decoding="async">
+                    </a>
+                </div>
+            </div>
+
+            <div class="beyond8-cta">
+                <a class="cta-button"
+                   href="https://app.atmos.ag/en/token-studio/0xe8e41d96f7339899f612fb04c1fd9fa09016b1bc356512f49cf8ba6d7c867148"
+                   target="_blank" rel="noopener noreferrer">
+                    View on Atmos
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- LaoShi Art Section -->
     <section id="home" class="section laoshi-section powerlevel-fractal">
         <!-- Fractal Corners for LaoShi -->

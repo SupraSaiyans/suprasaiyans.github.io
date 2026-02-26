@@ -99,6 +99,16 @@
       "datePublished": "2026-01-04",
       "mintUrl": "https://crystara.trade/marketplace/rokutengen03",
       "tradeUrl": "https://crystara.trade/trade/rokutengen03"
+     },
+     {
+      "id": "spotlight-011",
+      "number": 11,
+      "title": "Supra Heroes Millionaires",
+      "description": "Spin the Wheel!",
+      "image": "images/SupraMillionaires.jpg",
+      "datePublished": "2026-01-12",
+      "mintUrl": "https://crystara.trade/marketplace/supramillionaires",
+      "tradeUrl": "https://crystara.trade/trade/supramillionaires"
     }
   ]
 }

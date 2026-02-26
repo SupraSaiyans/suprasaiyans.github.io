@@ -4160,6 +4160,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
    Beyond8 Sticker Pack Section
    =========================== */
 
+/* ===== Beyond8 Sticker Pack — Circular Pie Wheel ===== */
 .sticker-pack-section {
     padding: 60px 20px 80px;
     overflow: visible;
@@ -4176,106 +4177,86 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
     display: none;
 }
 
-/* Scattered collage container — desktop */
-.sticker-collage {
-    position: relative;
-    width: 100%;
-    max-width: 900px;
-    height: 580px;
-    margin: 30px auto 0;
-    overflow: visible;
+/* Pie wheel centring wrapper */
+.pie-wheel-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0 10px;
 }
 
-/* Individual sticker items */
-.sticker-item {
+/* Rotating circle container — dark bg shows in gaps between slices */
+.pie-wheel {
+    position: relative;
+    width: 540px;
+    height: 540px;
+    border-radius: 50%;
+    background: #06222e;
+    animation: pieWheelSpin 75s linear infinite;
+    flex-shrink: 0;
+}
+
+.pie-wheel:hover {
+    animation-play-state: paused;
+}
+
+/*
+ * 58° wedge pointing at 12 o'clock (arc from -29° to +29° from vertical).
+ * Each wedge is 58° wide; slices sit 60° apart, leaving a 2° dark gap
+ * between adjacent wedges where the #06222e background shows through.
+ * Points calculated as: x = 50 + 50·sin(θ), y = 50 − 50·cos(θ)
+ */
+.pie-slice {
     position: absolute;
+    width: 100%;
+    height: 100%;
     display: block;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    clip-path: polygon(
+        50%    50%,
+        25.76% 6.27%,
+        33.72% 2.73%,
+        41.32% 0.76%,
+        50%    0%,
+        58.68% 0.76%,
+        66.28% 2.73%,
+        74.24% 6.27%
+    );
+    transform: rotate(var(--rot, 0deg));
+    transition: filter 0.3s ease, transform 0.3s ease;
     z-index: 1;
-    will-change: transform;
-    animation: stickerFloat 5s ease-in-out infinite;
 }
 
-.sticker-item img {
+.pie-slice:hover {
+    /* Single drop-shadow on hover only (not a continuous animation).
+       Intentional exception to the no-filter rule — matches the
+       previous sticker hover effect and uses only one shadow. */
+    filter: drop-shadow(0 0 18px rgba(0, 255, 195, 0.85));
+    transform: rotate(var(--rot, 0deg)) scale(1.08);
+    z-index: 10;
+}
+
+.pie-slice img {
     display: block;
-    height: auto;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     pointer-events: none;
-    /* Preserve transparent PNG */
-    background: transparent;
 }
 
-/* Hover: scale up, straighten, teal glow, come to front */
-.sticker-item:hover {
-    animation: none;
-    transform: scale(1.15) rotate(0deg);
-    filter: drop-shadow(0 0 22px rgba(0, 255, 195, 0.85));
-    z-index: 20;
+/* Slice angular positions — 60° spacing around the circle */
+.pie-slice-1 { --rot: 0deg; }
+.pie-slice-2 { --rot: 60deg; }
+.pie-slice-3 { --rot: 120deg; }
+.pie-slice-4 { --rot: 180deg; }
+.pie-slice-5 { --rot: 240deg; }
+.pie-slice-6 { --rot: 300deg; }
+
+/* Slow spin keyframe */
+@keyframes pieWheelSpin {
+    to { transform: rotate(360deg); }
 }
 
-/* Floating keyframe */
-@keyframes stickerFloat {
-    0%, 100% { transform: translateY(0) rotate(var(--sticker-rotate)); }
-    50%       { transform: translateY(-8px) rotate(var(--sticker-rotate)); }
-}
-
-/* Sticker positions & sizes — desktop scattered layout */
-.sticker-1 {
-    --sticker-rotate: -8deg;
-    top: 20px;
-    left: 2%;
-    width: 240px;
-    transform: rotate(var(--sticker-rotate));
-    animation-delay: 0s;
-}
-
-.sticker-2 {
-    --sticker-rotate: 5deg;
-    top: 60px;
-    left: 24%;
-    width: 185px;
-    transform: rotate(var(--sticker-rotate));
-    animation-delay: 0.6s;
-}
-
-.sticker-3 {
-    --sticker-rotate: -3deg;
-    top: 5px;
-    left: 43%;
-    width: 265px;
-    transform: rotate(var(--sticker-rotate));
-    animation-delay: 1.1s;
-    z-index: 3;
-}
-
-.sticker-4 {
-    --sticker-rotate: 9deg;
-    top: 50px;
-    right: 2%;
-    width: 205px;
-    transform: rotate(var(--sticker-rotate));
-    animation-delay: 0.3s;
-}
-
-.sticker-5 {
-    --sticker-rotate: 7deg;
-    bottom: 10px;
-    left: 8%;
-    width: 225px;
-    transform: rotate(var(--sticker-rotate));
-    animation-delay: 0.9s;
-    z-index: 2;
-}
-
-.sticker-6 {
-    --sticker-rotate: -6deg;
-    bottom: 20px;
-    left: 50%;
-    width: 195px;
-    transform: rotate(var(--sticker-rotate));
-    animation-delay: 1.5s;
-}
-
+/* CTA wrap below the wheel */
 .sticker-cta-wrap {
     text-align: center;
     margin-top: 40px;
@@ -4291,34 +4272,11 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
     height: 22px;
 }
 
-/* Mobile: looser 2×3 grid, light rotations, no absolute positioning */
+/* Tablet */
 @media (max-width: 768px) {
-    .sticker-collage {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        height: auto;
-        position: static;
-        padding: 10px 0 20px;
-    }
-
-    .sticker-item {
-        position: static;
-        width: calc(33.33% - 20px);
-        min-width: 90px;
-        max-width: 160px;
-        animation: stickerFloatMobile 5s ease-in-out infinite;
-    }
-
-    .sticker-item:hover {
-        animation: none;
-        transform: scale(1.12) rotate(0deg);
-    }
-
-    @keyframes stickerFloatMobile {
-        0%, 100% { transform: rotate(var(--sticker-rotate)); }
-        50%       { transform: translateY(-5px) rotate(var(--sticker-rotate)); }
+    .pie-wheel {
+        width: 380px;
+        height: 380px;
     }
 
     .sticker-pack-section {
@@ -4326,16 +4284,26 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
     }
 }
 
+/* Mobile */
+@media (max-width: 480px) {
+    .pie-wheel {
+        width: 300px;
+        height: 300px;
+    }
+}
+
 /* Respect reduced-motion preference */
 @media (prefers-reduced-motion: reduce) {
-    .sticker-item {
+    .pie-wheel {
         animation: none;
-        will-change: auto;
     }
 
-    .sticker-item:hover {
-        animation: none;
-        transform: scale(1.08) rotate(0deg);
-        filter: drop-shadow(0 0 14px rgba(0, 255, 195, 0.7));
+    .pie-slice {
+        transition: none;
+    }
+
+    .pie-slice:hover {
+        filter: none;
+        transform: rotate(var(--rot, 0deg));
     }
 }

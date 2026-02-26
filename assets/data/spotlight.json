@@ -109,6 +109,16 @@
       "datePublished": "2026-01-12",
       "mintUrl": "https://crystara.trade/marketplace/supramillionaires",
       "tradeUrl": "https://crystara.trade/trade/supramillionaires"
+      },
+      {
+      "id": "spotlight-012",
+      "number": 12,
+      "title": "Tiny Legends",
+      "description": "Tiny Legends Rise!",
+      "image": "images/AIGardenTinyLegendsCollectionImage.jpg",
+      "datePublished": "2026-01-29",
+      "mintUrl": "https://aigarden.art/create",
+      "tradeUrl": "https://aigarden.art/marketplace?page=1&collection=Tiny+Legends&sort=default"
     }
   ]
 }

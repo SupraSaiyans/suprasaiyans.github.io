@@ -4155,3 +4155,187 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
         transform: scale(1.05);
     }
 }
+
+/* ===========================
+   Beyond8 Sticker Pack Section
+   =========================== */
+
+.sticker-pack-section {
+    padding: 60px 20px 80px;
+    overflow: visible;
+}
+
+.sticker-pack-section .section-content {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+}
+
+.sticker-pack-section .section-content::before,
+.sticker-pack-section .section-content::after {
+    display: none;
+}
+
+/* Scattered collage container — desktop */
+.sticker-collage {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    height: 580px;
+    margin: 30px auto 0;
+    overflow: visible;
+}
+
+/* Individual sticker items */
+.sticker-item {
+    position: absolute;
+    display: block;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 1;
+    will-change: transform;
+    animation: stickerFloat 5s ease-in-out infinite;
+}
+
+.sticker-item img {
+    display: block;
+    height: auto;
+    pointer-events: none;
+    /* Preserve transparent PNG */
+    background: transparent;
+}
+
+/* Hover: scale up, straighten, teal glow, come to front */
+.sticker-item:hover {
+    animation: none;
+    transform: scale(1.15) rotate(0deg);
+    filter: drop-shadow(0 0 22px rgba(0, 255, 195, 0.85));
+    z-index: 20;
+}
+
+/* Floating keyframe */
+@keyframes stickerFloat {
+    0%, 100% { transform: translateY(0) rotate(var(--sticker-rotate)); }
+    50%       { transform: translateY(-8px) rotate(var(--sticker-rotate)); }
+}
+
+/* Sticker positions & sizes — desktop scattered layout */
+.sticker-1 {
+    --sticker-rotate: -8deg;
+    top: 20px;
+    left: 2%;
+    width: 240px;
+    transform: rotate(var(--sticker-rotate));
+    animation-delay: 0s;
+}
+
+.sticker-2 {
+    --sticker-rotate: 5deg;
+    top: 60px;
+    left: 24%;
+    width: 185px;
+    transform: rotate(var(--sticker-rotate));
+    animation-delay: 0.6s;
+}
+
+.sticker-3 {
+    --sticker-rotate: -3deg;
+    top: 5px;
+    left: 43%;
+    width: 265px;
+    transform: rotate(var(--sticker-rotate));
+    animation-delay: 1.1s;
+    z-index: 3;
+}
+
+.sticker-4 {
+    --sticker-rotate: 9deg;
+    top: 50px;
+    right: 2%;
+    width: 205px;
+    transform: rotate(var(--sticker-rotate));
+    animation-delay: 0.3s;
+}
+
+.sticker-5 {
+    --sticker-rotate: 7deg;
+    bottom: 10px;
+    left: 8%;
+    width: 225px;
+    transform: rotate(var(--sticker-rotate));
+    animation-delay: 0.9s;
+    z-index: 2;
+}
+
+.sticker-6 {
+    --sticker-rotate: -6deg;
+    bottom: 20px;
+    left: 50%;
+    width: 195px;
+    transform: rotate(var(--sticker-rotate));
+    animation-delay: 1.5s;
+}
+
+.sticker-cta-wrap {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Telegram icon inside CTA button */
+.telegram-icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px;
+    margin-top: -3px;
+    width: 22px;
+    height: 22px;
+}
+
+/* Mobile: looser 2×3 grid, light rotations, no absolute positioning */
+@media (max-width: 768px) {
+    .sticker-collage {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        height: auto;
+        position: static;
+        padding: 10px 0 20px;
+    }
+
+    .sticker-item {
+        position: static;
+        width: calc(33.33% - 20px);
+        min-width: 90px;
+        max-width: 160px;
+        animation: stickerFloatMobile 5s ease-in-out infinite;
+    }
+
+    .sticker-item:hover {
+        animation: none;
+        transform: scale(1.12) rotate(0deg);
+    }
+
+    @keyframes stickerFloatMobile {
+        0%, 100% { transform: rotate(var(--sticker-rotate)); }
+        50%       { transform: translateY(-5px) rotate(var(--sticker-rotate)); }
+    }
+
+    .sticker-pack-section {
+        padding: 50px 16px 60px;
+    }
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .sticker-item {
+        animation: none;
+        will-change: auto;
+    }
+
+    .sticker-item:hover {
+        animation: none;
+        transform: scale(1.08) rotate(0deg);
+        filter: drop-shadow(0 0 14px rgba(0, 255, 195, 0.7));
+    }
+}

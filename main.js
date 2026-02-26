@@ -871,6 +871,131 @@
         })();
 
 /* ============================================================
+   COMMUNITY TOKENS
+   ============================================================ */
+        (function() {
+            'use strict';
+
+            const COMMUNITY_TOKENS_DATA_URL = 'assets/data/community-tokens.json';
+            const COMMUNITY_TOKENS_LIST_ID = 'community-tokens-list';
+
+            /**
+             * Basic XSS prevention - escape HTML characters
+             */
+            function escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+
+            /**
+             * Create a single community token row element
+             */
+            function createTokenRow(item) {
+                const row = document.createElement('div');
+                row.className = 'community-token-row';
+                row.setAttribute('data-item-id', escapeHtml(item.id));
+
+                const imageEl = `<img src="${escapeHtml(item.image)}"
+                     loading="lazy"
+                     alt="${escapeHtml(item.title)} community token"
+                     class="community-token-image"
+                     width="110"
+                     height="110">`;
+
+                const imageWrapped = item.imageUrl
+                    ? `<a href="${escapeHtml(item.imageUrl)}" class="community-token-image-link" target="_blank" rel="noopener noreferrer">${imageEl}</a>`
+                    : `<span class="community-token-image-link">${imageEl}</span>`;
+
+                const titleEl = item.tokenUrl
+                    ? `<a href="${escapeHtml(item.tokenUrl)}" class="community-token-name" target="_blank" rel="noopener noreferrer">${escapeHtml(item.title)}</a>`
+                    : `<span class="community-token-name">${escapeHtml(item.title)}</span>`;
+
+                row.innerHTML = `
+                    ${imageWrapped}
+                    <div class="community-token-info">
+                        <div class="community-token-partner">
+                            <img src="${escapeHtml(item.partnerLogo)}"
+                                 loading="lazy"
+                                 alt="Partner logo"
+                                 class="community-token-partner-logo"
+                                 width="34"
+                                 height="34">
+                        </div>
+                        ${titleEl}
+                    </div>
+                `;
+
+                return row;
+            }
+
+            /**
+             * Fetch and render the Community Tokens section
+             */
+            async function loadCommunityTokens() {
+                const listContainer = document.getElementById(COMMUNITY_TOKENS_LIST_ID);
+                if (!listContainer) {
+                    return;
+                }
+
+                try {
+                    const response = await fetch(COMMUNITY_TOKENS_DATA_URL);
+                    if (!response.ok) {
+                        throw new Error(`Failed to load community tokens data: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+
+                    // Sort by dateAdded descending (newest first)
+                    const sortedItems = data.items.sort((a, b) => {
+                        return new Date(b.dateAdded) - new Date(a.dateAdded);
+                    });
+
+                    listContainer.innerHTML = '';
+
+                    if (sortedItems.length === 0) {
+                        listContainer.innerHTML = '<div class="gallery-loading">No community tokens available.</div>';
+                        return;
+                    }
+
+                    const list = document.createElement('div');
+                    list.className = 'community-token-list';
+
+                    sortedItems.forEach(item => {
+                        list.appendChild(createTokenRow(item));
+                    });
+
+                    listContainer.appendChild(list);
+
+                    // Hover optimizations
+                    list.querySelectorAll('.community-token-row').forEach(row => {
+                        row.addEventListener('mouseenter', function() {
+                            this.style.willChange = 'transform, box-shadow';
+                        }, { passive: true });
+                        row.addEventListener('mouseleave', function() {
+                            setTimeout(() => { this.style.willChange = 'auto'; }, 300);
+                        }, { passive: true });
+                    });
+
+                } catch (error) {
+                    console.error('Error loading Community Tokens:', error);
+                    listContainer.innerHTML = `
+                        <div class="gallery-loading" style="color: var(--accent-warm);">
+                            Unable to load Community Tokens. Please try again later.
+                        </div>
+                    `;
+                }
+            }
+
+            // Initialize when DOM is ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', loadCommunityTokens);
+            } else {
+                loadCommunityTokens();
+            }
+        })();
+
+/* ============================================================
    SCROLL PROGRESS INDICATOR
    ============================================================ */
 (function() {

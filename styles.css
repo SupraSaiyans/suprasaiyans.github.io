@@ -4478,3 +4478,86 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
         height: 80px;
     }
 }
+
+/* ============================================================
+   MOBILE REVAMP — Fix background artifacts, square images,
+   layout efficiency for Android/Firefox
+   ============================================================ */
+
+/* Background: replace fixed-position layers with a solid dark gradient
+   to prevent rendering artifacts on Android/Firefox mobile */
+@media (max-width: 768px) {
+    /* Reduce section spacing from the excessive 80px to a tighter 30px */
+    :root {
+        --section-spacing-mobile: 30px;
+    }
+
+    body {
+        background: linear-gradient(160deg, #0F2027 0%, #0C3747 40%, #0A0F1A 100%);
+    }
+
+    /* Disable fixed-position pseudo-element background — causes scroll
+       artifacts on Android/Firefox; solid gradient on body replaces it */
+    body::before {
+        display: none;
+    }
+
+    /* Disable the background-layer div — it uses inline position:fixed styles, so
+       !important is required to override the inline style specificity */
+    .background-layer {
+        display: none !important;
+    }
+
+    /* Simplify border ornaments — reduce multi-layer gradient rendering on mobile GPUs */
+    .border-ornaments {
+        background: linear-gradient(180deg, rgba(21, 115, 137, 0.12) 0%, transparent 50px);
+    }
+
+    /* Hide large SVG corner ornaments — 300px each, wasteful on small screens */
+    .corner-ornaments {
+        display: none;
+    }
+
+    /* Reduce section padding (top handled via --section-spacing-mobile above) */
+    .section {
+        padding-bottom: 30px;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    /* Tighten container/section-content padding */
+    .container, .section-content {
+        padding: 20px 12px;
+        margin: 0 auto;
+    }
+}
+
+/* Square card images and full-width CTAs on narrow mobile screens */
+@media (max-width: 480px) {
+    /* Featured tile images: 1:1 square aspect ratio (replaces 220px banner height) */
+    .spotlight-featured-image,
+    .nft-featured-image,
+    .gallery-featured-image {
+        aspect-ratio: 1 / 1;
+        height: auto;
+        min-height: unset;
+        width: 100%;
+    }
+
+    /* Card thumbnail images: 1:1 square aspect ratio (replaces 220px banner height) */
+    .spotlight-card img,
+    .nft-card img,
+    .gallery-card img {
+        aspect-ratio: 1 / 1;
+        height: auto;
+        object-fit: cover;
+    }
+
+    /* CTA buttons: full width for thumb-friendly interaction */
+    .cta-button, .nft-button {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+}

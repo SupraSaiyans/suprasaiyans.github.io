@@ -1,12 +1,22 @@
 {
   "items": [
-        {
+            {
+      "id": "nft-021",
+      "number": 21,
+      "title": "Beyond Infinity",
+      "description": "Let's Go Beyond!",
+      "image": "images/BeyondInfinityCollectionImageFINAL.png",
+      "datePublished": "2025-01-18",
+      "mintUrl": "https://crystara.trade/marketplace/beyond8infinity",
+      "tradeUrl": "https://crystara.trade/trade/beyond8infinity"
+    },
+    {
       "id": "nft-020",
       "number": 20,
       "title": "Beenies Celebrations",
       "description": "Merry Xmas!",
       "image": "images/BEENIESCELEBRATIONSCOLLECTIONIMAGE.png",
-      "datePublished": "2025-12-09",
+      "datePublished": "2026-12-09",
       "mintUrl": "https://crystara.trade/marketplace/beeniescelebrations",
       "tradeUrl": "https://crystara.trade/trade/beeniescelebrations"
     },

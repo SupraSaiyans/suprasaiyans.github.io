@@ -1348,14 +1348,24 @@
             color: var(--accent-teal-bright, #82B29D);
         }
 
+        @media (max-width: 768px) {
+            .atmos-partner-grid {
+                max-width: 100%;
+            }
+        }
+
         @media (max-width: 480px) {
             .atmos-partner-grid {
                 gap: 14px;
                 padding: 0 12px;
+                flex-direction: column;
+                align-items: center;
             }
 
             .atmos-partner-card {
-                min-width: 140px;
+                min-width: 0;
+                width: 100%;
+                max-width: 300px;
                 padding: 16px 18px;
                 font-size: 12px;
             }
@@ -4143,6 +4153,16 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 @media (max-width: 768px) {
     .beyond8-section {
         padding: 60px 16px;
+        min-height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .beyond8-cta-wrap .cta-button {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
     }
 }
 
@@ -4281,6 +4301,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 
     .sticker-pack-section {
         padding: 50px 16px 60px;
+        min-height: auto;
     }
 }
 
@@ -4289,6 +4310,21 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
     .pie-wheel {
         width: 300px;
         height: 300px;
+    }
+
+    .sticker-cta-wrap .cta-button {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+}
+
+/* Extra small — prevent wheel from overflowing narrow viewports */
+@media (max-width: 375px) {
+    .pie-wheel {
+        width: 270px;
+        height: 270px;
     }
 }
 

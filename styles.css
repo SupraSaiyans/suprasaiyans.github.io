@@ -4062,7 +4062,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
    ============================================================ */
 .beyond8-section {
     text-align: center;
-    padding: 80px 20px;
+    padding: var(--section-spacing-desktop) 20px;
     position: relative;
 }
 
@@ -4142,7 +4142,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 
 @media (max-width: 768px) {
     .beyond8-section {
-        padding: 60px 16px;
+        padding: var(--section-spacing-mobile) 16px;
     }
 }
 

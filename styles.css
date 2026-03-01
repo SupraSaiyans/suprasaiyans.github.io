@@ -228,7 +228,7 @@
                 top right,
                 bottom left,
                 bottom right;
-            background-size: 220px 220px;
+            background-size: 250px 250px;
             background-repeat: no-repeat;
             opacity: 0.09;
             animation: ambientPulse 10s ease-in-out infinite;
@@ -241,11 +241,17 @@
             50%       { opacity: 0.12; }
         }
 
+        @keyframes ambientBreathe {
+            0%, 100% { opacity: 0.04; transform: scale(1); }
+            50%       { opacity: 0.07; transform: scale(1.02); }
+        }
+
         /* ========================================
            MULTI-LAYER BACKGROUND SYSTEM
            ========================================
            bg-base: deep dark gradient foundation
-           bg-png-fallback: original PNG at low opacity
+           bg-fractal-wash: FRACTALINLAYINSPIRATION.PNG at ultra-low opacity for ambient color wash
+           bg-phantom-*: floating phantom art layers (ghost cards)
            bg-motif: subtle repeating infinity pattern
            bg-aura: soft radial color washes
         */
@@ -267,12 +273,56 @@
             background: radial-gradient(ellipse 120% 100% at 50% 40%, var(--bg-dark, #0d1117) 0%, var(--bg-deepest, #060a10) 100%);
         }
 
-        .bg-png-fallback {
+        .bg-fractal-wash {
             position: absolute;
             inset: 0;
-            background: url('images/BACKGROUNDSESSION21.PNG') center center / cover no-repeat;
-            opacity: 0.15;
-            mix-blend-mode: luminosity;
+            background: url('images/FRACTALINLAYINSPIRATION.PNG') center center / cover no-repeat;
+            opacity: 0.08;
+            mix-blend-mode: color-dodge;
+            filter: blur(40px) saturate(0.3);
+        }
+
+        /* Floating phantom art layers — barely-visible ghosted artwork cards */
+        .bg-phantom {
+            position: absolute;
+            pointer-events: none;
+            contain: layout style paint;
+        }
+
+        .bg-phantom-divergent {
+            top: 5%;
+            right: -10%;
+            width: 50vw;
+            height: 50vh;
+            background: url('images/Beyond8Divergent1.png') center / contain no-repeat;
+            opacity: 0.03;
+            filter: blur(12px);
+            transform: rotate(15deg) scale(1.5);
+            mix-blend-mode: screen;
+        }
+
+        .bg-phantom-supracorn {
+            bottom: 10%;
+            left: -8%;
+            width: 40vw;
+            height: 40vh;
+            background: url('images/Beyond8Supracorn1.png') center / contain no-repeat;
+            opacity: 0.025;
+            filter: blur(15px);
+            transform: rotate(-10deg) scale(1.3);
+            mix-blend-mode: overlay;
+        }
+
+        .bg-phantom-rokuten {
+            top: 40%;
+            right: 5%;
+            width: 35vw;
+            height: 45vh;
+            background: url('images/RokutenGen03399.jpg') center / cover no-repeat;
+            opacity: 0.02;
+            filter: blur(18px);
+            transform: rotate(5deg) scale(1.8);
+            mix-blend-mode: soft-light;
         }
 
         /* Repeating infinity-loop motif — ultra-low opacity ambient pattern */
@@ -1627,9 +1677,12 @@
             z-index: 0;
         }
         .spotlight-fractal::before {
-            background:
-                radial-gradient(ellipse 70% 50% at 25% 50%, rgba(122, 48, 19, 0.05) 0%, transparent 80%),
-                radial-gradient(ellipse 70% 50% at 75% 50%, rgba(6, 86, 109, 0.05) 0%, transparent 80%);
+            background: url('images/SUPRAHEROESOGCOLLECTIONIMAGE.png') center / cover no-repeat;
+            opacity: 0.03;
+            mix-blend-mode: overlay;
+            filter: blur(80px) brightness(0.6);
+            inset: -10%;
+            contain: layout style paint;
         }
         #nft-gallery::before {
             background:
@@ -2959,14 +3012,20 @@
             background: transparent;
         }
         
-        /* Teal ambient glow behind Lao Shifu logo */
+        /* Ghostly Sensi artwork bleeding through behind Lao Shifu logo */
         .laoshi-section::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(6, 86, 109, 0.07) 0%, transparent 100%);
+            inset: -15%;
+            background: url('images/SensiNoTagRecolorjpg.jpg') center / cover no-repeat;
+            opacity: 0.04;
+            mix-blend-mode: luminosity;
+            filter: blur(50px) saturate(0.2);
             pointer-events: none;
             z-index: 0;
+            contain: layout style paint;
+            animation: ambientBreathe 15s ease-in-out infinite;
+            animation-delay: -4s;
         }
         
         .laoshi-container {
@@ -4231,14 +4290,19 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
     position: relative;
 }
 
-/* Warm golden ambient glow behind Beyond8 section content */
+/* Hyperspace nebula ambient art behind Beyond8 section */
 .beyond8-section::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 90% 70% at 50% 50%, rgba(226, 170, 66, 0.06) 0%, transparent 100%);
+    inset: -20%;
+    background: url('images/Beyond8HyperSpace1Tag.png') center / cover no-repeat;
+    opacity: 0.06;
+    mix-blend-mode: screen;
+    filter: blur(60px) hue-rotate(15deg);
     pointer-events: none;
     z-index: 0;
+    contain: layout style paint;
+    animation: ambientBreathe 12s ease-in-out infinite;
 }
 
 /* Remove the glass card/box — logo floats directly on page background */
@@ -4345,6 +4409,13 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
     .corner-ornaments {
         animation: none;
         opacity: 0.09;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .beyond8-section::before,
+    .laoshi-section::before {
+        animation: none;
     }
 }
 
@@ -4710,8 +4781,16 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
     }
 
     /* Also hide individual background sub-layers on mobile */
-    .bg-base, .bg-png-fallback, .bg-motif, .bg-aura {
+    .bg-base, .bg-fractal-wash, .bg-phantom, .bg-motif, .bg-aura {
         display: none;
+    }
+
+    /* Disable all image-based ambient layers on mobile */
+    .section-divider,
+    .beyond8-section::before,
+    .laoshi-section::before,
+    .spotlight-fractal::before {
+        display: none !important;
     }
 
     /* Simplify border ornaments — reduce multi-layer gradient rendering on mobile GPUs */
@@ -4956,6 +5035,53 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 
 /* ============================================================
    END SHOWCASE SECTION
+   ============================================================ */
+
+/* ============================================================
+   SECTION DIVIDER MONTAGE STRIPS
+   ============================================================ */
+
+.section-divider {
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    pointer-events: none;
+    contain: layout style paint;
+    content-visibility: auto;
+}
+
+/* Beyond8 Showcase memory-wall: all 6 showcase images side by side */
+.divider-showcase {
+    background:
+        url('images/Beyond8Showcase%20(1).jpg') 0% center / 16.66% 100%,
+        url('images/Beyond8Showcase%20(2).jpg') 16.66% center / 16.66% 100%,
+        url('images/Beyond8Showcase%20(3).jpg') 33.33% center / 16.66% 100%,
+        url('images/Beyond8Showcase%20(4).jpg') 50% center / 16.66% 100%,
+        url('images/Beyond8Showcase%20(5).jpg') 66.66% center / 16.66% 100%,
+        url('images/Beyond8Showcase%20(6).jpg') 83.33% center / 16.66% 100%;
+    background-repeat: no-repeat;
+    filter: blur(16px) grayscale(0.7) brightness(0.4);
+    opacity: 0.08;
+    transform: scaleX(1.1);
+}
+
+/* Spotlight → NFT Gallery brand-evolution: 6 logo variations */
+.divider-logos {
+    background:
+        url('images/LOGOSIMPLE1.PNG') 0% center / 16.66% 100%,
+        url('images/LOGOSIMPLE2.PNG') 16.66% center / 16.66% 100%,
+        url('images/LOGOSIMPLE3.PNG') 33.33% center / 16.66% 100%,
+        url('images/LOGOSIMPLE4.PNG') 50% center / 16.66% 100%,
+        url('images/LOGOSIMPLE5.PNG') 66.66% center / 16.66% 100%,
+        url('images/LOGOSIMPLE6.PNG') 83.33% center / 16.66% 100%;
+    background-repeat: no-repeat;
+    filter: blur(16px) grayscale(0.7) brightness(0.4);
+    opacity: 0.06;
+    transform: scaleX(1.1);
+}
+
+/* ============================================================
+   END SECTION DIVIDER MONTAGE STRIPS
    ============================================================ */
 
 @media (hover: none) {

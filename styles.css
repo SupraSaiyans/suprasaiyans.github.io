@@ -1514,6 +1514,26 @@
             }
         }
 
+        .footer-tool-link {
+            color: var(--accent-teal-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            -webkit-text-fill-color: var(--accent-teal-light);
+            transition: opacity 0.2s ease;
+        }
+
+        .footer-tool-link:hover,
+        .footer-tool-link:focus-visible {
+            opacity: 0.8;
+            outline: 2px solid var(--accent-teal-light);
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+
+        .footer-text-tools {
+            margin-top: 8px;
+        }
+
         /* ========================================
            SPOTLIGHT SECTION FRACTAL FRAME STYLES
            ========================================

@@ -4639,9 +4639,89 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
     }
 }
 
-/* Prevent sticky hover states on touch/pointer-coarse devices */
+/* ============================================================
+   SHOWCASE SECTION
+   ============================================================ */
+.showcase-section {
+    padding: 80px 20px;
+    scroll-margin-top: 80px;
+}
+
+.showcase-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin: 0 0 48px;
+}
+
+.showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.showcase-card {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    background: rgba(6, 30, 42, 0.72);
+    border: 1px solid rgba(21, 115, 137, 0.25);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    contain: layout style paint;
+}
+
+.showcase-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+@media (hover: hover) {
+    .showcase-card:hover {
+        transform: scale(1.03);
+        box-shadow:
+            0 8px 40px rgba(0, 0, 0, 0.6),
+            0 0 24px rgba(21, 115, 137, 0.45);
+    }
+}
+
+@media (max-width: 768px) {
+    .showcase-section {
+        padding: 30px 12px;
+    }
+
+    .showcase-title {
+        margin-bottom: 28px;
+    }
+
+    .showcase-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .showcase-card {
+        border-radius: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .showcase-grid {
+        gap: 8px;
+    }
+}
+
+/* ============================================================
+   END SHOWCASE SECTION
+   ============================================================ */
+
 @media (hover: none) {
-    /* Social buttons: cancel lift/scale on touch */
+/* Social buttons: cancel lift/scale on touch */
     .social-button:hover {
         transform: none;
     }
@@ -4689,5 +4769,11 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 
     .nft-card:hover::before {
         opacity: 0;
+    }
+
+    /* Showcase cards: cancel hover on touch */
+    .showcase-card:hover {
+        transform: none;
+        box-shadow: none;
     }
 }

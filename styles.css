@@ -4561,3 +4561,133 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
         text-align: center;
     }
 }
+
+/* ============================================================
+   MOBILE REVAMP — Phase 2: 2-column grids, touch fixes,
+   social layout, and hover-state cleanup
+   ============================================================ */
+
+/* 2-column inline card grids at mobile widths (≤768px) */
+@media (max-width: 768px) {
+    /* Override the 1-column grid set in earlier breakpoints:
+       show cards side-by-side like a gallery/NFT grid */
+    #spotlight-cards-grid,
+    .gallery-grid,
+    #nft-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    /* Square aspect-ratio for all card images at tablet/mobile width */
+    .spotlight-card img,
+    .nft-card img,
+    .gallery-card img {
+        aspect-ratio: 1 / 1;
+        height: auto;
+        object-fit: cover;
+    }
+
+    /* Square featured tile images at tablet width (override 250px min-height) */
+    .spotlight-featured-image,
+    .nft-featured-image,
+    .gallery-featured-image {
+        aspect-ratio: 1 / 1;
+        height: auto;
+        min-height: unset;
+    }
+
+    /* Laoshi frame/halo: prevent overflow on any viewport width */
+    .laoshi-frame,
+    .laoshi-halo {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    /* Sticker pie wheel: clip any overflow on mobile (hover effects disabled on touch) */
+    .sticker-pack-section {
+        overflow: hidden;
+    }
+}
+
+/* On small screens (≤480px) keep the 2-column grid and fix social layout */
+@media (max-width: 480px) {
+    /* Maintain 2-column card grid on small screens */
+    #spotlight-cards-grid,
+    .gallery-grid,
+    #nft-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    /* Social row: override the vertical-stack applied at this breakpoint;
+       show 3-4 buttons per row for easy thumb-tapping */
+    .social-row {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+        justify-content: center;
+    }
+
+    .social-button {
+        flex: 1 1 auto;
+        min-width: 70px;
+        max-width: 110px;
+        width: auto;
+        font-size: 12px;
+        padding: 10px 8px;
+        min-height: 44px;
+    }
+}
+
+/* Prevent sticky hover states on touch/pointer-coarse devices */
+@media (hover: none) {
+    /* Social buttons: cancel lift/scale on touch */
+    .social-button:hover {
+        transform: none;
+    }
+
+    .social-button:hover::before {
+        opacity: 0;
+    }
+
+    .social-button:hover .social-icon {
+        transform: none;
+    }
+
+    /* Compact social buttons */
+    .compact-social-btn:hover {
+        transform: none;
+        border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .compact-social-btn:hover::before {
+        opacity: 0;
+    }
+
+    .compact-social-btn:hover .compact-icon {
+        transform: none;
+    }
+
+    /* Gallery/NFT/Spotlight card hover lift */
+    .nft-card:hover,
+    .gallery-card:hover,
+    .spotlight-card:hover,
+    .history-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .spotlight-card:hover,
+    .gallery-card:hover {
+        border-color: var(--border-color);
+    }
+
+    .spotlight-card:hover::before,
+    .gallery-card:hover::before {
+        opacity: 0;
+    }
+
+    .nft-card:hover::before {
+        opacity: 0;
+    }
+}

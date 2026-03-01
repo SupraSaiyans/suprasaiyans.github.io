@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Robbie Wallet Inspector - Inspect any Supra blockchain wallet address for token balances, transaction history, and account details.">
+    <meta property="og:title" content="Robbie Wallet Inspector | SupraSaiyans">
+    <meta property="og:description" content="Inspect Supra blockchain wallets for token balances, transactions, and account info.">
+    <meta property="og:image" content="images/BACKGROUNDSESSION21.PNG">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Robbie Wallet Inspector | SupraSaiyans">
+    <meta name="twitter:description" content="Inspect Supra blockchain wallets for token balances, transactions, and account info.">
+    <meta name="twitter:image" content="images/BACKGROUNDSESSION21.PNG">
+    <meta name="theme-color" content="#0F2027">
+    <title>Robbie Wallet Inspector | SupraSaiyans</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preload" as="image" href="images/BACKGROUNDSESSION21.PNG">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        /* ===== CSS VARIABLES (matching SupraSaiyans design system) ===== */
+        :root {
+            --primary-dark: #0F2027;
+            --primary-dark-alt: #0C3747;
+            --primary-medium: #115362;
+            --primary-light: #157389;
+            --accent-teal: #115362;
+            --accent-teal-light: #157389;
+            --accent-teal-bright: #82B29D;
+            --accent-warm-deep: #572A14;
+            --accent-warm: #9A4A23;
+            --accent-warm-light: #A3581D;
+            --accent-orange: #D66D0F;
+            --accent-gold-orange: #EC991D;
+            --accent-gold: #E5B457;
+            --btn-kastanje-dark: #572A14;
+            --btn-kastanje-medium: #9A4A23;
+            --btn-kastanje-light: #A3581D;
+            --text-primary: #ffffff;
+            --text-secondary: #e0e0e0;
+            --text-gold: #E5B457;
+            --border-color: rgba(130, 178, 157, 0.15);
+            --border-color-glow: rgba(229, 180, 87, 0.3);
+            --glass-bg: rgba(15, 32, 39, 0.88);
+            --gradient-fractal-cool: linear-gradient(135deg, #0C3747 0%, #115362 50%, #157389 100%);
+            --gradient-cta-kastanje: linear-gradient(135deg, #572A14 0%, #9A4A23 50%, #A3581D 100%);
+            --gradient-cta-kastanje-hover: linear-gradient(135deg, #A3581D 0%, #9A4A23 50%, #572A14 100%);
+            --shadow-md: 0 4px 16px rgba(21, 115, 137, 0.25);
+            --shadow-lg: 0 8px 32px rgba(21, 115, 137, 0.35);
+            --shadow-glow-kastanje: 0 0 30px rgba(163, 88, 29, 0.5);
+            --notch-size: 12px;
+            --notch-size-lg: 20px;
+        }
+
+        /* ===== BASE RESET ===== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: var(--primary-dark);
+            font-family: 'Arial', sans-serif;
+            color: var(--text-primary);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ===== FIXED BACKGROUND ===== */
+        .background-layer {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('images/BACKGROUNDSESSION21.PNG') center center / cover no-repeat;
+            z-index: 0;
+            will-change: transform;
+        }
+
+        .border-ornaments {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 1;
+            pointer-events: none;
+            background:
+                linear-gradient(180deg, rgba(21, 115, 137, 0.25) 0%, transparent 60px),
+                linear-gradient(0deg, rgba(214, 109, 15, 0.25) 0%, transparent 60px);
+            contain: layout style paint;
+        }
+
+        .corner-ornaments {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 1;
+            pointer-events: none;
+            background-image:
+                url('corner-ornament-tl.svg'),
+                url('corner-ornament-tr.svg'),
+                url('corner-ornament-bl.svg'),
+                url('corner-ornament-br.svg');
+            background-position: top left, top right, bottom left, bottom right;
+            background-size: 300px 300px;
+            background-repeat: no-repeat;
+            contain: layout style paint;
+        }
+
+        /* ===== MAIN LAYOUT ===== */
+        .page-wrapper {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px 60px;
+        }
+
+        /* ===== HEADER ===== */
+        .site-header {
+            width: 100%;
+            max-width: 960px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            padding: 16px 24px;
+            background: var(--glass-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: opacity 0.2s ease;
+        }
+
+        .header-logo:hover,
+        .header-logo:focus-visible {
+            opacity: 0.85;
+            outline: 2px solid #157389;
+            outline-offset: 4px;
+            border-radius: 4px;
+        }
+
+        .header-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .header-site-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            color: var(--text-gold);
+        }
+
+        .header-nav-link {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            color: var(--accent-teal-light);
+            text-decoration: none;
+            padding: 8px 16px;
+            border: 1px solid var(--accent-teal-light);
+            border-radius: 4px;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .header-nav-link:hover,
+        .header-nav-link:focus-visible {
+            background: rgba(21, 115, 137, 0.2);
+            transform: translateY(-1px);
+            outline: 2px solid #157389;
+            outline-offset: 2px;
+        }
+
+        /* ===== PAGE TITLE SECTION ===== */
+        .page-hero {
+            width: 100%;
+            max-width: 960px;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .page-hero-inner {
+            background: var(--glass-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 40px 40px 32px;
+            box-shadow: inset 0 0 40px rgba(21, 115, 137, 0.1), var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Fractal corner ornaments for the hero section */
+        .fractal-corner {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            pointer-events: none;
+        }
+        .fractal-corner-tl { top: 0; left: 0; }
+        .fractal-corner-tr { top: 0; right: 0; }
+        .fractal-corner-bl { bottom: 0; left: 0; }
+        .fractal-corner-br { bottom: 0; right: 0; }
+
+        .fractal-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .page-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            letter-spacing: 4px;
+            margin: 0 0 8px 0;
+            background: linear-gradient(45deg, var(--accent-gold) 0%, var(--accent-teal-light) 50%, var(--accent-gold-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+            line-height: 1.1;
+        }
+
+        .page-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin: 0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ===== SEARCH SECTION ===== */
+        .search-section {
+            width: 100%;
+            max-width: 960px;
+            margin-bottom: 32px;
+        }
+
+        .search-card {
+            background: var(--glass-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 32px;
+            box-shadow: inset 0 0 40px rgba(21, 115, 137, 0.1), var(--shadow-md);
+            contain: layout style paint;
+        }
+
+        .search-label {
+            display: block;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            color: var(--text-gold);
+            margin-bottom: 12px;
+        }
+
+        .search-row {
+            display: flex;
+            gap: 12px;
+            align-items: stretch;
+        }
+
+        .wallet-input {
+            flex: 1;
+            background: rgba(15, 32, 39, 0.6);
+            border: 2px solid var(--border-color);
+            border-radius: 6px;
+            padding: 14px 18px;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            font-family: 'Courier New', monospace;
+            transition: border-color 0.2s ease;
+            outline: none;
+        }
+
+        .wallet-input::placeholder {
+            color: rgba(224, 224, 224, 0.4);
+        }
+
+        .wallet-input:focus {
+            border-color: var(--accent-teal-light);
+            box-shadow: 0 0 0 2px rgba(21, 115, 137, 0.3);
+        }
+
+        .wallet-input:focus-visible {
+            outline: 2px solid #157389;
+            outline-offset: 2px;
+        }
+
+        .wallet-input.input-error {
+            border-color: #c0392b;
+            box-shadow: 0 0 0 2px rgba(192, 57, 43, 0.25);
+        }
+
+        .inspect-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            color: var(--text-primary);
+            background: var(--gradient-cta-kastanje);
+            border: 2px solid var(--btn-kastanje-light);
+            border-radius: 6px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+            box-shadow: var(--shadow-glow-kastanje);
+            white-space: nowrap;
+            clip-path: polygon(
+                var(--notch-size) 0%,
+                calc(100% - var(--notch-size)) 0%,
+                100% var(--notch-size),
+                100% calc(100% - var(--notch-size)),
+                calc(100% - var(--notch-size)) 100%,
+                var(--notch-size) 100%,
+                0% calc(100% - var(--notch-size)),
+                0% var(--notch-size)
+            );
+        }
+
+        @supports not (clip-path: polygon(0 0)) {
+            .inspect-btn { clip-path: none; border-radius: 8px; }
+        }
+
+        .inspect-btn:hover:not(:disabled),
+        .inspect-btn:focus-visible {
+            transform: translateY(-2px);
+            background: var(--gradient-cta-kastanje-hover);
+            box-shadow: var(--shadow-glow-kastanje), var(--shadow-lg);
+            outline: 2px solid #157389;
+            outline-offset: 2px;
+        }
+
+        .inspect-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .btn-spinner {
+            display: none;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.7s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .inspect-btn.loading .btn-spinner { display: block; }
+        .inspect-btn.loading .btn-text { opacity: 0.7; }
+
+        .input-hint {
+            margin-top: 8px;
+            font-size: 0.8rem;
+            color: rgba(224, 224, 224, 0.55);
+        }
+
+        .input-error-msg {
+            margin-top: 8px;
+            font-size: 0.85rem;
+            color: #e74c3c;
+            display: none;
+        }
+
+        .input-error-msg.visible { display: block; }
+
+        /* ===== RESULTS SECTION ===== */
+        .results-section {
+            width: 100%;
+            max-width: 960px;
+            display: none;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .results-section.visible { display: flex; }
+
+        /* ===== RESULT CARDS ===== */
+        .result-card {
+            background: linear-gradient(135deg, rgba(17, 83, 98, 0.15) 0%, rgba(15, 32, 39, 0.85) 50%, rgba(12, 55, 71, 0.15) 100%);
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            padding: 28px;
+            box-shadow: inset 0 0 30px rgba(21, 115, 137, 0.08), var(--shadow-md);
+            contain: layout style paint;
+            position: relative;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .card-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--gradient-fractal-cool);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .card-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            color: var(--text-gold);
+            margin: 0;
+        }
+
+        /* ===== WALLET SUMMARY ===== */
+        .wallet-address-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(15, 32, 39, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .wallet-address-label {
+            font-size: 0.75rem;
+            color: var(--accent-teal-light);
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            flex-shrink: 0;
+        }
+
+        .wallet-address-value {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            word-break: break-all;
+            flex: 1;
+        }
+
+        .copy-btn {
+            background: rgba(21, 115, 137, 0.2);
+            border: 1px solid var(--accent-teal-light);
+            border-radius: 4px;
+            color: var(--accent-teal-light);
+            cursor: pointer;
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            transition: background 0.2s ease, transform 0.2s ease;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .copy-btn:hover,
+        .copy-btn:focus-visible {
+            background: rgba(21, 115, 137, 0.35);
+            transform: translateY(-1px);
+            outline: 2px solid #157389;
+            outline-offset: 2px;
+        }
+
+        .copy-btn.copied {
+            background: rgba(39, 174, 96, 0.3);
+            border-color: #27ae60;
+            color: #2ecc71;
+        }
+
+        .balance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .balance-stat {
+            background: rgba(15, 32, 39, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .balance-stat-label {
+            font-size: 0.75rem;
+            color: var(--accent-teal-light);
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+
+        .balance-stat-value {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            color: var(--text-gold);
+            word-break: break-all;
+            line-height: 1.1;
+        }
+
+        .balance-stat-unit {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+
+        /* ===== TOKEN LIST ===== */
+        .token-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .token-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(15, 32, 39, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 12px 16px;
+            gap: 12px;
+        }
+
+        .token-name {
+            font-size: 0.85rem;
+            font-family: 'Courier New', monospace;
+            color: var(--text-secondary);
+            word-break: break-all;
+            flex: 1;
+        }
+
+        .token-balance {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1rem;
+            color: var(--text-gold);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .token-type-badge {
+            font-size: 0.7rem;
+            background: rgba(21, 115, 137, 0.2);
+            border: 1px solid rgba(21, 115, 137, 0.4);
+            border-radius: 3px;
+            color: var(--accent-teal-light);
+            padding: 2px 6px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        /* ===== TRANSACTION LIST ===== */
+        .tx-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .tx-row {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 12px;
+            align-items: center;
+            background: rgba(15, 32, 39, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 12px 16px;
+        }
+
+        .tx-type-badge {
+            font-size: 0.7rem;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 1px;
+            padding: 3px 8px;
+            border-radius: 3px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .tx-type-user { background: rgba(229, 180, 87, 0.2); border: 1px solid rgba(229, 180, 87, 0.4); color: var(--accent-gold); }
+        .tx-type-script { background: rgba(21, 115, 137, 0.2); border: 1px solid rgba(21, 115, 137, 0.4); color: var(--accent-teal-light); }
+        .tx-type-other { background: rgba(163, 88, 29, 0.2); border: 1px solid rgba(163, 88, 29, 0.4); color: var(--accent-warm-light); }
+
+        .tx-info {
+            min-width: 0;
+        }
+
+        .tx-hash {
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            color: var(--accent-teal-light);
+            text-decoration: none;
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            transition: color 0.2s ease;
+        }
+
+        .tx-hash:hover,
+        .tx-hash:focus-visible {
+            color: var(--text-gold);
+            outline: 2px solid #157389;
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+
+        .tx-timestamp {
+            font-size: 0.75rem;
+            color: rgba(224, 224, 224, 0.5);
+            margin-top: 2px;
+        }
+
+        .tx-seq {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            white-space: nowrap;
+            text-align: right;
+        }
+
+        /* ===== ACCOUNT INFO TABLE ===== */
+        .info-table {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 14px;
+            background: rgba(15, 32, 39, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+        }
+
+        .info-label {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            color: var(--accent-teal-light);
+            min-width: 160px;
+            flex-shrink: 0;
+        }
+
+        .info-value {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            word-break: break-all;
+        }
+
+        /* ===== EMPTY / ERROR STATES ===== */
+        .state-empty, .state-error {
+            text-align: center;
+            padding: 32px 16px;
+            color: rgba(224, 224, 224, 0.5);
+            font-size: 0.9rem;
+        }
+
+        .state-error {
+            color: #e74c3c;
+        }
+
+        .state-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        /* ===== GLOBAL ERROR BANNER ===== */
+        .error-banner {
+            width: 100%;
+            max-width: 960px;
+            background: rgba(192, 57, 43, 0.15);
+            border: 2px solid rgba(192, 57, 43, 0.4);
+            border-radius: 8px;
+            padding: 16px 20px;
+            color: #e74c3c;
+            margin-bottom: 24px;
+            display: none;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .error-banner.visible { display: flex; }
+
+        .error-banner-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+        .error-banner-text { flex: 1; }
+
+        .error-banner-close {
+            background: none;
+            border: none;
+            color: #e74c3c;
+            cursor: pointer;
+            font-size: 1.2rem;
+            padding: 0 4px;
+            flex-shrink: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .error-banner-close:hover { opacity: 0.7; }
+
+        /* ===== FOOTER ===== */
+        .page-footer {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            margin-top: auto;
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            background: rgba(15, 32, 39, 0.7);
+        }
+
+        .footer-text {
+            font-size: 0.85rem;
+            color: rgba(224, 224, 224, 0.5);
+            margin: 0 0 8px 0;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            font-size: 0.8rem;
+            color: var(--accent-teal-light);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-link:hover,
+        .footer-link:focus-visible {
+            color: var(--text-gold);
+            outline: 2px solid #157389;
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+
+        /* ===== EXPLORER LINK ===== */
+        .explorer-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.8rem;
+            color: var(--accent-teal-light);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .explorer-link:hover,
+        .explorer-link:focus-visible {
+            color: var(--text-gold);
+            outline: 2px solid #157389;
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+
+        /* ===== EMPTY RESOURCE NOTICE ===== */
+        .no-results-notice {
+            font-size: 0.85rem;
+            color: rgba(224, 224, 224, 0.5);
+            font-style: italic;
+            padding: 12px 0;
+        }
+
+        /* ===== PREFERS-REDUCED-MOTION ===== */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .page-wrapper { padding: 24px 16px 48px; }
+            .site-header { padding: 12px 16px; margin-bottom: 24px; }
+            .header-site-title { font-size: 1.1rem; }
+            .page-hero-inner { padding: 28px 20px 24px; }
+            .page-title { font-size: 2.2rem; }
+            .search-card { padding: 20px 16px; }
+            .search-row { flex-direction: column; }
+            .inspect-btn { width: 100%; justify-content: center; }
+            .result-card { padding: 20px 16px; }
+            .info-label { min-width: 120px; }
+            .tx-row { grid-template-columns: auto 1fr; }
+            .tx-seq { display: none; }
+            .balance-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .page-wrapper { padding: 16px 12px 40px; }
+            .site-header { flex-direction: column; gap: 12px; text-align: center; }
+            .balance-grid { grid-template-columns: 1fr; }
+            .info-label { min-width: 0; width: 100%; }
+            .info-row { flex-direction: column; gap: 4px; }
+            .wallet-address-row { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hidden SVG defs for fractal gradients used in corner ornaments -->
+    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;overflow:hidden;" aria-hidden="true">
+        <defs>
+            <linearGradient id="fractal-edge-3d" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#157389" stop-opacity="0.9"/>
+                <stop offset="50%" stop-color="#82B29D" stop-opacity="0.8"/>
+                <stop offset="100%" stop-color="#E5B457" stop-opacity="0.7"/>
+            </linearGradient>
+            <radialGradient id="fractal-glow-3d" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#157389" stop-opacity="0.3"/>
+                <stop offset="100%" stop-color="#0F2027" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="fractal-depth-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.4"/>
+            </filter>
+            <filter id="fractal-inner-glow" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="2" result="blur"/>
+                <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+            </filter>
+        </defs>
+    </svg>
+
+    <!-- Fixed background layer -->
+    <div class="background-layer" aria-hidden="true"></div>
+    <div class="border-ornaments" aria-hidden="true"></div>
+    <div class="corner-ornaments" aria-hidden="true"></div>
+
+    <div class="page-wrapper">
+
+        <!-- Site Header -->
+        <header class="site-header">
+            <a href="index.html" class="header-logo" aria-label="Go to SupraSaiyans home">
+                <img src="images/LOGONOBG1.png" alt="SupraSaiyans" width="40" height="40" loading="eager">
+                <span class="header-site-title">SupraSaiyans</span>
+            </a>
+            <a href="index.html" class="header-nav-link" aria-label="Back to SupraSaiyans home page">← Home</a>
+        </header>
+
+        <!-- Hero / Title Section -->
+        <section class="page-hero" aria-labelledby="page-title">
+            <div class="page-hero-inner">
+                <!-- Fractal corner ornaments -->
+                <div class="fractal-corner fractal-corner-tl" aria-hidden="true">
+                    <svg viewBox="0 0 100 100" class="fractal-svg">
+                        <path d="M 0,0 C 0,0 10,10 20,13 C 30,16 33,26 36,36 C 39,46 33,53 26,60 C 19,67 13,73 6,80 C 0,86 0,93 0,100"
+                              fill="none" stroke="url(#fractal-edge-3d)" stroke-width="2" opacity="0.6" filter="url(#fractal-depth-shadow)">
+                            <animate attributeName="stroke-dasharray" values="0,200;200,0;0,200" dur="12s" repeatCount="indefinite"/>
+                        </path>
+                    </svg>
+                </div>
+                <div class="fractal-corner fractal-corner-tr" aria-hidden="true">
+                    <svg viewBox="0 0 100 100" class="fractal-svg">
+                        <path d="M 100,0 C 100,0 90,10 80,13 C 70,16 67,26 64,36 C 61,46 67,53 74,60 C 81,67 87,73 94,80 C 100,86 100,93 100,100"
+                              fill="none" stroke="url(#fractal-edge-3d)" stroke-width="2" opacity="0.6" filter="url(#fractal-depth-shadow)">
+                            <animate attributeName="stroke-dasharray" values="0,200;200,0;0,200" dur="12s" begin="3s" repeatCount="indefinite"/>
+                        </path>
+                    </svg>
+                </div>
+                <div class="fractal-corner fractal-corner-bl" aria-hidden="true">
+                    <svg viewBox="0 0 100 100" class="fractal-svg">
+                        <path d="M 0,100 C 0,100 10,90 20,87 C 30,84 33,74 36,64 C 39,54 33,47 26,40 C 19,33 13,27 6,20 C 0,14 0,7 0,0"
+                              fill="none" stroke="url(#fractal-edge-3d)" stroke-width="2" opacity="0.6" filter="url(#fractal-depth-shadow)">
+                            <animate attributeName="stroke-dasharray" values="0,200;200,0;0,200" dur="12s" begin="6s" repeatCount="indefinite"/>
+                        </path>
+                    </svg>
+                </div>
+                <div class="fractal-corner fractal-corner-br" aria-hidden="true">
+                    <svg viewBox="0 0 100 100" class="fractal-svg">
+                        <path d="M 100,100 C 100,100 90,90 80,87 C 70,84 67,74 64,64 C 61,54 67,47 74,40 C 81,33 87,27 94,20 C 100,14 100,7 100,0"
+                              fill="none" stroke="url(#fractal-edge-3d)" stroke-width="2" opacity="0.6" filter="url(#fractal-depth-shadow)">
+                            <animate attributeName="stroke-dasharray" values="0,200;200,0;0,200" dur="12s" begin="9s" repeatCount="indefinite"/>
+                        </path>
+                    </svg>
+                </div>
+
+                <h1 class="page-title" id="page-title">Robbie Wallet Inspector</h1>
+                <p class="page-subtitle">Inspect any Supra blockchain wallet — view SUPRA balance, token holdings, recent transactions, and account details.</p>
+            </div>
+        </section>
+
+        <!-- Search Section -->
+        <section class="search-section" aria-label="Wallet address search">
+            <div class="search-card">
+                <label for="wallet-address-input" class="search-label">Enter Supra Wallet Address</label>
+                <div class="search-row">
+                    <input
+                        type="text"
+                        id="wallet-address-input"
+                        class="wallet-input"
+                        placeholder="0x1234abcd..."
+                        maxlength="200"
+                        aria-label="Supra wallet address"
+                        aria-describedby="wallet-input-hint wallet-input-error"
+                        autocomplete="off"
+                        spellcheck="false"
+                    >
+                    <button
+                        type="button"
+                        id="inspect-btn"
+                        class="inspect-btn"
+                        aria-label="Inspect wallet"
+                    >
+                        <span class="btn-spinner" aria-hidden="true"></span>
+                        <span class="btn-text">Inspect</span>
+                    </button>
+                </div>
+                <p id="wallet-input-hint" class="input-hint">Enter a valid Supra wallet address starting with 0x</p>
+                <p id="wallet-input-error" class="input-error-msg" role="alert" aria-live="polite"></p>
+            </div>
+        </section>
+
+        <!-- Global Error Banner -->
+        <div id="error-banner" class="error-banner" role="alert" aria-live="assertive">
+            <span class="error-banner-icon" aria-hidden="true">⚠️</span>
+            <span class="error-banner-text" id="error-banner-text"></span>
+            <button class="error-banner-close" id="error-banner-close" aria-label="Dismiss error">×</button>
+        </div>
+
+        <!-- Results Section -->
+        <div id="results-section" class="results-section" aria-live="polite">
+
+            <!-- Wallet Summary -->
+            <article class="result-card" aria-labelledby="summary-title">
+                <div class="card-header">
+                    <div class="card-icon" aria-hidden="true">💼</div>
+                    <h2 class="card-title" id="summary-title">Wallet Summary</h2>
+                </div>
+                <div class="wallet-address-row">
+                    <span class="wallet-address-label">Address</span>
+                    <span class="wallet-address-value" id="display-address" aria-label="Wallet address">—</span>
+                    <button class="copy-btn" id="copy-address-btn" aria-label="Copy wallet address to clipboard">Copy</button>
+                </div>
+                <div class="balance-grid">
+                    <div class="balance-stat">
+                        <div class="balance-stat-label">SUPRA Balance</div>
+                        <div class="balance-stat-value" id="supra-balance">—</div>
+                        <div class="balance-stat-unit">SUPRA</div>
+                    </div>
+                    <div class="balance-stat">
+                        <div class="balance-stat-label">Sequence Number</div>
+                        <div class="balance-stat-value" id="seq-number">—</div>
+                        <div class="balance-stat-unit">Transactions Sent</div>
+                    </div>
+                    <div class="balance-stat">
+                        <div class="balance-stat-label">Token Types</div>
+                        <div class="balance-stat-value" id="token-count">—</div>
+                        <div class="balance-stat-unit">Coin Stores</div>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Token Balances -->
+            <article class="result-card" aria-labelledby="tokens-title">
+                <div class="card-header">
+                    <div class="card-icon" aria-hidden="true">🪙</div>
+                    <h2 class="card-title" id="tokens-title">Token Balances</h2>
+                </div>
+                <div id="token-list-container" class="token-list">
+                    <p class="no-results-notice">Run a wallet inspection to see token balances.</p>
+                </div>
+            </article>
+
+            <!-- Transaction History -->
+            <article class="result-card" aria-labelledby="txns-title">
+                <div class="card-header">
+                    <div class="card-icon" aria-hidden="true">📋</div>
+                    <h2 class="card-title" id="txns-title">Recent Transactions</h2>
+                </div>
+                <div id="tx-list-container" class="tx-list">
+                    <p class="no-results-notice">Run a wallet inspection to see transactions.</p>
+                </div>
+            </article>
+
+            <!-- Account Info -->
+            <article class="result-card" aria-labelledby="account-title">
+                <div class="card-header">
+                    <div class="card-icon" aria-hidden="true">🔑</div>
+                    <h2 class="card-title" id="account-title">Account Info</h2>
+                </div>
+                <div id="account-info-container" class="info-table">
+                    <p class="no-results-notice">Run a wallet inspection to see account info.</p>
+                </div>
+            </article>
+
+        </div>
+        <!-- /results-section -->
+
+    </div>
+    <!-- /page-wrapper -->
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <p class="footer-text">© Supra Saiyans 2026 — Robbie Wallet Inspector — Powered by Supra Blockchain</p>
+        <nav class="footer-links" aria-label="Footer navigation">
+            <a href="index.html" class="footer-link">← SupraSaiyans Home</a>
+            <a href="https://supra.com/" class="footer-link" target="_blank" rel="noopener noreferrer">Supra.com ↗</a>
+            <a href="https://suprascan.io/" class="footer-link" target="_blank" rel="noopener noreferrer">SupraScan Explorer ↗</a>
+        </nav>
+    </footer>
+
+    <script>
+    (function () {
+        'use strict';
+
+        /* ===== CONSTANTS ===== */
+        const RPC_BASE = 'https://rpc-mainnet.supra.com';
+        const EXPLORER_BASE = 'https://suprascan.io';
+        const SUPRA_COIN_RESOURCE = '0x1::coin::CoinStore<0x1::supra_coin::SupraCoin>';
+        const SUPRA_DECIMALS = 8;
+        const TX_LIMIT = 25;
+
+        /* ===== DOM REFS ===== */
+        const addressInput = document.getElementById('wallet-address-input');
+        const inspectBtn = document.getElementById('inspect-btn');
+        const inputErrorEl = document.getElementById('wallet-input-error');
+        const resultsSection = document.getElementById('results-section');
+        const errorBanner = document.getElementById('error-banner');
+        const errorBannerText = document.getElementById('error-banner-text');
+        const errorBannerClose = document.getElementById('error-banner-close');
+
+        const displayAddress = document.getElementById('display-address');
+        const copyAddressBtn = document.getElementById('copy-address-btn');
+        const supraBalance = document.getElementById('supra-balance');
+        const seqNumber = document.getElementById('seq-number');
+        const tokenCount = document.getElementById('token-count');
+        const tokenListContainer = document.getElementById('token-list-container');
+        const txListContainer = document.getElementById('tx-list-container');
+        const accountInfoContainer = document.getElementById('account-info-container');
+
+        /* ===== HELPERS ===== */
+
+        /**
+         * Escape HTML to prevent XSS
+         * @param {*} value
+         * @returns {string}
+         */
+        function escapeHtml(value) {
+            const div = document.createElement('div');
+            div.textContent = String(value);
+            return div.innerHTML;
+        }
+
+        /**
+         * Validate a Supra wallet address (0x followed by hex chars, 64 hex chars after 0x is standard)
+         * @param {string} addr
+         * @returns {boolean}
+         */
+        function isValidAddress(addr) {
+            return /^0x[0-9a-fA-F]{1,128}$/.test(addr.trim());
+        }
+
+        /**
+         * Normalize address to lowercase
+         * @param {string} addr
+         * @returns {string}
+         */
+        function normalizeAddress(addr) {
+            return addr.trim().toLowerCase();
+        }
+
+        /**
+         * Format raw coin value with decimals
+         * @param {string|number} raw
+         * @param {number} decimals
+         * @returns {string}
+         */
+        function formatBalance(raw, decimals) {
+            try {
+                const bigVal = BigInt(raw);
+                const divisor = BigInt(10 ** decimals);
+                const whole = bigVal / divisor;
+                const remainder = bigVal % divisor;
+                const remainderStr = remainder.toString().padStart(decimals, '0').replace(/0+$/, '');
+                if (remainderStr === '') {
+                    return whole.toLocaleString();
+                }
+                return whole.toLocaleString() + '.' + remainderStr;
+            } catch {
+                return String(raw);
+            }
+        }
+
+        /**
+         * Truncate a hash for display
+         * @param {string} hash
+         * @param {number} front
+         * @param {number} back
+         * @returns {string}
+         */
+        function truncateHash(hash, front = 10, back = 8) {
+            if (!hash || hash.length <= front + back + 3) return hash;
+            return hash.slice(0, front) + '…' + hash.slice(-back);
+        }
+
+        /**
+         * Format a microsecond timestamp to a readable date
+         * @param {string|number} ts
+         * @returns {string}
+         */
+        function formatTimestamp(ts) {
+            try {
+                // Supra timestamps are in microseconds
+                const ms = Number(ts) / 1000;
+                const d = new Date(ms);
+                if (isNaN(d.getTime())) return String(ts);
+                return d.toLocaleString('en-US', {
+                    year: 'numeric', month: 'short', day: 'numeric',
+                    hour: '2-digit', minute: '2-digit', second: '2-digit'
+                });
+            } catch {
+                return String(ts);
+            }
+        }
+
+        /**
+         * Extract coin type from a CoinStore resource type string
+         * e.g. "0x1::coin::CoinStore<0x1::supra_coin::SupraCoin>" => "0x1::supra_coin::SupraCoin"
+         * @param {string} resourceType
+         * @returns {string}
+         */
+        function extractCoinType(resourceType) {
+            const match = resourceType.match(/CoinStore<(.+)>$/);
+            return match ? match[1] : resourceType;
+        }
+
+        /**
+         * Format coin type for display — show module::name only
+         * @param {string} coinType
+         * @returns {string}
+         */
+        function formatCoinType(coinType) {
+            const parts = coinType.split('::');
+            if (parts.length >= 3) {
+                return parts.slice(1).join('::');
+            }
+            return coinType;
+        }
+
+        /* ===== UI STATE ===== */
+
+        function setLoading(isLoading) {
+            if (isLoading) {
+                inspectBtn.classList.add('loading');
+                inspectBtn.disabled = true;
+                addressInput.disabled = true;
+            } else {
+                inspectBtn.classList.remove('loading');
+                inspectBtn.disabled = false;
+                addressInput.disabled = false;
+            }
+        }
+
+        function showInputError(msg) {
+            inputErrorEl.textContent = msg;
+            inputErrorEl.classList.add('visible');
+            addressInput.classList.add('input-error');
+        }
+
+        function clearInputError() {
+            inputErrorEl.textContent = '';
+            inputErrorEl.classList.remove('visible');
+            addressInput.classList.remove('input-error');
+        }
+
+        function showErrorBanner(msg) {
+            errorBannerText.textContent = msg;
+            errorBanner.classList.add('visible');
+        }
+
+        function hideErrorBanner() {
+            errorBanner.classList.remove('visible');
+        }
+
+        function showResults() {
+            resultsSection.classList.add('visible');
+        }
+
+        function hideResults() {
+            resultsSection.classList.remove('visible');
+        }
+
+        /* ===== API CALLS ===== */
+
+        /**
+         * Fetch account info: sequence_number, authentication_key
+         * @param {string} address
+         * @returns {Promise<object>}
+         */
+        async function fetchAccountInfo(address) {
+            const url = `${RPC_BASE}/rpc/v1/accounts/${encodeURIComponent(address)}`;
+            const resp = await fetch(url, { method: 'GET', headers: { 'Accept': 'application/json' } });
+            if (resp.status === 404) {
+                throw new Error('Account not found on the Supra mainnet. The address may be incorrect or not yet active.');
+            }
+            if (!resp.ok) {
+                throw new Error(`RPC error ${resp.status}: ${resp.statusText}`);
+            }
+            return resp.json();
+        }
+
+        /**
+         * Fetch all account resources (coin stores, NFTs, etc.)
+         * @param {string} address
+         * @returns {Promise<Array>}
+         */
+        async function fetchAccountResources(address) {
+            const url = `${RPC_BASE}/rpc/v1/accounts/${encodeURIComponent(address)}/resources`;
+            const resp = await fetch(url, { method: 'GET', headers: { 'Accept': 'application/json' } });
+            if (resp.status === 404) return [];
+            if (!resp.ok) throw new Error(`Resources RPC error ${resp.status}: ${resp.statusText}`);
+            return resp.json();
+        }
+
+        /**
+         * Fetch recent transactions for the address
+         * @param {string} address
+         * @returns {Promise<Array>}
+         */
+        async function fetchTransactions(address) {
+            const url = `${RPC_BASE}/rpc/v1/accounts/${encodeURIComponent(address)}/transactions?limit=${TX_LIMIT}`;
+            const resp = await fetch(url, { method: 'GET', headers: { 'Accept': 'application/json' } });
+            if (resp.status === 404) return [];
+            if (!resp.ok) throw new Error(`Transactions RPC error ${resp.status}: ${resp.statusText}`);
+            return resp.json();
+        }
+
+        /* ===== RENDER FUNCTIONS ===== */
+
+        function renderWalletSummary(address, accountData, coinStores) {
+            displayAddress.textContent = address;
+            displayAddress.setAttribute('title', address);
+
+            // Sequence number
+            const seq = accountData.sequence_number ?? accountData.sequenceNumber ?? '—';
+            seqNumber.textContent = String(seq);
+
+            // SUPRA balance
+            const supraStore = coinStores.find(r =>
+                (r.type || '').includes('supra_coin::SupraCoin')
+            );
+            if (supraStore) {
+                const rawVal = supraStore.data?.coin?.value ?? supraStore.data?.value ?? '0';
+                supraBalance.textContent = formatBalance(rawVal, SUPRA_DECIMALS);
+            } else {
+                supraBalance.textContent = '0';
+            }
+
+            tokenCount.textContent = String(coinStores.length);
+        }
+
+        function renderTokenBalances(coinStores) {
+            if (!coinStores.length) {
+                tokenListContainer.textContent = '';
+                const notice = document.createElement('p');
+                notice.className = 'no-results-notice';
+                notice.textContent = 'No token balances found for this wallet.';
+                tokenListContainer.appendChild(notice);
+                return;
+            }
+
+            const fragment = document.createDocumentFragment();
+            coinStores.forEach(store => {
+                const coinType = extractCoinType(store.type || '');
+                const shortName = formatCoinType(coinType);
+                const rawVal = store.data?.coin?.value ?? store.data?.value ?? '0';
+                const isSupra = coinType.includes('supra_coin::SupraCoin');
+                const decimals = isSupra ? SUPRA_DECIMALS : 0;
+                const formatted = formatBalance(rawVal, decimals);
+
+                const row = document.createElement('div');
+                row.className = 'token-row';
+
+                const badge = document.createElement('span');
+                badge.className = 'token-type-badge';
+                badge.textContent = isSupra ? 'NATIVE' : 'COIN';
+
+                const nameEl = document.createElement('span');
+                nameEl.className = 'token-name';
+                nameEl.setAttribute('title', coinType);
+                nameEl.textContent = shortName;
+
+                const balEl = document.createElement('span');
+                balEl.className = 'token-balance';
+                balEl.textContent = formatted;
+
+                row.appendChild(badge);
+                row.appendChild(nameEl);
+                row.appendChild(balEl);
+                fragment.appendChild(row);
+            });
+
+            tokenListContainer.textContent = '';
+            tokenListContainer.appendChild(fragment);
+        }
+
+        function renderTransactions(txns) {
+            if (!txns || !txns.length) {
+                txListContainer.textContent = '';
+                const notice = document.createElement('p');
+                notice.className = 'no-results-notice';
+                notice.textContent = 'No recent transactions found for this wallet.';
+                txListContainer.appendChild(notice);
+                return;
+            }
+
+            const fragment = document.createDocumentFragment();
+            txns.forEach(tx => {
+                const hash = tx.hash || tx.version || '';
+                const type = tx.type || 'user_transaction';
+                const timestamp = tx.timestamp || tx.expiration_timestamp_secs || '';
+                const seqNum = tx.sequence_number ?? '';
+
+                let typeClass = 'tx-type-other';
+                let typeLabel = type.replace(/_/g, ' ').toUpperCase();
+                if (type === 'user_transaction') { typeClass = 'tx-type-user'; typeLabel = 'USER TX'; }
+                else if (type === 'block_metadata_transaction') { typeClass = 'tx-type-other'; typeLabel = 'BLOCK META'; }
+                else if (type === 'script_payload') { typeClass = 'tx-type-script'; typeLabel = 'SCRIPT'; }
+
+                const explorerHref = hash
+                    ? `${EXPLORER_BASE}/tx/${encodeURIComponent(hash)}`
+                    : '#';
+
+                const row = document.createElement('div');
+                row.className = 'tx-row';
+
+                const badgeEl = document.createElement('span');
+                badgeEl.className = 'tx-type-badge ' + typeClass;
+                badgeEl.textContent = typeLabel;
+
+                const infoEl = document.createElement('div');
+                infoEl.className = 'tx-info';
+
+                if (hash) {
+                    const link = document.createElement('a');
+                    link.className = 'tx-hash';
+                    link.href = explorerHref;
+                    link.target = '_blank';
+                    link.rel = 'noopener noreferrer';
+                    link.textContent = truncateHash(hash);
+                    link.title = hash;
+                    link.setAttribute('aria-label', 'View transaction ' + hash + ' on SupraScan explorer');
+                    infoEl.appendChild(link);
+                } else {
+                    const span = document.createElement('span');
+                    span.className = 'tx-hash';
+                    span.textContent = '(no hash)';
+                    infoEl.appendChild(span);
+                }
+
+                if (timestamp) {
+                    const tsEl = document.createElement('div');
+                    tsEl.className = 'tx-timestamp';
+                    tsEl.textContent = formatTimestamp(timestamp);
+                    infoEl.appendChild(tsEl);
+                }
+
+                const seqEl = document.createElement('div');
+                seqEl.className = 'tx-seq';
+                seqEl.textContent = seqNum !== '' ? '#' + String(seqNum) : '';
+
+                row.appendChild(badgeEl);
+                row.appendChild(infoEl);
+                row.appendChild(seqEl);
+                fragment.appendChild(row);
+            });
+
+            txListContainer.textContent = '';
+            txListContainer.appendChild(fragment);
+        }
+
+        function renderAccountInfo(address, accountData) {
+            const fields = [
+                { label: 'Address', value: address },
+                { label: 'Sequence Number', value: accountData.sequence_number ?? accountData.sequenceNumber ?? '—' },
+                { label: 'Auth Key', value: accountData.authentication_key ?? accountData.authenticationKey ?? '—' },
+                { label: 'VM Type', value: accountData.vm_type ?? 'Move VM' },
+            ];
+
+            const fragment = document.createDocumentFragment();
+            fields.forEach(field => {
+                const row = document.createElement('div');
+                row.className = 'info-row';
+
+                const labelEl = document.createElement('span');
+                labelEl.className = 'info-label';
+                labelEl.textContent = field.label;
+
+                const valueEl = document.createElement('span');
+                valueEl.className = 'info-value';
+                valueEl.textContent = String(field.value);
+
+                row.appendChild(labelEl);
+                row.appendChild(valueEl);
+                fragment.appendChild(row);
+            });
+
+            accountInfoContainer.textContent = '';
+            accountInfoContainer.appendChild(fragment);
+        }
+
+        /* ===== MAIN INSPECT FLOW ===== */
+
+        async function inspectWallet() {
+            const rawAddress = addressInput.value;
+            clearInputError();
+            hideErrorBanner();
+
+            if (!rawAddress.trim()) {
+                showInputError('Please enter a wallet address.');
+                addressInput.focus();
+                return;
+            }
+
+            if (!isValidAddress(rawAddress)) {
+                showInputError('Invalid address format. Must start with 0x followed by hexadecimal characters.');
+                addressInput.focus();
+                return;
+            }
+
+            const address = normalizeAddress(rawAddress);
+            setLoading(true);
+            hideResults();
+
+            try {
+                const [accountData, resourcesRaw, txnsRaw] = await Promise.allSettled([
+                    fetchAccountInfo(address),
+                    fetchAccountResources(address),
+                    fetchTransactions(address),
+                ]);
+
+                // Account info is required — if it fails, show error
+                if (accountData.status === 'rejected') {
+                    throw accountData.reason;
+                }
+
+                const account = accountData.value;
+
+                // Resources — extract coin stores
+                let resources = [];
+                if (resourcesRaw.status === 'fulfilled') {
+                    resources = Array.isArray(resourcesRaw.value) ? resourcesRaw.value : [];
+                }
+                const coinStores = resources.filter(r =>
+                    (r.type || '').includes('::coin::CoinStore<')
+                );
+
+                // Transactions
+                let txns = [];
+                if (txnsRaw.status === 'fulfilled') {
+                    txns = Array.isArray(txnsRaw.value) ? txnsRaw.value : [];
+                }
+
+                // Render all sections
+                renderWalletSummary(address, account, coinStores);
+                renderTokenBalances(coinStores);
+                renderTransactions(txns);
+                renderAccountInfo(address, account);
+
+                // Show results
+                showResults();
+                resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            } catch (err) {
+                const message = err && err.message ? err.message : 'An unexpected error occurred. Please try again.';
+                showErrorBanner(message);
+                hideResults();
+            } finally {
+                setLoading(false);
+            }
+        }
+
+        /* ===== COPY ADDRESS BUTTON ===== */
+
+        copyAddressBtn.addEventListener('click', function () {
+            const addr = displayAddress.textContent;
+            if (!addr || addr === '—') return;
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(addr).then(() => {
+                    copyAddressBtn.textContent = 'Copied!';
+                    copyAddressBtn.classList.add('copied');
+                    setTimeout(() => {
+                        copyAddressBtn.textContent = 'Copy';
+                        copyAddressBtn.classList.remove('copied');
+                    }, 2000);
+                }).catch(() => {
+                    fallbackCopy(addr);
+                });
+            } else {
+                fallbackCopy(addr);
+            }
+        });
+
+        function fallbackCopy(text) {
+            try {
+                const el = document.createElement('textarea');
+                el.value = text;
+                el.style.cssText = 'position:fixed;opacity:0;top:0;left:0;';
+                document.body.appendChild(el);
+                el.select();
+                // Legacy fallback for browsers without Clipboard API support (deprecated but necessary for older browsers)
+                document.execCommand('copy');
+                document.body.removeChild(el);
+                copyAddressBtn.textContent = 'Copied!';
+                copyAddressBtn.classList.add('copied');
+                setTimeout(() => {
+                    copyAddressBtn.textContent = 'Copy';
+                    copyAddressBtn.classList.remove('copied');
+                }, 2000);
+            } catch (e) {
+                copyAddressBtn.textContent = 'Failed';
+                setTimeout(() => { copyAddressBtn.textContent = 'Copy'; }, 2000);
+            }
+        }
+
+        /* ===== EVENT LISTENERS ===== */
+
+        inspectBtn.addEventListener('click', inspectWallet);
+
+        addressInput.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                inspectWallet();
+            }
+        });
+
+        addressInput.addEventListener('input', function () {
+            if (inputErrorEl.classList.contains('visible')) {
+                clearInputError();
+            }
+        });
+
+        errorBannerClose.addEventListener('click', hideErrorBanner);
+
+        // Support URL param ?address=0x... for direct links
+        (function checkUrlParam() {
+            try {
+                const params = new URLSearchParams(window.location.search);
+                const addr = params.get('address');
+                if (addr) {
+                    addressInput.value = addr;
+                    // Slight delay so page loads first
+                    setTimeout(inspectWallet, 300);
+                }
+            } catch (e) { /* ignore */ }
+        })();
+
+    })();
+    </script>
+</body>
+</html>

@@ -4643,35 +4643,51 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
    SHOWCASE SECTION
    ============================================================ */
 .showcase-section {
-    padding: 80px 20px;
+    padding: 50px 20px;
     scroll-margin-top: 80px;
 }
 
 .showcase-title {
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: clamp(1.4rem, 3vw, 2rem);
     font-weight: 700;
     text-align: center;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    margin: 0 0 48px;
+    margin: 0 0 28px;
+}
+
+.showcase-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 2px;
+    margin: 12px auto 0;
+    background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+    border-radius: 1px;
 }
 
 .showcase-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    max-width: 1100px;
+    gap: 14px;
+    max-width: 720px;
     margin: 0 auto;
 }
 
 .showcase-card {
     position: relative;
-    border-radius: 14px;
-    overflow: hidden;
-    background: rgba(6, 30, 42, 0.72);
-    border: 1px solid rgba(21, 115, 137, 0.25);
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    border: 4px solid transparent;
+    background:
+        rgba(15, 32, 39, 0.95) padding-box,
+        linear-gradient(135deg, var(--accent-warm-deep), var(--accent-warm), var(--accent-gold)) border-box;
+    padding: 3px;
+    box-shadow:
+        inset 0 0 4px rgba(0, 0, 0, 0.6),
+        0 2px 12px rgba(0, 0, 0, 0.5),
+        inset 0 0 1px rgba(229, 180, 87, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    will-change: auto;
     contain: layout style paint;
 }
 
@@ -4680,14 +4696,18 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
+    border-radius: 2px;
 }
 
 @media (hover: hover) {
     .showcase-card:hover {
-        transform: scale(1.03);
+        transform: scale(1.02);
+        will-change: transform;
         box-shadow:
-            0 8px 40px rgba(0, 0, 0, 0.6),
-            0 0 24px rgba(21, 115, 137, 0.45);
+            inset 0 0 4px rgba(0, 0, 0, 0.6),
+            0 0 16px rgba(229, 180, 87, 0.25),
+            0 2px 12px rgba(0, 0, 0, 0.5),
+            inset 0 0 1px rgba(229, 180, 87, 0.3);
     }
 }
 
@@ -4702,17 +4722,29 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 
     .showcase-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
+        gap: 10px;
     }
 
     .showcase-card {
-        border-radius: 8px;
+        border-width: 3px;
+        padding: 2px;
     }
 }
 
 @media (max-width: 480px) {
+    .showcase-section {
+        padding: 24px 8px;
+    }
+
     .showcase-grid {
         gap: 8px;
+    }
+
+    .showcase-card {
+        border-width: 2px;
+        box-shadow:
+            inset 0 0 4px rgba(0, 0, 0, 0.6),
+            0 2px 8px rgba(0, 0, 0, 0.4);
     }
 }
 

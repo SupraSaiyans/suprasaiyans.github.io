@@ -4197,6 +4197,19 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
     display: none;
 }
 
+/* Simple sticker image centering wrapper */
+.sticker-image-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0 10px;
+}
+
+.sticker-image {
+    width: clamp(200px, 40vw, 380px);
+    height: auto;
+    display: block;
+}
+
 /* Pie wheel centring wrapper */
 .pie-wheel-wrap {
     display: flex;

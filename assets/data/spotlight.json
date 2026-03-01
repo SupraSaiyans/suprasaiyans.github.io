@@ -119,6 +119,16 @@
       "datePublished": "2026-01-29",
       "mintUrl": "https://aigarden.art/create",
       "tradeUrl": "https://aigarden.art/marketplace?page=1&collection=Tiny+Legends&sort=default"
+      },
+      {
+      "id": "spotlight-013",
+      "number": 13,
+      "title": "Beyond Infinity",
+      "description": "Let's Go Beyond8!",
+      "image": "images/BeyondInfinityCollectionImageFINAL.png",
+      "datePublished": "2026-03-01",
+      "mintUrl": "https://crystara.trade/marketplace/beyond8infinity",
+      "tradeUrl": "https://crystara.trade/trade/beyond8infinity"
     }
   ]
 }

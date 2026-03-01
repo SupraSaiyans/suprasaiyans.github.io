@@ -1,21 +1,39 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
   <defs>
-    <radialGradient id="rg-tr">
-      <stop offset="0%" style="stop-color:#06566d;stop-opacity:0.8"/>
-      <stop offset="60%" style="stop-color:#7a3013;stop-opacity:0.4"/>
-      <stop offset="100%" style="stop-color:#003d52;stop-opacity:0.1"/>
+    <!-- Teal radial glow behind infinity symbol -->
+    <radialGradient id="teal-glow-tr" cx="78%" cy="22%" r="40%">
+      <stop offset="0%" stop-color="#06566d" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#06566d" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="lg-tr" x1="100%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#06566d;stop-opacity:0.75"/>
-      <stop offset="50%" style="stop-color:#7a3013;stop-opacity:0.55"/>
-      <stop offset="100%" style="stop-color:#003d52;stop-opacity:0.35"/>
+    <!-- Gold gradient for accent lines -->
+    <linearGradient id="gold-tr" x1="100%" y1="0%" x2="20%" y2="80%">
+      <stop offset="0%" stop-color="#e2aa42" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#e2aa42" stop-opacity="0"/>
     </linearGradient>
   </defs>
-  <!-- Mirrored design -->
-  <path d="M 300,0 Q 250,20 220,50 Q 190,80 180,120 Q 170,160 190,190 Q 210,220 240,240 Q 270,260 300,280" 
-        fill="url(#lg-tr)" stroke="url(#lg-tr)" stroke-width="2" opacity="0.8"/>
-  <path d="M 280,40 Q 255,55 240,80 Q 225,105 230,130 Q 235,155 250,170 Q 265,185 280,200" 
-        fill="none" stroke="#06566d" stroke-width="2" opacity="0.5" stroke-linecap="round"/>
-  <circle cx="240" cy="80" r="12" fill="url(#rg-tr)" opacity="0.6"/>
-  <circle cx="250" cy="150" r="10" fill="url(#rg-tr)" opacity="0.5"/>
+  <!-- Teal ambient glow -->
+  <ellipse cx="235" cy="65" rx="100" ry="100" fill="url(#teal-glow-tr)"/>
+  <!-- Infinity / lemniscate symbol near TR corner -->
+  <!-- Centered at (235,55), half-width 32, half-height 13 -->
+  <path d="M 203,55 C 203,42 214,37 235,55 C 256,73 267,68 267,55 C 267,42 256,37 235,55 C 214,73 203,68 203,55 Z"
+        fill="none" stroke="#e2aa42" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+  <!-- Dragon-tail along right edge — serpentine S-curves (mirrored from TL) -->
+  <path d="M 300,120 C 280,130 272,148 286,162 C 300,176 304,194 290,208 C 276,222 270,240 282,254"
+        fill="none" stroke="#e2aa42" stroke-width="1" stroke-linecap="round" opacity="0.3"/>
+  <!-- Dragon scale marks along right edge -->
+  <path d="M 294,105 Q 282,115 294,125 M 296,142 Q 284,152 296,162 M 298,178 Q 286,188 298,198"
+        fill="none" stroke="#06566d" stroke-width="1" stroke-linecap="round" opacity="0.35"/>
+  <!-- Dragon-tail along top edge -->
+  <path d="M 180,0 C 170,20 152,28 138,14 C 124,0 106,-4 92,10 C 78,24 60,30 46,18"
+        fill="none" stroke="#e2aa42" stroke-width="1" stroke-linecap="round" opacity="0.3"/>
+  <!-- Dragon scale marks along top edge -->
+  <path d="M 195,6 Q 185,18 175,6 M 158,4 Q 148,16 138,4 M 122,2 Q 112,14 102,2"
+        fill="none" stroke="#06566d" stroke-width="1" stroke-linecap="round" opacity="0.35"/>
+  <!-- Main flowing curve — primary corner ornament path (mirrored from TL) -->
+  <path d="M 300,0 Q 260,18 232,52 Q 204,86 210,128 Q 216,170 242,192 Q 268,214 296,228"
+        fill="none" stroke="#06566d" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <!-- Golden corner bracket accent (TR) -->
+  <path d="M 300,6 L 300,0 L 294,0" fill="none" stroke="#e2aa42" stroke-width="2" opacity="0.7"/>
+  <line x1="300" y1="0" x2="255" y2="0" stroke="url(#gold-tr)" stroke-width="0.8"/>
+  <line x1="300" y1="0" x2="300" y2="45" stroke="url(#gold-tr)" stroke-width="0.8"/>
 </svg>

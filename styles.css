@@ -101,6 +101,21 @@
             --section-spacing-desktop: 60px;
             --section-spacing-mobile: 80px;
             
+            /* Background system */
+            --bg-deepest: #060a10;
+            --bg-dark: #0d1117;
+            --bg-midnight-teal: #061e2a;
+            --bg-warm-dark: #1a0f08;
+            
+            /* Ambient glow colors */
+            --glow-teal: rgba(6, 86, 109, 0.06);
+            --glow-gold: rgba(226, 170, 66, 0.04);
+            --glow-warm: rgba(122, 48, 19, 0.05);
+            
+            /* Dragon/infinity accent opacity */
+            --motif-opacity: 0.04;
+            --motif-opacity-hover: 0.08;
+            
             /* Title readability enhancement for featured items */
             --alpha-title-stroke: 2px;
             
@@ -131,7 +146,7 @@
             margin: 0;
             padding: 0;
             min-height: 100vh;
-            background: var(--primary-dark);
+            background: var(--bg-deepest, #060a10);
             font-family: 'Arial', sans-serif;
             color: var(--text-primary);
             position: relative;
@@ -146,7 +161,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('images/BACKGROUNDSESSION21.PNG') center center / cover no-repeat;
+            background: radial-gradient(ellipse 120% 100% at 50% 40%, var(--bg-dark, #0d1117) 0%, var(--bg-deepest, #060a10) 100%);
             z-index: 0;
             will-change: transform;
         }
@@ -165,15 +180,25 @@
             bottom: 0;
             z-index: 1;
             pointer-events: none;
-            background: 
-                /* Top accent - cool teal */
-                linear-gradient(180deg, 
-                    rgba(21, 115, 137, 0.25) 0%, 
+            /* Top/bottom: infinity-symbol line accents; left/right: dragon-scale serpentine curves */
+            background-image:
+                url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 10'><line x1='0' y1='5' x2='74' y2='5' stroke='%23e2aa42' stroke-width='0.5'/><path d='M 75,5 C 75,2 82,0 100,5 C 118,10 125,8 125,5 C 125,2 118,0 100,5 C 82,10 75,8 75,5 Z' fill='none' stroke='%23e2aa42' stroke-width='0.8'/><line x1='126' y1='5' x2='200' y2='5' stroke='%23e2aa42' stroke-width='0.5'/></svg>"),
+                url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 10'><line x1='0' y1='5' x2='74' y2='5' stroke='%23e2aa42' stroke-width='0.5'/><path d='M 75,5 C 75,2 82,0 100,5 C 118,10 125,8 125,5 C 125,2 118,0 100,5 C 82,10 75,8 75,5 Z' fill='none' stroke='%23e2aa42' stroke-width='0.8'/><line x1='126' y1='5' x2='200' y2='5' stroke='%23e2aa42' stroke-width='0.5'/></svg>"),
+                url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 60'><path d='M 4,0 C 7,10 1,20 4,30 C 7,40 1,50 4,60' fill='none' stroke='%2306566d' stroke-width='0.8'/></svg>"),
+                url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 60'><path d='M 4,0 C 7,10 1,20 4,30 C 7,40 1,50 4,60' fill='none' stroke='%2306566d' stroke-width='0.8'/></svg>"),
+                linear-gradient(180deg,
+                    rgba(6, 86, 109, 0.08) 0%,
                     transparent 60px),
-                /* Bottom accent - warm gold/orange */
-                linear-gradient(0deg, 
-                    rgba(214, 109, 15, 0.25) 0%, 
+                linear-gradient(0deg,
+                    rgba(122, 48, 19, 0.07) 0%,
                     transparent 60px);
+            background-position:
+                top left, bottom left, top left, top right, top, bottom;
+            background-size:
+                200px 10px, 200px 10px, 8px 60px, 8px 60px, auto, auto;
+            background-repeat:
+                repeat-x, repeat-x, repeat-y, repeat-y, no-repeat, no-repeat;
+            opacity: 0.5;
             contain: layout style paint;
         }
         
@@ -197,10 +222,71 @@
                 top right,
                 bottom left,
                 bottom right;
-            background-size: 300px 300px;
+            background-size: 220px 220px;
             background-repeat: no-repeat;
+            opacity: 0.09;
+            animation: ambientPulse 10s ease-in-out infinite;
             /* Performance: contain property isolates painting */
             contain: layout style paint;
+        }
+        
+        @keyframes ambientPulse {
+            0%, 100% { opacity: 0.06; }
+            50%       { opacity: 0.12; }
+        }
+
+        /* ========================================
+           MULTI-LAYER BACKGROUND SYSTEM
+           ========================================
+           bg-base: deep dark gradient foundation
+           bg-png-fallback: original PNG at low opacity
+           bg-motif: subtle repeating infinity pattern
+           bg-aura: soft radial color washes
+        */
+
+        .background-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            pointer-events: none;
+            contain: layout style paint;
+        }
+
+        .bg-base {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 120% 100% at 50% 40%, var(--bg-dark, #0d1117) 0%, var(--bg-deepest, #060a10) 100%);
+        }
+
+        .bg-png-fallback {
+            position: absolute;
+            inset: 0;
+            background: url('images/BACKGROUNDSESSION21.PNG') center center / cover no-repeat;
+            opacity: 0.15;
+            mix-blend-mode: luminosity;
+        }
+
+        /* Repeating infinity-loop motif — ultra-low opacity ambient pattern */
+        .bg-motif {
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 80'><path d='M 20,40 C 20,24 35,18 80,40 C 125,62 140,56 140,40 C 140,24 125,18 80,40 C 35,62 20,56 20,40 Z' fill='none' stroke='%23e2aa42' stroke-width='1'/></svg>");
+            background-size: 160px 80px;
+            opacity: var(--motif-opacity, 0.04);
+        }
+
+        /* Soft radial color aura washes — top warm, bottom teal */
+        .bg-aura {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 50% at 50% 0%, rgba(122, 48, 19, 0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 80% 50% at 50% 100%, rgba(6, 86, 109, 0.10) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 40% at 15% 50%, rgba(6, 86, 109, 0.05) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 40% at 85% 50%, rgba(226, 170, 66, 0.04) 0%, transparent 70%);
         }
 
         /* Subtle Background Ambiance - Static */
@@ -1525,6 +1611,26 @@
             overflow: visible;
         }
         
+        /* Alternating warm/cool ambient wash for Spotlight and NFT Gallery */
+        .spotlight-fractal::before,
+        #nft-gallery::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .spotlight-fractal::before {
+            background:
+                radial-gradient(ellipse 70% 50% at 25% 50%, rgba(122, 48, 19, 0.05) 0%, transparent 80%),
+                radial-gradient(ellipse 70% 50% at 75% 50%, rgba(6, 86, 109, 0.05) 0%, transparent 80%);
+        }
+        #nft-gallery::before {
+            background:
+                radial-gradient(ellipse 70% 50% at 75% 50%, rgba(122, 48, 19, 0.05) 0%, transparent 80%),
+                radial-gradient(ellipse 70% 50% at 25% 50%, rgba(6, 86, 109, 0.05) 0%, transparent 80%);
+        }
+        
         .spotlight-fractal .section-content {
             position: relative;
             border: 3px solid transparent;
@@ -2847,6 +2953,16 @@
             background: transparent;
         }
         
+        /* Teal ambient glow behind Lao Shifu logo */
+        .laoshi-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(6, 86, 109, 0.07) 0%, transparent 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        
         .laoshi-container {
             position: relative;
             width: 100%;
@@ -3609,6 +3725,24 @@
             z-index: 1;
         }
         
+        /* Infinity-symbol accent on each fractal corner — discovered easter egg */
+        .fractal-corner::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 25px;
+            background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30'><path d='M 5,15 C 5,8 12,5 30,15 C 48,25 55,22 55,15 C 55,8 48,5 30,15 C 12,25 5,22 5,15 Z' fill='none' stroke='%23e2aa42' stroke-width='1.5'/></svg>");
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.2;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .fractal-corner-tl::after { top: 8px;  left: 8px;  }
+        .fractal-corner-tr::after { top: 8px;  right: 8px; }
+        .fractal-corner-bl::after { bottom: 8px; left: 8px;  }
+        .fractal-corner-br::after { bottom: 8px; right: 8px; }
+        
         /* Title enhancements for Powerlevel section - matching Spotlight but dimmed */
         .powerlevel-fractal h1 {
             /* Dimmed gradient matching Spotlight style */
@@ -4091,6 +4225,16 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
     position: relative;
 }
 
+/* Warm golden ambient glow behind Beyond8 section content */
+.beyond8-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 90% 70% at 50% 50%, rgba(226, 170, 66, 0.06) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+
 /* Remove the glass card/box — logo floats directly on page background */
 .beyond8-section .section-content {
     background: none !important;
@@ -4188,6 +4332,13 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
     }
     .beyond8-logo-link:hover {
         transform: scale(1.05);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .corner-ornaments {
+        animation: none;
+        opacity: 0.09;
     }
 }
 
@@ -4552,8 +4703,14 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
         display: none !important;
     }
 
+    /* Also hide individual background sub-layers on mobile */
+    .bg-base, .bg-png-fallback, .bg-motif, .bg-aura {
+        display: none;
+    }
+
     /* Simplify border ornaments — reduce multi-layer gradient rendering on mobile GPUs */
     .border-ornaments {
+        background-image: none;
         background: linear-gradient(180deg, rgba(21, 115, 137, 0.12) 0%, transparent 50px);
     }
 

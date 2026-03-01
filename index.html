@@ -15,8 +15,6 @@
     <meta name="theme-color" content="#0F2027">
     <title>SupraSaiyans</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <!-- Preload critical LCP image -->
-    <link rel="preload" as="image" href="images/BACKGROUNDSESSION21.PNG">
     <!-- Font optimization -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,14 +26,19 @@
     <div class="page-load-overlay" aria-hidden="true"></div>
     <!-- Scroll progress indicator -->
     <div id="scroll-progress" aria-hidden="true" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-    <!-- Fixed background layer -->
-    <div class="background-layer" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: url('images/BACKGROUNDSESSION21.PNG') center center / cover no-repeat; z-index: 0;"></div>
+    <!-- Multi-layered background system -->
+    <div class="background-layer" aria-hidden="true">
+        <div class="bg-base"></div>
+        <div class="bg-png-fallback"></div>
+        <div class="bg-motif"></div>
+        <div class="bg-aura"></div>
+    </div>
     
     <!-- Simplified border accents -->
-    <div class="border-ornaments"></div>
+    <div class="border-ornaments" aria-hidden="true"></div>
     
     <!-- Optimized corner ornaments (external SVGs for caching) -->
-    <div class="corner-ornaments"></div>
+    <div class="corner-ornaments" aria-hidden="true"></div>
     
     <!-- Beyond8 Floating Logo Section -->
     <section id="beyond8" class="section powerlevel-fractal beyond8-section">

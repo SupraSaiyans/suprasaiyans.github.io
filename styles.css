@@ -1534,6 +1534,12 @@
             margin-top: 8px;
         }
 
+        /* Footer tool divider */
+        .footer-divider {
+            color: var(--text-secondary, rgba(255, 255, 255, 0.5));
+            margin: 0 8px;
+        }
+
         /* ========================================
            SPOTLIGHT SECTION FRACTAL FRAME STYLES
            ========================================

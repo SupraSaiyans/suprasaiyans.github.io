@@ -5292,6 +5292,22 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
     pointer-events: none;
 }
 
+/* Tighter inner glow layer for image depth */
+.dragons-nest-link::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 30%;
+    background: radial-gradient(ellipse at center,
+        rgba(229, 180, 87, 0.28) 0%,
+        rgba(214, 109, 15, 0.18) 50%,
+        transparent              78%);
+    opacity: 0.6;
+    animation: dragonsNestGlow 5s ease-in-out infinite;
+    animation-delay: 0.8s;
+    pointer-events: none;
+}
+
 .dragons-nest-link:hover {
     transform: scale(1.05) translateY(-6px);
 }
@@ -5300,12 +5316,15 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
     opacity: 1;
 }
 
-/* Image — single static drop-shadow in warm orange */
+.dragons-nest-link:hover::after {
+    opacity: 1;
+}
+
+/* Image — no expensive filter; glow comes from the ::before halo */
 .dragons-nest-img {
     width: clamp(300px, 50vw, 580px);
     height: auto;
     display: block;
-    filter: drop-shadow(0 0 20px rgba(214, 109, 15, 0.75));
     position: relative;
 }
 
@@ -5344,7 +5363,8 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 /* ── Reduced-motion ── */
 @media (prefers-reduced-motion: reduce) {
     .dragons-nest-link,
-    .dragons-nest-link::before {
+    .dragons-nest-link::before,
+    .dragons-nest-link::after {
         animation: none;
     }
     .dragons-nest-link:hover {

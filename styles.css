@@ -5264,7 +5264,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 
 .dragons-nest-wrap {
     text-align: center;
-    margin: 36px auto 52px;
+    margin: 27px auto 39px;
     position: relative;
 }
 
@@ -5281,7 +5281,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .dragons-nest-link::before {
     content: '';
     position: absolute;
-    inset: -28px;
+    inset: -21px;
     border-radius: 40%;
     background: radial-gradient(ellipse at center,
         rgba(214, 109, 15, 0.5)  0%,
@@ -5296,7 +5296,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .dragons-nest-link::after {
     content: '';
     position: absolute;
-    inset: -8px;
+    inset: -6px;
     border-radius: 30%;
     background: radial-gradient(ellipse at center,
         rgba(229, 180, 87, 0.28) 0%,
@@ -5322,7 +5322,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 
 /* Image — no expensive filter; glow comes from the ::before halo */
 .dragons-nest-img {
-    width: clamp(300px, 50vw, 580px);
+    width: clamp(225px, 37.5vw, 435px);
     height: auto;
     display: block;
     position: relative;
@@ -5330,18 +5330,19 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 
 /* Subtle Discord hint label */
 .dragons-nest-discord-hint {
-    margin: 16px 0 0;
-    font-size: 0.82em;
+    margin: 12px 0 0;
+    font-size: 0.62em;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     opacity: 0.8;
-    pointer-events: none;
+    text-decoration: none;
+    display: inline-block;
 }
 
 /* Float keyframe */
 @keyframes dragonsNestFloat {
     0%, 100% { transform: translateY(0);    }
-    50%       { transform: translateY(-9px); }
+    50%       { transform: translateY(-7px); }
 }
 
 /* Glow pulse keyframe */
@@ -5353,10 +5354,10 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 /* ── Responsive ── */
 @media (max-width: 768px) {
     .dragons-nest-wrap {
-        margin: 28px auto 40px;
+        margin: 21px auto 30px;
     }
     .dragons-nest-img {
-        width: clamp(220px, 82vw, 360px);
+        width: clamp(165px, 62vw, 270px);
     }
 }
 

@@ -37,6 +37,438 @@
     <!-- Optimized corner ornaments (external SVGs for caching) -->
     <div class="corner-ornaments"></div>
     
+    <!-- Projects Framework Section (first on page) -->
+    <section id="projects-framework" class="section projects-framework-section powerlevel-fractal" aria-label="Upcoming Projects">
+        <!-- Fractal corner ornaments -->
+        <div class="fractal-corner fractal-corner-tl">
+            <svg viewBox="0 0 300 300" class="fractal-svg" aria-hidden="true">
+                <path d="M 0,0 C 0,0 30,30 60,40 C 90,50 100,80 110,110 C 120,140 100,160 80,180 C 60,200 40,220 20,240 C 0,260 0,280 0,300"
+                      fill="none" stroke="url(#fractal-edge-3d)" stroke-width="3" opacity="0.7" filter="url(#fractal-depth-shadow)">
+                    <animate attributeName="stroke-dasharray" values="0,500;500,0;0,500" dur="12s" repeatCount="indefinite"/>
+                </path>
+            </svg>
+        </div>
+        <div class="fractal-corner fractal-corner-tr">
+            <svg viewBox="0 0 300 300" class="fractal-svg" aria-hidden="true">
+                <path d="M 300,0 C 300,0 270,30 240,40 C 210,50 200,80 190,110 C 180,140 200,160 220,180 C 240,200 260,220 280,240 C 300,260 300,280 300,300"
+                      fill="none" stroke="url(#fractal-edge-3d)" stroke-width="3" opacity="0.7" filter="url(#fractal-depth-shadow)">
+                    <animate attributeName="stroke-dasharray" values="0,500;500,0;0,500" dur="12s" begin="3s" repeatCount="indefinite"/>
+                </path>
+            </svg>
+        </div>
+        <div class="fractal-corner fractal-corner-bl">
+            <svg viewBox="0 0 300 300" class="fractal-svg" aria-hidden="true">
+                <path d="M 0,300 C 0,300 30,270 60,260 C 90,250 100,220 110,190 C 120,160 100,140 80,120 C 60,100 40,80 20,60 C 0,40 0,20 0,0"
+                      fill="none" stroke="url(#fractal-edge-3d)" stroke-width="3" opacity="0.7" filter="url(#fractal-depth-shadow)">
+                    <animate attributeName="stroke-dasharray" values="0,500;500,0;0,500" dur="12s" begin="6s" repeatCount="indefinite"/>
+                </path>
+            </svg>
+        </div>
+        <div class="fractal-corner fractal-corner-br">
+            <svg viewBox="0 0 300 300" class="fractal-svg" aria-hidden="true">
+                <path d="M 300,300 C 300,300 270,270 240,260 C 210,250 200,220 190,190 C 180,160 200,140 220,120 C 240,100 260,80 280,60 C 300,40 300,20 300,0"
+                      fill="none" stroke="url(#fractal-edge-3d)" stroke-width="3" opacity="0.7" filter="url(#fractal-depth-shadow)">
+                    <animate attributeName="stroke-dasharray" values="0,500;500,0;0,500" dur="12s" begin="9s" repeatCount="indefinite"/>
+                </path>
+            </svg>
+        </div>
+
+        <div class="section-content reveal">
+            <h1 class="gradient-text-anim heading-glow">Transmissions from Beyond</h1>
+            <p class="projects-section-teaser">Six signals received. Coordinates locked. The veil lifts soon.</p>
+
+            <div class="project-grid">
+
+                <!-- ─── Card 1: Awakening Protocol ─── -->
+                <article class="project-card">
+                    <div class="project-card-frame">
+                        <div class="project-card-image-wrap">
+                            <svg class="project-placeholder-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="Awakening Protocol placeholder" role="img">
+                                <defs>
+                                    <radialGradient id="pg1-radial" cx="50%" cy="50%" r="50%">
+                                        <stop offset="0%"   stop-color="#157389" stop-opacity="0.9"/>
+                                        <stop offset="55%"  stop-color="#0C3747" stop-opacity="0.6"/>
+                                        <stop offset="100%" stop-color="#0F2027" stop-opacity="0"/>
+                                    </radialGradient>
+                                    <filter id="pg1-glow">
+                                        <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur"/>
+                                        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                                    </filter>
+                                </defs>
+                                <!-- Background pulse -->
+                                <circle cx="100" cy="100" r="90" fill="url(#pg1-radial)">
+                                    <animate attributeName="r" values="85;92;85" dur="5s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="5s" repeatCount="indefinite"/>
+                                </circle>
+                                <!-- Rotating outer ring -->
+                                <g style="transform-origin:100px 100px" filter="url(#pg1-glow)">
+                                    <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="360 100 100" dur="20s" repeatCount="indefinite"/>
+                                    <circle cx="100" cy="100" r="70" fill="none" stroke="#157389" stroke-width="1.5" stroke-dasharray="12 8" opacity="0.8"/>
+                                    <circle cx="100" cy="100" r="60" fill="none" stroke="#82B29D" stroke-width="0.8" stroke-dasharray="4 6" opacity="0.5"/>
+                                </g>
+                                <!-- Counter-rotating inner ring -->
+                                <g style="transform-origin:100px 100px">
+                                    <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="-360 100 100" dur="12s" repeatCount="indefinite"/>
+                                    <circle cx="100" cy="100" r="44" fill="none" stroke="#E5B457" stroke-width="1.2" stroke-dasharray="6 4" opacity="0.6"/>
+                                </g>
+                                <!-- Central teal glow -->
+                                <circle cx="100" cy="100" r="18" fill="#06566d" opacity="0.85" filter="url(#pg1-glow)">
+                                    <animate attributeName="r" values="16;21;16" dur="3.5s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="3.5s" repeatCount="indefinite"/>
+                                </circle>
+                                <!-- Ascending energy lines -->
+                                <line x1="100" y1="20" x2="100" y2="50" stroke="#82B29D" stroke-width="1.5" opacity="0">
+                                    <animate attributeName="opacity" values="0;0.8;0" dur="4s" begin="0s" repeatCount="indefinite"/>
+                                </line>
+                                <line x1="155" y1="45" x2="134" y2="66" stroke="#82B29D" stroke-width="1.5" opacity="0">
+                                    <animate attributeName="opacity" values="0;0.8;0" dur="4s" begin="0.66s" repeatCount="indefinite"/>
+                                </line>
+                                <line x1="180" y1="100" x2="150" y2="100" stroke="#82B29D" stroke-width="1.5" opacity="0">
+                                    <animate attributeName="opacity" values="0;0.8;0" dur="4s" begin="1.33s" repeatCount="indefinite"/>
+                                </line>
+                                <line x1="155" y1="155" x2="134" y2="134" stroke="#82B29D" stroke-width="1.5" opacity="0">
+                                    <animate attributeName="opacity" values="0;0.8;0" dur="4s" begin="2s" repeatCount="indefinite"/>
+                                </line>
+                                <line x1="100" y1="180" x2="100" y2="150" stroke="#82B29D" stroke-width="1.5" opacity="0">
+                                    <animate attributeName="opacity" values="0;0.8;0" dur="4s" begin="2.66s" repeatCount="indefinite"/>
+                                </line>
+                                <line x1="45" y1="155" x2="66" y2="134" stroke="#82B29D" stroke-width="1.5" opacity="0">
+                                    <animate attributeName="opacity" values="0;0.8;0" dur="4s" begin="3.33s" repeatCount="indefinite"/>
+                                </line>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-card-body">
+                        <h3 class="project-card-title">Awakening Protocol</h3>
+                        <div class="project-card-actions">
+                            <a href="#" class="project-action mint" aria-label="Mint Awakening Protocol">Mint</a>
+                            <a href="#" class="project-action trade" aria-label="Trade Awakening Protocol">Trade</a>
+                        </div>
+                    </div>
+                    <div class="project-card-footer">
+                        <a href="#beyond8" class="project-go-beyond8">Go Beyond8</a>
+                    </div>
+                </article>
+
+                <!-- ─── Card 2: The Fractal Cipher ─── -->
+                <article class="project-card">
+                    <div class="project-card-frame">
+                        <div class="project-card-image-wrap">
+                            <svg class="project-placeholder-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="The Fractal Cipher placeholder" role="img">
+                                <defs>
+                                    <radialGradient id="pg2-radial" cx="50%" cy="50%" r="50%">
+                                        <stop offset="0%"   stop-color="#E5B457" stop-opacity="0.8"/>
+                                        <stop offset="50%"  stop-color="#9A4A23" stop-opacity="0.5"/>
+                                        <stop offset="100%" stop-color="#0F2027" stop-opacity="0"/>
+                                    </radialGradient>
+                                    <filter id="pg2-glow">
+                                        <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+                                        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                                    </filter>
+                                </defs>
+                                <circle cx="100" cy="100" r="88" fill="url(#pg2-radial)" opacity="0.5">
+                                    <animate attributeName="opacity" values="0.4;0.65;0.4" dur="6s" repeatCount="indefinite"/>
+                                </circle>
+                                <!-- Outer hexagon -->
+                                <polygon points="100,22 166,61 166,139 100,178 34,139 34,61" fill="none" stroke="#E5B457" stroke-width="1.5" opacity="0.6" filter="url(#pg2-glow)">
+                                    <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="360 100 100" dur="30s" repeatCount="indefinite"/>
+                                </polygon>
+                                <!-- Inner hexagon counter-rotating -->
+                                <polygon points="100,46 136,67 136,109 100,130 64,109 64,67" fill="none" stroke="#D66D0F" stroke-width="1.2" opacity="0.7" filter="url(#pg2-glow)">
+                                    <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="-360 100 100" dur="18s" repeatCount="indefinite"/>
+                                </polygon>
+                                <!-- Rune cross lines -->
+                                <g opacity="0.5">
+                                    <line x1="100" y1="20" x2="100" y2="180" stroke="#E5B457" stroke-width="0.6" stroke-dasharray="3 5"/>
+                                    <line x1="20"  y1="100" x2="180" y2="100" stroke="#E5B457" stroke-width="0.6" stroke-dasharray="3 5"/>
+                                </g>
+                                <!-- Central golden orb -->
+                                <circle cx="100" cy="100" r="16" fill="#E5B457" opacity="0.8" filter="url(#pg2-glow)">
+                                    <animate attributeName="r" values="14;19;14" dur="4s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="4s" repeatCount="indefinite"/>
+                                </circle>
+                                <!-- Orbiting dot -->
+                                <circle cx="100" cy="42" r="4" fill="#EC991D" opacity="0.9" filter="url(#pg2-glow)">
+                                    <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="360 100 100" dur="8s" repeatCount="indefinite"/>
+                                </circle>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-card-body">
+                        <h3 class="project-card-title">The Fractal Cipher</h3>
+                        <div class="project-card-actions">
+                            <a href="#" class="project-action mint" aria-label="Mint The Fractal Cipher">Mint</a>
+                            <a href="#" class="project-action trade" aria-label="Trade The Fractal Cipher">Trade</a>
+                        </div>
+                    </div>
+                    <div class="project-card-footer">
+                        <a href="#beyond8" class="project-go-beyond8">Go Beyond8</a>
+                    </div>
+                </article>
+
+                <!-- ─── Card 3: Dimensional Gateway ─── -->
+                <article class="project-card">
+                    <div class="project-card-frame">
+                        <div class="project-card-image-wrap">
+                            <svg class="project-placeholder-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="Dimensional Gateway placeholder" role="img">
+                                <defs>
+                                    <radialGradient id="pg3-portal" cx="50%" cy="50%" r="50%">
+                                        <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.15"/>
+                                        <stop offset="30%"  stop-color="#06566d" stop-opacity="0.7"/>
+                                        <stop offset="70%"  stop-color="#7a3013" stop-opacity="0.5"/>
+                                        <stop offset="100%" stop-color="#0F2027" stop-opacity="0"/>
+                                    </radialGradient>
+                                    <filter id="pg3-glow">
+                                        <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+                                        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                                    </filter>
+                                </defs>
+                                <!-- Portal background -->
+                                <ellipse cx="100" cy="100" rx="70" ry="70" fill="url(#pg3-portal)">
+                                    <animate attributeName="rx" values="68;74;68" dur="7s" repeatCount="indefinite"/>
+                                    <animate attributeName="ry" values="68;74;68" dur="7s" repeatCount="indefinite"/>
+                                </ellipse>
+                                <!-- Concentric rings — vortex effect -->
+                                <circle cx="100" cy="100" r="68" fill="none" stroke="#06566d" stroke-width="1" opacity="0.6" stroke-dasharray="180 20">
+                                    <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="360 100 100" dur="14s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="100" cy="100" r="55" fill="none" stroke="#7a3013" stroke-width="1.2" opacity="0.55" stroke-dasharray="120 15">
+                                    <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="-360 100 100" dur="10s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="100" cy="100" r="42" fill="none" stroke="#157389" stroke-width="1.4" opacity="0.65" stroke-dasharray="80 12">
+                                    <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="360 100 100" dur="7s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="100" cy="100" r="29" fill="none" stroke="#E5B457" stroke-width="1" opacity="0.5" stroke-dasharray="40 8">
+                                    <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="-360 100 100" dur="5s" repeatCount="indefinite"/>
+                                </circle>
+                                <!-- Gateway core -->
+                                <circle cx="100" cy="100" r="14" fill="#06566d" opacity="0.95" filter="url(#pg3-glow)">
+                                    <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="100" cy="100" r="7" fill="#ffffff" opacity="0.35">
+                                    <animate attributeName="r" values="5;9;5" dur="3s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.2;0.5;0.2" dur="3s" repeatCount="indefinite"/>
+                                </circle>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-card-body">
+                        <h3 class="project-card-title">Dimensional Gateway</h3>
+                        <div class="project-card-actions">
+                            <a href="#" class="project-action mint" aria-label="Mint Dimensional Gateway">Mint</a>
+                            <a href="#" class="project-action trade" aria-label="Trade Dimensional Gateway">Trade</a>
+                        </div>
+                    </div>
+                    <div class="project-card-footer">
+                        <a href="#beyond8" class="project-go-beyond8">Go Beyond8</a>
+                    </div>
+                </article>
+
+                <!-- ─── Card 4: Void Resonance ─── -->
+                <article class="project-card">
+                    <div class="project-card-frame">
+                        <div class="project-card-image-wrap">
+                            <svg class="project-placeholder-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="Void Resonance placeholder" role="img">
+                                <defs>
+                                    <radialGradient id="pg4-void" cx="50%" cy="50%" r="50%">
+                                        <stop offset="0%"   stop-color="#D66D0F" stop-opacity="0.6"/>
+                                        <stop offset="40%"  stop-color="#572A14" stop-opacity="0.5"/>
+                                        <stop offset="100%" stop-color="#0F2027" stop-opacity="0"/>
+                                    </radialGradient>
+                                    <filter id="pg4-glow">
+                                        <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur"/>
+                                        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                                    </filter>
+                                </defs>
+                                <circle cx="100" cy="100" r="88" fill="url(#pg4-void)">
+                                    <animate attributeName="opacity" values="0.6;0.9;0.6" dur="8s" repeatCount="indefinite"/>
+                                </circle>
+                                <!-- Shockwave rings -->
+                                <circle cx="100" cy="100" r="10" fill="none" stroke="#D66D0F" stroke-width="2" opacity="0">
+                                    <animate attributeName="r" values="10;80" dur="3.5s" repeatCount="indefinite" begin="0s"/>
+                                    <animate attributeName="opacity" values="0.9;0" dur="3.5s" repeatCount="indefinite" begin="0s"/>
+                                </circle>
+                                <circle cx="100" cy="100" r="10" fill="none" stroke="#EC991D" stroke-width="1.5" opacity="0">
+                                    <animate attributeName="r" values="10;80" dur="3.5s" repeatCount="indefinite" begin="1.16s"/>
+                                    <animate attributeName="opacity" values="0.7;0" dur="3.5s" repeatCount="indefinite" begin="1.16s"/>
+                                </circle>
+                                <circle cx="100" cy="100" r="10" fill="none" stroke="#E5B457" stroke-width="1" opacity="0">
+                                    <animate attributeName="r" values="10;80" dur="3.5s" repeatCount="indefinite" begin="2.33s"/>
+                                    <animate attributeName="opacity" values="0.5;0" dur="3.5s" repeatCount="indefinite" begin="2.33s"/>
+                                </circle>
+                                <!-- Floating debris particles -->
+                                <circle cx="60"  cy="55"  r="2.5" fill="#D66D0F" opacity="0.7" filter="url(#pg4-glow)">
+                                    <animate attributeName="cy" values="55;48;55" dur="5s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.5;1;0.5" dur="5s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="148" cy="72"  r="2"   fill="#EC991D" opacity="0.7" filter="url(#pg4-glow)">
+                                    <animate attributeName="cy" values="72;65;72" dur="6.5s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.4;0.9;0.4" dur="6.5s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="130" cy="148" r="3"   fill="#D66D0F" opacity="0.6" filter="url(#pg4-glow)">
+                                    <animate attributeName="cy" values="148;142;148" dur="4.2s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.5;1;0.5" dur="4.2s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="52"  cy="135" r="2"   fill="#A3581D" opacity="0.6" filter="url(#pg4-glow)">
+                                    <animate attributeName="cy" values="135;129;135" dur="7s" repeatCount="indefinite"/>
+                                </circle>
+                                <!-- Void core -->
+                                <circle cx="100" cy="100" r="20" fill="#0F2027" opacity="0.95">
+                                    <animate attributeName="r" values="18;23;18" dur="3s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="100" cy="100" r="8" fill="#D66D0F" opacity="0.9" filter="url(#pg4-glow)">
+                                    <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+                                </circle>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-card-body">
+                        <h3 class="project-card-title">Void Resonance</h3>
+                        <div class="project-card-actions">
+                            <a href="#" class="project-action mint" aria-label="Mint Void Resonance">Mint</a>
+                            <a href="#" class="project-action trade" aria-label="Trade Void Resonance">Trade</a>
+                        </div>
+                    </div>
+                    <div class="project-card-footer">
+                        <a href="#beyond8" class="project-go-beyond8">Go Beyond8</a>
+                    </div>
+                </article>
+
+                <!-- ─── Card 5: Echoes Unbound ─── -->
+                <article class="project-card">
+                    <div class="project-card-frame">
+                        <div class="project-card-image-wrap">
+                            <svg class="project-placeholder-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="Echoes Unbound placeholder" role="img">
+                                <defs>
+                                    <linearGradient id="pg5-wave" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%"   stop-color="#82B29D" stop-opacity="0.9"/>
+                                        <stop offset="50%"  stop-color="#115362" stop-opacity="0.6"/>
+                                        <stop offset="100%" stop-color="#0C3747" stop-opacity="0.3"/>
+                                    </linearGradient>
+                                    <filter id="pg5-glow">
+                                        <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+                                        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                                    </filter>
+                                </defs>
+                                <!-- Wave paths — each offset and animated -->
+                                <path d="M 10,120 Q 40,90 70,120 Q 100,150 130,120 Q 160,90 190,120" fill="none" stroke="url(#pg5-wave)" stroke-width="2" opacity="0.8" filter="url(#pg5-glow)">
+                                    <animateTransform attributeName="transform" type="translate" values="0,0;0,-15;0,0" dur="4s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="4s" repeatCount="indefinite"/>
+                                </path>
+                                <path d="M 10,100 Q 40,70 70,100 Q 100,130 130,100 Q 160,70 190,100" fill="none" stroke="#82B29D" stroke-width="1.8" opacity="0.6" filter="url(#pg5-glow)">
+                                    <animateTransform attributeName="transform" type="translate" values="0,0;0,-12;0,0" dur="4s" begin="0.6s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.5;0.85;0.5" dur="4s" begin="0.6s" repeatCount="indefinite"/>
+                                </path>
+                                <path d="M 10,80 Q 40,50 70,80 Q 100,110 130,80 Q 160,50 190,80" fill="none" stroke="#157389" stroke-width="1.5" opacity="0.5" filter="url(#pg5-glow)">
+                                    <animateTransform attributeName="transform" type="translate" values="0,0;0,-10;0,0" dur="4s" begin="1.2s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.4;0.7;0.4" dur="4s" begin="1.2s" repeatCount="indefinite"/>
+                                </path>
+                                <path d="M 10,140 Q 40,110 70,140 Q 100,170 130,140 Q 160,110 190,140" fill="none" stroke="#0C3747" stroke-width="1.2" opacity="0.4">
+                                    <animateTransform attributeName="transform" type="translate" values="0,0;0,-8;0,0" dur="4s" begin="1.8s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.3;0.55;0.3" dur="4s" begin="1.8s" repeatCount="indefinite"/>
+                                </path>
+                                <!-- Floating echo orbs -->
+                                <circle cx="100" cy="100" r="10" fill="#82B29D" opacity="0.6" filter="url(#pg5-glow)">
+                                    <animate attributeName="r" values="8;13;8" dur="5s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.5;0.9;0.5" dur="5s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="45"  cy="90"  r="5" fill="#157389" opacity="0.5" filter="url(#pg5-glow)">
+                                    <animate attributeName="cy" values="90;84;90" dur="3.5s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.4;0.8;0.4" dur="3.5s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="155" cy="110" r="5" fill="#82B29D" opacity="0.5" filter="url(#pg5-glow)">
+                                    <animate attributeName="cy" values="110;104;110" dur="4.5s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.4;0.8;0.4" dur="4.5s" repeatCount="indefinite"/>
+                                </circle>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-card-body">
+                        <h3 class="project-card-title">Echoes Unbound</h3>
+                        <div class="project-card-actions">
+                            <a href="#" class="project-action mint" aria-label="Mint Echoes Unbound">Mint</a>
+                            <a href="#" class="project-action trade" aria-label="Trade Echoes Unbound">Trade</a>
+                        </div>
+                    </div>
+                    <div class="project-card-footer">
+                        <a href="#beyond8" class="project-go-beyond8">Go Beyond8</a>
+                    </div>
+                </article>
+
+                <!-- ─── Card 6: The 8th Gate ─── -->
+                <article class="project-card">
+                    <div class="project-card-frame">
+                        <div class="project-card-image-wrap">
+                            <svg class="project-placeholder-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-label="The 8th Gate placeholder" role="img">
+                                <defs>
+                                    <radialGradient id="pg6-radial" cx="50%" cy="50%" r="50%">
+                                        <stop offset="0%"   stop-color="#EC991D" stop-opacity="0.85"/>
+                                        <stop offset="45%"  stop-color="#9A4A23" stop-opacity="0.55"/>
+                                        <stop offset="100%" stop-color="#0F2027" stop-opacity="0"/>
+                                    </radialGradient>
+                                    <filter id="pg6-glow">
+                                        <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+                                        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                                    </filter>
+                                </defs>
+                                <circle cx="100" cy="100" r="88" fill="url(#pg6-radial)" opacity="0.5">
+                                    <animate attributeName="opacity" values="0.4;0.65;0.4" dur="7s" repeatCount="indefinite"/>
+                                </circle>
+                                <!-- Outer octagon frame -->
+                                <polygon points="100,20 158,42 180,100 158,158 100,180 42,158 20,100 42,42" fill="none" stroke="#EC991D" stroke-width="1.8" opacity="0.7" filter="url(#pg6-glow)">
+                                    <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="360 100 100" dur="25s" repeatCount="indefinite"/>
+                                </polygon>
+                                <!-- Inner octagon counter-rotating -->
+                                <polygon points="100,46 133,57 146,90 133,123 100,134 67,123 54,90 67,57" fill="none" stroke="#D66D0F" stroke-width="1.4" opacity="0.65" filter="url(#pg6-glow)">
+                                    <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="-360 100 100" dur="15s" repeatCount="indefinite"/>
+                                </polygon>
+                                <!-- Eight-pointed star paths -->
+                                <g opacity="0.45">
+                                    <line x1="100" y1="28"  x2="100" y2="50"  stroke="#E5B457" stroke-width="1.2"/>
+                                    <line x1="100" y1="150" x2="100" y2="172" stroke="#E5B457" stroke-width="1.2"/>
+                                    <line x1="28"  y1="100" x2="50"  y2="100" stroke="#E5B457" stroke-width="1.2"/>
+                                    <line x1="150" y1="100" x2="172" y2="100" stroke="#E5B457" stroke-width="1.2"/>
+                                    <line x1="43"  y1="43"  x2="58"  y2="58"  stroke="#EC991D" stroke-width="1"/>
+                                    <line x1="142" y1="142" x2="157" y2="157" stroke="#EC991D" stroke-width="1"/>
+                                    <line x1="157" y1="43"  x2="142" y2="58"  stroke="#EC991D" stroke-width="1"/>
+                                    <line x1="58"  y1="142" x2="43"  y2="157" stroke="#EC991D" stroke-width="1"/>
+                                </g>
+                                <!-- Central power orb -->
+                                <circle cx="100" cy="100" r="20" fill="#EC991D" opacity="0.85" filter="url(#pg6-glow)">
+                                    <animate attributeName="r" values="18;24;18" dur="4s" repeatCount="indefinite"/>
+                                    <animate attributeName="opacity" values="0.7;1;0.7" dur="4s" repeatCount="indefinite"/>
+                                </circle>
+                                <!-- Number 8 hint — two stacked circles -->
+                                <circle cx="100" cy="92"  r="8" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.5"/>
+                                <circle cx="100" cy="108" r="8" fill="none" stroke="#ffffff" stroke-width="1.5" opacity="0.5"/>
+                                <!-- Rotating orbiting dot -->
+                                <circle cx="100" cy="38" r="4.5" fill="#EC991D" opacity="0.9" filter="url(#pg6-glow)">
+                                    <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="360 100 100" dur="6s" repeatCount="indefinite"/>
+                                </circle>
+                                <circle cx="100" cy="162" r="4.5" fill="#D66D0F" opacity="0.9" filter="url(#pg6-glow)">
+                                    <animateTransform attributeName="transform" type="rotate" from="0 100 100" to="-360 100 100" dur="6s" repeatCount="indefinite"/>
+                                </circle>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="project-card-body">
+                        <h3 class="project-card-title">The 8th Gate</h3>
+                        <div class="project-card-actions">
+                            <a href="#" class="project-action mint" aria-label="Mint The 8th Gate">Mint</a>
+                            <a href="#" class="project-action trade" aria-label="Trade The 8th Gate">Trade</a>
+                        </div>
+                    </div>
+                    <div class="project-card-footer">
+                        <a href="#beyond8" class="project-go-beyond8">Go Beyond8</a>
+                    </div>
+                </article>
+
+            </div><!-- /.project-grid -->
+        </div><!-- /.section-content.reveal -->
+    </section>
+    <!-- End Projects Framework Section -->
+
     <!-- Beyond8 Floating Logo Section -->
     <section id="beyond8" class="section powerlevel-fractal beyond8-section">
         <!-- Fractal corner ornaments -->

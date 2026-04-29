@@ -4437,9 +4437,9 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
     margin: 0;
 }
 
-.sticker-inline-cta {
-    font-size: 16px !important;
-    padding: 12px 24px !important;
+.sticker-inline-wrap .cta-button {
+    font-size: 16px;
+    padding: 12px 24px;
 }
 
 @media (max-width: 480px) {
@@ -4452,9 +4452,9 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
         width: clamp(100px, 40vw, 130px);
     }
 
-    .sticker-inline-cta {
-        font-size: 14px !important;
-        padding: 10px 20px !important;
+    .sticker-inline-wrap .cta-button {
+        font-size: 14px;
+        padding: 10px 20px;
     }
 }
 

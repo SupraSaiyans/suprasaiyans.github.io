@@ -5257,3 +5257,117 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 /* ============================================================
    END PROJECTS FRAMEWORK SECTION
    ============================================================ */
+
+/* ============================================================
+   DRAGON'S NEST — Discord Link (top section)
+   ============================================================ */
+
+.dragons-nest-wrap {
+    text-align: center;
+    margin: 36px auto 52px;
+    position: relative;
+}
+
+/* Floating bob — GPU-only animation */
+.dragons-nest-link {
+    display: inline-block;
+    position: relative;
+    animation: dragonsNestFloat 6s ease-in-out infinite;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+}
+
+/* Warm amber/dragon-fire glow halo — opacity only (GPU-accelerated) */
+.dragons-nest-link::before {
+    content: '';
+    position: absolute;
+    inset: -28px;
+    border-radius: 40%;
+    background: radial-gradient(ellipse at center,
+        rgba(214, 109, 15, 0.5)  0%,
+        rgba(229, 180, 87, 0.32) 42%,
+        transparent              72%);
+    opacity: 0.55;
+    animation: dragonsNestGlow 5s ease-in-out infinite;
+    pointer-events: none;
+}
+
+/* Tighter inner glow layer for image depth */
+.dragons-nest-link::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 30%;
+    background: radial-gradient(ellipse at center,
+        rgba(229, 180, 87, 0.28) 0%,
+        rgba(214, 109, 15, 0.18) 50%,
+        transparent              78%);
+    opacity: 0.6;
+    animation: dragonsNestGlow 5s ease-in-out infinite;
+    animation-delay: 0.8s;
+    pointer-events: none;
+}
+
+.dragons-nest-link:hover {
+    transform: scale(1.05) translateY(-6px);
+}
+
+.dragons-nest-link:hover::before {
+    opacity: 1;
+}
+
+.dragons-nest-link:hover::after {
+    opacity: 1;
+}
+
+/* Image — no expensive filter; glow comes from the ::before halo */
+.dragons-nest-img {
+    width: clamp(300px, 50vw, 580px);
+    height: auto;
+    display: block;
+    position: relative;
+}
+
+/* Subtle Discord hint label */
+.dragons-nest-discord-hint {
+    margin: 16px 0 0;
+    font-size: 0.82em;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+/* Float keyframe */
+@keyframes dragonsNestFloat {
+    0%, 100% { transform: translateY(0);    }
+    50%       { transform: translateY(-9px); }
+}
+
+/* Glow pulse keyframe */
+@keyframes dragonsNestGlow {
+    0%, 100% { opacity: 0.5;  }
+    50%       { opacity: 0.9;  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .dragons-nest-wrap {
+        margin: 28px auto 40px;
+    }
+    .dragons-nest-img {
+        width: clamp(220px, 82vw, 360px);
+    }
+}
+
+/* ── Reduced-motion ── */
+@media (prefers-reduced-motion: reduce) {
+    .dragons-nest-link,
+    .dragons-nest-link::before,
+    .dragons-nest-link::after {
+        animation: none;
+    }
+    .dragons-nest-link:hover {
+        transform: scale(1.04);
+    }
+}

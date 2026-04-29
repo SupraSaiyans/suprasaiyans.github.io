@@ -4470,6 +4470,311 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 }
 
 /* ============================================================
+   COMMUNITY TOKENS — INLINE (inside Over 9000 Saiyans section)
+   ============================================================ */
+
+.tokens-inline-wrap {
+    margin-top: 0;
+    padding-top: 40px;
+    border-top: 1px solid rgba(229, 180, 87, 0.22);
+}
+
+.tokens-inline-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+}
+
+.tokens-inline-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(229, 180, 87, 0.4), transparent);
+}
+
+.tokens-inline-icon {
+    width: 20px;
+    height: 20px;
+    color: rgba(229, 180, 87, 0.6);
+    flex-shrink: 0;
+    animation: tokenIconPulse 5s ease-in-out infinite;
+}
+
+@keyframes tokenIconPulse {
+    0%, 100% { opacity: 0.55; }
+    50%       { opacity: 0.95; }
+}
+
+.tokens-inline-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.tokens-inline-title {
+    font-size: clamp(1.1em, 2.5vw, 1.45em);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, var(--accent-gold-orange), var(--accent-gold), var(--accent-warm-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0 0 6px;
+    line-height: 1.2;
+}
+
+.tokens-inline-subtitle {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.38);
+    margin: 0;
+}
+
+/* ---- Token cards grid ---- */
+
+.token-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    max-width: 680px;
+    margin: 0 auto;
+}
+
+.token-card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 14px;
+    overflow: hidden;
+    background: linear-gradient(160deg, rgba(15, 32, 39, 0.92) 0%, rgba(12, 55, 71, 0.75) 100%);
+    border: 1px solid rgba(229, 180, 87, 0.22);
+    transition: transform 0.32s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+                border-color 0.3s ease;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+    position: relative;
+}
+
+/* Glow effect via pseudo-element — opacity-only transition (GPU-accelerated) */
+.token-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 14px;
+    background: linear-gradient(160deg, rgba(229, 180, 87, 0.09), rgba(236, 153, 29, 0.06));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.token-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    border-color: rgba(229, 180, 87, 0.52);
+}
+
+.token-card:hover::before {
+    opacity: 1;
+}
+
+/* Image area */
+
+.token-card-image-wrap {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+    line-height: 0;
+}
+
+.token-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.token-card-image-wrap:hover .token-card-img {
+    transform: scale(1.08);
+}
+
+.token-card-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(6, 34, 46, 0.55);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    color: rgba(229, 180, 87, 0.9);
+}
+
+.token-card-image-wrap:hover .token-card-overlay {
+    opacity: 1;
+}
+
+/* Card body */
+
+.token-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px 14px 16px;
+    position: relative;
+    z-index: 1;
+    flex: 1;
+}
+
+.token-card-partner {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.token-card-partner-logo {
+    width: 24px;
+    height: 24px;
+    border-radius: 5px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.token-card-partner-name {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+    line-height: 1;
+}
+
+.token-card-name {
+    font-size: clamp(1.15em, 3vw, 1.45em);
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    color: var(--accent-gold);
+    text-decoration: none;
+    line-height: 1;
+    transition: color 0.2s ease;
+    display: inline-block;
+}
+
+.token-card-name:hover {
+    color: #fff;
+}
+
+.token-card-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 2px;
+}
+
+.token-card-action-btn {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: transform 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+    line-height: 1;
+}
+
+.token-card-action-btn:hover {
+    transform: translateY(-1px);
+    opacity: 0.88;
+}
+
+.atmos-btn {
+    background: linear-gradient(135deg, rgba(21, 115, 137, 0.85), rgba(17, 83, 98, 0.9));
+    color: rgba(255, 255, 255, 0.88);
+    border: 1px solid rgba(21, 115, 137, 0.45);
+}
+
+.crystara-btn {
+    background: linear-gradient(135deg, rgba(154, 74, 35, 0.75), rgba(87, 42, 20, 0.85));
+    color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(154, 74, 35, 0.4);
+}
+
+/* Responsive */
+
+@media (max-width: 600px) {
+    .token-cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .token-card-body {
+        padding: 10px 10px 12px;
+        gap: 7px;
+    }
+
+    .token-card-actions {
+        gap: 5px;
+    }
+
+    .token-card-action-btn {
+        font-size: 9px;
+        padding: 5px 6px;
+    }
+}
+
+@media (max-width: 400px) {
+    .token-cards-grid {
+        grid-template-columns: 1fr;
+        max-width: 280px;
+    }
+
+    .token-card {
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .token-card-image-wrap {
+        width: 90px;
+        flex-shrink: 0;
+        aspect-ratio: unset;
+    }
+
+    .token-card-body {
+        flex: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tokens-inline-icon {
+        animation: none;
+        opacity: 0.6;
+    }
+
+    .token-card {
+        transition: none;
+    }
+
+    .token-card:hover {
+        transform: none;
+    }
+
+    .token-card-img {
+        transition: none;
+    }
+
+    .token-card-image-wrap:hover .token-card-img {
+        transform: none;
+    }
+
+    .token-card-overlay {
+        display: none;
+    }
+}
+
+/* ============================================================
    COMMUNITY TOKENS SECTION
    ============================================================ */
 

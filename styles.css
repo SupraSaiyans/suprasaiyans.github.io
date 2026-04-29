@@ -4501,8 +4501,8 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 }
 
 @keyframes tokenIconPulse {
-    0%, 100% { opacity: 0.6;  transform: scale(1) rotate(0deg); }
-    50%       { opacity: 1;   transform: scale(1.2) rotate(15deg); }
+    0%, 100% { opacity: 0.55; }
+    50%       { opacity: 0.95; }
 }
 
 .tokens-inline-header {
@@ -4549,18 +4549,18 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
     background: linear-gradient(160deg, rgba(15, 32, 39, 0.92) 0%, rgba(12, 55, 71, 0.75) 100%);
     border: 1px solid rgba(229, 180, 87, 0.22);
     transition: transform 0.32s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-                border-color 0.3s ease,
-                box-shadow 0.3s ease;
+                border-color 0.3s ease;
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
     position: relative;
 }
 
+/* Glow effect via pseudo-element — opacity-only transition (GPU-accelerated) */
 .token-card::before {
     content: '';
     position: absolute;
     inset: 0;
     border-radius: 14px;
-    background: linear-gradient(160deg, rgba(229, 180, 87, 0.06), rgba(236, 153, 29, 0.04));
+    background: linear-gradient(160deg, rgba(229, 180, 87, 0.09), rgba(236, 153, 29, 0.06));
     opacity: 0;
     transition: opacity 0.3s ease;
     pointer-events: none;
@@ -4570,9 +4570,6 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .token-card:hover {
     transform: translateY(-6px) scale(1.03);
     border-color: rgba(229, 180, 87, 0.52);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45),
-                0 0 22px rgba(229, 180, 87, 0.18),
-                0 0 44px rgba(236, 153, 29, 0.09);
 }
 
 .token-card:hover::before {
@@ -4690,27 +4687,19 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 
 .token-card-action-btn:hover {
     transform: translateY(-1px);
-    opacity: 0.92;
+    opacity: 0.88;
 }
 
 .atmos-btn {
-    background: linear-gradient(135deg, rgba(21, 115, 137, 0.75), rgba(17, 83, 98, 0.85));
+    background: linear-gradient(135deg, rgba(21, 115, 137, 0.85), rgba(17, 83, 98, 0.9));
     color: rgba(255, 255, 255, 0.88);
     border: 1px solid rgba(21, 115, 137, 0.45);
 }
 
-.atmos-btn:hover {
-    background: linear-gradient(135deg, rgba(21, 115, 137, 0.9), rgba(17, 83, 98, 1));
-}
-
 .crystara-btn {
-    background: linear-gradient(135deg, rgba(154, 74, 35, 0.65), rgba(87, 42, 20, 0.8));
+    background: linear-gradient(135deg, rgba(154, 74, 35, 0.75), rgba(87, 42, 20, 0.85));
     color: rgba(255, 255, 255, 0.8);
     border: 1px solid rgba(154, 74, 35, 0.4);
-}
-
-.crystara-btn:hover {
-    background: linear-gradient(135deg, rgba(154, 74, 35, 0.9), rgba(87, 42, 20, 1));
 }
 
 /* Responsive */

@@ -4913,6 +4913,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .project-card {
     display: flex;
     flex-direction: column;
+    position: relative;
     background: var(--glass-bg);
     clip-path: polygon(
         var(--notch-size) 0%,
@@ -5093,7 +5094,9 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 }
 
 .project-go-beyond8 {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-size: 0.8em;
     font-weight: bold;
     letter-spacing: 0.06em;

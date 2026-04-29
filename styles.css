@@ -4218,38 +4218,8 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 }
 
 /* ===========================
-   Beyond8 Sticker Pack Section
+   Beyond8 Sticker Pack — Pie Wheel (standalone component)
    =========================== */
-
-/* ===== Beyond8 Sticker Pack — Circular Pie Wheel ===== */
-.sticker-pack-section {
-    padding: 60px 20px 80px;
-    overflow: visible;
-}
-
-.sticker-pack-section .section-content {
-    background: transparent;
-    border: none;
-    box-shadow: none;
-}
-
-.sticker-pack-section .section-content::before,
-.sticker-pack-section .section-content::after {
-    display: none;
-}
-
-/* Simple sticker image centering wrapper */
-.sticker-image-wrap {
-    display: flex;
-    justify-content: center;
-    padding: 20px 0 10px;
-}
-
-.sticker-image {
-    width: clamp(220px, 55vw, 400px);
-    height: auto;
-    display: block;
-}
 
 /* Pie wheel centring wrapper */
 .pie-wheel-wrap {
@@ -4352,15 +4322,6 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
         width: 380px;
         height: 380px;
     }
-
-    .sticker-pack-section {
-        padding: 40px 16px 50px;
-        min-height: auto;
-    }
-
-    .sticker-image {
-        width: clamp(200px, 60vw, 340px);
-    }
 }
 
 /* Mobile */
@@ -4368,14 +4329,6 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
     .pie-wheel {
         width: 300px;
         height: 300px;
-    }
-
-    .sticker-pack-section {
-        padding: 30px 12px 40px;
-    }
-
-    .sticker-image {
-        width: clamp(180px, 70vw, 300px);
     }
 
     .sticker-cta-wrap .cta-button {
@@ -4392,10 +4345,6 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
         width: 270px;
         height: 270px;
     }
-
-    .sticker-image {
-        width: clamp(160px, 75vw, 280px);
-    }
 }
 
 /* Respect reduced-motion preference */
@@ -4411,6 +4360,112 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
     .pie-slice:hover {
         filter: none;
         transform: rotate(var(--rot, 0deg));
+    }
+}
+
+/* ============================================================
+   STICKER PACK INLINE (integrated into Over 9000 section)
+   ============================================================ */
+
+.sticker-inline-wrap {
+    margin-top: 52px;
+}
+
+.sticker-inline-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 36px;
+}
+
+.sticker-inline-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 200, 180, 0.38), transparent);
+}
+
+.sticker-inline-gem {
+    width: 18px;
+    height: 18px;
+    color: rgba(0, 200, 180, 0.55);
+    flex-shrink: 0;
+    animation: gemPulse 4s ease-in-out infinite;
+}
+
+@keyframes gemPulse {
+    0%, 100% { opacity: 0.55; transform: scale(1); }
+    50%       { opacity: 0.9;  transform: scale(1.25); }
+}
+
+.sticker-inline-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 36px;
+    flex-wrap: wrap;
+}
+
+.sticker-inline-image-link {
+    display: block;
+    flex-shrink: 0;
+}
+
+.sticker-inline-image {
+    width: clamp(110px, 22vw, 155px);
+    height: auto;
+    display: block;
+    border-radius: 14px;
+    transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.sticker-inline-image-link:hover .sticker-inline-image {
+    transform: scale(1.07) rotate(-2deg);
+}
+
+.sticker-inline-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.sticker-inline-caption {
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.sticker-inline-cta {
+    font-size: 16px !important;
+    padding: 12px 24px !important;
+}
+
+@media (max-width: 480px) {
+    .sticker-inline-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .sticker-inline-image {
+        width: clamp(100px, 40vw, 130px);
+    }
+
+    .sticker-inline-cta {
+        font-size: 14px !important;
+        padding: 10px 20px !important;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sticker-inline-gem {
+        animation: none;
+        opacity: 0.55;
+    }
+
+    .sticker-inline-image-link:hover .sticker-inline-image {
+        transform: none;
     }
 }
 
@@ -4673,10 +4728,6 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
         max-height: 100%;
     }
 
-    /* Sticker pie wheel: clip any overflow on mobile (hover effects disabled on touch) */
-    .sticker-pack-section {
-        overflow: hidden;
-    }
 }
 
 /* On small screens (≤480px) keep the 2-column grid and fix social layout */

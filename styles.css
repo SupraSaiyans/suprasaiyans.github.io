@@ -5646,7 +5646,7 @@ button,
     }
 
     .token-card-action-btn {
-        min-height: 40px;
+        min-height: 44px;
         font-size: 10px;
         padding: 8px 6px;
     }
@@ -5700,14 +5700,14 @@ button,
 
 /* ── 7. Section content — prevent horizontal overflow ───────
    Ensure .section-content never exceeds the viewport on very
-   narrow phones (≤ 375 px) where margin accumulates.         */
+   narrow phones (≤ 375 px) where margin accumulates.
+   Use a small margin rather than zero to avoid cramping.      */
 @media (max-width: 375px) {
     .container,
     .section-content {
-        margin: 0;
+        margin: 0 4px;
         box-sizing: border-box;
-        width: 100%;
-        max-width: 100%;
+        max-width: calc(100% - 8px);
     }
 }
 
@@ -5805,10 +5805,17 @@ button,
 /* ── 14. Atmos partner cards — already handled at 480 px in component styles;
         touch-action: manipulation applied in rule 1 above.                   */
 
-/* ── 15. Scrollbar — hide on mobile to reclaim 8 px ──────────*/
+/* ── 15. Scrollbar — thin on mobile instead of hidden ────────
+   Completely hiding scrollbars removes spatial awareness cues
+   for users; use a thin bar instead to keep 7px reclaimed.   */
 @media (max-width: 768px) {
     ::-webkit-scrollbar {
-        width: 0;
-        height: 0;
+        width: 3px;
+        height: 3px;
+    }
+
+    /* Firefox */
+    * {
+        scrollbar-width: thin;
     }
 }

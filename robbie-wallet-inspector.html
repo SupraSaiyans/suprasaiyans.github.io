@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Robbie Wallet Inspector - Inspect any Supra blockchain wallet address for token balances, transaction history, and account details.">
+    <meta name="description" content="Robbie Wallet Inspector - Inspect any Supra blockchain wallet for token balances, transaction history, and full account details.">
     <meta property="og:title" content="Robbie Wallet Inspector | SupraSaiyans">
     <meta property="og:description" content="Inspect Supra blockchain wallets for token balances, transactions, and account info.">
     <meta property="og:image" content="images/BACKGROUNDSESSION21.PNG">
@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <style>
-        /* ===== CSS VARIABLES (matching SupraSaiyans design system) ===== */
+        /* ===== CSS VARIABLES ===== */
         :root {
             --primary-dark: #0F2027;
             --primary-dark-alt: #0C3747;
@@ -51,784 +51,517 @@
             --shadow-lg: 0 8px 32px rgba(21, 115, 137, 0.35);
             --shadow-glow-kastanje: 0 0 30px rgba(163, 88, 29, 0.5);
             --notch-size: 12px;
-            --notch-size-lg: 20px;
         }
 
-        /* ===== BASE RESET ===== */
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
+        *, *::before, *::after { box-sizing: border-box; }
 
         body {
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             min-height: 100vh;
             background: var(--primary-dark);
             font-family: 'Arial', sans-serif;
             color: var(--text-primary);
-            position: relative;
             overflow-x: hidden;
         }
 
-        /* ===== FIXED BACKGROUND ===== */
+        /* ===== BACKGROUND ===== */
         .background-layer {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
             background: url('images/BACKGROUNDSESSION21.PNG') center center / cover no-repeat;
-            z-index: 0;
-            will-change: transform;
+            z-index: 0; will-change: transform;
         }
-
         .border-ornaments {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            z-index: 1;
-            pointer-events: none;
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 1; pointer-events: none;
             background:
-                linear-gradient(180deg, rgba(21, 115, 137, 0.25) 0%, transparent 60px),
-                linear-gradient(0deg, rgba(214, 109, 15, 0.25) 0%, transparent 60px);
+                linear-gradient(180deg, rgba(21,115,137,0.25) 0%, transparent 60px),
+                linear-gradient(0deg,   rgba(214,109,15,0.25) 0%, transparent 60px);
             contain: layout style paint;
         }
-
         .corner-ornaments {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            z-index: 1;
-            pointer-events: none;
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 1; pointer-events: none;
             background-image:
-                url('corner-ornament-tl.svg'),
-                url('corner-ornament-tr.svg'),
-                url('corner-ornament-bl.svg'),
-                url('corner-ornament-br.svg');
+                url('corner-ornament-tl.svg'), url('corner-ornament-tr.svg'),
+                url('corner-ornament-bl.svg'), url('corner-ornament-br.svg');
             background-position: top left, top right, bottom left, bottom right;
             background-size: 300px 300px;
             background-repeat: no-repeat;
             contain: layout style paint;
         }
 
-        /* ===== MAIN LAYOUT ===== */
+        /* ===== LAYOUT ===== */
         .page-wrapper {
-            position: relative;
-            z-index: 2;
+            position: relative; z-index: 2;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            display: flex; flex-direction: column; align-items: center;
             padding: 40px 20px 60px;
         }
 
         /* ===== HEADER ===== */
         .site-header {
-            width: 100%;
-            max-width: 960px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 40px;
-            padding: 16px 24px;
+            width: 100%; max-width: 1000px;
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 32px; padding: 16px 24px;
             background: var(--glass-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border: 1px solid var(--border-color); border-radius: 8px;
             box-shadow: var(--shadow-md);
         }
-
         .header-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-            color: var(--text-primary);
+            display: flex; align-items: center; gap: 12px;
+            text-decoration: none; color: var(--text-primary);
             transition: opacity 0.2s ease;
         }
-
-        .header-logo:hover,
-        .header-logo:focus-visible {
-            opacity: 0.85;
-            outline: 2px solid #157389;
-            outline-offset: 4px;
-            border-radius: 4px;
+        .header-logo:hover, .header-logo:focus-visible {
+            opacity: 0.85; outline: 2px solid #157389; outline-offset: 4px; border-radius: 4px;
         }
-
-        .header-logo img {
-            height: 40px;
-            width: auto;
-        }
-
+        .header-logo img { height: 40px; width: auto; }
         .header-site-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.4rem;
-            letter-spacing: 2px;
-            color: var(--text-gold);
+            font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem;
+            letter-spacing: 2px; color: var(--text-gold);
         }
-
         .header-nav-link {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1rem;
-            letter-spacing: 1px;
-            color: var(--accent-teal-light);
-            text-decoration: none;
-            padding: 8px 16px;
-            border: 1px solid var(--accent-teal-light);
-            border-radius: 4px;
+            font-family: 'Bebas Neue', sans-serif; font-size: 1rem;
+            letter-spacing: 1px; color: var(--accent-teal-light);
+            text-decoration: none; padding: 8px 16px;
+            border: 1px solid var(--accent-teal-light); border-radius: 4px;
             transition: transform 0.2s ease, background 0.2s ease;
         }
-
-        .header-nav-link:hover,
-        .header-nav-link:focus-visible {
-            background: rgba(21, 115, 137, 0.2);
-            transform: translateY(-1px);
-            outline: 2px solid #157389;
-            outline-offset: 2px;
+        .header-nav-link:hover, .header-nav-link:focus-visible {
+            background: rgba(21,115,137,0.2); transform: translateY(-1px);
+            outline: 2px solid #157389; outline-offset: 2px;
         }
 
-        /* ===== PAGE TITLE SECTION ===== */
-        .page-hero {
-            width: 100%;
-            max-width: 960px;
-            text-align: center;
-            margin-bottom: 40px;
-            position: relative;
-        }
-
+        /* ===== HERO ===== */
+        .page-hero { width: 100%; max-width: 1000px; text-align: center; margin-bottom: 32px; }
         .page-hero-inner {
-            background: var(--glass-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
+            background: var(--glass-bg); border: 2px solid var(--border-color); border-radius: 8px;
             padding: 40px 40px 32px;
-            box-shadow: inset 0 0 40px rgba(21, 115, 137, 0.1), var(--shadow-md);
-            position: relative;
-            overflow: hidden;
+            box-shadow: inset 0 0 40px rgba(21,115,137,0.1), var(--shadow-md);
+            position: relative; overflow: hidden;
         }
-
-        /* Fractal corner ornaments for the hero section */
-        .fractal-corner {
-            position: absolute;
-            width: 100px;
-            height: 100px;
-            pointer-events: none;
-        }
+        .fractal-corner { position: absolute; width: 100px; height: 100px; pointer-events: none; }
         .fractal-corner-tl { top: 0; left: 0; }
         .fractal-corner-tr { top: 0; right: 0; }
         .fractal-corner-bl { bottom: 0; left: 0; }
         .fractal-corner-br { bottom: 0; right: 0; }
-
-        .fractal-svg {
-            width: 100%;
-            height: 100%;
-        }
-
+        .fractal-svg { width: 100%; height: 100%; }
         .page-title {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            letter-spacing: 4px;
-            margin: 0 0 8px 0;
+            font-size: clamp(2.5rem, 6vw, 4rem); letter-spacing: 4px;
+            margin: 0 0 8px;
             background: linear-gradient(45deg, var(--accent-gold) 0%, var(--accent-teal-light) 50%, var(--accent-gold-orange) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: none;
-            line-height: 1.1;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; line-height: 1.1;
         }
-
         .page-subtitle {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            margin: 0;
-            max-width: 600px;
-            margin: 0 auto;
+            font-size: 1rem; color: var(--text-secondary);
+            margin: 0 auto; max-width: 620px;
         }
 
-        /* ===== SEARCH SECTION ===== */
-        .search-section {
-            width: 100%;
-            max-width: 960px;
-            margin-bottom: 32px;
-        }
-
+        /* ===== SEARCH CARD ===== */
+        .search-section { width: 100%; max-width: 1000px; margin-bottom: 24px; }
         .search-card {
-            background: var(--glass-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            padding: 32px;
-            box-shadow: inset 0 0 40px rgba(21, 115, 137, 0.1), var(--shadow-md);
-            contain: layout style paint;
+            background: var(--glass-bg); border: 2px solid var(--border-color); border-radius: 8px;
+            padding: 28px 32px;
+            box-shadow: inset 0 0 40px rgba(21,115,137,0.1), var(--shadow-md);
         }
-
         .search-label {
-            display: block;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-            color: var(--text-gold);
-            margin-bottom: 12px;
+            display: block; font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem; letter-spacing: 2px; color: var(--text-gold); margin-bottom: 10px;
         }
-
-        .search-row {
-            display: flex;
-            gap: 12px;
-            align-items: stretch;
-        }
-
+        .search-row { display: flex; gap: 10px; align-items: stretch; margin-bottom: 16px; }
         .wallet-input {
-            flex: 1;
-            background: rgba(15, 32, 39, 0.6);
-            border: 2px solid var(--border-color);
-            border-radius: 6px;
-            padding: 14px 18px;
-            font-size: 0.95rem;
-            color: var(--text-primary);
-            font-family: 'Courier New', monospace;
-            transition: border-color 0.2s ease;
-            outline: none;
+            flex: 1; background: rgba(15,32,39,0.6);
+            border: 2px solid var(--border-color); border-radius: 6px;
+            padding: 12px 18px; font-size: 0.95rem;
+            color: var(--text-primary); font-family: 'Courier New', monospace;
+            transition: border-color 0.2s ease; outline: none;
         }
+        .wallet-input::placeholder { color: rgba(224,224,224,0.4); }
+        .wallet-input:focus { border-color: var(--accent-teal-light); box-shadow: 0 0 0 2px rgba(21,115,137,0.3); }
+        .wallet-input:focus-visible { outline: 2px solid #157389; outline-offset: 2px; }
+        .wallet-input.input-error { border-color: #c0392b; box-shadow: 0 0 0 2px rgba(192,57,43,0.25); }
 
-        .wallet-input::placeholder {
-            color: rgba(224, 224, 224, 0.4);
+        /* ===== CONTROLS ROW ===== */
+        .controls-row {
+            display: flex; gap: 12px; align-items: flex-end; flex-wrap: wrap; margin-bottom: 16px;
         }
+        .control-group { display: flex; flex-direction: column; gap: 4px; min-width: 155px; }
+        .control-group-label {
+            font-family: 'Bebas Neue', sans-serif; font-size: 0.72rem;
+            letter-spacing: 1px; color: var(--accent-teal-light); text-transform: uppercase;
+        }
+        .control-select {
+            background: rgba(15,32,39,0.75); border: 2px solid var(--border-color); border-radius: 6px;
+            padding: 9px 32px 9px 12px; font-size: 0.87rem; color: var(--text-primary);
+            cursor: pointer; appearance: none; -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23157389' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 10px center;
+            transition: border-color 0.2s ease; outline: none;
+        }
+        .control-select:focus { border-color: var(--accent-teal-light); box-shadow: 0 0 0 2px rgba(21,115,137,0.25); }
+        .control-select:focus-visible { outline: 2px solid #157389; outline-offset: 2px; }
+        .control-select option { background: #0C3747; color: var(--text-primary); }
 
-        .wallet-input:focus {
-            border-color: var(--accent-teal-light);
-            box-shadow: 0 0 0 2px rgba(21, 115, 137, 0.3);
+        /* ===== NETWORK BADGE ===== */
+        .network-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 5px 12px; border-radius: 20px;
+            font-size: 0.72rem; font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px;
+            transition: background 0.3s ease, border-color 0.3s ease;
+            align-self: flex-end; margin-bottom: 2px;
         }
+        .network-badge.mainnet { background: rgba(39,174,96,0.12); border: 1px solid rgba(39,174,96,0.4); color: #2ecc71; }
+        .network-badge.testnet { background: rgba(241,196,15,0.12); border: 1px solid rgba(241,196,15,0.4); color: #f1c40f; }
+        .network-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+        .mainnet .network-dot { background: #2ecc71; }
+        .testnet .network-dot { background: #f1c40f; }
 
-        .wallet-input:focus-visible {
-            outline: 2px solid #157389;
-            outline-offset: 2px;
-        }
-
-        .wallet-input.input-error {
-            border-color: #c0392b;
-            box-shadow: 0 0 0 2px rgba(192, 57, 43, 0.25);
-        }
+        /* ===== BUTTONS ===== */
+        .btn-row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 
         .inspect-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 28px;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-            color: var(--text-primary);
+            display: inline-flex; align-items: center; gap: 8px;
+            padding: 12px 28px; font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem; letter-spacing: 2px; color: var(--text-primary);
             background: var(--gradient-cta-kastanje);
-            border: 2px solid var(--btn-kastanje-light);
-            border-radius: 6px;
-            cursor: pointer;
+            border: 2px solid var(--btn-kastanje-light); border-radius: 6px;
+            cursor: pointer; white-space: nowrap;
             transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
             box-shadow: var(--shadow-glow-kastanje);
-            white-space: nowrap;
             clip-path: polygon(
-                var(--notch-size) 0%,
-                calc(100% - var(--notch-size)) 0%,
-                100% var(--notch-size),
-                100% calc(100% - var(--notch-size)),
-                calc(100% - var(--notch-size)) 100%,
-                var(--notch-size) 100%,
-                0% calc(100% - var(--notch-size)),
-                0% var(--notch-size)
+                var(--notch-size) 0%, calc(100% - var(--notch-size)) 0%,
+                100% var(--notch-size), 100% calc(100% - var(--notch-size)),
+                calc(100% - var(--notch-size)) 100%, var(--notch-size) 100%,
+                0% calc(100% - var(--notch-size)), 0% var(--notch-size)
             );
         }
-
-        @supports not (clip-path: polygon(0 0)) {
-            .inspect-btn { clip-path: none; border-radius: 8px; }
-        }
-
-        .inspect-btn:hover:not(:disabled),
-        .inspect-btn:focus-visible {
-            transform: translateY(-2px);
-            background: var(--gradient-cta-kastanje-hover);
+        @supports not (clip-path: polygon(0 0)) { .inspect-btn { clip-path: none; border-radius: 8px; } }
+        .inspect-btn:hover:not(:disabled), .inspect-btn:focus-visible {
+            transform: translateY(-2px); background: var(--gradient-cta-kastanje-hover);
             box-shadow: var(--shadow-glow-kastanje), var(--shadow-lg);
-            outline: 2px solid #157389;
-            outline-offset: 2px;
+            outline: 2px solid #157389; outline-offset: 2px;
         }
+        .inspect-btn:disabled { opacity: 0.6; cursor: not-allowed; }
 
-        .inspect-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
+        .secondary-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 12px 18px; font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.95rem; letter-spacing: 1.5px; color: var(--accent-teal-light);
+            background: rgba(21,115,137,0.1); border: 2px solid var(--accent-teal-light);
+            border-radius: 6px; cursor: pointer; white-space: nowrap;
+            transition: transform 0.2s ease, background 0.2s ease;
         }
+        .secondary-btn:hover:not(:disabled), .secondary-btn:focus-visible {
+            background: rgba(21,115,137,0.25); transform: translateY(-1px);
+            outline: 2px solid #157389; outline-offset: 2px;
+        }
+        .secondary-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
         .btn-spinner {
-            display: none;
-            width: 16px;
-            height: 16px;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-top-color: #fff;
-            border-radius: 50%;
-            animation: spin 0.7s linear infinite;
+            display: none; width: 16px; height: 16px;
+            border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff;
+            border-radius: 50%; animation: spin 0.7s linear infinite;
         }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
+        @keyframes spin { to { transform: rotate(360deg); } }
         .inspect-btn.loading .btn-spinner { display: block; }
         .inspect-btn.loading .btn-text { opacity: 0.7; }
 
-        .input-hint {
-            margin-top: 8px;
-            font-size: 0.8rem;
-            color: rgba(224, 224, 224, 0.55);
-        }
-
-        .input-error-msg {
-            margin-top: 8px;
-            font-size: 0.85rem;
-            color: #e74c3c;
-            display: none;
-        }
-
+        .input-hint { margin-top: 6px; font-size: 0.77rem; color: rgba(224,224,224,0.5); }
+        .input-error-msg { margin-top: 6px; font-size: 0.84rem; color: #e74c3c; display: none; }
         .input-error-msg.visible { display: block; }
 
-        /* ===== RESULTS SECTION ===== */
-        .results-section {
-            width: 100%;
-            max-width: 960px;
-            display: none;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        .results-section.visible { display: flex; }
-
-        /* ===== RESULT CARDS ===== */
-        .result-card {
-            background: linear-gradient(135deg, rgba(17, 83, 98, 0.15) 0%, rgba(15, 32, 39, 0.85) 50%, rgba(12, 55, 71, 0.15) 100%);
-            border: 2px solid var(--border-color);
-            border-radius: 8px;
-            padding: 28px;
-            box-shadow: inset 0 0 30px rgba(21, 115, 137, 0.08), var(--shadow-md);
-            contain: layout style paint;
-            position: relative;
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 20px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .card-icon {
-            width: 36px;
-            height: 36px;
-            background: var(--gradient-fractal-cool);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.1rem;
-            flex-shrink: 0;
-        }
-
-        .card-title {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.4rem;
-            letter-spacing: 2px;
-            color: var(--text-gold);
-            margin: 0;
-        }
-
-        /* ===== WALLET SUMMARY ===== */
-        .wallet-address-row {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(15, 32, 39, 0.5);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 12px 16px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .wallet-address-label {
-            font-size: 0.75rem;
-            color: var(--accent-teal-light);
-            font-family: 'Bebas Neue', sans-serif;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            flex-shrink: 0;
-        }
-
-        .wallet-address-value {
-            font-family: 'Courier New', monospace;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            word-break: break-all;
-            flex: 1;
-        }
-
-        .copy-btn {
-            background: rgba(21, 115, 137, 0.2);
-            border: 1px solid var(--accent-teal-light);
-            border-radius: 4px;
-            color: var(--accent-teal-light);
-            cursor: pointer;
-            padding: 4px 10px;
-            font-size: 0.8rem;
-            transition: background 0.2s ease, transform 0.2s ease;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-
-        .copy-btn:hover,
-        .copy-btn:focus-visible {
-            background: rgba(21, 115, 137, 0.35);
-            transform: translateY(-1px);
-            outline: 2px solid #157389;
-            outline-offset: 2px;
-        }
-
-        .copy-btn.copied {
-            background: rgba(39, 174, 96, 0.3);
-            border-color: #27ae60;
-            color: #2ecc71;
-        }
-
-        .balance-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-        }
-
-        .balance-stat {
-            background: rgba(15, 32, 39, 0.5);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 16px;
-            text-align: center;
-        }
-
-        .balance-stat-label {
-            font-size: 0.75rem;
-            color: var(--accent-teal-light);
-            font-family: 'Bebas Neue', sans-serif;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 6px;
-        }
-
-        .balance-stat-value {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.8rem;
-            letter-spacing: 1px;
-            color: var(--text-gold);
-            word-break: break-all;
-            line-height: 1.1;
-        }
-
-        .balance-stat-unit {
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            margin-top: 2px;
-        }
-
-        /* ===== TOKEN LIST ===== */
-        .token-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .token-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: rgba(15, 32, 39, 0.5);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 12px 16px;
-            gap: 12px;
-        }
-
-        .token-name {
-            font-size: 0.85rem;
-            font-family: 'Courier New', monospace;
-            color: var(--text-secondary);
-            word-break: break-all;
-            flex: 1;
-        }
-
-        .token-balance {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1rem;
-            color: var(--text-gold);
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-
-        .token-type-badge {
-            font-size: 0.7rem;
-            background: rgba(21, 115, 137, 0.2);
-            border: 1px solid rgba(21, 115, 137, 0.4);
-            border-radius: 3px;
-            color: var(--accent-teal-light);
-            padding: 2px 6px;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-
-        /* ===== TRANSACTION LIST ===== */
-        .tx-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .tx-row {
-            display: grid;
-            grid-template-columns: auto 1fr auto;
-            gap: 12px;
-            align-items: center;
-            background: rgba(15, 32, 39, 0.5);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 12px 16px;
-        }
-
-        .tx-type-badge {
-            font-size: 0.7rem;
-            font-family: 'Bebas Neue', sans-serif;
-            letter-spacing: 1px;
-            padding: 3px 8px;
-            border-radius: 3px;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-
-        .tx-type-user { background: rgba(229, 180, 87, 0.2); border: 1px solid rgba(229, 180, 87, 0.4); color: var(--accent-gold); }
-        .tx-type-script { background: rgba(21, 115, 137, 0.2); border: 1px solid rgba(21, 115, 137, 0.4); color: var(--accent-teal-light); }
-        .tx-type-other { background: rgba(163, 88, 29, 0.2); border: 1px solid rgba(163, 88, 29, 0.4); color: var(--accent-warm-light); }
-
-        .tx-info {
-            min-width: 0;
-        }
-
-        .tx-hash {
-            font-family: 'Courier New', monospace;
-            font-size: 0.8rem;
-            color: var(--accent-teal-light);
-            text-decoration: none;
-            display: block;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            transition: color 0.2s ease;
-        }
-
-        .tx-hash:hover,
-        .tx-hash:focus-visible {
-            color: var(--text-gold);
-            outline: 2px solid #157389;
-            outline-offset: 2px;
-            border-radius: 2px;
-        }
-
-        .tx-timestamp {
-            font-size: 0.75rem;
-            color: rgba(224, 224, 224, 0.5);
-            margin-top: 2px;
-        }
-
-        .tx-seq {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            white-space: nowrap;
-            text-align: right;
-        }
-
-        /* ===== ACCOUNT INFO TABLE ===== */
-        .info-table {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .info-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 10px 14px;
-            background: rgba(15, 32, 39, 0.5);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-        }
-
-        .info-label {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 0.85rem;
-            letter-spacing: 1px;
-            color: var(--accent-teal-light);
-            min-width: 160px;
-            flex-shrink: 0;
-        }
-
-        .info-value {
-            font-family: 'Courier New', monospace;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            word-break: break-all;
-        }
-
-        /* ===== EMPTY / ERROR STATES ===== */
-        .state-empty, .state-error {
-            text-align: center;
-            padding: 32px 16px;
-            color: rgba(224, 224, 224, 0.5);
-            font-size: 0.9rem;
-        }
-
-        .state-error {
-            color: #e74c3c;
-        }
-
-        .state-icon {
-            font-size: 2rem;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        /* ===== GLOBAL ERROR BANNER ===== */
+        /* ===== ERROR BANNER ===== */
         .error-banner {
-            width: 100%;
-            max-width: 960px;
-            background: rgba(192, 57, 43, 0.15);
-            border: 2px solid rgba(192, 57, 43, 0.4);
-            border-radius: 8px;
-            padding: 16px 20px;
-            color: #e74c3c;
-            margin-bottom: 24px;
-            display: none;
-            align-items: center;
-            gap: 12px;
+            width: 100%; max-width: 1000px;
+            background: rgba(192,57,43,0.15); border: 2px solid rgba(192,57,43,0.4); border-radius: 8px;
+            padding: 14px 20px; color: #e74c3c; margin-bottom: 20px;
+            display: none; align-items: center; gap: 12px;
         }
-
         .error-banner.visible { display: flex; }
-
-        .error-banner-icon { font-size: 1.3rem; flex-shrink: 0; }
-
-        .error-banner-text { flex: 1; }
-
+        .error-banner-icon { font-size: 1.2rem; flex-shrink: 0; }
+        .error-banner-text { flex: 1; font-size: 0.88rem; }
         .error-banner-close {
-            background: none;
-            border: none;
-            color: #e74c3c;
-            cursor: pointer;
-            font-size: 1.2rem;
-            padding: 0 4px;
-            flex-shrink: 0;
-            transition: opacity 0.2s ease;
+            background: none; border: none; color: #e74c3c; cursor: pointer;
+            font-size: 1.2rem; padding: 0 4px; flex-shrink: 0; transition: opacity 0.2s ease;
         }
-
         .error-banner-close:hover { opacity: 0.7; }
 
-        /* ===== FOOTER ===== */
-        .page-footer {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            margin-top: auto;
-            padding: 20px;
-            text-align: center;
-            border-top: 1px solid var(--border-color);
-            background: rgba(15, 32, 39, 0.7);
+        /* ===== RESULTS SECTION ===== */
+        .results-section { width: 100%; max-width: 1000px; display: none; flex-direction: column; gap: 0; }
+        .results-section.visible { display: flex; }
+
+        /* ===== RESULTS HEADER BAR ===== */
+        .results-header {
+            background: var(--glass-bg); border: 2px solid var(--border-color);
+            border-bottom: none; border-radius: 8px 8px 0 0;
+            padding: 14px 22px; display: flex; align-items: center;
+            justify-content: space-between; flex-wrap: wrap; gap: 10px;
+        }
+        .results-address-display { display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1; }
+        .results-address-label {
+            font-family: 'Bebas Neue', sans-serif; font-size: 0.75rem;
+            letter-spacing: 1px; color: var(--accent-teal-light); flex-shrink: 0; text-transform: uppercase;
+        }
+        .results-address-value {
+            font-family: 'Courier New', monospace; font-size: 0.8rem; color: var(--text-secondary);
+            overflow: hidden; text-overflow: ellipsis; white-space: nowrap; flex: 1; min-width: 0;
+        }
+        .copy-btn {
+            background: rgba(21,115,137,0.2); border: 1px solid var(--accent-teal-light);
+            border-radius: 4px; color: var(--accent-teal-light); cursor: pointer;
+            padding: 4px 10px; font-size: 0.77rem;
+            transition: background 0.2s ease, transform 0.2s ease; white-space: nowrap; flex-shrink: 0;
+        }
+        .copy-btn:hover, .copy-btn:focus-visible {
+            background: rgba(21,115,137,0.35); transform: translateY(-1px);
+            outline: 2px solid #157389; outline-offset: 2px;
+        }
+        .copy-btn.copied { background: rgba(39,174,96,0.3); border-color: #27ae60; color: #2ecc71; }
+
+        .results-actions { display: flex; gap: 8px; flex-shrink: 0; flex-wrap: wrap; }
+        .icon-btn {
+            background: rgba(21,115,137,0.1); border: 1px solid var(--border-color); border-radius: 6px;
+            color: var(--accent-teal-light); cursor: pointer; padding: 6px 12px;
+            font-size: 0.78rem; font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px;
+            display: inline-flex; align-items: center; gap: 5px;
+            transition: background 0.2s ease, transform 0.2s ease; text-decoration: none;
+        }
+        .icon-btn:hover:not(:disabled), .icon-btn:focus-visible {
+            background: rgba(21,115,137,0.25); transform: translateY(-1px);
+            outline: 2px solid #157389; outline-offset: 2px;
+        }
+        .icon-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+        /* ===== TABS ===== */
+        .tabs-bar {
+            background: rgba(15,32,39,0.9); border: 2px solid var(--border-color);
+            border-top: none; border-bottom: none;
+            display: flex; overflow-x: auto; scrollbar-width: none;
+        }
+        .tabs-bar::-webkit-scrollbar { display: none; }
+
+        .tab-btn {
+            flex-shrink: 0; background: none; border: none;
+            border-bottom: 3px solid transparent;
+            padding: 13px 18px; font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.9rem; letter-spacing: 1.5px;
+            color: rgba(224,224,224,0.5); cursor: pointer;
+            transition: color 0.2s ease, border-color 0.2s ease; white-space: nowrap;
+        }
+        .tab-btn:hover { color: var(--text-secondary); }
+        .tab-btn.active { color: var(--text-gold); border-bottom-color: var(--accent-gold); }
+        .tab-btn:focus-visible { outline: 2px solid #157389; outline-offset: -2px; }
+
+        .tab-badge {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 18px; height: 18px; padding: 0 4px;
+            background: rgba(21,115,137,0.3); border: 1px solid rgba(21,115,137,0.5);
+            border-radius: 9px; font-size: 0.63rem; color: var(--accent-teal-light);
+            margin-left: 5px; vertical-align: middle;
+            font-family: Arial, sans-serif; font-weight: bold;
         }
 
-        .footer-text {
-            font-size: 0.85rem;
-            color: rgba(224, 224, 224, 0.5);
-            margin: 0 0 8px 0;
+        /* ===== TAB PANELS ===== */
+        .tab-panel {
+            display: none; background: var(--glass-bg);
+            border: 2px solid var(--border-color); border-top: none; padding: 24px;
         }
+        .tab-panel.active { display: block; }
+        .tab-panel:last-of-type { border-radius: 0 0 8px 8px; }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            flex-wrap: wrap;
+        /* ===== STATS GRID ===== */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 14px; margin-bottom: 20px; }
+        .stat-card {
+            background: rgba(15,32,39,0.55); border: 1px solid var(--border-color);
+            border-radius: 8px; padding: 18px 16px; text-align: center; position: relative; overflow: hidden;
         }
+        .stat-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: var(--gradient-fractal-cool);
+        }
+        .stat-label { font-size: 0.7rem; color: var(--accent-teal-light); font-family: 'Bebas Neue', sans-serif; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
+        .stat-value { font-family: 'Bebas Neue', sans-serif; font-size: 1.9rem; letter-spacing: 1px; color: var(--text-gold); word-break: break-all; line-height: 1.1; }
+        .stat-unit { font-size: 0.68rem; color: var(--text-secondary); margin-top: 4px; opacity: 0.7; }
 
-        .footer-link {
-            font-size: 0.8rem;
-            color: var(--accent-teal-light);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
+        /* ===== LIST CONTAINER ===== */
+        .list-container { display: flex; flex-direction: column; gap: 8px; }
 
-        .footer-link:hover,
-        .footer-link:focus-visible {
-            color: var(--text-gold);
-            outline: 2px solid #157389;
-            outline-offset: 2px;
-            border-radius: 2px;
+        /* ===== TOKEN ROWS ===== */
+        .token-row {
+            display: grid; grid-template-columns: 70px 1fr auto;
+            gap: 12px; align-items: center;
+            background: rgba(15,32,39,0.5); border: 1px solid var(--border-color);
+            border-radius: 6px; padding: 12px 16px; transition: border-color 0.2s ease;
         }
+        .token-row:hover { border-color: rgba(130,178,157,0.3); }
+        .token-badge {
+            font-size: 0.67rem; font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.5px; padding: 3px 7px; border-radius: 3px; text-align: center; white-space: nowrap;
+        }
+        .badge-native { background: rgba(229,180,87,0.2); border: 1px solid rgba(229,180,87,0.4); color: var(--accent-gold); }
+        .badge-coin   { background: rgba(21,115,137,0.2); border: 1px solid rgba(21,115,137,0.4); color: var(--accent-teal-light); }
+        .token-info { min-width: 0; }
+        .token-name { font-family: 'Courier New', monospace; font-size: 0.82rem; color: var(--text-secondary); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .token-full-type { font-size: 0.69rem; color: rgba(224,224,224,0.33); margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .token-balance { font-family: 'Bebas Neue', sans-serif; font-size: 1.05rem; color: var(--text-gold); white-space: nowrap; text-align: right; }
+
+        /* ===== TX FILTERS ===== */
+        .tx-filters, .resource-filters {
+            display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+            margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--border-color);
+        }
+        .filter-label { font-family: 'Bebas Neue', sans-serif; font-size: 0.78rem; letter-spacing: 1px; color: var(--accent-teal-light); white-space: nowrap; }
+        .filter-select {
+            background: rgba(15,32,39,0.7); border: 1px solid var(--border-color); border-radius: 5px;
+            padding: 6px 26px 6px 10px; font-size: 0.82rem; color: var(--text-primary);
+            cursor: pointer; appearance: none; -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23157389' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 8px center;
+            outline: none; transition: border-color 0.2s ease;
+        }
+        .filter-select:focus { border-color: var(--accent-teal-light); }
+        .filter-select option { background: #0C3747; }
+        .count-info { margin-left: auto; font-size: 0.77rem; color: rgba(224,224,224,0.45); white-space: nowrap; }
+
+        /* ===== TX ROWS ===== */
+        .tx-row {
+            display: grid; grid-template-columns: 90px 1fr auto auto;
+            gap: 10px; align-items: center;
+            background: rgba(15,32,39,0.5); border: 1px solid var(--border-color);
+            border-radius: 6px; padding: 12px 16px; transition: border-color 0.2s ease;
+        }
+        .tx-row:hover { border-color: rgba(130,178,157,0.3); }
+
+        .tx-type-badge {
+            font-size: 0.64rem; font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.5px; padding: 3px 6px; border-radius: 3px;
+            white-space: nowrap; text-align: center;
+        }
+        .tx-type-user     { background: rgba(229,180,87,0.2);  border: 1px solid rgba(229,180,87,0.4);  color: var(--accent-gold); }
+        .tx-type-block    { background: rgba(21,115,137,0.2);  border: 1px solid rgba(21,115,137,0.4);  color: var(--accent-teal-light); }
+        .tx-type-genesis  { background: rgba(87,42,20,0.3);    border: 1px solid rgba(163,88,29,0.4);   color: var(--accent-warm-light); }
+        .tx-type-state    { background: rgba(130,178,157,0.15);border: 1px solid rgba(130,178,157,0.3); color: var(--accent-teal-bright); }
+        .tx-type-other    { background: rgba(163,88,29,0.2);   border: 1px solid rgba(163,88,29,0.4);   color: var(--accent-warm-light); }
+
+        .tx-status-ok   { color: #2ecc71; font-size: 0.68rem; margin-top: 2px; }
+        .tx-status-fail { color: #e74c3c; font-size: 0.68rem; margin-top: 2px; }
+
+        .tx-info { min-width: 0; }
+        .tx-hash {
+            font-family: 'Courier New', monospace; font-size: 0.79rem; color: var(--accent-teal-light);
+            text-decoration: none; display: block;
+            overflow: hidden; text-overflow: ellipsis; white-space: nowrap; transition: color 0.2s ease;
+        }
+        .tx-hash:hover, .tx-hash:focus-visible { color: var(--text-gold); outline: 2px solid #157389; outline-offset: 2px; border-radius: 2px; }
+        .tx-function { font-size: 0.71rem; color: rgba(229,180,87,0.6); margin-top: 2px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .tx-timestamp { font-size: 0.71rem; color: rgba(224,224,224,0.45); margin-top: 2px; }
+        .tx-gas { font-size: 0.71rem; color: rgba(224,224,224,0.4); text-align: right; white-space: nowrap; }
+        .tx-seq { font-family: 'Bebas Neue', sans-serif; font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; text-align: right; }
+
+        /* ===== PAGINATION ===== */
+        .pagination { display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 16px; flex-wrap: wrap; }
+        .page-btn {
+            background: rgba(21,115,137,0.1); border: 1px solid var(--border-color); border-radius: 5px;
+            color: var(--accent-teal-light); cursor: pointer; padding: 6px 11px;
+            font-size: 0.8rem; font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+        .page-btn:hover:not(:disabled), .page-btn:focus-visible { background: rgba(21,115,137,0.25); transform: translateY(-1px); outline: 2px solid #157389; outline-offset: 2px; }
+        .page-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+        .page-btn.current { background: rgba(21,115,137,0.3); border-color: var(--accent-teal-light); color: var(--text-gold); }
+        .page-info { font-size: 0.77rem; color: rgba(224,224,224,0.45); white-space: nowrap; }
+
+        /* ===== RESOURCES ===== */
+        .resource-row {
+            background: rgba(15,32,39,0.5); border: 1px solid var(--border-color);
+            border-radius: 6px; padding: 12px 16px; transition: border-color 0.2s ease;
+        }
+        .resource-row:hover { border-color: rgba(130,178,157,0.3); }
+        .resource-header { display: flex; align-items: center; gap: 10px; cursor: pointer; user-select: none; }
+        .resource-type-badge { font-size: 0.64rem; font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.5px; padding: 2px 7px; border-radius: 3px; flex-shrink: 0; }
+        .rtype-coin  { background: rgba(229,180,87,0.15);  border: 1px solid rgba(229,180,87,0.3);  color: var(--accent-gold); }
+        .rtype-nft   { background: rgba(130,178,157,0.15); border: 1px solid rgba(130,178,157,0.3); color: var(--accent-teal-bright); }
+        .rtype-stake { background: rgba(39,174,96,0.12);   border: 1px solid rgba(39,174,96,0.3);   color: #2ecc71; }
+        .rtype-other { background: rgba(21,115,137,0.15);  border: 1px solid rgba(21,115,137,0.3);  color: var(--accent-teal-light); }
+        .resource-type-name { font-family: 'Courier New', monospace; font-size: 0.79rem; color: var(--text-secondary); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .resource-expand-toggle { font-size: 0.78rem; color: rgba(224,224,224,0.4); flex-shrink: 0; transition: transform 0.2s ease; }
+        .resource-row.expanded .resource-expand-toggle { transform: rotate(180deg); }
+        .resource-data-pre {
+            display: none; margin-top: 10px; padding: 12px;
+            background: rgba(0,0,0,0.3); border: 1px solid var(--border-color); border-radius: 4px;
+            font-family: 'Courier New', monospace; font-size: 0.73rem; color: rgba(224,224,224,0.7);
+            overflow-x: auto; white-space: pre-wrap; word-break: break-all; max-height: 280px; overflow-y: auto;
+        }
+        .resource-row.expanded .resource-data-pre { display: block; }
+
+        /* ===== ACCOUNT INFO ===== */
+        .info-table { display: flex; flex-direction: column; gap: 8px; }
+        .info-row {
+            display: flex; align-items: flex-start; gap: 12px; padding: 10px 14px;
+            background: rgba(15,32,39,0.5); border: 1px solid var(--border-color); border-radius: 6px;
+        }
+        .info-label { font-family: 'Bebas Neue', sans-serif; font-size: 0.82rem; letter-spacing: 1px; color: var(--accent-teal-light); min-width: 175px; flex-shrink: 0; }
+        .info-value { font-family: 'Courier New', monospace; font-size: 0.82rem; color: var(--text-secondary); word-break: break-all; }
+
+        /* ===== EMPTY / ERROR ===== */
+        .state-empty, .state-error { text-align: center; padding: 28px 16px; color: rgba(224,224,224,0.45); font-size: 0.88rem; }
+        .state-error { color: #e74c3c; }
+        .state-icon { font-size: 2rem; display: block; margin-bottom: 8px; }
+        .no-results-notice { font-size: 0.82rem; color: rgba(224,224,224,0.45); font-style: italic; padding: 10px 0; }
 
         /* ===== EXPLORER LINK ===== */
-        .explorer-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.8rem;
-            color: var(--accent-teal-light);
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
+        .explorer-link { display: inline-flex; align-items: center; gap: 5px; font-size: 0.78rem; color: var(--accent-teal-light); text-decoration: none; transition: color 0.2s ease; }
+        .explorer-link:hover, .explorer-link:focus-visible { color: var(--text-gold); outline: 2px solid #157389; outline-offset: 2px; border-radius: 2px; }
 
-        .explorer-link:hover,
-        .explorer-link:focus-visible {
-            color: var(--text-gold);
-            outline: 2px solid #157389;
-            outline-offset: 2px;
-            border-radius: 2px;
-        }
+        /* ===== FOOTER ===== */
+        .page-footer { position: relative; z-index: 2; width: 100%; margin-top: auto; padding: 20px; text-align: center; border-top: 1px solid var(--border-color); background: rgba(15,32,39,0.7); }
+        .footer-text { font-size: 0.82rem; color: rgba(224,224,224,0.45); margin: 0 0 8px; }
+        .footer-links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+        .footer-link { font-size: 0.78rem; color: var(--accent-teal-light); text-decoration: none; transition: color 0.2s ease; }
+        .footer-link:hover, .footer-link:focus-visible { color: var(--text-gold); outline: 2px solid #157389; outline-offset: 2px; border-radius: 2px; }
 
-        /* ===== EMPTY RESOURCE NOTICE ===== */
-        .no-results-notice {
-            font-size: 0.85rem;
-            color: rgba(224, 224, 224, 0.5);
-            font-style: italic;
-            padding: 12px 0;
-        }
-
-        /* ===== PREFERS-REDUCED-MOTION ===== */
+        /* ===== REDUCED MOTION ===== */
         @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                transition-duration: 0.01ms !important;
-            }
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
         }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
-            .page-wrapper { padding: 24px 16px 48px; }
-            .site-header { padding: 12px 16px; margin-bottom: 24px; }
+            .page-wrapper { padding: 20px 14px 48px; }
+            .site-header { padding: 12px 16px; margin-bottom: 20px; }
             .header-site-title { font-size: 1.1rem; }
-            .page-hero-inner { padding: 28px 20px 24px; }
-            .page-title { font-size: 2.2rem; }
+            .page-hero-inner { padding: 24px 16px 20px; }
             .search-card { padding: 20px 16px; }
             .search-row { flex-direction: column; }
             .inspect-btn { width: 100%; justify-content: center; }
-            .result-card { padding: 20px 16px; }
+            .controls-row { gap: 8px; }
+            .control-group { min-width: 130px; }
+            .tab-btn { padding: 11px 13px; font-size: 0.83rem; }
+            .tab-panel { padding: 16px; }
+            .stats-grid { grid-template-columns: 1fr 1fr; }
+            .tx-row { grid-template-columns: 80px 1fr; }
+            .tx-gas, .tx-seq { display: none; }
+            .token-row { grid-template-columns: 58px 1fr auto; }
             .info-label { min-width: 120px; }
-            .tx-row { grid-template-columns: auto 1fr; }
-            .tx-seq { display: none; }
-            .balance-grid { grid-template-columns: 1fr 1fr; }
+            .results-header { padding: 12px 16px; }
         }
-
         @media (max-width: 480px) {
-            .page-wrapper { padding: 16px 12px 40px; }
+            .page-wrapper { padding: 14px 10px 40px; }
             .site-header { flex-direction: column; gap: 12px; text-align: center; }
-            .balance-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr; }
             .info-label { min-width: 0; width: 100%; }
             .info-row { flex-direction: column; gap: 4px; }
-            .wallet-address-row { flex-direction: column; align-items: flex-start; }
+            .results-address-display { flex-wrap: wrap; }
+            .controls-row { flex-direction: column; align-items: stretch; }
+            .control-group { min-width: 100%; }
+            .results-actions { flex-wrap: wrap; }
         }
     </style>
 </head>
 <body>
-    <!-- Hidden SVG defs for fractal gradients used in corner ornaments -->
+    <!-- Hidden SVG defs -->
     <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute;overflow:hidden;" aria-hidden="true">
         <defs>
             <linearGradient id="fractal-edge-3d" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -836,43 +569,30 @@
                 <stop offset="50%" stop-color="#82B29D" stop-opacity="0.8"/>
                 <stop offset="100%" stop-color="#E5B457" stop-opacity="0.7"/>
             </linearGradient>
-            <radialGradient id="fractal-glow-3d" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#157389" stop-opacity="0.3"/>
-                <stop offset="100%" stop-color="#0F2027" stop-opacity="0"/>
-            </radialGradient>
             <filter id="fractal-depth-shadow" x="-20%" y="-20%" width="140%" height="140%">
                 <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity="0.4"/>
-            </filter>
-            <filter id="fractal-inner-glow" x="-20%" y="-20%" width="140%" height="140%">
-                <feGaussianBlur stdDeviation="2" result="blur"/>
-                <feMerge>
-                    <feMergeNode in="blur"/>
-                    <feMergeNode in="SourceGraphic"/>
-                </feMerge>
             </filter>
         </defs>
     </svg>
 
-    <!-- Fixed background layer -->
     <div class="background-layer" aria-hidden="true"></div>
     <div class="border-ornaments" aria-hidden="true"></div>
     <div class="corner-ornaments" aria-hidden="true"></div>
 
     <div class="page-wrapper">
 
-        <!-- Site Header -->
+        <!-- Header -->
         <header class="site-header">
             <a href="index.html" class="header-logo" aria-label="Go to SupraSaiyans home">
                 <img src="images/LOGONOBG1.png" alt="SupraSaiyans" width="40" height="40" loading="eager">
                 <span class="header-site-title">SupraSaiyans</span>
             </a>
-            <a href="index.html" class="header-nav-link" aria-label="Back to SupraSaiyans home page">← Home</a>
+            <a href="index.html" class="header-nav-link" aria-label="Back to SupraSaiyans home">&#8592; Home</a>
         </header>
 
-        <!-- Hero / Title Section -->
+        <!-- Hero -->
         <section class="page-hero" aria-labelledby="page-title">
             <div class="page-hero-inner">
-                <!-- Fractal corner ornaments -->
                 <div class="fractal-corner fractal-corner-tl" aria-hidden="true">
                     <svg viewBox="0 0 100 100" class="fractal-svg">
                         <path d="M 0,0 C 0,0 10,10 20,13 C 30,16 33,26 36,36 C 39,46 33,53 26,60 C 19,67 13,73 6,80 C 0,86 0,93 0,100"
@@ -905,9 +625,8 @@
                         </path>
                     </svg>
                 </div>
-
                 <h1 class="page-title" id="page-title">Robbie Wallet Inspector</h1>
-                <p class="page-subtitle">Inspect any Supra blockchain wallet — view SUPRA balance, token holdings, recent transactions, and account details.</p>
+                <p class="page-subtitle">Inspect any Supra blockchain wallet &#8212; SUPRA balance, all token holdings, on-chain resources, recent transactions, and full account details. Supports Mainnet &amp; Testnet.</p>
             </div>
         </section>
 
@@ -915,6 +634,7 @@
         <section class="search-section" aria-label="Wallet address search">
             <div class="search-card">
                 <label for="wallet-address-input" class="search-label">Enter Supra Wallet Address</label>
+
                 <div class="search-row">
                     <input
                         type="text"
@@ -927,107 +647,214 @@
                         autocomplete="off"
                         spellcheck="false"
                     >
-                    <button
-                        type="button"
-                        id="inspect-btn"
-                        class="inspect-btn"
-                        aria-label="Inspect wallet"
-                    >
+                </div>
+
+                <!-- Controls Row -->
+                <div class="controls-row">
+                    <div class="control-group">
+                        <span class="control-group-label" id="network-label">Network</span>
+                        <select id="network-select" class="control-select" aria-labelledby="network-label" aria-label="Select blockchain network">
+                            <option value="mainnet">&#127803; Mainnet</option>
+                            <option value="testnet">&#127804; Testnet</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <span class="control-group-label" id="txlimit-label">TX Limit</span>
+                        <select id="tx-limit-select" class="control-select" aria-labelledby="txlimit-label" aria-label="Number of transactions to fetch">
+                            <option value="10">10 transactions</option>
+                            <option value="25" selected>25 transactions</option>
+                            <option value="50">50 transactions</option>
+                            <option value="100">100 transactions</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <span class="control-group-label" id="txtype-label">TX Type Filter</span>
+                        <select id="tx-type-select" class="control-select" aria-labelledby="txtype-label" aria-label="Pre-filter transactions by type">
+                            <option value="all">All Types</option>
+                            <option value="user_transaction">User Transactions</option>
+                            <option value="block_metadata_transaction">Block Metadata</option>
+                            <option value="state_checkpoint_transaction">State Checkpoint</option>
+                            <option value="genesis_transaction">Genesis</option>
+                        </select>
+                    </div>
+
+                    <span id="network-badge" class="network-badge mainnet" aria-live="polite" role="status">
+                        <span class="network-dot" aria-hidden="true"></span>
+                        <span id="network-badge-text">MAINNET</span>
+                    </span>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="btn-row">
+                    <button type="button" id="inspect-btn" class="inspect-btn" aria-label="Inspect wallet">
                         <span class="btn-spinner" aria-hidden="true"></span>
-                        <span class="btn-text">Inspect</span>
+                        <span class="btn-text">&#128269; Inspect Wallet</span>
+                    </button>
+                    <button type="button" id="clear-btn" class="secondary-btn" aria-label="Clear address and results">
+                        &#10005; Clear
                     </button>
                 </div>
-                <p id="wallet-input-hint" class="input-hint">Enter a valid Supra wallet address starting with 0x</p>
+
+                <p id="wallet-input-hint" class="input-hint">Enter a valid Supra wallet address starting with 0x &bull; Supports direct links: ?address=0x&hellip;</p>
                 <p id="wallet-input-error" class="input-error-msg" role="alert" aria-live="polite"></p>
             </div>
         </section>
 
-        <!-- Global Error Banner -->
+        <!-- Error Banner -->
         <div id="error-banner" class="error-banner" role="alert" aria-live="assertive">
-            <span class="error-banner-icon" aria-hidden="true">⚠️</span>
+            <span class="error-banner-icon" aria-hidden="true">&#9888;&#65039;</span>
             <span class="error-banner-text" id="error-banner-text"></span>
-            <button class="error-banner-close" id="error-banner-close" aria-label="Dismiss error">×</button>
+            <button class="error-banner-close" id="error-banner-close" aria-label="Dismiss error">&#215;</button>
         </div>
 
         <!-- Results Section -->
         <div id="results-section" class="results-section" aria-live="polite">
 
-            <!-- Wallet Summary -->
-            <article class="result-card" aria-labelledby="summary-title">
-                <div class="card-header">
-                    <div class="card-icon" aria-hidden="true">💼</div>
-                    <h2 class="card-title" id="summary-title">Wallet Summary</h2>
-                </div>
-                <div class="wallet-address-row">
-                    <span class="wallet-address-label">Address</span>
-                    <span class="wallet-address-value" id="display-address" aria-label="Wallet address">—</span>
+            <!-- Results Header -->
+            <div class="results-header">
+                <div class="results-address-display">
+                    <span class="results-address-label">Wallet</span>
+                    <span class="results-address-value" id="display-address" title="" aria-label="Inspected wallet address">&#8212;</span>
                     <button class="copy-btn" id="copy-address-btn" aria-label="Copy wallet address to clipboard">Copy</button>
                 </div>
-                <div class="balance-grid">
-                    <div class="balance-stat">
-                        <div class="balance-stat-label">SUPRA Balance</div>
-                        <div class="balance-stat-value" id="supra-balance">—</div>
-                        <div class="balance-stat-unit">SUPRA</div>
-                    </div>
-                    <div class="balance-stat">
-                        <div class="balance-stat-label">Sequence Number</div>
-                        <div class="balance-stat-value" id="seq-number">—</div>
-                        <div class="balance-stat-unit">Transactions Sent</div>
-                    </div>
-                    <div class="balance-stat">
-                        <div class="balance-stat-label">Token Types</div>
-                        <div class="balance-stat-value" id="token-count">—</div>
-                        <div class="balance-stat-unit">Coin Stores</div>
-                    </div>
+                <div class="results-actions">
+                    <button type="button" id="refresh-btn" class="icon-btn" aria-label="Refresh wallet data">
+                        &#8635; Refresh
+                    </button>
+                    <button type="button" id="export-btn" class="icon-btn" aria-label="Export wallet data as JSON file">
+                        &#8595; Export JSON
+                    </button>
+                    <a id="explorer-wallet-link" href="#" target="_blank" rel="noopener noreferrer"
+                       class="icon-btn" aria-label="Open wallet on SupraScan explorer">
+                        &#8599; SupraScan
+                    </a>
                 </div>
-            </article>
+            </div>
 
-            <!-- Token Balances -->
-            <article class="result-card" aria-labelledby="tokens-title">
-                <div class="card-header">
-                    <div class="card-icon" aria-hidden="true">🪙</div>
-                    <h2 class="card-title" id="tokens-title">Token Balances</h2>
+            <!-- Tabs -->
+            <div class="tabs-bar" role="tablist" aria-label="Wallet inspection sections">
+                <button class="tab-btn active" role="tab" aria-selected="true"
+                        aria-controls="tab-summary" id="tab-btn-summary" data-tab="summary">
+                    &#128188; Summary
+                </button>
+                <button class="tab-btn" role="tab" aria-selected="false"
+                        aria-controls="tab-tokens" id="tab-btn-tokens" data-tab="tokens">
+                    &#129689; Tokens
+                    <span class="tab-badge" id="badge-tokens" aria-label="token count">0</span>
+                </button>
+                <button class="tab-btn" role="tab" aria-selected="false"
+                        aria-controls="tab-txns" id="tab-btn-txns" data-tab="txns">
+                    &#128203; Transactions
+                    <span class="tab-badge" id="badge-txns" aria-label="transaction count">0</span>
+                </button>
+                <button class="tab-btn" role="tab" aria-selected="false"
+                        aria-controls="tab-resources" id="tab-btn-resources" data-tab="resources">
+                    &#128230; All Resources
+                    <span class="tab-badge" id="badge-resources" aria-label="resource count">0</span>
+                </button>
+                <button class="tab-btn" role="tab" aria-selected="false"
+                        aria-controls="tab-account" id="tab-btn-account" data-tab="account">
+                    &#128273; Account Info
+                </button>
+            </div>
+
+            <!-- Tab: Summary -->
+            <div id="tab-summary" class="tab-panel active" role="tabpanel" aria-labelledby="tab-btn-summary">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">SUPRA Balance</div>
+                        <div class="stat-value" id="supra-balance">&#8212;</div>
+                        <div class="stat-unit">SUPRA</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Sequence Number</div>
+                        <div class="stat-value" id="seq-number">&#8212;</div>
+                        <div class="stat-unit">Transactions Sent</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Token Types</div>
+                        <div class="stat-value" id="token-count">&#8212;</div>
+                        <div class="stat-unit">Coin Stores Held</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-label">Total Resources</div>
+                        <div class="stat-value" id="resource-count">&#8212;</div>
+                        <div class="stat-unit">On-Chain Objects</div>
+                    </div>
                 </div>
-                <div id="token-list-container" class="token-list">
+                <div id="summary-extra" class="info-table"></div>
+            </div>
+
+            <!-- Tab: Tokens -->
+            <div id="tab-tokens" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-tokens">
+                <div id="token-list-container" class="list-container">
                     <p class="no-results-notice">Run a wallet inspection to see token balances.</p>
                 </div>
-            </article>
+            </div>
 
-            <!-- Transaction History -->
-            <article class="result-card" aria-labelledby="txns-title">
-                <div class="card-header">
-                    <div class="card-icon" aria-hidden="true">📋</div>
-                    <h2 class="card-title" id="txns-title">Recent Transactions</h2>
+            <!-- Tab: Transactions -->
+            <div id="tab-txns" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-txns">
+                <div class="tx-filters">
+                    <span class="filter-label">Filter:</span>
+                    <select id="tx-type-inline" class="filter-select" aria-label="Filter transactions by type">
+                        <option value="all">All Types</option>
+                        <option value="user_transaction">User TX</option>
+                        <option value="block_metadata_transaction">Block Meta</option>
+                        <option value="state_checkpoint_transaction">State Checkpoint</option>
+                        <option value="genesis_transaction">Genesis</option>
+                    </select>
+                    <span class="filter-label" style="margin-left:6px">Sort:</span>
+                    <select id="tx-sort-select" class="filter-select" aria-label="Sort transaction order">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                    </select>
+                    <span class="count-info" id="tx-count-info"></span>
                 </div>
-                <div id="tx-list-container" class="tx-list">
+                <div id="tx-list-container" class="list-container">
                     <p class="no-results-notice">Run a wallet inspection to see transactions.</p>
                 </div>
-            </article>
+                <div class="pagination" id="tx-pagination"></div>
+            </div>
 
-            <!-- Account Info -->
-            <article class="result-card" aria-labelledby="account-title">
-                <div class="card-header">
-                    <div class="card-icon" aria-hidden="true">🔑</div>
-                    <h2 class="card-title" id="account-title">Account Info</h2>
+            <!-- Tab: All Resources -->
+            <div id="tab-resources" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-resources">
+                <div class="resource-filters">
+                    <span class="filter-label">Category:</span>
+                    <select id="resource-type-filter" class="filter-select" aria-label="Filter resources by category">
+                        <option value="all">All Resources</option>
+                        <option value="coin">Coin Stores</option>
+                        <option value="nft">NFT / Objects</option>
+                        <option value="stake">Staking / Delegation</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <span class="count-info" id="resource-count-info"></span>
                 </div>
+                <div id="resource-list-container" class="list-container">
+                    <p class="no-results-notice">Run a wallet inspection to see all on-chain resources.</p>
+                </div>
+                <div class="pagination" id="resource-pagination"></div>
+            </div>
+
+            <!-- Tab: Account Info -->
+            <div id="tab-account" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-account">
                 <div id="account-info-container" class="info-table">
                     <p class="no-results-notice">Run a wallet inspection to see account info.</p>
                 </div>
-            </article>
+            </div>
 
-        </div>
-        <!-- /results-section -->
+        </div><!-- /results-section -->
 
-    </div>
-    <!-- /page-wrapper -->
+    </div><!-- /page-wrapper -->
 
-    <!-- Footer -->
     <footer class="page-footer">
-        <p class="footer-text">© Supra Saiyans 2026 — Robbie Wallet Inspector — Powered by Supra Blockchain</p>
+        <p class="footer-text">&#169; SupraSaiyans 2026 &mdash; Robbie Wallet Inspector &mdash; Powered by the Supra Blockchain</p>
         <nav class="footer-links" aria-label="Footer navigation">
-            <a href="index.html" class="footer-link">← SupraSaiyans Home</a>
-            <a href="https://supra.com/" class="footer-link" target="_blank" rel="noopener noreferrer">Supra.com ↗</a>
-            <a href="https://suprascan.io/" class="footer-link" target="_blank" rel="noopener noreferrer">SupraScan Explorer ↗</a>
+            <a href="index.html" class="footer-link">&#8592; SupraSaiyans Home</a>
+            <a href="https://supra.com/" class="footer-link" target="_blank" rel="noopener noreferrer">Supra.com &#8599;</a>
+            <a href="https://suprascan.io/" class="footer-link" target="_blank" rel="noopener noreferrer">SupraScan Explorer &#8599;</a>
+            <a href="https://rpc-mainnet.supra.com/" class="footer-link" target="_blank" rel="noopener noreferrer">Supra RPC &#8599;</a>
         </nav>
     </footer>
 
@@ -1035,151 +862,166 @@
     (function () {
         'use strict';
 
-        /* ===== CONSTANTS ===== */
-        const RPC_BASE = 'https://rpc-mainnet.supra.com';
-        const EXPLORER_BASE = 'https://suprascan.io';
-        const SUPRA_COIN_RESOURCE = '0x1::coin::CoinStore<0x1::supra_coin::SupraCoin>';
-        const SUPRA_DECIMALS = 8;
-        const TX_LIMIT = 25;
+        /* ===== NETWORK CONFIG ===== */
+        var NETWORKS = {
+            mainnet: { label: 'MAINNET', rpc: 'https://rpc-mainnet.supra.com',  explorer: 'https://suprascan.io' },
+            testnet: { label: 'TESTNET', rpc: 'https://rpc-testnet.supra.com',  explorer: 'https://testnet.suprascan.io' }
+        };
 
-        /* ===== DOM REFS ===== */
-        const addressInput = document.getElementById('wallet-address-input');
-        const inspectBtn = document.getElementById('inspect-btn');
-        const inputErrorEl = document.getElementById('wallet-input-error');
-        const resultsSection = document.getElementById('results-section');
-        const errorBanner = document.getElementById('error-banner');
-        const errorBannerText = document.getElementById('error-banner-text');
-        const errorBannerClose = document.getElementById('error-banner-close');
+        var SUPRA_COIN_PATTERN = 'supra_coin::SupraCoin';
+        var SUPRA_DECIMALS = 8;
+        var PAGE_SIZE_TX  = 10;
+        var PAGE_SIZE_RES = 15;
 
-        const displayAddress = document.getElementById('display-address');
-        const copyAddressBtn = document.getElementById('copy-address-btn');
-        const supraBalance = document.getElementById('supra-balance');
-        const seqNumber = document.getElementById('seq-number');
-        const tokenCount = document.getElementById('token-count');
-        const tokenListContainer = document.getElementById('token-list-container');
-        const txListContainer = document.getElementById('tx-list-container');
-        const accountInfoContainer = document.getElementById('account-info-container');
+        /* ===== STATE ===== */
+        var currentNetwork = 'mainnet';
+        var lastAddress    = '';
+        var allTransactions  = [];
+        var allResources     = [];
+        var filteredTxns     = [];
+        var filteredResources= [];
+        var txPage  = 1;
+        var resPage = 1;
+        var exportData = null;
+
+        /* ===== DOM ===== */
+        var addressInput      = document.getElementById('wallet-address-input');
+        var networkSelect     = document.getElementById('network-select');
+        var txLimitSelect     = document.getElementById('tx-limit-select');
+        var txTypeSelect      = document.getElementById('tx-type-select');
+        var inspectBtn        = document.getElementById('inspect-btn');
+        var clearBtn          = document.getElementById('clear-btn');
+        var refreshBtn        = document.getElementById('refresh-btn');
+        var exportBtn         = document.getElementById('export-btn');
+        var inputErrorEl      = document.getElementById('wallet-input-error');
+        var resultsSection    = document.getElementById('results-section');
+        var errorBanner       = document.getElementById('error-banner');
+        var errorBannerText   = document.getElementById('error-banner-text');
+        var errorBannerClose  = document.getElementById('error-banner-close');
+        var networkBadge      = document.getElementById('network-badge');
+        var networkBadgeText  = document.getElementById('network-badge-text');
+        var displayAddress    = document.getElementById('display-address');
+        var copyAddressBtn    = document.getElementById('copy-address-btn');
+        var explorerWalletLink= document.getElementById('explorer-wallet-link');
+        var supraBalance      = document.getElementById('supra-balance');
+        var seqNumber         = document.getElementById('seq-number');
+        var tokenCountEl      = document.getElementById('token-count');
+        var resourceCountEl   = document.getElementById('resource-count');
+        var summaryExtra      = document.getElementById('summary-extra');
+        var tokenListContainer    = document.getElementById('token-list-container');
+        var txListContainer       = document.getElementById('tx-list-container');
+        var txPagination          = document.getElementById('tx-pagination');
+        var txCountInfo           = document.getElementById('tx-count-info');
+        var resourceListContainer = document.getElementById('resource-list-container');
+        var resourcePagination    = document.getElementById('resource-pagination');
+        var resourceCountInfo     = document.getElementById('resource-count-info');
+        var accountInfoContainer  = document.getElementById('account-info-container');
+        var txTypeInline          = document.getElementById('tx-type-inline');
+        var txSortSelect          = document.getElementById('tx-sort-select');
+        var resourceTypeFilter    = document.getElementById('resource-type-filter');
 
         /* ===== HELPERS ===== */
 
-        /**
-         * Escape HTML to prevent XSS
-         * @param {*} value
-         * @returns {string}
-         */
-        function escapeHtml(value) {
-            const div = document.createElement('div');
-            div.textContent = String(value);
-            return div.innerHTML;
-        }
-
-        /**
-         * Validate a Supra wallet address (0x followed by hex chars, 64 hex chars after 0x is standard)
-         * @param {string} addr
-         * @returns {boolean}
-         */
         function isValidAddress(addr) {
             return /^0x[0-9a-fA-F]{1,128}$/.test(addr.trim());
         }
 
-        /**
-         * Normalize address to lowercase
-         * @param {string} addr
-         * @returns {string}
-         */
         function normalizeAddress(addr) {
             return addr.trim().toLowerCase();
         }
 
-        /**
-         * Format raw coin value with decimals
-         * @param {string|number} raw
-         * @param {number} decimals
-         * @returns {string}
-         */
         function formatBalance(raw, decimals) {
             try {
-                const bigVal = BigInt(raw);
-                const divisor = BigInt(10 ** decimals);
-                const whole = bigVal / divisor;
-                const remainder = bigVal % divisor;
-                const remainderStr = remainder.toString().padStart(decimals, '0').replace(/0+$/, '');
-                if (remainderStr === '') {
-                    return whole.toLocaleString();
-                }
-                return whole.toLocaleString() + '.' + remainderStr;
-            } catch {
-                return String(raw);
-            }
+                var bigVal = BigInt(raw);
+                var divisor = BigInt(Math.pow(10, decimals));
+                var whole = bigVal / divisor;
+                var remainder = bigVal % divisor;
+                var remStr = remainder.toString().padStart(decimals, '0').replace(/0+$/, '');
+                return remStr === '' ? whole.toLocaleString() : whole.toLocaleString() + '.' + remStr;
+            } catch (e) { return String(raw); }
         }
 
-        /**
-         * Truncate a hash for display
-         * @param {string} hash
-         * @param {number} front
-         * @param {number} back
-         * @returns {string}
-         */
-        function truncateHash(hash, front = 10, back = 8) {
+        function truncateHash(hash, front, back) {
+            front = front || 10; back = back || 8;
             if (!hash || hash.length <= front + back + 3) return hash;
-            return hash.slice(0, front) + '…' + hash.slice(-back);
+            return hash.slice(0, front) + '\u2026' + hash.slice(-back);
         }
 
-        /**
-         * Format a microsecond timestamp to a readable date
-         * @param {string|number} ts
-         * @returns {string}
-         */
         function formatTimestamp(ts) {
             try {
-                // Supra timestamps are in microseconds
-                const ms = Number(ts) / 1000;
-                const d = new Date(ms);
+                var ms = Number(ts) / 1000;
+                var d = new Date(ms);
                 if (isNaN(d.getTime())) return String(ts);
-                return d.toLocaleString('en-US', {
-                    year: 'numeric', month: 'short', day: 'numeric',
-                    hour: '2-digit', minute: '2-digit', second: '2-digit'
-                });
-            } catch {
-                return String(ts);
-            }
+                return d.toLocaleString('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            } catch (e) { return String(ts); }
         }
 
-        /**
-         * Extract coin type from a CoinStore resource type string
-         * e.g. "0x1::coin::CoinStore<0x1::supra_coin::SupraCoin>" => "0x1::supra_coin::SupraCoin"
-         * @param {string} resourceType
-         * @returns {string}
-         */
         function extractCoinType(resourceType) {
-            const match = resourceType.match(/CoinStore<(.+)>$/);
+            var match = resourceType.match(/CoinStore<(.+)>$/);
             return match ? match[1] : resourceType;
         }
 
-        /**
-         * Format coin type for display — show module::name only
-         * @param {string} coinType
-         * @returns {string}
-         */
         function formatCoinType(coinType) {
-            const parts = coinType.split('::');
-            if (parts.length >= 3) {
-                return parts.slice(1).join('::');
-            }
-            return coinType;
+            var parts = coinType.split('::');
+            return parts.length >= 3 ? parts.slice(1).join('::') : coinType;
         }
+
+        function classifyResource(type) {
+            var t = (type || '').toLowerCase();
+            if (t.indexOf('::coin::coinstore') !== -1 || t.indexOf('fungibleasset') !== -1 || t.indexOf('primary_fungible_store') !== -1) return 'coin';
+            if (t.indexOf('::token') !== -1 || t.indexOf('::nft') !== -1 || t.indexOf('object::objectcore') !== -1 || t.indexOf('collection') !== -1) return 'nft';
+            if (t.indexOf('stake') !== -1 || t.indexOf('delegation') !== -1 || t.indexOf('staking') !== -1) return 'stake';
+            return 'other';
+        }
+
+        function getTxTypeClass(type) {
+            var map = { 'user_transaction': 'tx-type-user', 'block_metadata_transaction': 'tx-type-block', 'genesis_transaction': 'tx-type-genesis', 'state_checkpoint_transaction': 'tx-type-state' };
+            return map[type] || 'tx-type-other';
+        }
+
+        function getTxTypeLabel(type) {
+            var map = { 'user_transaction': 'USER TX', 'block_metadata_transaction': 'BLOCK META', 'genesis_transaction': 'GENESIS', 'state_checkpoint_transaction': 'CHECKPOINT' };
+            return map[type] || (type || 'UNKNOWN').replace(/_/g, ' ').toUpperCase().substring(0, 11);
+        }
+
+        function getFunctionName(payload) {
+            if (!payload) return null;
+            var fn = payload.function || (payload.entry_function_payload && payload.entry_function_payload.function);
+            if (!fn) return null;
+            var parts = String(fn).split('::');
+            return parts.length >= 2 ? parts.slice(1).join('::') : fn;
+        }
+
+        /* ===== NETWORK ===== */
+
+        function updateNetworkBadge() {
+            var net = NETWORKS[currentNetwork];
+            networkBadge.className = 'network-badge ' + currentNetwork;
+            networkBadgeText.textContent = net.label;
+        }
+
+        networkSelect.addEventListener('change', function () {
+            currentNetwork = this.value;
+            updateNetworkBadge();
+        });
+
+        updateNetworkBadge();
 
         /* ===== UI STATE ===== */
 
-        function setLoading(isLoading) {
-            if (isLoading) {
+        function setLoading(on) {
+            if (on) {
                 inspectBtn.classList.add('loading');
                 inspectBtn.disabled = true;
                 addressInput.disabled = true;
+                refreshBtn.disabled = true;
+                exportBtn.disabled = true;
             } else {
                 inspectBtn.classList.remove('loading');
                 inspectBtn.disabled = false;
                 addressInput.disabled = false;
+                refreshBtn.disabled = false;
+                exportBtn.disabled = false;
             }
         }
 
@@ -1195,386 +1037,542 @@
             addressInput.classList.remove('input-error');
         }
 
-        function showErrorBanner(msg) {
-            errorBannerText.textContent = msg;
-            errorBanner.classList.add('visible');
+        function showErrorBanner(msg) { errorBannerText.textContent = msg; errorBanner.classList.add('visible'); }
+        function hideErrorBanner()    { errorBanner.classList.remove('visible'); }
+        function showResults()        { resultsSection.classList.add('visible'); }
+        function hideResults()        { resultsSection.classList.remove('visible'); }
+
+        /* ===== TABS ===== */
+
+        document.querySelectorAll('.tab-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var tab = this.dataset.tab;
+                document.querySelectorAll('.tab-btn').forEach(function (b) { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+                document.querySelectorAll('.tab-panel').forEach(function (p) { p.classList.remove('active'); });
+                this.classList.add('active');
+                this.setAttribute('aria-selected', 'true');
+                document.getElementById('tab-' + tab).classList.add('active');
+            });
+        });
+
+        function switchTab(name) {
+            var btn = document.querySelector('[data-tab="' + name + '"]');
+            if (btn) btn.click();
         }
 
-        function hideErrorBanner() {
-            errorBanner.classList.remove('visible');
-        }
+        /* ===== API ===== */
 
-        function showResults() {
-            resultsSection.classList.add('visible');
-        }
+        function rpc()      { return NETWORKS[currentNetwork].rpc; }
+        function explorer() { return NETWORKS[currentNetwork].explorer; }
 
-        function hideResults() {
-            resultsSection.classList.remove('visible');
-        }
-
-        /* ===== API CALLS ===== */
-
-        /**
-         * Fetch account info: sequence_number, authentication_key
-         * @param {string} address
-         * @returns {Promise<object>}
-         */
         async function fetchAccountInfo(address) {
-            const url = `${RPC_BASE}/rpc/v1/accounts/${encodeURIComponent(address)}`;
-            const resp = await fetch(url, { method: 'GET', headers: { 'Accept': 'application/json' } });
-            if (resp.status === 404) {
-                throw new Error('Account not found on the Supra mainnet. The address may be incorrect or not yet active.');
-            }
-            if (!resp.ok) {
-                throw new Error(`RPC error ${resp.status}: ${resp.statusText}`);
-            }
+            var url = rpc() + '/rpc/v1/accounts/' + encodeURIComponent(address);
+            var resp = await fetch(url, { method: 'GET', headers: { Accept: 'application/json' } });
+            if (resp.status === 404) throw new Error('Account not found on Supra ' + NETWORKS[currentNetwork].label + '. The address may be incorrect or not yet active on this network.');
+            if (!resp.ok) throw new Error('RPC error ' + resp.status + ': ' + resp.statusText);
             return resp.json();
         }
 
-        /**
-         * Fetch all account resources (coin stores, NFTs, etc.)
-         * @param {string} address
-         * @returns {Promise<Array>}
-         */
         async function fetchAccountResources(address) {
-            const url = `${RPC_BASE}/rpc/v1/accounts/${encodeURIComponent(address)}/resources`;
-            const resp = await fetch(url, { method: 'GET', headers: { 'Accept': 'application/json' } });
+            var url = rpc() + '/rpc/v1/accounts/' + encodeURIComponent(address) + '/resources';
+            var resp = await fetch(url, { method: 'GET', headers: { Accept: 'application/json' } });
             if (resp.status === 404) return [];
-            if (!resp.ok) throw new Error(`Resources RPC error ${resp.status}: ${resp.statusText}`);
+            if (!resp.ok) throw new Error('Resources error ' + resp.status + ': ' + resp.statusText);
             return resp.json();
         }
 
-        /**
-         * Fetch recent transactions for the address
-         * @param {string} address
-         * @returns {Promise<Array>}
-         */
         async function fetchTransactions(address) {
-            const url = `${RPC_BASE}/rpc/v1/accounts/${encodeURIComponent(address)}/transactions?limit=${TX_LIMIT}`;
-            const resp = await fetch(url, { method: 'GET', headers: { 'Accept': 'application/json' } });
+            var limit = parseInt(txLimitSelect.value, 10) || 25;
+            var url = rpc() + '/rpc/v1/accounts/' + encodeURIComponent(address) + '/transactions?limit=' + limit;
+            var resp = await fetch(url, { method: 'GET', headers: { Accept: 'application/json' } });
             if (resp.status === 404) return [];
-            if (!resp.ok) throw new Error(`Transactions RPC error ${resp.status}: ${resp.statusText}`);
+            if (!resp.ok) throw new Error('Transactions error ' + resp.status + ': ' + resp.statusText);
             return resp.json();
         }
 
-        /* ===== RENDER FUNCTIONS ===== */
+        /* ===== RENDER: SUMMARY ===== */
 
-        function renderWalletSummary(address, accountData, coinStores) {
-            displayAddress.textContent = address;
-            displayAddress.setAttribute('title', address);
+        function renderSummary(address, accountData, resources) {
+            var coinStores = resources.filter(function (r) { return (r.type || '').indexOf('::coin::CoinStore<') !== -1; });
+            var supraStore = coinStores.find(function (r) { return (r.type || '').indexOf(SUPRA_COIN_PATTERN) !== -1; });
+            var rawBal = supraStore ? ((supraStore.data && supraStore.data.coin && supraStore.data.coin.value) || (supraStore.data && supraStore.data.value) || '0') : '0';
 
-            // Sequence number
-            const seq = accountData.sequence_number ?? accountData.sequenceNumber ?? '—';
-            seqNumber.textContent = String(seq);
+            supraBalance.textContent = formatBalance(rawBal, SUPRA_DECIMALS);
+            seqNumber.textContent = String(accountData.sequence_number != null ? accountData.sequence_number : (accountData.sequenceNumber != null ? accountData.sequenceNumber : '\u2014'));
+            tokenCountEl.textContent = String(coinStores.length);
+            resourceCountEl.textContent = String(resources.length);
 
-            // SUPRA balance
-            const supraStore = coinStores.find(r =>
-                (r.type || '').includes('supra_coin::SupraCoin')
-            );
-            if (supraStore) {
-                const rawVal = supraStore.data?.coin?.value ?? supraStore.data?.value ?? '0';
-                supraBalance.textContent = formatBalance(rawVal, SUPRA_DECIMALS);
-            } else {
-                supraBalance.textContent = '0';
+            document.getElementById('badge-tokens').textContent = coinStores.length;
+            document.getElementById('badge-resources').textContent = resources.length;
+
+            summaryExtra.innerHTML = '';
+            var authKey = accountData.authentication_key || accountData.authenticationKey;
+            if (authKey) {
+                summaryExtra.appendChild(makeInfoRow('Auth Key', authKey));
             }
-
-            tokenCount.textContent = String(coinStores.length);
+            var vmType = accountData.vm_type;
+            if (vmType) {
+                summaryExtra.appendChild(makeInfoRow('VM Type', vmType));
+            }
         }
 
-        function renderTokenBalances(coinStores) {
+        function makeInfoRow(label, value) {
+            var row = document.createElement('div');
+            row.className = 'info-row';
+            var lbl = document.createElement('span');
+            lbl.className = 'info-label'; lbl.textContent = label;
+            var val = document.createElement('span');
+            val.className = 'info-value'; val.textContent = String(value);
+            row.appendChild(lbl); row.appendChild(val);
+            return row;
+        }
+
+        /* ===== RENDER: TOKENS ===== */
+
+        function renderTokens(resources) {
+            var coinStores = resources.filter(function (r) { return (r.type || '').indexOf('::coin::CoinStore<') !== -1; });
             if (!coinStores.length) {
-                tokenListContainer.textContent = '';
-                const notice = document.createElement('p');
-                notice.className = 'no-results-notice';
-                notice.textContent = 'No token balances found for this wallet.';
-                tokenListContainer.appendChild(notice);
+                tokenListContainer.innerHTML = '<p class="no-results-notice">No token balances found for this wallet.</p>';
                 return;
             }
+            var frag = document.createDocumentFragment();
+            coinStores.forEach(function (store) {
+                var coinType  = extractCoinType(store.type || '');
+                var shortName = formatCoinType(coinType);
+                var rawVal    = (store.data && store.data.coin && store.data.coin.value) || (store.data && store.data.value) || '0';
+                var isSupra   = coinType.indexOf(SUPRA_COIN_PATTERN) !== -1;
+                var decimals  = isSupra ? SUPRA_DECIMALS : 0;
+                var formatted = formatBalance(rawVal, decimals);
 
-            const fragment = document.createDocumentFragment();
-            coinStores.forEach(store => {
-                const coinType = extractCoinType(store.type || '');
-                const shortName = formatCoinType(coinType);
-                const rawVal = store.data?.coin?.value ?? store.data?.value ?? '0';
-                const isSupra = coinType.includes('supra_coin::SupraCoin');
-                const decimals = isSupra ? SUPRA_DECIMALS : 0;
-                const formatted = formatBalance(rawVal, decimals);
-
-                const row = document.createElement('div');
+                var row = document.createElement('div');
                 row.className = 'token-row';
 
-                const badge = document.createElement('span');
-                badge.className = 'token-type-badge';
+                var badge = document.createElement('span');
+                badge.className = 'token-badge ' + (isSupra ? 'badge-native' : 'badge-coin');
                 badge.textContent = isSupra ? 'NATIVE' : 'COIN';
 
-                const nameEl = document.createElement('span');
-                nameEl.className = 'token-name';
-                nameEl.setAttribute('title', coinType);
-                nameEl.textContent = shortName;
+                var info = document.createElement('div');
+                info.className = 'token-info';
 
-                const balEl = document.createElement('span');
+                var nameEl = document.createElement('div');
+                nameEl.className = 'token-name'; nameEl.title = coinType; nameEl.textContent = shortName;
+
+                var typeEl = document.createElement('div');
+                typeEl.className = 'token-full-type'; typeEl.title = coinType; typeEl.textContent = coinType;
+
+                info.appendChild(nameEl); info.appendChild(typeEl);
+
+                var balEl = document.createElement('span');
                 balEl.className = 'token-balance';
-                balEl.textContent = formatted;
+                balEl.textContent = formatted + (isSupra ? ' SUPRA' : '');
 
-                row.appendChild(badge);
-                row.appendChild(nameEl);
-                row.appendChild(balEl);
-                fragment.appendChild(row);
+                row.appendChild(badge); row.appendChild(info); row.appendChild(balEl);
+                frag.appendChild(row);
             });
-
-            tokenListContainer.textContent = '';
-            tokenListContainer.appendChild(fragment);
+            tokenListContainer.innerHTML = '';
+            tokenListContainer.appendChild(frag);
         }
 
-        function renderTransactions(txns) {
-            if (!txns || !txns.length) {
-                txListContainer.textContent = '';
-                const notice = document.createElement('p');
-                notice.className = 'no-results-notice';
-                notice.textContent = 'No recent transactions found for this wallet.';
-                txListContainer.appendChild(notice);
+        /* ===== RENDER: TRANSACTIONS ===== */
+
+        function applyTxFilters() {
+            var typeFilter = txTypeInline.value;
+            var sort = txSortSelect.value;
+            var result = allTransactions.slice();
+            if (typeFilter !== 'all') {
+                result = result.filter(function (tx) { return (tx.type || '') === typeFilter; });
+            }
+            if (sort === 'oldest') result.reverse();
+            filteredTxns = result;
+            txPage = 1;
+            renderTxPage();
+        }
+
+        function renderTxPage() {
+            document.getElementById('badge-txns').textContent = filteredTxns.length;
+            txCountInfo.textContent = 'Showing ' + filteredTxns.length + ' of ' + allTransactions.length + ' loaded';
+
+            if (!filteredTxns.length) {
+                txListContainer.innerHTML = '<p class="no-results-notice">No transactions match the selected filter.</p>';
+                txPagination.innerHTML = '';
                 return;
             }
 
-            const fragment = document.createDocumentFragment();
-            txns.forEach(tx => {
-                const hash = tx.hash || tx.version || '';
-                const type = tx.type || 'user_transaction';
-                const timestamp = tx.timestamp || tx.expiration_timestamp_secs || '';
-                const seqNum = tx.sequence_number ?? '';
+            var totalPages = Math.ceil(filteredTxns.length / PAGE_SIZE_TX);
+            var start = (txPage - 1) * PAGE_SIZE_TX;
+            var page  = filteredTxns.slice(start, start + PAGE_SIZE_TX);
+            var exp   = explorer();
 
-                let typeClass = 'tx-type-other';
-                let typeLabel = type.replace(/_/g, ' ').toUpperCase();
-                if (type === 'user_transaction') { typeClass = 'tx-type-user'; typeLabel = 'USER TX'; }
-                else if (type === 'block_metadata_transaction') { typeClass = 'tx-type-other'; typeLabel = 'BLOCK META'; }
-                else if (type === 'script_payload') { typeClass = 'tx-type-script'; typeLabel = 'SCRIPT'; }
+            var frag = document.createDocumentFragment();
+            page.forEach(function (tx) {
+                var hash      = tx.hash || tx.version || '';
+                var type      = tx.type || 'user_transaction';
+                var timestamp = tx.timestamp || tx.expiration_timestamp_secs || '';
+                var seqNum    = tx.sequence_number != null ? tx.sequence_number : '';
+                var gasUsed   = tx.gas_used != null ? tx.gas_used : null;
+                var success   = tx.success != null ? tx.success : null;
+                var payload   = tx.payload || null;
 
-                const explorerHref = hash
-                    ? `${EXPLORER_BASE}/tx/${encodeURIComponent(hash)}`
-                    : '#';
-
-                const row = document.createElement('div');
+                var row = document.createElement('div');
                 row.className = 'tx-row';
 
-                const badgeEl = document.createElement('span');
-                badgeEl.className = 'tx-type-badge ' + typeClass;
-                badgeEl.textContent = typeLabel;
-
-                const infoEl = document.createElement('div');
-                infoEl.className = 'tx-info';
-
-                if (hash) {
-                    const link = document.createElement('a');
-                    link.className = 'tx-hash';
-                    link.href = explorerHref;
-                    link.target = '_blank';
-                    link.rel = 'noopener noreferrer';
-                    link.textContent = truncateHash(hash);
-                    link.title = hash;
-                    link.setAttribute('aria-label', 'View transaction ' + hash + ' on SupraScan explorer');
-                    infoEl.appendChild(link);
-                } else {
-                    const span = document.createElement('span');
-                    span.className = 'tx-hash';
-                    span.textContent = '(no hash)';
-                    infoEl.appendChild(span);
+                /* Type column */
+                var typeCol = document.createElement('div');
+                var typeBadge = document.createElement('span');
+                typeBadge.className = 'tx-type-badge ' + getTxTypeClass(type);
+                typeBadge.textContent = getTxTypeLabel(type);
+                typeCol.appendChild(typeBadge);
+                if (success !== null) {
+                    var statusEl = document.createElement('div');
+                    statusEl.className = success ? 'tx-status-ok' : 'tx-status-fail';
+                    statusEl.textContent = success ? '\u2713 Success' : '\u2717 Failed';
+                    typeCol.appendChild(statusEl);
                 }
 
+                /* Info column */
+                var infoEl = document.createElement('div');
+                infoEl.className = 'tx-info';
+                if (hash) {
+                    var link = document.createElement('a');
+                    link.className = 'tx-hash';
+                    link.href = exp + '/tx/' + encodeURIComponent(hash);
+                    link.target = '_blank'; link.rel = 'noopener noreferrer';
+                    link.textContent = truncateHash(hash);
+                    link.title = hash;
+                    link.setAttribute('aria-label', 'View transaction on SupraScan explorer');
+                    infoEl.appendChild(link);
+                } else {
+                    var noHash = document.createElement('span');
+                    noHash.className = 'tx-hash'; noHash.textContent = '(no hash)';
+                    infoEl.appendChild(noHash);
+                }
+                var fn = getFunctionName(payload);
+                if (fn) {
+                    var fnEl = document.createElement('div');
+                    fnEl.className = 'tx-function'; fnEl.textContent = fn;
+                    if (payload && payload.function) fnEl.title = payload.function;
+                    infoEl.appendChild(fnEl);
+                }
                 if (timestamp) {
-                    const tsEl = document.createElement('div');
-                    tsEl.className = 'tx-timestamp';
-                    tsEl.textContent = formatTimestamp(timestamp);
+                    var tsEl = document.createElement('div');
+                    tsEl.className = 'tx-timestamp'; tsEl.textContent = formatTimestamp(timestamp);
                     infoEl.appendChild(tsEl);
                 }
 
-                const seqEl = document.createElement('div');
-                seqEl.className = 'tx-seq';
-                seqEl.textContent = seqNum !== '' ? '#' + String(seqNum) : '';
+                /* Gas column */
+                var gasCol = document.createElement('div');
+                gasCol.className = 'tx-gas';
+                if (gasUsed !== null) gasCol.textContent = 'Gas: ' + Number(gasUsed).toLocaleString();
 
-                row.appendChild(badgeEl);
-                row.appendChild(infoEl);
-                row.appendChild(seqEl);
-                fragment.appendChild(row);
+                /* Seq column */
+                var seqCol = document.createElement('div');
+                seqCol.className = 'tx-seq';
+                seqCol.textContent = seqNum !== '' ? '#' + String(seqNum) : '';
+
+                row.appendChild(typeCol); row.appendChild(infoEl);
+                row.appendChild(gasCol); row.appendChild(seqCol);
+                frag.appendChild(row);
             });
 
-            txListContainer.textContent = '';
-            txListContainer.appendChild(fragment);
+            txListContainer.innerHTML = '';
+            txListContainer.appendChild(frag);
+
+            renderPagination(txPagination, txPage, totalPages, function (p) {
+                txPage = p; renderTxPage();
+                txListContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            });
         }
+
+        /* ===== RENDER: RESOURCES ===== */
+
+        function applyResourceFilters() {
+            var filter = resourceTypeFilter.value;
+            filteredResources = filter === 'all' ? allResources.slice() : allResources.filter(function (r) { return classifyResource(r.type) === filter; });
+            resPage = 1;
+            renderResourcePage();
+        }
+
+        function renderResourcePage() {
+            resourceCountInfo.textContent = 'Showing ' + filteredResources.length + ' of ' + allResources.length + ' resources';
+            if (!filteredResources.length) {
+                resourceListContainer.innerHTML = '<p class="no-results-notice">No resources match the selected filter.</p>';
+                resourcePagination.innerHTML = '';
+                return;
+            }
+            var totalPages = Math.ceil(filteredResources.length / PAGE_SIZE_RES);
+            var start = (resPage - 1) * PAGE_SIZE_RES;
+            var page  = filteredResources.slice(start, start + PAGE_SIZE_RES);
+            var catLabels = { coin: 'COIN', nft: 'NFT', stake: 'STAKE', other: 'OTHER' };
+            var catClasses= { coin: 'rtype-coin', nft: 'rtype-nft', stake: 'rtype-stake', other: 'rtype-other' };
+
+            var frag = document.createDocumentFragment();
+            page.forEach(function (res) {
+                var cat = classifyResource(res.type);
+                var row = document.createElement('div');
+                row.className = 'resource-row';
+
+                var header = document.createElement('div');
+                header.className = 'resource-header';
+
+                var typeBadge = document.createElement('span');
+                typeBadge.className = 'resource-type-badge ' + (catClasses[cat] || 'rtype-other');
+                typeBadge.textContent = catLabels[cat] || 'OTHER';
+
+                var typeName = document.createElement('span');
+                typeName.className = 'resource-type-name';
+                typeName.title = res.type || '';
+                typeName.textContent = res.type || '(unknown type)';
+
+                var toggle = document.createElement('span');
+                toggle.className = 'resource-expand-toggle';
+                toggle.textContent = '\u25bc';
+                toggle.setAttribute('aria-hidden', 'true');
+
+                header.appendChild(typeBadge); header.appendChild(typeName); header.appendChild(toggle);
+
+                var dataPre = document.createElement('pre');
+                dataPre.className = 'resource-data-pre';
+                dataPre.textContent = JSON.stringify(res.data, null, 2);
+
+                header.addEventListener('click', function () { row.classList.toggle('expanded'); });
+
+                row.appendChild(header); row.appendChild(dataPre);
+                frag.appendChild(row);
+            });
+            resourceListContainer.innerHTML = '';
+            resourceListContainer.appendChild(frag);
+
+            renderPagination(resourcePagination, resPage, totalPages, function (p) {
+                resPage = p; renderResourcePage();
+                resourceListContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            });
+        }
+
+        /* ===== RENDER: ACCOUNT INFO ===== */
 
         function renderAccountInfo(address, accountData) {
-            const fields = [
-                { label: 'Address', value: address },
-                { label: 'Sequence Number', value: accountData.sequence_number ?? accountData.sequenceNumber ?? '—' },
-                { label: 'Auth Key', value: accountData.authentication_key ?? accountData.authenticationKey ?? '—' },
-                { label: 'VM Type', value: accountData.vm_type ?? 'Move VM' },
+            var raw = accountData || {};
+            var fields = [
+                { label: 'Address',           value: address },
+                { label: 'Network',            value: NETWORKS[currentNetwork].label },
+                { label: 'Sequence Number',    value: raw.sequence_number != null ? raw.sequence_number : (raw.sequenceNumber != null ? raw.sequenceNumber : '\u2014') },
+                { label: 'Authentication Key', value: raw.authentication_key || raw.authenticationKey || '\u2014' },
+                { label: 'VM Type',            value: raw.vm_type || 'Move VM' }
             ];
-
-            const fragment = document.createDocumentFragment();
-            fields.forEach(field => {
-                const row = document.createElement('div');
-                row.className = 'info-row';
-
-                const labelEl = document.createElement('span');
-                labelEl.className = 'info-label';
-                labelEl.textContent = field.label;
-
-                const valueEl = document.createElement('span');
-                valueEl.className = 'info-value';
-                valueEl.textContent = String(field.value);
-
-                row.appendChild(labelEl);
-                row.appendChild(valueEl);
-                fragment.appendChild(row);
+            var known = ['sequence_number','sequenceNumber','authentication_key','authenticationKey','vm_type'];
+            Object.keys(raw).forEach(function (k) {
+                if (known.indexOf(k) === -1) {
+                    var v = raw[k];
+                    fields.push({ label: k.replace(/_/g, ' '), value: typeof v === 'object' ? JSON.stringify(v) : String(v) });
+                }
             });
 
-            accountInfoContainer.textContent = '';
-            accountInfoContainer.appendChild(fragment);
+            var frag = document.createDocumentFragment();
+            fields.forEach(function (f) {
+                var v = String(f.value);
+                if (v === '\u2014' || v === '' || v === 'undefined') return;
+                frag.appendChild(makeInfoRow(f.label, v));
+            });
+            accountInfoContainer.innerHTML = '';
+            accountInfoContainer.appendChild(frag);
         }
 
-        /* ===== MAIN INSPECT FLOW ===== */
+        /* ===== PAGINATION ===== */
 
-        async function inspectWallet() {
-            const rawAddress = addressInput.value;
+        function renderPagination(container, current, total, onPage) {
+            container.innerHTML = '';
+            if (total <= 1) return;
+
+            function btn(label, page, isCurrent, disabled) {
+                var b = document.createElement('button');
+                b.className = 'page-btn' + (isCurrent ? ' current' : '');
+                b.textContent = label; b.disabled = disabled;
+                if (!disabled) b.addEventListener('click', function () { onPage(page); });
+                return b;
+            }
+
+            container.appendChild(btn('\u2190 Prev', current - 1, false, current === 1));
+
+            var maxBtns = 5;
+            var startP = Math.max(1, current - Math.floor(maxBtns / 2));
+            var endP   = Math.min(total, startP + maxBtns - 1);
+            if (endP - startP < maxBtns - 1) startP = Math.max(1, endP - maxBtns + 1);
+
+            if (startP > 1) {
+                container.appendChild(btn('1', 1, false, false));
+                if (startP > 2) { var d1 = document.createElement('span'); d1.className = 'page-info'; d1.textContent = '\u2026'; container.appendChild(d1); }
+            }
+            for (var p = startP; p <= endP; p++) {
+                container.appendChild(btn(String(p), p, p === current, false));
+            }
+            if (endP < total) {
+                if (endP < total - 1) { var d2 = document.createElement('span'); d2.className = 'page-info'; d2.textContent = '\u2026'; container.appendChild(d2); }
+                container.appendChild(btn(String(total), total, false, false));
+            }
+            container.appendChild(btn('Next \u2192', current + 1, false, current === total));
+
+            var info = document.createElement('span');
+            info.className = 'page-info';
+            info.textContent = 'Page ' + current + ' of ' + total;
+            container.appendChild(info);
+        }
+
+        /* ===== INSPECT WALLET ===== */
+
+        async function inspectWallet(addressOverride) {
             clearInputError();
             hideErrorBanner();
 
-            if (!rawAddress.trim()) {
-                showInputError('Please enter a wallet address.');
-                addressInput.focus();
-                return;
-            }
+            var raw = addressOverride || addressInput.value;
+            if (!raw.trim()) { showInputError('Please enter a wallet address.'); addressInput.focus(); return; }
+            if (!isValidAddress(raw)) { showInputError('Invalid address format. Must start with 0x followed by hexadecimal characters.'); addressInput.focus(); return; }
 
-            if (!isValidAddress(rawAddress)) {
-                showInputError('Invalid address format. Must start with 0x followed by hexadecimal characters.');
-                addressInput.focus();
-                return;
-            }
-
-            const address = normalizeAddress(rawAddress);
+            var addr = normalizeAddress(raw);
+            lastAddress = addr;
             setLoading(true);
             hideResults();
 
             try {
-                const [accountData, resourcesRaw, txnsRaw] = await Promise.allSettled([
-                    fetchAccountInfo(address),
-                    fetchAccountResources(address),
-                    fetchTransactions(address),
+                var results = await Promise.allSettled([
+                    fetchAccountInfo(addr),
+                    fetchAccountResources(addr),
+                    fetchTransactions(addr)
                 ]);
 
-                // Account info is required — if it fails, show error
-                if (accountData.status === 'rejected') {
-                    throw accountData.reason;
-                }
+                var accountResult   = results[0];
+                var resourcesResult = results[1];
+                var txnsResult      = results[2];
 
-                const account = accountData.value;
+                if (accountResult.status === 'rejected') throw accountResult.reason;
 
-                // Resources — extract coin stores
-                let resources = [];
-                if (resourcesRaw.status === 'fulfilled') {
-                    resources = Array.isArray(resourcesRaw.value) ? resourcesRaw.value : [];
-                }
-                const coinStores = resources.filter(r =>
-                    (r.type || '').includes('::coin::CoinStore<')
-                );
+                var account = accountResult.value;
+                allResources     = resourcesResult.status === 'fulfilled' ? (Array.isArray(resourcesResult.value) ? resourcesResult.value : []) : [];
+                allTransactions  = txnsResult.status === 'fulfilled'      ? (Array.isArray(txnsResult.value)      ? txnsResult.value      : []) : [];
 
-                // Transactions
-                let txns = [];
-                if (txnsRaw.status === 'fulfilled') {
-                    txns = Array.isArray(txnsRaw.value) ? txnsRaw.value : [];
-                }
+                exportData = { address: addr, network: currentNetwork, timestamp: new Date().toISOString(), account: account, resources: allResources, transactions: allTransactions };
 
-                // Render all sections
-                renderWalletSummary(address, account, coinStores);
-                renderTokenBalances(coinStores);
-                renderTransactions(txns);
-                renderAccountInfo(address, account);
+                /* Update header */
+                displayAddress.textContent = addr;
+                displayAddress.setAttribute('title', addr);
+                explorerWalletLink.href = explorer() + '/account/' + encodeURIComponent(addr);
 
-                // Show results
+                /* Render */
+                renderSummary(addr, account, allResources);
+                renderTokens(allResources);
+
+                txTypeInline.value = txTypeSelect.value !== 'all' ? txTypeSelect.value : 'all';
+                txSortSelect.value = 'newest';
+                applyTxFilters();
+
+                resourceTypeFilter.value = 'all';
+                applyResourceFilters();
+
+                renderAccountInfo(addr, account);
+
                 showResults();
+                switchTab('summary');
                 resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
+                if (resourcesResult.status === 'rejected') showErrorBanner('Resources could not be loaded: ' + (resourcesResult.reason && resourcesResult.reason.message ? resourcesResult.reason.message : 'Unknown error'));
+                if (txnsResult.status === 'rejected')      showErrorBanner('Transactions could not be loaded: ' + (txnsResult.reason && txnsResult.reason.message ? txnsResult.reason.message : 'Unknown error'));
+
             } catch (err) {
-                const message = err && err.message ? err.message : 'An unexpected error occurred. Please try again.';
-                showErrorBanner(message);
+                showErrorBanner(err && err.message ? err.message : 'An unexpected error occurred. Please try again.');
                 hideResults();
             } finally {
                 setLoading(false);
             }
         }
 
-        /* ===== COPY ADDRESS BUTTON ===== */
+        /* ===== COPY ADDRESS ===== */
 
         copyAddressBtn.addEventListener('click', function () {
-            const addr = displayAddress.textContent;
-            if (!addr || addr === '—') return;
+            var addr = displayAddress.textContent;
+            if (!addr || addr === '\u2014') return;
+
+            function onOk() {
+                copyAddressBtn.textContent = '\u2713 Copied!';
+                copyAddressBtn.classList.add('copied');
+                setTimeout(function () { copyAddressBtn.textContent = 'Copy'; copyAddressBtn.classList.remove('copied'); }, 2000);
+            }
+            function onFail() {
+                copyAddressBtn.textContent = 'Failed';
+                setTimeout(function () { copyAddressBtn.textContent = 'Copy'; }, 2000);
+            }
 
             if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(addr).then(() => {
-                    copyAddressBtn.textContent = 'Copied!';
-                    copyAddressBtn.classList.add('copied');
-                    setTimeout(() => {
-                        copyAddressBtn.textContent = 'Copy';
-                        copyAddressBtn.classList.remove('copied');
-                    }, 2000);
-                }).catch(() => {
-                    fallbackCopy(addr);
-                });
+                navigator.clipboard.writeText(addr).then(onOk).catch(function () { legacyCopy(addr, onOk, onFail); });
             } else {
-                fallbackCopy(addr);
+                legacyCopy(addr, onOk, onFail);
             }
         });
 
-        function fallbackCopy(text) {
+        function legacyCopy(text, onOk, onFail) {
             try {
-                const el = document.createElement('textarea');
+                var el = document.createElement('textarea');
                 el.value = text;
                 el.style.cssText = 'position:fixed;opacity:0;top:0;left:0;';
                 document.body.appendChild(el);
                 el.select();
-                // Legacy fallback for browsers without Clipboard API support (deprecated but necessary for older browsers)
+                /* Legacy clipboard fallback — deprecated but necessary for browsers without Clipboard API */
                 document.execCommand('copy');
                 document.body.removeChild(el);
-                copyAddressBtn.textContent = 'Copied!';
-                copyAddressBtn.classList.add('copied');
-                setTimeout(() => {
-                    copyAddressBtn.textContent = 'Copy';
-                    copyAddressBtn.classList.remove('copied');
-                }, 2000);
-            } catch (e) {
-                copyAddressBtn.textContent = 'Failed';
-                setTimeout(() => { copyAddressBtn.textContent = 'Copy'; }, 2000);
-            }
+                onOk();
+            } catch (e) { onFail(); }
         }
 
-        /* ===== EVENT LISTENERS ===== */
+        /* ===== EXPORT ===== */
 
-        inspectBtn.addEventListener('click', inspectWallet);
-
-        addressInput.addEventListener('keydown', function (e) {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                inspectWallet();
-            }
+        exportBtn.addEventListener('click', function () {
+            if (!exportData) return;
+            try {
+                var json = JSON.stringify(exportData, null, 2);
+                var blob = new Blob([json], { type: 'application/json' });
+                var url  = URL.createObjectURL(blob);
+                var a    = document.createElement('a');
+                a.href = url;
+                a.download = 'supra-wallet-' + (exportData.address || 'data').slice(0, 10) + '.json';
+                document.body.appendChild(a);
+                a.click();
+                setTimeout(function () { document.body.removeChild(a); URL.revokeObjectURL(url); }, 500);
+            } catch (e) { showErrorBanner('Export failed: ' + e.message); }
         });
 
-        addressInput.addEventListener('input', function () {
-            if (inputErrorEl.classList.contains('visible')) {
-                clearInputError();
-            }
+        /* ===== REFRESH ===== */
+
+        refreshBtn.addEventListener('click', function () {
+            if (lastAddress) { addressInput.value = lastAddress; inspectWallet(lastAddress); }
         });
 
+        /* ===== CLEAR ===== */
+
+        clearBtn.addEventListener('click', function () {
+            addressInput.value = '';
+            clearInputError(); hideErrorBanner(); hideResults();
+            lastAddress = ''; exportData = null;
+            allTransactions = []; allResources = [];
+            addressInput.focus();
+        });
+
+        /* ===== FILTER LISTENERS ===== */
+
+        txTypeInline.addEventListener('change', applyTxFilters);
+        txSortSelect.addEventListener('change', applyTxFilters);
+        resourceTypeFilter.addEventListener('change', applyResourceFilters);
+
+        /* ===== MAIN EVENTS ===== */
+
+        inspectBtn.addEventListener('click', function () { inspectWallet(); });
+        addressInput.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); inspectWallet(); } });
+        addressInput.addEventListener('input', function () { if (inputErrorEl.classList.contains('visible')) clearInputError(); });
         errorBannerClose.addEventListener('click', hideErrorBanner);
 
-        // Support URL param ?address=0x... for direct links
-        (function checkUrlParam() {
+        /* ===== URL PARAM ===== */
+        (function () {
             try {
-                const params = new URLSearchParams(window.location.search);
-                const addr = params.get('address');
-                if (addr) {
-                    addressInput.value = addr;
-                    // Slight delay so page loads first
-                    setTimeout(inspectWallet, 300);
-                }
+                var params = new URLSearchParams(window.location.search);
+                var addr = params.get('address');
+                if (addr) { addressInput.value = addr; setTimeout(function () { inspectWallet(addr); }, 300); }
             } catch (e) { /* ignore */ }
         })();
 

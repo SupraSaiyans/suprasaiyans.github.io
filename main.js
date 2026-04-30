@@ -1001,11 +1001,17 @@
 (function() {
     const bar = document.getElementById('scroll-progress');
     if (!bar) return;
+    let rafPending = false;
     window.addEventListener('scroll', function() {
-        const scrollTop = window.scrollY || document.documentElement.scrollTop;
-        const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-        bar.style.width = pct + '%';
+        if (rafPending) return;
+        rafPending = true;
+        requestAnimationFrame(function() {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            bar.style.width = pct + '%';
+            rafPending = false;
+        });
     }, { passive: true });
 })();
 

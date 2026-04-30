@@ -5569,3 +5569,246 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
         transform: scale(1.04);
     }
 }
+
+/* ============================================================
+   MOBILE OPTIMIZATIONS — Touch targets, sizing, UX polish
+   Applied as a consolidated patch to avoid cascade conflicts.
+   ============================================================ */
+
+/* ── 1. Touch-action: manipulation ──────────────────────────
+   Removes the 300 ms tap delay on all interactive elements
+   without blocking scroll/zoom on non-interactive areas.     */
+a,
+button,
+[role="button"],
+.cta-button,
+.nft-button,
+.social-button,
+.compact-social-btn,
+.cookie-btn,
+.token-card-action-btn,
+.project-action,
+.project-go-beyond8,
+.beyond8-logo-link,
+.dragons-nest-link,
+.atmos-partner-card,
+.sticker-inline-image-link,
+.laoshi-logo-link,
+.pie-slice {
+    touch-action: manipulation;
+}
+
+/* ── 2. Token card action buttons — 44 px touch target ──────
+   Default tokens buttons are ~24 px tall; fix for thumb use. */
+@media (max-width: 768px) {
+    .token-card-action-btn {
+        padding: 10px 10px;
+        font-size: 11px;
+        min-height: 44px;
+        display: block;
+        line-height: 24px;
+    }
+
+    .token-cards-grid {
+        gap: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .token-card-action-btn {
+        padding: 10px 8px;
+        font-size: 10px;
+        min-height: 44px;
+    }
+}
+
+/* ── 3. Token card grid — remove narrow max-width at 400 px ─
+   The 280 px constraint clips content on 360–400 px phones.  */
+@media (max-width: 400px) {
+    .token-cards-grid {
+        max-width: 100%;
+        grid-template-columns: 1fr;
+    }
+
+    .token-card {
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .token-card-image-wrap {
+        width: 90px;
+        flex-shrink: 0;
+        aspect-ratio: unset;
+    }
+
+    .token-card-body {
+        flex: 1;
+    }
+
+    .token-card-action-btn {
+        min-height: 40px;
+        font-size: 10px;
+        padding: 8px 6px;
+    }
+}
+
+/* ── 4. Beyond8 logo — responsive clamp for small phones ────
+   Default clamp(240px, 35vw, 380px) → 240 px on 320 px = 75%
+   of viewport; override to a more proportional value.        */
+@media (max-width: 480px) {
+    .beyond8-logo {
+        width: clamp(150px, 52vw, 260px);
+    }
+}
+
+@media (max-width: 375px) {
+    .beyond8-logo {
+        width: clamp(140px, 55vw, 210px);
+    }
+}
+
+/* ── 5. Cookie consent buttons — 44 px touch target ─────────
+   At 768px the buttons are ~42 px; at 480 px they drop to
+   ~33 px. Standardise to a proper minimum height.            */
+@media (max-width: 768px) {
+    .cookie-btn {
+        padding: 12px 20px;
+        min-height: 44px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cookie-btn {
+        padding: 12px 16px;
+        min-height: 44px;
+    }
+}
+
+/* ── 6. Compact social buttons — legible font floor ─────────
+   The 9 px at ≤480 px and 8.5 px at ≤375 px are too small.  */
+@media (max-width: 480px) {
+    .compact-social-btn {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 375px) {
+    .compact-social-btn {
+        font-size: 10px;
+    }
+}
+
+/* ── 7. Section content — prevent horizontal overflow ───────
+   Ensure .section-content never exceeds the viewport on very
+   narrow phones (≤ 375 px) where margin accumulates.         */
+@media (max-width: 375px) {
+    .container,
+    .section-content {
+        margin: 0;
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* ── 8. Dragons Nest hint label — legible on very small phones */
+@media (max-width: 375px) {
+    .dragons-nest-discord-hint {
+        font-size: 0.7em;
+    }
+}
+
+/* ── 9. Project cards — ensure card images are properly sized */
+@media (max-width: 480px) {
+    .project-card-frame {
+        max-width: 100%;
+    }
+
+    .project-placeholder-svg {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* ── 10. Footer — improve readability on small screens ───────*/
+@media (max-width: 480px) {
+    .footer-foldout {
+        padding: 16px 12px;
+    }
+
+    .footer-text {
+        font-size: 0.8em;
+        line-height: 1.6;
+    }
+
+    .footer-text-tools {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .footer-divider {
+        display: none;
+    }
+
+    .footer-tool-link {
+        display: inline-block;
+        padding: 8px 12px;
+        min-height: 44px;
+        line-height: 28px;
+    }
+}
+
+/* ── 11. Privacy settings button — larger tap target ─────────*/
+@media (max-width: 480px) {
+    #privacy-settings-btn {
+        min-height: 44px;
+        padding: 10px 14px;
+        font-size: 0.75em;
+    }
+}
+
+/* ── 12. Laoshi section — prevent frame overflow on 320 px ───*/
+@media (max-width: 360px) {
+    .laoshi-frame {
+        width: 260px;
+        height: 260px;
+    }
+
+    .laoshi-halo {
+        width: 200px;
+        height: 200px;
+    }
+
+    .laoshi-logo {
+        width: 160px;
+    }
+
+    .laoshi-title {
+        font-size: 1.5em;
+    }
+
+    .laoshi-centerpiece {
+        padding: 30px 12px;
+    }
+}
+
+/* ── 13. Showcase grid — 1 column on very narrow screens ─────*/
+@media (max-width: 360px) {
+    .showcase-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+}
+
+/* ── 14. Atmos partner cards — already handled at 480 px in component styles;
+        touch-action: manipulation applied in rule 1 above.                   */
+
+/* ── 15. Scrollbar — hide on mobile to reclaim 8 px ──────────*/
+@media (max-width: 768px) {
+    ::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
+}

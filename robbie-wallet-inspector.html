@@ -868,7 +868,7 @@
             testnet: { label: 'TESTNET', rpc: 'https://rpc-testnet.supra.com',  explorer: 'https://testnet.suprascan.io' }
         };
 
-        var SUPRA_COIN_PATTERN = 'supra_coin::SupraCoin';
+        var SUPRA_COIN_SUBSTRING = 'supra_coin::SupraCoin';
         var SUPRA_DECIMALS = 8;
         var PAGE_SIZE_TX  = 10;
         var PAGE_SIZE_RES = 15;
@@ -883,6 +883,11 @@
         var txPage  = 1;
         var resPage = 1;
         var exportData = null;
+
+        /* Respect prefers-reduced-motion for JS-triggered scrolling */
+        function scrollBehavior() {
+            return window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+        }
 
         /* ===== DOM ===== */
         var addressInput      = document.getElementById('wallet-address-input');
@@ -933,7 +938,7 @@
         function formatBalance(raw, decimals) {
             try {
                 var bigVal = BigInt(raw);
-                var divisor = BigInt(Math.pow(10, decimals));
+                var divisor = BigInt(10) ** BigInt(decimals);
                 var whole = bigVal / divisor;
                 var remainder = bigVal % divisor;
                 var remStr = remainder.toString().padStart(decimals, '0').replace(/0+$/, '');
@@ -1094,7 +1099,7 @@
 
         function renderSummary(address, accountData, resources) {
             var coinStores = resources.filter(function (r) { return (r.type || '').indexOf('::coin::CoinStore<') !== -1; });
-            var supraStore = coinStores.find(function (r) { return (r.type || '').indexOf(SUPRA_COIN_PATTERN) !== -1; });
+            var supraStore = coinStores.find(function (r) { return (r.type || '').indexOf(SUPRA_COIN_SUBSTRING) !== -1; });
             var rawBal = supraStore ? ((supraStore.data && supraStore.data.coin && supraStore.data.coin.value) || (supraStore.data && supraStore.data.value) || '0') : '0';
 
             supraBalance.textContent = formatBalance(rawBal, SUPRA_DECIMALS);
@@ -1140,7 +1145,7 @@
                 var coinType  = extractCoinType(store.type || '');
                 var shortName = formatCoinType(coinType);
                 var rawVal    = (store.data && store.data.coin && store.data.coin.value) || (store.data && store.data.value) || '0';
-                var isSupra   = coinType.indexOf(SUPRA_COIN_PATTERN) !== -1;
+                var isSupra   = coinType.indexOf(SUPRA_COIN_SUBSTRING) !== -1;
                 var decimals  = isSupra ? SUPRA_DECIMALS : 0;
                 var formatted = formatBalance(rawVal, decimals);
 
@@ -1279,7 +1284,7 @@
 
             renderPagination(txPagination, txPage, totalPages, function (p) {
                 txPage = p; renderTxPage();
-                txListContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                txListContainer.scrollIntoView({ behavior: scrollBehavior(), block: 'nearest' });
             });
         }
 
@@ -1344,7 +1349,7 @@
 
             renderPagination(resourcePagination, resPage, totalPages, function (p) {
                 resPage = p; renderResourcePage();
-                resourceListContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                resourceListContainer.scrollIntoView({ behavior: scrollBehavior(), block: 'nearest' });
             });
         }
 
@@ -1471,7 +1476,7 @@
 
                 showResults();
                 switchTab('summary');
-                resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                resultsSection.scrollIntoView({ behavior: scrollBehavior(), block: 'start' });
 
                 if (resourcesResult.status === 'rejected') showErrorBanner('Resources could not be loaded: ' + (resourcesResult.reason && resourcesResult.reason.message ? resourcesResult.reason.message : 'Unknown error'));
                 if (txnsResult.status === 'rejected')      showErrorBanner('Transactions could not be loaded: ' + (txnsResult.reason && txnsResult.reason.message ? txnsResult.reason.message : 'Unknown error'));
@@ -1568,11 +1573,16 @@
         errorBannerClose.addEventListener('click', hideErrorBanner);
 
         /* ===== URL PARAM ===== */
+        /* Run after DOM is ready — document.readyState is already 'interactive' or 'complete'
+           because this script runs at end of <body>, so we can call inspectWallet directly. */
         (function () {
             try {
                 var params = new URLSearchParams(window.location.search);
                 var addr = params.get('address');
-                if (addr) { addressInput.value = addr; setTimeout(function () { inspectWallet(addr); }, 300); }
+                if (addr) {
+                    addressInput.value = addr;
+                    inspectWallet(addr);
+                }
             } catch (e) { /* ignore */ }
         })();
 

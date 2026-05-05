@@ -1051,3 +1051,282 @@
         ripple.addEventListener('animationend', function() { ripple.remove(); });
     });
 })();
+
+/* ============================================================
+   BEYOND8 LIVE TOKEN DATA
+   Fetches from https://beyond8tokendata.robbiesuprameme.xyz/
+   and populates the token data table in the Beyond8 section.
+   ============================================================ */
+(function() {
+    var TOKEN_DATA_URL = 'https://beyond8tokendata.robbiesuprameme.xyz/';
+
+    var loadingEl   = document.getElementById('beyond8-token-loading');
+    var errorEl     = document.getElementById('beyond8-token-error');
+    var tableEl     = document.getElementById('beyond8-token-table');
+    var tbodyEl     = document.getElementById('beyond8-token-tbody');
+    var timestampEl = document.getElementById('beyond8-token-timestamp');
+
+    if (!loadingEl || !tableEl || !tbodyEl) return;
+
+    /* ── Helpers ─────────────────────────────────────────── */
+
+    function show(el)  { el.hidden = false; }
+    function hide(el)  { el.hidden = true; }
+
+    /* Format a raw integer supply with given decimal places */
+    function formatSupply(raw, decimals) {
+        decimals = decimals || 0;
+        var n = parseFloat(raw) / Math.pow(10, decimals);
+        if (isNaN(n)) return String(raw);
+        if (n >= 1e9)  return (n / 1e9).toFixed(2)  + ' B';
+        if (n >= 1e6)  return (n / 1e6).toFixed(2)  + ' M';
+        if (n >= 1e3)  return (n / 1e3).toFixed(2)  + ' K';
+        return n.toLocaleString(undefined, { maximumFractionDigits: 6 });
+    }
+
+    /* Safely read a nested path like "data.supply.vec.0.integer.value" */
+    function dig(obj, path) {
+        return path.split('.').reduce(function(o, k) {
+            return (o != null && o[k] != null) ? o[k] : null;
+        }, obj);
+    }
+
+    /* Format a numeric price value */
+    function formatPrice(val) {
+        var n = parseFloat(val);
+        if (isNaN(n)) return String(val);
+        if (n === 0) return '—';
+        if (n < 0.000001) return n.toExponential(4);
+        if (n < 0.001)    return '$' + n.toFixed(8);
+        if (n < 1)        return '$' + n.toFixed(6);
+        return '$' + n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 4 });
+    }
+
+    /* Format USD amounts (market cap, volume, etc.) */
+    function formatUSD(val) {
+        var n = parseFloat(val);
+        if (isNaN(n)) return String(val);
+        if (n === 0) return '—';
+        if (n >= 1e9) return '$' + (n / 1e9).toFixed(2) + 'B';
+        if (n >= 1e6) return '$' + (n / 1e6).toFixed(2) + 'M';
+        if (n >= 1e3) return '$' + (n / 1e3).toFixed(2) + 'K';
+        return '$' + n.toLocaleString(undefined, { maximumFractionDigits: 2 });
+    }
+
+    /* Shorten a long hex address */
+    function shortenAddr(addr) {
+        if (typeof addr !== 'string' || addr.length < 16) return addr;
+        return addr.slice(0, 10) + '…' + addr.slice(-6);
+    }
+
+    /* ── Data extraction ─────────────────────────────────── */
+
+    /*
+     * Extract a flat "token info" map from whatever the API returns.
+     * The API may return:
+     *   (a) A flat object: { name, symbol, decimals, supply, price, ... }
+     *   (b) A Supra CoinInfo resource: { type, data: { name, symbol, decimals, supply: { vec: [...] } } }
+     *   (c) A wrapper: { result: { ... } } or { token: { ... } } or { data: { ... } }
+     *   (d) An array of resources matching the above
+     */
+    function extractTokenInfo(raw) {
+        if (!raw) return null;
+
+        /* Unwrap common single-key wrappers */
+        var payload = raw;
+        ['result', 'token', 'data', 'tokenomics', 'info'].forEach(function(key) {
+            if (payload && typeof payload === 'object' && !Array.isArray(payload)
+                && payload[key] && typeof payload[key] === 'object') {
+                payload = payload[key];
+            }
+        });
+
+        /* If it's an array, find the CoinInfo entry or use first element */
+        if (Array.isArray(payload)) {
+            var coinInfo = payload.find(function(r) {
+                return (r.type || '').indexOf('CoinInfo') !== -1;
+            });
+            payload = coinInfo || payload[0];
+        }
+
+        if (!payload || typeof payload !== 'object') return null;
+
+        /* If the object has a `data` sub-key (Supra resource format), merge it in */
+        var merged = Object.assign({}, payload);
+        if (payload.data && typeof payload.data === 'object' && !Array.isArray(payload.data)) {
+            Object.assign(merged, payload.data);
+        }
+
+        var info = {};
+
+        /* Name */
+        info.name = merged.name || merged.tokenName || merged.token_name || null;
+
+        /* Symbol */
+        info.symbol = merged.symbol || merged.ticker || null;
+
+        /* Decimals */
+        info.decimals = (merged.decimals != null) ? parseInt(merged.decimals, 10) : null;
+
+        /* Total supply — handle both flat string/number and Supra nested form */
+        var rawSupply = merged.total_supply
+            || merged.totalSupply
+            || dig(merged, 'supply.vec.0.integer.value')
+            || dig(merged, 'supply.0.integer.value')
+            || dig(merged, 'supply.value')
+            || merged.supply
+            || null;
+        info.rawSupply = rawSupply;
+
+        /* Price */
+        info.price = merged.price || merged.price_usd || merged.priceUsd || null;
+
+        /* Market cap */
+        info.marketCap = merged.market_cap || merged.marketCap || merged.market_capitalization || null;
+
+        /* 24h volume */
+        info.volume24h = merged.volume_24h || merged.volume24h || merged.volume || null;
+
+        /* Holder count */
+        info.holders = merged.holders || merged.holder_count || merged.holderCount || null;
+
+        /* Contract / token address */
+        info.address = merged.address
+            || merged.contract_address
+            || merged.contractAddress
+            || merged.token_address
+            || merged.module_address
+            || null;
+
+        /* Coin type string (Supra Move type) */
+        info.coinType = merged.type || merged.coin_type || merged.coinType || null;
+
+        return info;
+    }
+
+    /* ── Table rendering ─────────────────────────────────── */
+
+    function addRow(label, value) {
+        if (value == null || value === '') return;
+        var tr = document.createElement('tr');
+        var tdLabel = document.createElement('td');
+        tdLabel.textContent = label;
+        var tdValue = document.createElement('td');
+        tdValue.textContent = String(value);
+        tr.appendChild(tdLabel);
+        tr.appendChild(tdValue);
+        tbodyEl.appendChild(tr);
+    }
+
+    function renderTable(info) {
+        tbodyEl.innerHTML = '';
+
+        if (info.name)       addRow('Name',          info.name);
+        if (info.symbol)     addRow('Symbol',         info.symbol);
+        if (info.decimals != null) addRow('Decimals', info.decimals);
+
+        if (info.rawSupply != null) {
+            var dec = (info.decimals != null) ? info.decimals : 0;
+            addRow('Total Supply', formatSupply(info.rawSupply, dec));
+        }
+
+        if (info.price != null)     addRow('Price',      formatPrice(info.price));
+        if (info.marketCap != null) addRow('Market Cap', formatUSD(info.marketCap));
+        if (info.volume24h != null) addRow('Volume 24h', formatUSD(info.volume24h));
+        if (info.holders != null)   addRow('Holders',    Number(info.holders).toLocaleString());
+
+        if (info.coinType && typeof info.coinType === 'string') {
+            addRow('Coin Type', info.coinType);
+        } else if (info.address) {
+            addRow('Contract', shortenAddr(info.address));
+        }
+
+        /* If we got an object but extracted nothing useful, show a notice */
+        if (tbodyEl.children.length === 0) {
+            var tr = document.createElement('tr');
+            var td = document.createElement('td');
+            td.colSpan = 2;
+            td.textContent = 'Token data received — no standard fields detected.';
+            td.style.textAlign = 'center';
+            td.style.color = 'rgba(255,255,255,0.5)';
+            tr.appendChild(td);
+            tbodyEl.appendChild(tr);
+        }
+    }
+
+    /* ── Fetch logic ─────────────────────────────────────── */
+
+    function showError(msg) {
+        hide(loadingEl);
+        hide(tableEl);
+        errorEl.textContent = msg;
+        show(errorEl);
+    }
+
+    function onSuccess(data) {
+        var info = extractTokenInfo(data);
+        if (!info) {
+            showError('Token data received but could not be parsed. Please check the API response.');
+            return;
+        }
+        renderTable(info);
+        hide(loadingEl);
+        hide(errorEl);
+        show(tableEl);
+        var now = new Date();
+        timestampEl.textContent = 'Updated ' + now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', timeZoneName: 'short' });
+        show(timestampEl);
+    }
+
+    function loadTokenData() {
+        show(loadingEl);
+        hide(errorEl);
+        hide(tableEl);
+        hide(timestampEl);
+
+        fetch(TOKEN_DATA_URL, {
+            method: 'GET',
+            headers: { Accept: 'application/json' }
+        })
+        .then(function(resp) {
+            if (!resp.ok) {
+                throw new Error('HTTP ' + resp.status + ' — ' + resp.statusText);
+            }
+            return resp.json();
+        })
+        .then(function(data) {
+            onSuccess(data);
+        })
+        .catch(function(err) {
+            var msg = err && err.message ? err.message : String(err);
+            /* CORS or network errors show as "Failed to fetch" */
+            if (msg.toLowerCase().indexOf('failed to fetch') !== -1
+                || msg.toLowerCase().indexOf('networkerror') !== -1) {
+                showError('Could not reach the token data API. The service may be temporarily unavailable or a CORS header is missing on the server.');
+            } else {
+                showError('Token data unavailable: ' + msg);
+            }
+        });
+    }
+
+    /* Trigger once at least 5 % of the section is visible — just enough to confirm
+       the user has scrolled to Beyond8, while avoiding a request on initial page load. */
+    var VISIBILITY_THRESHOLD = 0.05;
+    var section = document.getElementById('beyond8');
+    if (section && 'IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+            if (entries[0].isIntersecting) {
+                observer.disconnect();
+                loadTokenData();
+            }
+        }, { threshold: VISIBILITY_THRESHOLD });
+        observer.observe(section);
+    } else {
+        /* Fallback: load after DOM ready */
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', loadTokenData);
+        } else {
+            loadTokenData();
+        }
+    }
+})();

@@ -4256,6 +4256,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
     border-top-color: rgba(0, 255, 195, 0.85);
     border-radius: 50%;
     animation: beyond8Spin 0.8s linear infinite;
+    will-change: transform;
     flex-shrink: 0;
 }
 

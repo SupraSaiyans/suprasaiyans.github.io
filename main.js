@@ -1286,6 +1286,7 @@
 
         fetch(TOKEN_DATA_URL, {
             method: 'GET',
+            mode: 'cors',
             headers: { Accept: 'application/json' }
         })
         .then(function(resp) {
@@ -1309,7 +1310,7 @@
         });
     }
 
-    /* Trigger once at least 5 % of the section is visible — just enough to confirm
+    /* Trigger once at least 5% of the section is visible — just enough to confirm
        the user has scrolled to Beyond8, while avoiding a request on initial page load. */
     var VISIBILITY_THRESHOLD = 0.05;
     var section = document.getElementById('beyond8');

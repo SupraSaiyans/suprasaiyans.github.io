@@ -1,6 +1,16 @@
 {
   "items": [
             {
+      "id": "nft-025",
+      "number": 25,
+      "title": "Beyond Beenies",
+      "description": "X-space X-time X-chain",
+      "image": "images/MINTFINITYMISFITSCOLLECTIONIMAGEREWORK.png",
+      "datePublished": "2026-05-21",
+      "mintUrl": "https://crystara.trade/marketplace/beyondbeenies",
+      "tradeUrl": "https://crystara.trade/trade/beyondbeenies"
+    },
+    {
       "id": "nft-024",
       "number": 24,
       "title": "Mintfinity Misfits",

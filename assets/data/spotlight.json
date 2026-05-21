@@ -139,6 +139,16 @@
       "datePublished": "2026-03-28",
       "mintUrl": "https://crystara.trade/marketplace/cosmonft",
       "tradeUrl": "https://crystara.trade/trade/cosmonft"
+      },
+      {
+      "id": "spotlight-015",
+      "number": 15,
+      "title": "Beyond Beenies",
+      "description": "X-Space X-Time X-Chain",
+      "image": "images/SUPRA-COLLECTIONIMAGE-BEYONDBEENIES.jpg",
+      "datePublished": "2026-05-21",
+      "mintUrl": "https://crystara.trade/marketplace/beyondbeenies",
+      "tradeUrl": "https://crystara.trade/trade/beyondbeenies"
     }
   ]
 }

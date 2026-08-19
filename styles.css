@@ -5837,4 +5837,5 @@ button,
 a[href="#transmissions"],
 nav a[data-target="transmissions"] {
   display: none !important;
+    }
 }
